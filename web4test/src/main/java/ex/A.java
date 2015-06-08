@@ -6,6 +6,8 @@ public class A {
     System.out.println("고유식..");
     System.out.println("홍길동");
     System.out.println("우인규!!!!!!");
+    System.out.println("프로듀사");
+    
   }
 
 }
