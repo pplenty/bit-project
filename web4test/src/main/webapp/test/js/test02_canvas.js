@@ -51,6 +51,12 @@ $(document).ready(function() {
 	  canvas.add(rect).setActiveObject(rect);
 	  canvas.add(rect2).setActiveObject(rect2);
 	  canvas.add(rect3).setActiveObject(rect3);
+	  canvas.add(circle).setActiveObject(circle);
+	  canvas.add(triangle).setActiveObject(triangle);
+
+	  canvas.selectionColor = 'rgba(0,255,0,0.3)';
+	  canvas.selectionBorderColor = 'red';
+	  canvas.selectionLineWidth = 5;
 	
 });
 
