@@ -17,14 +17,14 @@
 
 .tabs-style-bar nav ul li a {
 	margin: 0 2px;
-	background-color: #f7f7f7;
-	color: #74777b;
+	background-color: #1f22f4;
+	color: #150e67;
 	transition: background-color 0.2s, color 0.2s;
 }
 
 .tabs-style-bar nav ul li a:hover,
 .tabs-style-bar nav ul li a:focus {
-	color: #2CC185;
+	color: #2018b7;
 }
 
 .tabs-style-bar nav ul li a span {
