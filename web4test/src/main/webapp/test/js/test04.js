@@ -63,12 +63,14 @@ $(document).ready(function() {
 		document.body.style.cursor = "move";
 		
 		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
+//		$('.canvas').trigger('mousedown');
 		$('.sl-block-content').not(targetIdSelector).removeClass('isFocus');
+		
 		deletEditForm($('.sl-block-content').not(targetIdSelector));
 		
 		
 		$('.sl-block-content' + targetIdSelector).addClass('isFocus');
-		if($('.isFocus').children().length ==0){
+		if($(this).children().length ==0){
 			editForm($('.sl-block-content' + targetIdSelector));
 		}
 		
@@ -91,7 +93,7 @@ $(document).ready(function() {
 		$(this).on('mouseup', function(event) {
 //			event.stopPropagation();
 		    document.body.style.cursor = "auto";
-		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
 			$(document).off('mousemove');
 			$(this).off('mouseup');
 			
@@ -102,21 +104,22 @@ $(document).ready(function() {
 	});
 	
 	
-//	$(document).on('mousedown', 'body > div.canvas > div > div > div[data-direction=se]', function(event){
-//		var currentX = event.pageX;
-//		var currentY = event.pageY;
-//		console.log(currentX + ',' + currentY);
-//		
-//		
-//		$(document).on('mousemove', this, function(event) {
-//
-//			$('.sl-block-content.isFocus').css({
-//				'width': currentX - event.pageX + 'px',
-//				'height': currentY - event.pageY + 'px'
-//			});
-//		});
-//		
-//	});
+	$('body > div.canvas > div > div > div[data-direction=se]').on('mousedown', function(event){
+		event.stopPropagation();
+		var currentX = event.pageX;
+		var currentY = event.pageY;
+		console.log(currentX + ',' + currentY);
+		
+		
+		$(document).on('mousemove', function(event) {
+
+			$('.sl-block-content.isFocus').css({
+				'width': currentX - event.pageX + 'px',
+				'height': currentY - event.pageY + 'px'
+			});
+		});
+		
+	});
 	
 	
 	$('#colorinput').on('change', function() {
