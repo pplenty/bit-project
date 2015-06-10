@@ -56,6 +56,13 @@ $(document).ready(function() {
 	
 	// 콘텐츠 이벤트 등록
 	$('.canvas').on('mousedown', '.sl-block-content', function(event) {
+		
+		var rgbHex = rgb2hex($(this).css('background-color'));
+		$('#colorinput').val(rgbHex);
+//		console.log($(this).css('background-color'));
+		
+		
+		
 		var FocusTarget = event.target;
 	    var targetIdSelector = '[blockId=' + FocusTarget.getAttribute('blockId') + ']';
 //	    console.log($(targetIdSelector));
@@ -65,8 +72,8 @@ $(document).ready(function() {
 		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
 //		$('.canvas').trigger('mousedown');
 		$('.sl-block-content').not(targetIdSelector).removeClass('isFocus');
-		
 		deletEditForm($('.sl-block-content').not(targetIdSelector));
+//		deletEditForm($('.sl-block-content').not(targetIdSelector));
 		
 		
 		$('.sl-block-content' + targetIdSelector).addClass('isFocus');
@@ -104,7 +111,7 @@ $(document).ready(function() {
 	});
 	
 	
-	$('body > div.canvas > div > div > div[data-direction=se]').on('mousedown', function(event){
+	$('.anchor').on('mousedown', function(event){
 		event.stopPropagation();
 		var currentX = event.pageX;
 		var currentY = event.pageY;
@@ -181,6 +188,18 @@ function editForm(selectorIsFocus) {
 
 function deletEditForm(selectorIsFocus) {
 	selectorIsFocus.children().last().detach();
+}
+
+function rgb2hex(rgb) {
+    if (  rgb.search("rgb") == -1 ) {
+         return rgb;
+    } else {
+         rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+         function hex(x) {
+              return ("0" + parseInt(x).toString(16)).slice(-2);
+         }
+         return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+    }
 }
 
 
