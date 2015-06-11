@@ -56,11 +56,9 @@ $(document).ready(function() {
 	
 	// 콘텐츠 이벤트 등록
 	$('.canvas').on('mousedown', '.sl-block-content', function(event) {
-		
+		// color input 도형 색 설정
 		var rgbHex = rgb2hex($(this).css('background-color'));
 		$('#colorinput').val(rgbHex);
-//		console.log($(this).css('background-color'));
-		
 		
 		
 		var FocusTarget = event.target;

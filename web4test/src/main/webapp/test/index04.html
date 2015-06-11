@@ -83,7 +83,6 @@
 				
 				<input id="colorinput" type="color">
 				
-				
 			</div>
 			
 <!-- 			<div class="toolbar visible">
@@ -103,7 +102,45 @@
 	
   <div class='canvas'>
   <p>T.T</p>
+  <span id="signinButton">
+	  <span
+	    class="g-signin"
+	    data-callback="signinCallback"
+	    data-clientid="3679365711-ilsb14e01shkrnbn2mag9jurhn9lsjnj.apps.googleusercontent.com"
+	    data-cookiepolicy="single_host_origin"
+	    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+	    data-scope="https://www.googleapis.com/auth/plus.login">
+	  </span>
+	</span>
   </div>
+  
+  <!-- 이 비동기 자바스크립트를 </body> 태그 앞에 배치 -->
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+      
+      
+      function signinCallback(authResult) {
+    	  if (authResult['access_token']) {
+    	    // 승인 성공
+    	    // 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
+    	    document.getElementById('signinButton').setAttribute('style', 'display: none');
+    	  } else if (authResult['error']) {
+    	    // 오류가 발생했습니다.
+    	    // 가능한 오류 코드:
+    	    //   "access_denied" - 사용자가 앱에 대한 액세스 거부
+    	    //   "immediate_failed" - 사용자가 자동으로 로그인할 수 없음
+    	    // console.log('오류 발생: ' + authResult['error']);
+    	  }
+    	}
+    </script>
+    
+    <!-- 
+    https://accounts.google.com/o/oauth2/auth?client_id=CLIENT_ID&redirect_uri=postmessage&response_type=code%20token%20id_token%20gsession&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login&request_visible_actions=http%3A%2F%2Fschemas.google.com%2FAddActivity&cookie_policy=single_host_origin&include_granted_scopes=true&proxy=oauth2relay810862270&origin=http%3A%2F%2F127.0.0.1%3A9999&state=716581739%7C0.1952620222&&e=3100077 
+    -->
   
 </body>
 </html>
