@@ -14,6 +14,10 @@ $(window).load(function() {
 // Text	I바
 // Wait	모래시계
 $(document).ready(function() {
+	
+
+    
+    
 	// alert(1);
 	var canvas = $('.canvas');
 	var blockId = 100000;
