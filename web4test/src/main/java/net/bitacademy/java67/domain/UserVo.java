@@ -11,55 +11,29 @@ public class UserVo implements Serializable {
   private static final long serialVersionUID = 1L;
   
   protected int     userNo;
-  protected String  name;
   protected String  email;
-  protected String  tel;
-  protected String  homepage;
-  protected String  twitter;
-  protected String  password;
   
+  @Override
+  public String toString() {
+    return "UserVo [userNo=" + userNo + ", email=" + email + "]";
+  }
+
   public int getUserNo() {
     return userNo;
   }
+
   public void setUserNo(int userNo) {
     this.userNo = userNo;
   }
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+
   public String getEmail() {
     return email;
   }
+
   public void setEmail(String email) {
     this.email = email;
   }
-  public String getTel() {
-    return tel;
-  }
-  public void setTel(String tel) {
-    this.tel = tel;
-  }
-  public String getHomepage() {
-    return homepage;
-  }
-  public void setHomepage(String homepage) {
-    this.homepage = homepage;
-  }
-  public String getTwitter() {
-    return twitter;
-  }
-  public void setTwitter(String twitter) {
-    this.twitter = twitter;
-  }
-  public String getPassword() {
-    return password;
-  }
-  public void setPassword(String password) {
-    this.password = password;
-  }
+  
   
   
 }
