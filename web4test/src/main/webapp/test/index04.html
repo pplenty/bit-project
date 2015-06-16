@@ -102,6 +102,7 @@
 	
   <div class='canvas'>
   <p>T.T</p>
+  <p id=name></p>
   <span id="signinButton">
 	  <span
 	    class="g-signin"
@@ -118,6 +119,14 @@
   
   <!-- 이 비동기 자바스크립트를 </body> 태그 앞에 배치 -->
     <script type="text/javascript">
+    
+
+    var email = '';
+    var name = '';
+
+       var id_token = '';
+       var access_token = '';
+       var expires_in = '';
       (function() {
        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
        po.src = 'https://apis.google.com/js/client:plusone.js';
@@ -128,7 +137,6 @@
       
       
       function signinCallback(authResult) {
-          console.log('asdf: ' + authResult['user_info']);
     	  if (authResult['access_token']) {
     	    // 승인 성공
           gapi.auth.setToken(authResult); // 반환된 토큰을 저장합니다.
@@ -136,10 +144,15 @@
     	    // 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
     	    document.getElementById('signinButton').setAttribute('style', 'display: none');
     	    access_token = authResult['access_token'];
-          getEmail();                     // 이메일 주소 가져오기 요청을 실행합니다.
+          getEmail();      
+          // 이메일 주소 가져오기 요청을 실행합니다.
+          id_token = authResult['id_token'];
+          access_token = authResult['access_token'];
+          expires_in = authResult['expires_in'];
           console.log('id_token: ' + authResult['id_token']);
           console.log('access_token: ' + authResult['access_token']);
           console.log('expires_in: ' + authResult['expires_in']);
+         
           
     	  } else if (authResult['error']) {
     	    // 오류가 발생했습니다.
@@ -167,17 +180,21 @@
       }
       
       function getEmailCallback(obj){
-   	    var el = document.getElementById('email');
-   	    var email = '';
-
-   	    if (obj['email']) {
-   	      email = 'Email: ' + obj['email'];
+   	    var el = document.getElementById('name');
+   	    var name = '';
+   	  
+   	    if (obj['name']) {
+   	      name = obj['name'] + '님 반갑습니다.';
    	    }
 
    	    console.log(obj);   // 전체 개체를 검사하려면 주석을 해제합니다.
 
-   	    el.innerHTML = email;
-   	    toggleElement('email');
+   	    el.innerHTML = name;
+   	    toggleElement('name');
+   	    
+   	    console.log('호출전');
+   	   googleCheckLogin(obj);
+   	//   location.href = '../mypage/mypage.html';
    	  }
       
       function toggleElement(id) {
@@ -204,7 +221,7 @@
     	      // 사용자가 연결 해제되었으므로 작업을 수행합니다.
     	      // 응답은 항상 정의되지 않음입니다.
            document.getElementById('signinButton').setAttribute('style', 'display: inline-block');
-            console.log('ㄹㄹ');
+            console.log('logout');
     	    },
     	    error: function(e) {
     	      // 오류 처리
@@ -217,6 +234,34 @@
       // 버튼 클릭으로 연결 해제를 실행할 수 있습니다.
       $('#revokeButton').click(disconnectUser);
     	
+      
+       function googleCheckLogin(obj) {
+    	   console.log('호출됨');
+    	  //var url = 'http://192.168.103.87:9999/web4test/checkLogin.do';
+    	  var url = 'http://127.0.0.1:9999/web4test/checkLogin.do';
+    	  email = obj['email'];
+    	  name = obj['name'];
+    	  
+    	  $.ajax({
+    		  method: 'POST',
+    		  url: url,
+    		  dataType: 'json',
+    		  data: {
+    			  'email' : email, 
+    			  'name' : name,
+    			  'id_token' : id_token,
+            'accses_token' : access_token,
+            'expries_in' : expires_in	  
+    		  },
+    		  success: function(data) {
+    			  console.log(data);
+    		  },
+    		  error: function(e) {
+    		      console.log(e);
+    		    }
+    	  });
+      }
+       
     </script>
     <script src="https://apis.google.com/js/plusone.js" type="text/javascript"></script>
     
