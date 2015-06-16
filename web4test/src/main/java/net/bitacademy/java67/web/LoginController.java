@@ -1,22 +1,30 @@
 package net.bitacademy.java67.web;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.bitacademy.java67.dao.UserDao;
+import net.bitacademy.java67.domain.UserVo;
+
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
+  @Autowired
+  UserDao userDao;
 
-  private static final String redirectUrl = "http%3A%2F%2F127.0.0.1%3A9999%2Fweb4test%2Fmypage.do";
+  private static final String redirectUrl = "http%3A%2F%2F127.0.0.1%3A9999%2Fweb4test%2FnaverCallback.do";
   private static final String clientId = "7i5u84FejTlQKxQrP6hG";
   private static final String clientSecret = "6e9ErvgIP4";
   private static final String requestUrl = "https://nid.naver.com/oauth2.0/authorize?client_id="
@@ -24,8 +32,33 @@ public class LoginController {
   private static final String userProfileUrl = "https://apis.naver.com/nidlogin/nid/getUserProfile.xml";
 
   @RequestMapping("/checkLogin")
-  public String checkLogin(String email, String name, HttpSession session, HttpServletResponse response) {
-    return null;
+  public void checkLogin(
+      HttpSession session, HttpServletRequest request, HttpServletResponse response)
+          throws IOException {
+    String email = request.getParameter("email");
+//    String name = request.getParameter("name");
+//    String accessToken = request.getParameter("accessToken");
+//    String expiresIn = request.getParameter("expiresIn");
+//    String signedRequest = request.getParameter("signedRequest");
+//    String userID = request.getParameter("userID");
+    
+    
+
+    HashMap<String, Object> sqlParams = new HashMap<String, Object>();
+    sqlParams.put("email", email);
+    
+    
+    // return type은 json으로
+    JSONObject JSONResult = new JSONObject();
+//    JSONObject JSONError = new JSONObject();
+    if(userDao.selectOne(sqlParams) != null) {
+      JSONResult.put("result", "success");
+      response.getWriter().print(JSONResult);
+    } else {
+      JSONResult.put("result", "new register");
+      userDao.insert(sqlParams);
+      response.getWriter().print(JSONResult);
+    }
   }
   
   @RequestMapping(value = "/naverLogin")
@@ -35,11 +68,11 @@ public class LoginController {
     return "redirect:" + requestUrl + state; // 만들어진 URL로 인증을 요청합니다.
   }
 
-  @RequestMapping(value="/mypage")
+  @RequestMapping(value="/naverCallback")
   public String callback(
       @RequestParam String state, 
       @RequestParam String code, 
-      HttpServletRequest request) throws UnsupportedEncodingException {
+      HttpServletRequest request) throws IOException {
    
    String storedState = (String) request.getSession().getAttribute("state");  //세션에 저장된 토큰을 받아옵니다.
    if (!state.equals(storedState)) {             //세션에 저장된 토큰과 인증을 요청해서 받은 토큰이 일치하는지 검증합니다.
@@ -62,11 +95,21 @@ public class LoginController {
   Map<String,String> userMap = Utils.JSONStringToMap(responseData.get("response").toString()); 
   //사용자 정보 값은 자식노드 중에 response에 저장되어 있습니다. response로 접근하여 그 값들은 map으로 파싱합니다.
 
-  System.out.println(userMap);
-
-   
+  String email = userMap.get("email");
+  HashMap<String, Object> sqlParams = new HashMap<String, Object>();
+  sqlParams.put("email", email);
+  
+  UserVo resVo = new UserVo();
+  resVo = userDao.selectOne(sqlParams);
+  if(resVo != null) {
+    System.out.println("저장되어 있음");
+  } else {
+    userDao.insert(sqlParams);
+    System.out.println("새로 가입");
+  }
+  
           //AccessToken 요청 및 파싱할 부분
-   return "redirect:/ok.html";
+   return "redirect:/mypage/mypage.html";
   }
   
   
