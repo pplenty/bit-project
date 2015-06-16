@@ -6,20 +6,21 @@
 <mapper namespace="net.bitacademy.java67.dao.UserDao">
   
   <resultMap type="UserVo" id="UserVoMap">
-    <id     column="uno"      property="userNo" />
-    <result column="name"     property="name" />
-    <result column="email"    property="email" />
-    <result column="tel"      property="tel" />
-    <result column="hp"       property="homepage" />
-    <result column="twit"     property="twitter" />
-    <result column="pwd"      property="password" />
+    <id     column="user_no"      property="userNo" />
+    <result column="userEmail"    property="email" />
   </resultMap>
   
   <select id="selectOne" parameterType="map" resultMap="UserVoMap">
-      SELECT uno, name, email, tel 
-      FROM USERS 
-      WHERE email=#{email} and pwd=#{password}
+      SELECT user_no, userEmail 
+      FROM USER
+      WHERE userEmail=#{email}
   </select>
+  
+  <insert id="insert" parameterType="map"
+        keyColumn="user_no" keyProperty="userNo" useGeneratedKeys="true">
+      INSERT INTO USER (userEmail) 
+      VALUES (#{email})
+  </insert>
   
 </mapper>
 
