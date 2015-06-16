@@ -33,7 +33,7 @@ public class AuthController {
   }
 
   @RequestMapping(value="/login",method=RequestMethod.POST)
-  public String login(String email, String password, String saveEmail,
+  public String login(String email, String saveEmail, String name,
       HttpServletResponse response, HttpSession session) {
     if (saveEmail != null) { // 체크 상자를 체크 했으면,
       // 클라이언트로 사용자 이메일을 쿠키에 담아 보낸다.
@@ -50,15 +50,11 @@ public class AuthController {
       emailCookie.setMaxAge(0); // 쿠키를 지울 것!
       response.addCookie(emailCookie);
     }
-    System.out.println(saveEmail);
-    System.out.println(email);
-    System.out.println(password);
     
     
     // 사용자 검증
     HashMap<String, String> sqlParams = new HashMap<String, String>();
     sqlParams.put("email", email);
-    sqlParams.put("password", password);
     
     
     UserVo user = userDao.selectOne(sqlParams);
@@ -85,6 +81,7 @@ public class AuthController {
       HttpSession session) throws IOException {
     // This check prevents the "/" handler from handling all requests by default
     System.out.println(request.getServletPath());
+    System.out.println(File.separator);
     if (!"/".equals(request.getServletPath())) {
       response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 //      return;
@@ -105,7 +102,7 @@ public class AuthController {
       // Fancy way to read index.html into memory, and set the client ID
       // and state values in the HTML before serving it.
       // C:\\BigLab\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\web4\\index.html
-      response.getWriter().print(new Scanner(new File("C:\\BigLab\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\web4\\index.html"), "UTF-8")
+      response.getWriter().print(new Scanner(new File("..\\firstpage\\index2.html"), "UTF-8")
           .useDelimiter("\\A").next()
           .replaceAll("[{]{2}\\s*CLIENT_ID\\s*[}]{2}", "3679365711-ilsb14e01shkrnbn2mag9jurhn9lsjnj.apps.googleusercontent.com")
           .replaceAll("[{]{2}\\s*STATE\\s*[}]{2}", state)

@@ -28,7 +28,7 @@ $(document).ready(function() {
 			.addClass('sl-block-content')
 			.attr('blockId', blockId++)
 			.css({
-//				'position': 'absolute',
+				'position': 'absolute',
 //				'border' : 'red solid 2px',
 				'background-color': 'rgb(186, 199, 234)',
 				'left': '100px',
@@ -66,23 +66,25 @@ $(document).ready(function() {
 		.addClass('editing-ui')
 		.css({
 			'position': 'absolute',
-			'background-color': 'rgb(1, 199, 234)',
+			'border' : 'rgb(1, 199, 234) solid 2px',
+			'background-color': 'rgb(1, 150, 200)',
 			'left': startX + 'px',
 			'top': startY + 'px',
+			'opacity': '0.25',
 //			'height': '200px',
 //			'width': '200px',
-//			'z-index': block_zIndex++
+			'z-index': block_zIndex++
 			})
 		.appendTo(canvas);
 		
 //		event.stopPropagation();
 		$(document).on('mousemove', function(event) {
-			var endX = event.pageX;
-			var endY = event.pageY;
+			var width = event.pageX - startX - 70;
+			var height = event.pageY - startY;
 
-			$('sl-block-selection.editing-ui').css({
-				'left': endX + 'px',
-				'top': endY + 'px'
+			$('.sl-block-selection.editing-ui').css({
+				'height': height + 'px',
+				'width': width + 'px'
 			});
 
 		});
@@ -91,7 +93,9 @@ $(document).ready(function() {
 		$(this).on('mouseup', function(event) {
 //			event.stopPropagation();
 		    document.body.style.cursor = "auto";
+		    $('.sl-block-selection.editing-ui').remove();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+		    
 			$(document).off('mousemove');
 			$(this).off('mouseup');
 			

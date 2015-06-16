@@ -128,11 +128,15 @@
       
       
       function signinCallback(authResult) {
+          console.log('asdf: ' + authResult['user_info']);
     	  if (authResult['access_token']) {
     	    // 승인 성공
+          gapi.auth.setToken(authResult); // 반환된 토큰을 저장합니다.
+          
     	    // 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
     	    document.getElementById('signinButton').setAttribute('style', 'display: none');
     	    access_token = authResult['access_token'];
+          getEmail();                     // 이메일 주소 가져오기 요청을 실행합니다.
           console.log('id_token: ' + authResult['id_token']);
           console.log('access_token: ' + authResult['access_token']);
           console.log('expires_in: ' + authResult['expires_in']);
@@ -145,6 +149,45 @@
     	     console.log('오류 발생: ' + authResult['error']);
     	  }
     	}
+      
+      /*
+       * userinfo 끝점에 대한 요청을 실행하여 사용자의 이메일
+       * 주소를 가져옵니다. 이 함수에는 유효한 OAuth 액세스 토큰이 포함된 gapi.auth.setToken이
+       *  필요합니다.
+       *
+       * 요청이 완료되면 getEmailCallback이 실행되고 요청의 결과가
+       * 전달됩니다.
+       */
+      function getEmail(){
+        // userinfo 메소드를 사용할 수 있도록 oauth2 라이브러리를 로드합니다.
+        gapi.client.load('oauth2', 'v2', function() {
+              var request = gapi.client.oauth2.userinfo.get();
+              request.execute(getEmailCallback);
+            });
+      }
+      
+      function getEmailCallback(obj){
+   	    var el = document.getElementById('email');
+   	    var email = '';
+
+   	    if (obj['email']) {
+   	      email = 'Email: ' + obj['email'];
+   	    }
+
+   	    console.log(obj);   // 전체 개체를 검사하려면 주석을 해제합니다.
+
+   	    el.innerHTML = email;
+   	    toggleElement('email');
+   	  }
+      
+      function toggleElement(id) {
+    	    var el = document.getElementById(id);
+    	    if (el.getAttribute('class') == 'hide') {
+    	      el.setAttribute('class', 'show');
+    	    } else {
+    	      el.setAttribute('class', 'hide');
+    	    }
+    	  }
       
       function disconnectUser() {
     	  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
