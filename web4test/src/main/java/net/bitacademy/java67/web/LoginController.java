@@ -61,6 +61,14 @@ public class LoginController {
     }
   }
   
+  //
+  @RequestMapping(value = "/facebookLogin")
+  public String facebookLogin(HttpSession session) {
+    String state = Utils.generateState(); // 토큰을 생성합니다.
+    session.setAttribute("state", state); // 세션에 토큰을 저장합니다.
+    return "redirect:" + requestUrl + state; // 만들어진 URL로 인증을 요청합니다.
+  }
+  
   @RequestMapping(value = "/naverLogin")
   public String naverLogin(HttpSession session) {
     String state = Utils.generateState(); // 토큰을 생성합니다.
