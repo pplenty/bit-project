@@ -20,8 +20,13 @@
 <div id="profile">
 </div>
 
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script>
+var map = {};
 var user_name, user_email;
+var accessToken, expiresIn, signedRequest, userID;
 
 
 // Load the SDK asynchronously
@@ -51,12 +56,16 @@ var user_name, user_email;
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
        statusChangeCallback(response);
-     });
+    });
   }
 
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
-    console.log(response);
+    accessToken = response.authResponse['accessToken'];
+    expiresIn = response.authResponse['expiresIn'];
+    signedRequest = response.authResponse['signedRequest'];
+    userID = response.authResponse['userID'];
+    
     if (response.status === 'connected') {
        // Logged into your app and Facebook.
          console.log('Welcome!  Fetching your information.... ');
@@ -71,7 +80,8 @@ var user_name, user_email;
            // response 객체 contain..
            // id, email, first_name, gender, last_name, 
            // link, locale, name, timezone, updated_time, verified
-         });
+           checkLogin();           
+        });
      } else if (response.status === 'not_authorized') {
        // The person is logged into Facebook, but not your app.
        document.getElementById('status').innerHTML = 'Please log ' +
@@ -91,6 +101,31 @@ var user_name, user_email;
         // user is now logged out
         console.log("logout..");
       });
+  }
+  
+  function checkLogin() {
+	  $.ajax({
+         type: 'POST',
+         url: '../checkLogin.do',
+         async: false,
+         //contentType: "application/json",
+         data: {
+        	 "name" : user_name,
+           "email" : user_email,
+           "accessToken" : accessToken,
+           "expiresIn" : expiresIn,
+           "signedRequest" : signedRequest,
+           "userID" : userID,
+         },
+         dataType: 'json',
+         success: function(data) {
+           console.log('ajax성공');
+           console.log(data);
+         },
+         error: function(e) {
+           console.log(e);
+         }
+       });
   }
 
 </script>
