@@ -51,22 +51,23 @@ public class AuthController {
       response.addCookie(emailCookie);
     }
     
-    
     // 사용자 검증
     HashMap<String, String> sqlParams = new HashMap<String, String>();
     sqlParams.put("email", email);
+    //
+    return null;
     
     
-    UserVo user = userDao.selectOne(sqlParams);
-    
-    if (user != null) { // 이메일과 암호가 일치하는 사용자를 찾았다면,
-      session.setAttribute("user", user); // 로그인 성공 => 사용자 정보를 세션에 보관한다.
-      return "redirect:../board/list.do";
-      
-    } else { // 찾지 못했다면, 다시 로그인 폼을 요청하라고 응답한다.
-      session.invalidate(); // 기존 세션을 무효화 시킨다. => 세션을 새로 만든다.
-      return "redirect:login.do";
-    }
+//    UserVo user = userDao.selectOne(sqlParams);
+//    
+//    if (user != null) { // 이메일과 암호가 일치하는 사용자를 찾았다면,
+//      session.setAttribute("user", user); // 로그인 성공 => 사용자 정보를 세션에 보관한다.
+//      return "redirect:../board/list.do";
+//      
+//    } else { // 찾지 못했다면, 다시 로그인 폼을 요청하라고 응답한다.
+//      session.invalidate(); // 기존 세션을 무효화 시킨다. => 세션을 새로 만든다.
+//      return "redirect:login.do";
+//    }
     
   }
   
