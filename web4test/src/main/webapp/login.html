@@ -1,191 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+<title>Free-sentation</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/login/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/login/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Kelly+Slab'
+  rel='stylesheet' type='text/css' />
+<link rel="stylesheet"
+  href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/login/login-demo.css" />
+<link rel="stylesheet" type="text/css" href="css/login/login.css" />
+<link rel="stylesheet" type="text/css" href="css/login/button.css" />
+<link rel="stylesheet" type="text/css"
+  href="css/login/login-animate-custom.css" />
+
+<!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/login/styleIE.css" />
+    <![endif]-->
+<script type="text/javascript" src="js/login/modernizr.custom.11333.js"></script>
+<style>
+body {
+  background: url(./images/login/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 </head>
-
 <body>
-<div>
-<form method="get" action='naverLogin.do'>
-<button class='login' id ='login' type ='submit'>
-<img src="img/green.png">
-</button>
-</form>
-</div>
-
-
- <span id="signinButton">
-    <span
-      class="g-signin"
-      data-callback="signinCallback"
-      data-clientid="3679365711-ilsb14e01shkrnbn2mag9jurhn9lsjnj.apps.googleusercontent.com"
-      data-cookiepolicy="single_host_origin"
-      data-requestvisibleactions="http://schemas.google.com/AddActivity"
-      data-scope="https://www.googleapis.com/auth/plus.login
-                  https://www.googleapis.com/auth/userinfo.email">
-    </span>
-  </span>
-  <button id="revokeButton">로그아웃</button>
-
-  
-  <!-- 이 비동기 자바스크립트를 </body> 태그 앞에 배치 -->
-    <script type="text/javascript">
-    
-
-    var email = '';
-    var name = '';
-
-       var id_token = '';
-       var access_token = '';
-       var expires_in = '';
-      (function() {
-       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-       po.src = 'https://apis.google.com/js/client:plusone.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-       var access_token;
-       
-     })();
-      
-      
-      function signinCallback(authResult) {
-        if (authResult['access_token']) {
-          // 승인 성공
-          gapi.auth.setToken(authResult); // 반환된 토큰을 저장합니다.
-          
-          // 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
-          document.getElementById('signinButton').setAttribute('style', 'display: none');
-          access_token = authResult['access_token'];
-          getEmail();      
-          // 이메일 주소 가져오기 요청을 실행합니다.
-          id_token = authResult['id_token'];
-          access_token = authResult['access_token'];
-          expires_in = authResult['expires_in'];
-          console.log('id_token: ' + authResult['id_token']);
-          console.log('access_token: ' + authResult['access_token']);
-          console.log('expires_in: ' + authResult['expires_in']);
-         
-          
-        } else if (authResult['error']) {
-          // 오류가 발생했습니다.
-          // 가능한 오류 코드:
-          //   "access_denied" - 사용자가 앱에 대한 액세스 거부
-          //   "immediate_failed" - 사용자가 자동으로 로그인할 수 없음
-           console.log('오류 발생: ' + authResult['error']);
-        }
-      }
-      
-      /*
-       * userinfo 끝점에 대한 요청을 실행하여 사용자의 이메일
-       * 주소를 가져옵니다. 이 함수에는 유효한 OAuth 액세스 토큰이 포함된 gapi.auth.setToken이
-       *  필요합니다.
-       *
-       * 요청이 완료되면 getEmailCallback이 실행되고 요청의 결과가
-       * 전달됩니다.
-       */
-      function getEmail(){
-        // userinfo 메소드를 사용할 수 있도록 oauth2 라이브러리를 로드합니다.
-        gapi.client.load('oauth2', 'v2', function() {
-              var request = gapi.client.oauth2.userinfo.get();
-              request.execute(getEmailCallback);
-            });
-      }
-      
-      function getEmailCallback(obj){
-        var el = document.getElementById('name');
-        var name = '';
-      
-        if (obj['name']) {
-          name = obj['name'] + '님 반갑습니다.';
-        }
-
-        console.log(obj);   // 전체 개체를 검사하려면 주석을 해제합니다.
-
-        el.innerHTML = name;
-        toggleElement('name');
-        
-        console.log('호출전');
-       googleCheckLogin(obj);
-    //   location.href = '../mypage/mypage.html';
-      }
-      
-      function toggleElement(id) {
-          var el = document.getElementById(id);
-          if (el.getAttribute('class') == 'hide') {
-            el.setAttribute('class', 'show');
-          } else {
-            el.setAttribute('class', 'hide');
-          }
-        }
-      
-      function disconnectUser() {
-        var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
-            access_token;
-
-        // 비동기 GET 요청을 수행합니다.
-        $.ajax({
-          type: 'GET',
-          url: revokeUrl,
-          async: false,
-          contentType: "application/json",
-          dataType: 'jsonp',
-          success: function(nullResponse) {
-            // 사용자가 연결 해제되었으므로 작업을 수행합니다.
-            // 응답은 항상 정의되지 않음입니다.
-           document.getElementById('signinButton').setAttribute('style', 'display: inline-block');
-            console.log('logout');
-          },
-          error: function(e) {
-            // 오류 처리
-            console.log(e);
-            // 실패한 경우 사용자가 수동으로 연결 해제하게 할 수 있습니다.
-            //https://plus.google.com/apps
-          }
-        });
-        
-
-        location.href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+client+"&client_secret="+client_secret+"&
-        access_token="+access_token+"&service_provider="+NAVER";
-        
-      }
-      // 버튼 클릭으로 연결 해제를 실행할 수 있습니다.
-      $('#revokeButton').click(disconnectUser);
-      
-      
-       function googleCheckLogin(obj) {
-         console.log('호출됨');
-        //var url = 'http://192.168.103.87:9999/web4test/checkLogin.do';
-        var url = 'http://127.0.0.1:9999/web4test/checkLogin.do';
-        email = obj['email'];
-        name = obj['name'];
-        
-        $.ajax({
-          method: 'POST',
-          url: url,
-          dataType: 'json',
-          data: {
-            'email' : email, 
-            'name' : name,
-            'id_token' : id_token,
-            'accses_token' : access_token,
-            'expries_in' : expires_in   
-          },
-          success: function(data) {
-            console.log(data);
-          },
-          error: function(e) {
-              console.log(e);
-            }
-        });
-      }
-    </script>
-    <script src="https://apis.google.com/js/plusone.js" type="text/javascript"></script>
-    
-    <!-- 
-    https://accounts.google.com/o/oauth2/auth?client_id=CLIENT_ID&redirect_uri=postmessage&response_type=code%20token%20id_token%20gsession&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login&request_visible_actions=http%3A%2F%2Fschemas.google.com%2FAddActivity&cookie_policy=single_host_origin&include_granted_scopes=true&proxy=oauth2relay810862270&origin=http%3A%2F%2F127.0.0.1%3A9999&state=716581739%7C0.1952620222&&e=3100077 
-    -->
+  <div class="container">
+    <div id="ss-links" class="ss-links">
+      <a href="#zero" 'style="color: white;"'>login</a><br> <br>
+      <a href="#first"><i class="fa fa-mobile fa-2x"></i></a> <a
+        href="#second"><i class="fa fa-upload"></i></a> <a href="#third"><i
+        class="fa fa-line-chart "></i></a> <a href="#fourth"><i
+        class="fa fa-share-alt"></i></a> <a href="#fifth"><i
+        class="fa fa-child fa-2x"></i></a>
+    </div>
+    <div id="ss-container" class="ss-container"
+      style="padding-bottom: 120px;">
+      <div class="ss-row"
+        style="-webkit-perspective: 600px; -webkit-perspective-origin: 50% 0%; height: 250px; border-top-width: 20px; margin-top: 20px;">
+        <div class="ss-left">
+          <h2 id="zero">
+            Free-sentation<br> <span style='font-size: 70%;'>produce,
+              present in freedom</span>
+          </h2>
+        </div>
+        <div class="ss-right">
+          <div style="padding-left: 23%;">
+            <div class="naverBtn"
+              style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
+              <span> <a> <img src="./images/login/naver.PNG" width="100"
+                  height="100" style="float: center; width: 85px; height: 85px;">
+              </a>
+              </span>
+            </div>
+            <div  class="facebookBtn"
+              style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
+              <span> <a> <img src="./images/login/facebook.png"
+                  width="100" height="100"
+                  style="float: center; width: 85px; height: 85px;">
+              </a>
+              </span>
+            </div>
+            
+            <div class="customBtn googleBtn"
+              style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
+              <span> 
+	              <a> <img src="./images/login/google.png" width="100"
+	                  height="100" style="float: center; width: 85px; height: 85px;">
+	              </a>
+              </span>
+            </div>
+            
+            <div id="customBtn" class="customGPlusSignIn googleBtn">
+					    <span class="icon"></span>
+					    <span class="buttonText"></span>
+					  </div>
+            
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+      <div class="ss-row ss-medium">
+        <div class="ss-left">
+          <h2 id="first">
+            <a class="ss-circle ss-circle-1"></a>
+          </h2>
+        </div>
+        <div class="ss-right">
+          <h3>
+            <span>Web-Controller</span> <a> 프레젠테이션을 자유롭게!<br> 핸드폰 App
+              Controller 지원
+            </a>
+          </h3>
+        </div>
+      </div>
+      <div class="ss-row ss-large">
+        <div class="ss-left">
+          <h3>
+            <span>Web-Editor</span> <a> 프로그램 설치에서 자유롭게! <br> 웹에서 편집,
+              제작하는 프레젠테이션
+            </a>
+          </h3>
+        </div>
+        <div class="ss-right">
+          <h2 id="second">
+            <a class="ss-circle ss-circle-2"></a>
+          </h2>
+        </div>
+      </div>
+      <div class="ss-row ss-small">
+        <div class="ss-left">
+          <h2 id="third">
+            <a class="ss-circle ss-circle-3">\</a>
+          </h2>
+        </div>
+        <div class="ss-right">
+          <h3>
+            <span>Web-Viewer</span> <a> USB없이 자유롭게! <br> 이메일 로그인만으로
+              프레젠테이션
+            </a>
+          </h3>
+        </div>
+      </div>
+      <div class="ss-row ss-medium">
+        <div class="ss-left">
+          <h3>
+            <span>Presentation-Share</span> <a>다양한 디자인과 정보의 <br>
+              프레젠테이션 공유 지원
+            </a>
+          </h3>
+        </div>
+        <div class="ss-right">
+          <h2 id="fourth">
+            <a class="ss-circle ss-circle-4"></a>
+          </h2>
+        </div>
+      </div>
+      <div class="ss-row ss-large">
+        <div class="ss-left">
+          <h2 id="fifth">
+            <a class="ss-circle ss-circle-5"></a>
+          </h2>
+        </div>
+        <div class="ss-right">
+          <h3>
+            <span>5번</span> <a>짱짱 프렌테이션 </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="fb-root"></div>
+<fb:login-button scope="public_profile,publish_actions,email,user_likes" onlogin="checkLoginState();">
+</fb:login-button><button id="logout" onclick="testLogout();">logout</button>
+  <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="js/login/main_rendering.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="js/login/googleLogin.js"></script>
+  <!-- <script type="text/javascript" src="js/login/facebookLogin.js"></script>
+  <script type="text/javascript" src="js/login/naverLogin.js"></script> -->
   
 </body>
 </html>
