@@ -24,7 +24,9 @@ public class LoginController {
   @Autowired
   UserDao userDao;
 
-  private static final String redirectUrl = "http%3A%2F%2F127.0.0.1%3A9999%2Fweb4test%2FnaverCallback.do";
+//  private static final String redirectUrl = "http%3A%2F%2Flocalhost%3A9999%2Fweb4test%2FnaverCallback.do";
+//  private static final String redirectUrl = "http%3A%2F%2F127.0.0.1%3A9999%2Fweb4test%2FnaverCallback.do";
+  private static final String redirectUrl = "http%3A%2F%2F192.168.10.2%3A9999%2Fweb4test%2FnaverCallback.do";
   private static final String clientId = "7i5u84FejTlQKxQrP6hG";
   private static final String clientSecret = "6e9ErvgIP4";
   private static final String requestUrl = "https://nid.naver.com/oauth2.0/authorize?client_id="
