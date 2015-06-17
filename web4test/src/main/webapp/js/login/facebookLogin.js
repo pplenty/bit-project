@@ -21,11 +21,18 @@ var accessToken, expiresIn, signedRequest, userID;
 	    version    : 'v2.3' // use version 2.3
 	  });
 	  
-    FB.getLoginStatus(function(response) {
+    /*FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-    });
+    });*/
 	  
   };
+  
+  
+  function FBLogin() {
+ 	  FB.login(function() {
+ 		 checkLoginState();
+ 	  });
+  }
   
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
@@ -47,10 +54,6 @@ var accessToken, expiresIn, signedRequest, userID;
            user_name = response.name;
            user_email = response.email;
            console.log('Successful login for: ' + user_name);
-           document.getElementById('status').innerHTML =
-             '안녕하세요, ' + user_name + '님!';
-           document.getElementById('profile').innerHTML =
-             '프로필: ' + JSON.stringify(response);
            // response 객체 contain..
            // id, email, first_name, gender, last_name, 
            // link, locale, name, timezone, updated_time, verified
@@ -58,19 +61,13 @@ var accessToken, expiresIn, signedRequest, userID;
         });
      } else if (response.status === 'not_authorized') {
        // The person is logged into Facebook, but not your app.
-       document.getElementById('status').innerHTML = 'Please log ' +
-         'into this app.';
      } else {
        // The person is not logged into Facebook, so we're not sure if
        // they are logged into this app or not.
-       document.getElementById('status').innerHTML = 'Please log ' +
-         'into Facebook.';
      }
   }
   
   function testLogout() {
-      document.getElementById('status').innerHTML =
-          'Bye, ' + user_name + '!';
     FB.logout(function(response) {
         // user is now logged out
         console.log("logout..");
@@ -80,7 +77,7 @@ var accessToken, expiresIn, signedRequest, userID;
   function checkLogin() {
 	  $.ajax({
          type: 'POST',
-         url: '../checkLogin.do',
+         url: './checkLogin.do',
          async: false,
          //contentType: "application/json",
          data: {

@@ -64,7 +64,7 @@ body {
               </a>
               </span>
             </div>
-            <div  class="facebookBtn" onclick="FB.login();"
+            <div  class="facebookBtn" onclick="FBLogin();"
               style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
               <span> <a> <img src="./images/login/facebook.png"
                   width="100" height="100"
@@ -159,8 +159,7 @@ body {
       </div>
     </div>
   </div>
-<fb:login-button scope="public_profile,publish_actions,email,user_likes" onlogin="checkLoginState();">
-</fb:login-button><button id="logout" onclick="testLogout();">logout</button>
+<button id="logout" onclick="testLogout();">logout</button>
   <script type="text/javascript"
     src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/login/jquery.easing.1.3.js"></script>
@@ -172,10 +171,10 @@ body {
   
   <script type="text/javascript">
   function testLogout() {
-	  /* FB.logout(function(response) {
+	  FB.logout(function(response) {
 	        // user is now logged out
 	        console.log("logout..");
-     }); */
+     });
 	  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
 	  access_token;
 
