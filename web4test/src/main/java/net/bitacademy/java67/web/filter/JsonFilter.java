@@ -24,10 +24,10 @@ public class JsonFilter implements Filter {
     
     HttpServletRequest httpRequest = (HttpServletRequest)request;
     
-    if (httpRequest.getServletPath().contains("/ajax")) {
+//    if (httpRequest.getServletPath().contains("/ajax")) {
       HttpServletResponse httpResponse = (HttpServletResponse)response;
       httpResponse.setHeader("Access-Control-Allow-Origin", "*");
-    }
+//    }
 
     chain.doFilter(request, response);
     

@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-
+/* 
 #customBtn {
 	display: inline-block;
 	background: #cc3732;
@@ -18,8 +18,8 @@ span.label {
 }
 
 span.icon {
-	/* background: url('/+/images/branding/btn_red_32.png') transparent 10px
-		50% no-repeat; */
+	background: url('/+/images/branding/btn_red_32.png') transparent 10px
+		50% no-repeat;
 	display: inline-block;
 	vertical-align: middle;
 	width: 40px;
@@ -31,4 +31,4 @@ span.buttonText {
 	vertical-align: middle;
 	padding-left: 40px;
 	padding-right: 40px;
-}
+} */

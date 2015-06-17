@@ -59,6 +59,9 @@ public class LoginController {
       userDao.insert(sqlParams);
       response.getWriter().print(JSONResult);
     }
+    
+
+//    return "redirect:/mypage/mypage.html";
   }
   
   //

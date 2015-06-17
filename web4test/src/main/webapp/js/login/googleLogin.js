@@ -1,4 +1,9 @@
-<!-- 이 비동기 자바스크립트를 </body> 태그 앞에 배치 -->
+var email;
+var name;
+var id_token;
+var access_token;
+var expires_in;
+
 
 (function() {
 	var po = document.createElement('script');
@@ -7,6 +12,7 @@
 	var s = document.getElementsByTagName('script')[0];
 	s.parentNode.insertBefore(po, s);
 })();
+
 
 function render() {
 	gapi.signin.render('customBtn', {
@@ -19,29 +25,11 @@ function render() {
 	});
 }
 
-
-var email = '';
-var name = '';
-
-var id_token = '';
-var access_token = '';
-var expires_in = '';
-(function() {
-	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	po.src = 'https://apis.google.com/js/client:plusone.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	var access_token;
-
-})();
-
-
 function signinCallback(authResult) {
 	if (authResult['access_token']) {
 		// 승인 성공
 		gapi.auth.setToken(authResult); // 반환된 토큰을 저장합니다.
 
-		// 사용자가 승인되었으므로 로그인 버튼 숨김. 예:
-		document.getElementById('signinButton').setAttribute('style', 'display: none');
 		access_token = authResult['access_token'];
 		getEmail();      
 		// 이메일 주소 가져오기 요청을 실행합니다.
@@ -58,9 +46,11 @@ function signinCallback(authResult) {
 		// 가능한 오류 코드:
 		//   "access_denied" - 사용자가 앱에 대한 액세스 거부
 		//   "immediate_failed" - 사용자가 자동으로 로그인할 수 없음
-		console.log('오류 발생: ' + authResult['error']);
+		console.log('signinCallback 오류 발생: ' + authResult['error']);
 	}
 }
+
+
 
 /*
  * userinfo 끝점에 대한 요청을 실행하여 사용자의 이메일
@@ -79,30 +69,12 @@ function getEmail(){
 }
 
 function getEmailCallback(obj){
-	var el = document.getElementById('name');
-	var name = '';
-
-	if (obj['name']) {
-		name = obj['name'] + '님 반갑습니다.';
-	}
-
 	console.log(obj);   // 전체 개체를 검사하려면 주석을 해제합니다.
 
-	el.innerHTML = name;
-	toggleElement('name');
 
 	console.log('호출전');
 	googleCheckLogin(obj);
 	//   location.href = '../mypage/mypage.html';
-}
-
-function toggleElement(id) {
-	var el = document.getElementById(id);
-	if (el.getAttribute('class') == 'hide') {
-		el.setAttribute('class', 'show');
-	} else {
-		el.setAttribute('class', 'hide');
-	}
 }
 
 function disconnectUser() {
@@ -119,7 +91,6 @@ function disconnectUser() {
 		success: function(nullResponse) {
 			// 사용자가 연결 해제되었으므로 작업을 수행합니다.
 			// 응답은 항상 정의되지 않음입니다.
-			document.getElementById('signinButton').setAttribute('style', 'display: inline-block');
 			console.log('logout');
 		},
 		error: function(e) {
@@ -131,7 +102,7 @@ function disconnectUser() {
 	});
 }
 // 버튼 클릭으로 연결 해제를 실행할 수 있습니다.
-$('#revokeButton').click(disconnectUser);
+//$('#revokeButton').click(disconnectUser);
 
 
 function googleCheckLogin(obj) {
@@ -154,6 +125,7 @@ function googleCheckLogin(obj) {
 		},
 		success: function(data) {
 			console.log(data);
+			location.href='./mypage/mypage.html';
 		},
 		error: function(e) {
 			console.log(e);
