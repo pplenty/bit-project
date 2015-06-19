@@ -1,4 +1,4 @@
-var map = {};
+var map = {};//
 var user_name, user_email;
 var accessToken, expiresIn, signedRequest, userID;
 

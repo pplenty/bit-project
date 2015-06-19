@@ -2,7 +2,6 @@ $(window).load(function() {
 	// alert(2);
 });
 
-
 // document.body.style.cursor = "?";
 // Auto:	브라우저가 현재의 컨텍스트에 맞는 마우스 커서를 결정한다.
 // Crosshair	십자가 모양
@@ -132,7 +131,7 @@ $(document).ready(function() {
 		$(document).on('mousemove', function(event) {
 			var top = event.pageY - 100;
 			var left = event.pageX - 70 - 100;
-
+			$.fn.hide
 			// console.log(event.pageX+','+event.pageY);
 			//$('.sl-block-content[blockId=100001]')
 			$('.sl-block-content' + targetIdSelector).css({
