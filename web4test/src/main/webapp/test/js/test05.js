@@ -50,7 +50,7 @@ $(document).ready(function() {
 	
 	
 	
-	// 바탕(.canvas) 이벤트 등록
+	// 바탕(.canvas) 이벤트 등록 drag selection
 	$('.canvas').on('mousedown', function(event) {
 		console.log('canvas.mousedown');
 		$('.sl-block-content.isFocus').removeClass('isFocus');
@@ -80,11 +80,25 @@ $(document).ready(function() {
 		$(document).on('mousemove', function(event) {
 			var width = event.pageX - startX - 70;
 			var height = event.pageY - startY;
-
-			$('.sl-block-selection.editing-ui').css({
-				'height': height + 'px',
-				'width': width + 'px'
-			});
+			
+			if(width < 0) {
+				$('.sl-block-selection.editing-ui').css({
+					'left' : event.pageX - 70 + 'px',
+					'width':  -1 * width + 'px'
+				});
+			}
+			if(height < 0) {
+				$('.sl-block-selection.editing-ui').css({
+					'top' : event.pageY + 'px',
+					'height': -1 * height + 'px',
+				});
+			}
+			if (width >=10 && height >= 10) {
+				$('.sl-block-selection.editing-ui').css({
+					'height': height + 'px',
+					'width': width + 'px'
+				});
+			}
 
 		});
 		
