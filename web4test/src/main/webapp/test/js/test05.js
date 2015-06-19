@@ -93,17 +93,20 @@ $(document).ready(function() {
 					'height': -1 * height + 'px',
 				});
 			}
-			if (width >=10 && height >= 10) {
+			if (width >= 0 && height >= 0) {
 				$('.sl-block-selection.editing-ui').css({
 					'height': height + 'px',
 					'width': width + 'px'
 				});
 			}
+			
+			
 
 		});
 		
 
 		$(this).on('mouseup', function(event) {
+			console.log($('.sl-block-selection.editing-ui').css('left'));
 //			event.stopPropagation();
 		    document.body.style.cursor = "auto";
 		    $('.sl-block-selection.editing-ui').remove();
