@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<link href="http://threedubmedia.com/inc/img/favicon.ico" rel="shortcut icon" />
+	<link href="http://threedubmedia.com/inc/css/base.css" rel="stylesheet" />
+	<script src="http://threedubmedia.com/inc/js/jquery-1.7.2.js"></script>
+	<script src="http://threedubmedia.com/inc/js/jquery.event.drag-2.2.js"></script>
+	<script src="http://threedubmedia.com/inc/js/jquery.event.drag.live-2.2.js"></script>
+	<script src="http://threedubmedia.com/inc/js/jquery.event.drop-2.2.js"></script>
+	<script src="http://threedubmedia.com/inc/js/jquery.event.drop.live-2.2.js"></script>
+	<script src="http://threedubmedia.com/inc/js/excanvas.min.js"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-98841-11']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<title>ThreeDubMedia &middot; jquery.event.drop</title>
+</head>
+<body>
+<script type="text/javascript">
+	jQuery(function($){
+		$( document )
+				.drag("start",function( ev, dd ){
+					return $('<div class="selection" />')
+							.css('opacity', .65 )
+							.appendTo( document.body );
+				})
+				.drag(function( ev, dd ){
+					$( dd.proxy ).css({
+						top: Math.min( ev.pageY, dd.startY ),
+						left: Math.min( ev.pageX, dd.startX ),
+						height: Math.abs( ev.pageY - dd.startY ),
+						width: Math.abs( ev.pageX - dd.startX )
+					});
+				})
+				.drag("end",function( ev, dd ){
+					$( dd.proxy ).remove();
+				});
+		$('.drop')
+				.drop("start",function(){
+					$( this ).addClass("active");
+				})
+				.drop(function( ev, dd ){
+					$( this ).toggleClass("dropped");
+				})
+				.drop("end",function(){
+					$( this ).removeClass("active");
+				});
+		$.drop({ multi: true });
+	});
+</script>
+
+<h1>Selection Drop Demo</h1>
+<p>Click and drag to select any number of dashed boxes.</p>
+
+<div class="drop">Jack</div>
+<div class="drop">Kate</div>
+<div class="drop">Hugo</div>
+<div class="drop">James</div>
+<div class="drop">John</div>
+<div class="drop">Jin</div>
+<div class="drop">Sun</div>
+<div class="drop">Sayid</div>
+<div class="drop">Walt</div>
+<div class="drop">Michael</div>
+<div class="drop">Claire</div>
+<div class="drop">Aaron</div>
+<div class="drop">Charlie</div>
+<div class="drop">Desmond</div>
+<div class="drop">Penny</div>
+<div class="drop">Ben</div>
+<div class="drop">Juliet</div>
+<div class="drop">Richard</div>
+<div class="drop">Alex</div>
+<div class="drop">Miles</div>
+<div class="drop">Charlotte</div>
+<div class="drop">Daniel</div>
+<div class="drop">Vincent</div>
+<div class="drop">Frank</div>
+<div class="drop">Jacob</div>
+
+<style type="text/css">
+	.selection {
+		position: absolute;
+		border: 1px solid #89B;
+		background: #BCE;
+		background-color: #BEC;
+		border-color: #8B9;
+	}
+	.size2 {
+		height: 118px;
+		line-height: 118px;
+	}
+	.size3 {
+		height: 178px;
+		line-height: 178px;
+	}
+	.drop {
+		float: left;
+		border: 1px dashed #888;
+		background: #EEE;
+		text-align: center;
+		padding: 20px;
+		margin: 0 10px 10px 0;
+	}
+	.dropped {
+		background-color: #EBC;
+		border-color: #B89;
+	}
+	.active {
+		background-color: #CEB;
+		border-color: #9B8;
+	}
+</style></body>
+</html>

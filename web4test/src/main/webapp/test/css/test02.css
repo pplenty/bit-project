@@ -5,6 +5,21 @@ div.square {
   height: 20px;
   background-color: black;
 }
+
+body {
+  height: 100%;
+  min-width: 1220px;
+  font-size: 36px;
+  overflow: hidden;
+  background: #fff;
+///////////////////////
+  position: relative;
+  line-height: 1;
+  background-color: #fff;
+  color: #000;
+  margin: 0; // remove user agent stylesheet
+}
+
 div.canvas {
   position: absolute;
   top: 0px;
@@ -14,15 +29,13 @@ div.canvas {
   background-color: rgb(255,248,220);
   border: solid red 1px;
 }
-/* 
-body > div.page-wrapper {
+.page-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   padding-left: 240px;
-} 
-  */
+}
 body > div.page-wrapper > div.sidebar {
   position: absolute;
   width: 70px;
@@ -35,6 +48,44 @@ body > div.page-wrapper > div.sidebar {
   font-size: 17px;
   transition: all 0.25s ease;
 }
+
+.preview-controls {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  transform: translateX(50px);
+}
+
+.sidebar .primary {
+  width: 100%;
+  padding: 6px 8px 6px 8px;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar .primary .button {
+  display: inline-block;
+  height: 50px;
+  padding: 0;
+  margin-bottom: 6px;
+  background: #40cb90;
+  text-align: center;
+}
+
+.sidebar .primary .undo {
+  background: #666666;
+}
+
+.sidebar .primary .save {
+  background: #666666;
+}
+
 body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   display: inline-block;
   height: 50px;
@@ -42,35 +93,10 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   margin-bottom: 6px;
   background: #40cb90;
   text-align: center;
-  
+
   width: 50px;
 }
 
-/* body > div.page-wrapper > div.sidebar > div.toolbar.visible {
-  opacity: 1;
-}
-body > div.page-wrapper > div.sidebar > div.toolbar {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  font-size: 14px;
-  color: #fff;
-  opacity: 0;
-  left: -170px;
-}
-body > div.page-wrapper > div.sidebar > div.toolbar.visible > div {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 12px;
-} */
 
 body > div.canvas > div.sl-block-content.isFocus > div {
   position: absolute;
@@ -85,10 +111,10 @@ body > div.canvas > div.sl-block-content.isFocus > div {
   font-size: 12px;
 }
 
-body > div.canvas > div > div > div.anchor {
+.editing-ui > .anchor {
   position: absolute;
-  width: 1em;
-  height: 1em;
+  width: 0.8em;
+  height: 0.8em;
   border-radius: 50%;
   background: #fff;
   border: 1px solid #1baee1;
@@ -97,56 +123,56 @@ body > div.canvas > div > div > div.anchor {
 /*   visibility: hidden; */
 }
 
-body > div.canvas > div > div > div[data-direction=n] {
+.editing-ui > .anchor[data-direction=n] {
   left: 50%;
   bottom: 100%;
   margin-left: -0.5em;
   margin-bottom: -0.4em;
   cursor: row-resize;
 }
-body > div.canvas > div > div > div[data-direction=e] {
+.editing-ui > .anchor[data-direction=e] {
   left: 100%;
   top: 50%;
   margin-top: -0.5em;
   margin-left: -0.4em;
   cursor: col-resize;
 }
-body > div.canvas > div > div > div[data-direction=s] {
+.editing-ui > .anchor[data-direction=s] {
   left: 50%;
   top: 100%;
   margin-left: -0.5em;
   margin-top: -0.4em;
   cursor: row-resize;
 }
-body > div.canvas > div > div > div[data-direction=w] {
+.editing-ui > .anchor[data-direction=w] {
   right: 100%;
   top: 50%;
   margin-top: -0.5em;
   margin-right: -0.4em;
   cursor: col-resize;
 }
-body > div.canvas > div > div > div[data-direction=nw] {
+.editing-ui > .anchor[data-direction=nw] {
   right: 100%;
   bottom: 100%;
   margin-right: -0.4em;
   margin-bottom: -0.4em;
   cursor: nw-resize;
 }
-body > div.canvas > div > div > div[data-direction=ne] {
+.editing-ui > .anchor[data-direction=ne] {
   left: 100%;
   bottom: 100%;
   margin-left: -0.4em;
   margin-bottom: -0.4em;
   cursor: ne-resize;
 }
-body > div.canvas > div > div > div[data-direction=se] {
+.editing-ui > .anchor[data-direction=se] {
   left: 100%;
   top: 100%;
   margin-left: -0.4em;
   margin-top: -0.4em;
   cursor: se-resize;
 }
-body > div.canvas > div > div > div[data-direction=sw] {
+.editing-ui > .anchor[data-direction=sw] {
   right: 100%;
   top: 100%;
   margin-right: -0.4em;
@@ -160,6 +186,22 @@ div.sl-block-content.isFocus {
 }
 
 .i-eye:before {
-  /* content: "\e088"; */
-  content: "\256B";
+   //content: "\e088";
+  //content: "\0067"; //g
+  //content: "\2666"; // ´ÙÀÌ¾Æ
+  //content: "\1F440"; // ´«¾Ë
+  //content: "\f06e"; // ´«¾Ë
+}
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 240px;
+}
+.projector {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

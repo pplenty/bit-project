@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>web04test</title>
+	<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/test02.css">
+	<script src="js/test06DD.js"></script>
+</head>
+<body>
+  <div class='page-wrapper'>
+    <div class='preview-controls'>
+      <button class="button preview-controls-button preview-controls-exit grey l" data-tooltip="Resume editing" data-tooltip-direction="b" data-tooltip-delay="1000">
+          <span class="icon i-pen-alt2"></span>
+      </button>
+    </div>
+
+	  <div class="sidebar">
+
+			<div class="primary">
+				<button class="button preview" data-tooltip-delay="500"
+					data-tooltip-alignment="r" data-tooltip="Preview (CTRL + F)">
+					<span class="icon i-eye"><i class="fa fa-eye fa-2x"></i></span>
+				</button>
+				<button class="button undo" data-tooltip-delay="500"
+					data-tooltip-alignment="r" data-tooltip="Undo (CTRL + Z)">
+					<span class="icon i-undo">실행취소</span>
+				</button>
+				<button class="button save disabled is-saved"
+					data-tooltip-delay="500" data-tooltip-alignment="r"
+					data-tooltip="Latest changes are saved">
+					<span class="icon download i-disk">저장</span>
+					<span class="icon check i-checkmark"></span>
+				</button>
+			</div>
+
+			<div class="secondary" style="max-height: 915px;">
+				<button class="button settings" data-tooltip="Settings"
+					data-tooltip-alignment="r">
+					<span class="icon i-cog">설정</span><span class="close icon i-x"></span>
+				</button>
+				<button class="button style" data-tooltip="Style"
+					data-tooltip-alignment="r">
+					<span class="icon i-brush">스타일</span><span class="close icon i-x"></span>
+				</button>
+				<button class="button arrange no-arrow"
+					data-tooltip="Arrange slides" data-tooltip-alignment="r">
+					<span class="icon i-layers">슬라이드</span><span class="close icon i-x"></span>
+				</button>
+				<button class="button revisions" data-tooltip="Revision history"
+					data-tooltip-alignment="r">
+					<span class="icon i-clock">리비전</span><span class="close icon i-x"></span>
+				</button>
+				<button class="button import" data-tooltip="Import"
+					data-tooltip-alignment="r">
+					<span class="icon i-cloud-upload">임포트</span><span
+						class="close icon i-x"></span>
+				</button>
+				<button class="button export" data-tooltip="Export"
+					data-tooltip-alignment="r">
+					<span class="icon i-cloud-download">내보내기</span><span
+						class="close icon i-x"></span>
+				</button>
+				<button class="button medialibrary" data-tooltip="Media library"
+					data-tooltip-alignment="r">
+					<span class="icon i-photo-library">미디어</span>
+				</button>
+				<button class="button share" data-tooltip="Share"
+					data-tooltip-alignment="r">
+					<span class="icon i-share">공유</span><span class="close icon i-x"></span>
+				</button>
+				<a class="button support short" data-tooltip="Help &amp; feedback"
+					data-tooltip-alignment="r"
+					href="http://help.slides.com/knowledgebase" target="_blank"><span
+					class="icon i-question-mark">QnA</span></a>
+
+				<button class="button more-options">
+					<span class="more-options-dot">option</span><span
+						class="more-options-dot"></span><span class="more-options-dot"></span>
+				</button>
+				
+				<input id="colorinput" type="color">
+				
+			</div>
+			
+<!-- 			<div class="toolbar visible">
+			도형 편집 제어도구
+			  <div class="toolbar-list">
+			  </div>
+			
+			</div> -->
+
+			<div class="scroll-shadow-top"
+				style="opacity: 0; top: 189.14225769043px;"></div>
+			<div class="scroll-shadow-bottom" style="opacity: 0; bottom: 53px;"></div>
+
+	  </div>
+
+	  <div class="sidebar-panel"></div>
+	  <article class="projector">
+		  <div class="reveal-viewport">
+		  <!--<div class="reveal-viewport theme-font-montserrat theme-color-beige-brown">-->
+			  <div class="reveal zoom" role="application" data-transition-speed="default" data-background-transition="slide">
+				  <div class="slides" style="width: 960px; height: 700px;">
+					  <section class="overflowing present has-light-background" data-background-color="#d0e0e3" data-id="0279c11631561889345ddf52a9453fd5" style="display: block;" data-index-h="0">
+					  </section>
+				  </div>
+				  <div class="progress" style="display: none;"><span></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">asdfsadf
+
+				  Text
+			  </div><div class="backgrounds"><div class="slide-background overflowing has-light-background present" data-background-hash="0#d0e0e3nullnullnull" data-loaded="true" style="display: block; background-color: rgb(208, 224, 227);"></div></div><div class="sl-block-grid"><canvas class="sl-block-grid-inner" width="960" height="700" style="left: 50.5px; top: 193px;"></canvas></div></div>
+		  </div>
+
+		  <div class="icon add-horizontal-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="l" data-tooltip-delay="1500">
+			  <span class="icon i-plus"></span>
+		  </div>
+		  <div class="icon add-vertical-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="t" data-tooltip-delay="1500">
+			  <span class="icon i-plus"></span>
+		  </div>
+		  <div class="mode-toolbar mode-toolbar-fragment">
+			  <div class="inner">
+				  <p class="description">Click on elements to turn them into <u data-tooltip="Fragments are invisible until stepped through when you present. Preview to see them in action. The numbers that appear on top of each fragment indicate the order they will appear in." data-tooltip-alignment="b" data-tooltip-maxwidth="355">fragments</u>.</p><button class="button grey done">Done</button></div></div><div class="slide-options" style="left: 1010.5px; top: 193px; margin-left: 0px; margin-top: 0px;"><ul><li class="remove-slide disabled" data-tooltip="Remove current slide" data-tooltip-alignment="l"><span class="icon i-trash-stroke"></span></li><li class="background" data-tooltip="Slide background color" data-tooltip-alignment="l"><span class="icon i-droplet"></span></li><li class="background-image" data-tooltip="Slide background image" data-tooltip-alignment="l"><span class="icon i-image"></span></li><li class="custom-classes disabled" data-tooltip="Slide classes" data-tooltip-alignment="l"><span class="icon i-star"></span></li><li class="fragment" data-tooltip="Create fragments<br>(SHIFT + ALT + F)" data-tooltip-alignment="l"><span class="icon i-bolt"></span></li><li class="notes" data-tooltip="Speaker notes<br>(SHIFT + ALT + N)" data-tooltip-alignment="l"><span class="icon i-book-alt2"></span></li></ul><div class="background-image-menu"><div class="inner"><div class="upload-progress"><span class="spinner centered" data-spinner-state="spinning"><div class="" role="progressbar" style="position: relative; width: 0px; z-index: auto; left: 17px; top: 17px;"><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-0-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-0-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(0deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-1-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-1-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(30deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-2-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-2-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(60deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-3-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-3-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(90deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-4-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-4-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(120deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-5-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-5-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(150deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-6-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-6-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(180deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-7-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-7-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(210deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-8-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-8-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(240deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-9-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-9-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(270deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-10-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-10-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(300deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div><div style="position: absolute; top: -1px; opacity: 0.25; animation-duration: 1s; -webkit-animation: opacity-100-25-11-12 1s linear infinite; animation-timing-function: linear; animation-delay: initial; animation-iteration-count: infinite; animation-direction: initial; animation-fill-mode: initial; animation-play-state: initial; -webkit-animation-play-state: initial; animation-name: opacity-100-25-11-12;"><div style="position: absolute; width: 9px; height: 3px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px; transform-origin: left 50% 0px; transform: rotate(330deg) translate(8px, 0px); border-radius: 1px; background: rgb(255, 255, 255);"></div></div></div></span><span class="label">Uploading...</span></div><div class="upload-output"><div class="thumbnail"></div><div class="background-image-options"><select class="sl-select white background-size"><option value="cover">Stretch</option><option value="contain">Fit</option><option value="initial">Original</option></select><button class="button remove-background">Remove</button></div></div></div></div><div class="overflow-warning" data-tooltip="Please keep content inside of the dotted outline. Content placed outside may not be visible on all display sizes." data-tooltip-maxwidth="300" data-tooltip-alignment="l"><span class="icon i-info"></span></div></div>
+	  </article>
+
+	  <div class='canvas'>
+		  <p>T.T</p>
+	  </div>
+
+	</div>
+
+  <div class="toolbars visible"><div class="toolbars-inner"><div class="toolbars-scroller" style="-webkit-transform: translateX(0px); transform: translateX(0px);"><div class="toolbar visible" data-type="add" style="left: 0px;"><div class="toolbar-list"><div class="toolbar-add-block-option" data-block-type="text"><span class="toolbar-add-block-option-icon icon i-type"></span><span class="toolbar-add-block-option-label">Text</span></div><div class="toolbar-add-block-option" data-block-type="image"><span class="toolbar-add-block-option-icon icon i-picture"></span><span class="toolbar-add-block-option-label">Image</span></div><div class="toolbar-add-block-option" data-block-type="shape"><span class="toolbar-add-block-option-icon icon i-shapes"></span><span class="toolbar-add-block-option-label">Shape</span></div><div class="toolbar-add-block-option" data-block-type="iframe"><span class="toolbar-add-block-option-icon icon i-browser"></span><span class="toolbar-add-block-option-label">Iframe</span></div><div class="toolbar-add-block-option" data-block-type="code"><span class="toolbar-add-block-option-icon icon i-file-css"></span><span class="toolbar-add-block-option-label">Code</span></div><div class="toolbar-add-block-option" data-block-type="math"><span class="toolbar-add-block-option-icon icon i-divide"></span><span class="toolbar-add-block-option-label">Math</span></div></div></div></div></div><div class="toolbars-footer"><a class="promotion-link upgrade-button" data-tooltip="You're using Slides Free.<br>Click to learn more about our Pro features." href="/pricing" target="_blank">Free</a><div class="option editor-settings" data-tooltip="Editor settings"><span class="icon i-equalizer"></span></div></div></div>
+
+  
+</body>
+</html>
