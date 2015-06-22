@@ -6,6 +6,16 @@ div.square {
   background-color: black;
 }
 
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
 body {
   height: 100%;
   min-width: 1220px;
@@ -19,6 +29,64 @@ body {
   color: #000;
   margin: 0; // remove user agent stylesheet
 }
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  color: #252525;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 240px;
+}
+.projector {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.projector .reveal-viewport {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.projector .reveal-viewport .reveal {
+  position: relative;
+  z-index: 10;
+}
+.reveal .slides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: visible;
+  z-index: 1;
+  text-align: center;
+  -webkit-perspective: 600px;
+  perspective: 600px;
+  -webkit-perspective-origin: 50% 40%;
+  perspective-origin: 50% 40%;
+}
+
+
+
+
+/*//////////////////////*/
+
 
 div.canvas {
   position: absolute;
@@ -29,26 +97,6 @@ div.canvas {
   background-color: rgb(255,248,220);
   border: solid red 1px;
 }
-.page-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding-left: 240px;
-}
-body > div.page-wrapper > div.sidebar {
-  position: absolute;
-  width: 70px;
-  height: 100%;
-  left: 0;
-  top: 0;
-  padding: 0;
-  z-index: 102;
-  background: #222;
-  font-size: 17px;
-  transition: all 0.25s ease;
-}
-
 .preview-controls {
   position: absolute;
   top: 10px;
@@ -62,7 +110,31 @@ body > div.page-wrapper > div.sidebar {
   -ms-transform: translateX(50px);
   transform: translateX(50px);
 }
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 240px;
+}
 
+/* sidebar ******************************************/
+.sidebar {
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 0;
+  z-index: 102;
+  background: #222;
+  font-size: 17px;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+
+/* 1st primary */
 .sidebar .primary {
   width: 100%;
   padding: 6px 8px 6px 8px;
@@ -96,7 +168,216 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
 
   width: 50px;
 }
+.sidebar .primary .button:hover {
+  background: #68d6a7;
+}
 
+/* 2nd */
+.sidebar .secondary {
+  position: relative;
+  overflow: auto;
+  padding: 0 0 8px 0;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.sidebar .secondary .button:not(.active):not(:hover) {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.sidebar .secondary .button+.button {
+  border-top: 1px solid #2a2a2a;
+}
+/* 2nd hover */
+.sidebar .secondary .button:hover {
+  background: #333;
+}
+.sidebar .primary .button:hover, .sidebar .secondary .button:hover {
+  background: #515151;
+}
+
+.sidebar .primary .button, .sidebar .secondary .button {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #eee;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: left;
+  line-height: initial;
+  background: #444;
+  -webkit-transition: background 0.12s ease;
+  transition: background 0.12s ease;
+  -webkit-font-smoothing: initial;
+}
+.button {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: inherit;
+  line-height: 1;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #40cb90;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  padding: 8px 12px;
+  -webkit-transition: all 0.14s ease;
+  transition: all 0.14s ease;
+}
+
+
+
+/* toolbars */
+.toolbars.visible {
+  visibility: visible;
+}
+
+.toolbars {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  width: 170px;
+  height: 100%;
+  z-index: 10;
+  background: #333333;
+  border-right: 1px solid #222;
+  border-left: 1px solid #222;
+  visibility: hidden;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.toolbars .toolbars-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 52px;
+  left: 0;
+  overflow: hidden;
+  text-align: left;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.toolbars .toolbars-scroller {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: top;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+}
+.toolbars .toolbar.visible {
+  opacity: 1;
+}
+.toolbars .toolbar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0;
+  left: -170px;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+.toolbars .toolbar .toolbar-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.toolbars .toolbar-add-block-option {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 10px;
+  text-align: center;
+  color: #fff;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+.toolbars .toolbar-add-block-option:hover {
+  border-color: rgba(255,255,255,0.4);
+}
+.toolbars .toolbar-add-block-option .toolbar-add-block-option-icon {
+  display: block;
+  font-size: 2em;
+  pointer-events: none;
+}
+.toolbars .toolbar-add-block-option .toolbar-add-block-option-label {
+  display: block;
+  font-size: 1em;
+  margin-top: 1.5em;
+  pointer-events: none;
+}
+.i-type:before {
+  //content: "\e014";
+}
+
+/* toolbars footer */
+.toolbars .toolbars-footer {
+  position: absolute;
+  height: 52px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 7px 12px;
+  background: #333333;
+  border-top: 1px solid #111;
+  text-align: right;
+}
+.toolbars .toolbars-footer .promotion-link {
+  display: inline-block;
+  padding: 0 6px;
+  line-height: 38px;
+  vertical-align: top;
+  color: #888;
+  font-size: 12px;
+  float: left;
+}
+.toolbars .toolbars-footer .option {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  vertical-align: top;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/*  ****  */
+a, button, .sl-select, .sl-checkbox label, .radio label {
+  outline: none !important;
+}
 
 body > div.canvas > div.sl-block-content.isFocus > div {
   position: absolute;
@@ -191,17 +472,4 @@ div.sl-block-content.isFocus {
   //content: "\2666"; // ´ÙÀÌ¾Æ
   //content: "\1F440"; // ´«¾Ë
   //content: "\f06e"; // ´«¾Ë
-}
-.page-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding-left: 240px;
-}
-.projector {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }

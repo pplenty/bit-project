@@ -13,16 +13,16 @@ $(window).load(function() {
 // Text	I바
 // Wait	모래시계
 $(document).ready(function() {
-	
 
-    
-    
+
+
 	// alert(1);
-	var canvas = $('.canvas');
+	var canvas = $('section.present');
 	var blockId = 100000;
 	var block_zIndex = 1;
-	
-	$('body > div.page-wrapper > div.sidebar > div.primary > button.button.preview').click(function() {
+
+	// shape ADD
+	$('.toolbar-add-block-option[data-block-type="shape"]').click(function() {
 		$('<div>')
 			.addClass('sl-block-content')
 			.attr('blockId', blockId++)
