@@ -24,6 +24,8 @@ $(document).ready(function() {
 	// shape ADD
 
 	$('.toolbar-add-block-option[data-block-type="shape"]').click(function() {
+
+		$()
 		$('<div>')
 			.addClass('sl-block')
 			.attr({

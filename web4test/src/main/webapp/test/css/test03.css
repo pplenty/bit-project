@@ -533,3 +533,38 @@ div.sl-block-content.isFocus {
   //content: "\1F440"; // 눈알
   //content: "\f06e"; // 눈알
 }
+/*///////////////02에서 추가하기 시작*/
+.sl-block-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.reveal {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.slides>section>section {
+  display: none;
+  position: absolute;
+  width: 100%;
+  padding: 20px 0px;
+  z-index: 10;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),-webkit-transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: -ms-transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985),opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+.reveal .slides>section, .reveal .slides>section>section {
+  height: 700px;
+  font-weight: inherit;
+  padding: 0;
+}
