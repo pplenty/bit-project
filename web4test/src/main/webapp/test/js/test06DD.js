@@ -22,20 +22,33 @@ $(document).ready(function() {
 	var block_zIndex = 1;
 
 	// shape ADD
+
 	$('.toolbar-add-block-option[data-block-type="shape"]').click(function() {
 		$('<div>')
-			.addClass('sl-block-content')
-			.attr('blockId', blockId++)
+			.addClass('sl-block')
+			.attr({
+				'data-block-type': 'shape',
+				'data-block-blockId': blockId++
+			})
+			//.css({
+			//	'position': 'absolute',
+			//	'border' : 'red solid 2px',
+			//	'background-color': 'rgb(186, 199, 234)',
+			//	'left': '100px',
+			//	'top': '100px',
+			//	'height': '200px',
+			//	'width': '200px',
+			//	'z-index': block_zIndex++
+			//	})
 			.css({
-				'position': 'absolute',
-//				'border' : 'red solid 2px',
 				'background-color': 'rgb(186, 199, 234)',
-				'left': '100px',
-				'top': '100px',
-				'height': '200px',
-				'width': '200px',
-				'z-index': block_zIndex++
-				})
+				'min-width': '4px',
+				'min-height': '4px',
+				'width': '300px',
+				'height': '300px',
+				'left': '200px',
+				'top': '200px'
+			})
 			.appendTo(canvas);
 	});
 	

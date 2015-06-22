@@ -15,7 +15,12 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
-
+body {
+  position: relative;
+  line-height: 1;
+  background-color: #fff;
+  color: #000;
+}
 body {
   height: 100%;
   min-width: 1220px;
@@ -41,6 +46,19 @@ html, body {
   font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 16px;
 }
+html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6, .reveal p, .reveal blockquote, .reveal pre, .reveal a, .reveal abbr, .reveal acronym, .reveal address, .reveal big, .reveal cite, .reveal code, .reveal del, .reveal dfn, .reveal em, .reveal img, .reveal ins, .reveal kbd, .reveal q, .reveal s, .reveal samp, .reveal small, .reveal strike, .reveal strong, .reveal sub, .reveal sup, .reveal tt, .reveal var, .reveal b, .reveal u, .reveal center, .reveal dl, .reveal dt, .reveal dd, .reveal ol, .reveal ul, .reveal li, .reveal fieldset, .reveal form, .reveal label, .reveal legend, .reveal table, .reveal caption, .reveal tbody, .reveal tfoot, .reveal thead, .reveal tr, .reveal th, .reveal td, .reveal article, .reveal aside, .reveal canvas, .reveal details, .reveal embed, .reveal figure, .reveal figcaption, .reveal footer, .reveal header, .reveal hgroup, .reveal menu, .reveal nav, .reveal output, .reveal ruby, .reveal section, .reveal summary, .reveal time, .reveal mark, .reveal audio, video {
+  margin: 0;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding: 0;
+  /* border: 0; */
+  /* font-size: 100%; */
+  /* font: inherit; */
+  /* vertical-align: baseline; */
+}
+
 
 .page-wrapper {
   position: relative;
@@ -375,6 +393,35 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
 }
 
 /*  ****  */
+
+.reveal .sl-block {
+  display: block;
+  position: absolute;
+  z-index: auto;
+}
+.reveal .sl-block .sl-block-content {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  outline: 0;
+  word-wrap: break-word;
+}
+.is-editing .reveal .sl-block .sl-block-content:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: '';
+  z-index: 1;
+  opacity: 0;
+  background-color: rgba(0,0,0,0);
+}
+
 a, button, .sl-select, .sl-checkbox label, .radio label {
   outline: none !important;
 }
