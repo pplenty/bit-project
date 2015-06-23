@@ -14,7 +14,7 @@ $(window).load(function() {
 // Wait	모래시계
 $(document).ready(function() {
 
-	var canvas = $('section.present');
+	var presentSection = $('section.present');
 	var blockId = 100000;
 	var block_zIndex = 1;
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
 		svgTag.append(svgContent);
 		blockTag.append(svgTag);
-		canvas.append(blockTag);
+		presentSection.append(blockTag);
 		//$('.sl-block').draggable({
 		//	start: function(){
 		//		$(this).addClass('isFocus');
@@ -117,100 +117,123 @@ $(document).ready(function() {
 		$(this).addClass('isFocus');
 		addEditForm($(this));
 	});
+
 	$(document).on('drag', '.sl-block', function(ev){
 	//$('.sl-block').drag('start', function(ev){
 	//	console.log(ev.pageX + ',' + ev.pageY);
 		$(this).css({
-			top: ev.pageY - blockOffsetY - canvas.offset().top,
-			left: ev.pageX - blockOffsetX - canvas.offset().left
+			top: ev.pageY - blockOffsetY - presentSection.offset().top,
+			left: ev.pageX - blockOffsetX - presentSection.offset().left
 		});
 	});
 
-	//$(document).drag('start', function(event, dd){
-	//	return $('<div class="selection" />')
-	//		.css('opacity', 65)
-	//		.css('backgroundColor', 'black')
-	//		.appendTo(document.body);
-	//})
-	//.drag(function( ev, dd ){
-	//	$( dd.proxy ).css({
-	//		top: Math.min( ev.pageY, dd.startY ),
-	//		left: Math.min( ev.pageX, dd.startX ),
-	//		height: Math.abs( ev.pageY - dd.startY ),
-	//		width: Math.abs( ev.pageX - dd.startX )
-	//	});
-	//})
-	//.drag("end",function( ev, dd ){
-	//	$( dd.proxy ).remove();
-	//});
+
+	// drag select
+	$('.projector').drag('start', function(ev, dd){
+		return $('<div class="selection" />')
+			.addClass('sl-block-selection')
+			.addClass('editing-ui')
+			.css({
+				'position': 'absolute',
+				'border' : 'rgb(1, 199, 234) solid 2px',
+				'background-color': 'rgb(1, 150, 200)',
+				'opacity': .25
+			})
+			.appendTo(presentSection);
+	})
+	.drag(function( ev, dd ){
+		$( dd.proxy ).css({
+			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
+			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
+			height: Math.abs( ev.pageY - dd.startY ),
+			width: Math.abs( ev.pageX - dd.startX )
+		});
+	})
+	.drag("end",function( ev, dd ){
+		$( dd.proxy ).remove();
+	});
+
+
+	//drop
+	$('.sl-block')
+		.drop("start",function(){
+			$( this ).addClass("active");
+		})
+		.drop(function( ev, dd ){
+			$( this ).toggleClass("dropped");
+		})
+		.drop("end",function(){
+			$( this ).removeClass("active");
+		});
+	$.drop({ multi: true });
 
 	// 바탕(.canvas) 이벤트 등록 drag selection
-	$('.sl-block-grid').on('mousedown', function(event) {
-		console.log('canvas.mousedown');
-		$('.sl-block-content.isFocus').removeClass('isFocus');
-		deletEditForm($('.sl-block-content'));
-
-		var startX = event.pageX - 70;
-		var startY = event.pageY;
-		
-		
-		$('<div>')
-		.addClass('sl-block-selection')
-		.addClass('editing-ui')
-		.css({
-			'position': 'absolute',
-			'border' : 'rgb(1, 199, 234) solid 2px',
-			'background-color': 'rgb(1, 150, 200)',
-			'left': startX + 'px',
-			'top': startY + 'px',
-			'opacity': '0.25',
-//			'height': '200px',
-//			'width': '200px',
-			'z-index': block_zIndex++
-			})
-		.appendTo(canvas);
-		
-//		event.stopPropagation();
-		$(document).on('mousemove', function(event) {
-			var width = event.pageX - startX - 70;
-			var height = event.pageY - startY;
-			
-			if(width < 0) {
-				$('.sl-block-selection.editing-ui').css({
-					'left' : event.pageX - 70 + 'px',
-					'width':  -1 * width + 'px'
-				});
-			}
-			if(height < 0) {
-				$('.sl-block-selection.editing-ui').css({
-					'top' : event.pageY + 'px',
-					'height': -1 * height + 'px',
-				});
-			}
-			if (width >= 0 && height >= 0) {
-				$('.sl-block-selection.editing-ui').css({
-					'height': height + 'px',
-					'width': width + 'px'
-				});
-			}
-			
-			
-
-		});
-		
-
-		$(this).on('mouseup', function(event) {
-//			console.log($('.sl-block-selection.editing-ui').css('left'));
-//			event.stopPropagation();
-		    document.body.style.cursor = "auto";
-		    $('.sl-block-selection.editing-ui').remove();
-//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
-		    
-			$(document).off('mousemove');
-			$(this).off('mouseup');
-			
-		});
-	});
+//	$('.sl-block-grid').on('mousedown', function(event) {
+//		console.log('canvas.mousedown');
+//		$('.sl-block-content.isFocus').removeClass('isFocus');
+//		deletEditForm($('.sl-block-content'));
+//
+//		var startX = event.pageX - 70;
+//		var startY = event.pageY;
+//
+//
+//		$('<div>')
+//		.addClass('sl-block-selection')
+//		.addClass('editing-ui')
+//		.css({
+//			'position': 'absolute',
+//			'border' : 'rgb(1, 199, 234) solid 2px',
+//			'background-color': 'rgb(1, 150, 200)',
+//			'left': startX + 'px',
+//			'top': startY + 'px',
+//			'opacity': '0.25',
+////			'height': '200px',
+////			'width': '200px',
+//			'z-index': block_zIndex++
+//			})
+//		.appendTo(presentSection);
+//
+////		event.stopPropagation();
+//		$(document).on('mousemove', function(event) {
+//			var width = event.pageX - startX - 70;
+//			var height = event.pageY - startY;
+//
+//			if(width < 0) {
+//				$('.sl-block-selection.editing-ui').css({
+//					'left' : event.pageX - 70 + 'px',
+//					'width':  -1 * width + 'px'
+//				});
+//			}
+//			if(height < 0) {
+//				$('.sl-block-selection.editing-ui').css({
+//					'top' : event.pageY + 'px',
+//					'height': -1 * height + 'px',
+//				});
+//			}
+//			if (width >= 0 && height >= 0) {
+//				$('.sl-block-selection.editing-ui').css({
+//					'height': height + 'px',
+//					'width': width + 'px'
+//				});
+//			}
+//
+//
+//
+//		});
+//
+//
+//		$(this).on('mouseup', function(event) {
+////			console.log($('.sl-block-selection.editing-ui').css('left'));
+////			event.stopPropagation();
+//		    document.body.style.cursor = "auto";
+//		    $('.sl-block-selection.editing-ui').remove();
+////		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+//
+//			$(document).off('mousemove');
+//			$(this).off('mouseup');
+//
+//		});
+//	});
 	
 	// 콘텐츠 이벤트 등록
 	$('.canvas').on('mousedown', '.sl-block-content', function(event) {
