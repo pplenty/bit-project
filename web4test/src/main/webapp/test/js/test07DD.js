@@ -14,50 +14,138 @@ $(window).load(function() {
 // Wait	모래시계
 $(document).ready(function() {
 
-
-
-	// alert(1);
 	var canvas = $('section.present');
 	var blockId = 100000;
 	var block_zIndex = 1;
 
-	// shape ADD
 
+	// 드래그 방지
+	//$('body').on("selectstart", function(event){ return false; });
+	//$('body').on("dragstart", function(event){ return false; });
+
+	//$('.reveal-viewport').on('dragstart', function(){
+	//	console.log('viewpoar drags');
+	//	$('<div class="selection" />')
+	//		.css({
+	//			'opacity': .65,
+	//			'background-color': 'red'
+	//		})
+	//		.appendTo( document.body );
+	//});
+
+	// shape ADD
 	$('.toolbar-add-block-option[data-block-type="shape"]').click(function() {
 
-		$()
-		$('<div>')
-			.addClass('sl-block')
-			.attr({
-				'data-block-type': 'shape',
-				'data-block-blockId': blockId++
-			})
-			//.css({
-			//	'position': 'absolute',
-			//	'border' : 'red solid 2px',
-			//	'background-color': 'rgb(186, 199, 234)',
-			//	'left': '100px',
-			//	'top': '100px',
-			//	'height': '200px',
-			//	'width': '200px',
-			//	'z-index': block_zIndex++
-			//	})
-			.css({
-				'background-color': 'rgb(186, 199, 234)',
-				'min-width': '4px',
-				'min-height': '4px',
-				'width': '300px',
-				'height': '300px',
-				'left': '200px',
-				'top': '200px'
-			})
-			.appendTo(canvas);
-	});
-	
+		var svgContent =
+			$('<rect>')
+				.attr({
+					'width': '248',
+					'height': '248',
+					'fill': '#000000'
+				})
+				.addClass('shape-element');
 
-	
+		var svgTag =
+			$('<svg>')
+				.attr({
+					'xmlns': 'http://www.w3.org/2000/svg',
+					'version': '1.1',
+					'width': '100%',
+					'height': '100%',
+					'preserveAspectRatio': 'xMidYMid',
+					'viewBox': '0 0 248 248'
+				});
+
+		var blockTag =
+			$('<div>')
+				.addClass('sl-block')
+				.attr({
+					'data-block-type': 'shape',
+					'data-block-blockId': blockId++
+					//'draggable': true
+				})
+				.css({
+					'background-color': 'rgb(186, 199, 234)',
+					'min-width': '4px',
+					'min-height': '4px',
+					'width': '300px',
+					'height': '300px',
+					'left': '200px',
+					'top': '200px',
+					'z-index': block_zIndex++
+				});
+
+		svgTag.append(svgContent);
+		blockTag.append(svgTag);
+		canvas.append(blockTag);
+		//$('.sl-block').draggable({
+		//	start: function(){
+		//		$(this).addClass('isFocus');
+		//		addEditForm($(this));
+		//		deletEditForm($.not(this));
+		//	}
+		//});
+        //
+		//$('.sl-block').droppable({
+		//	start: function(){
+		//		$(this).addClass('isFocus');
+		//		addEditForm($(this));
+		//	}
+		//});
+
+		//$('.sl-block').hover(function(){
+		//	$('body').css('cursor','hand');
+		//});
+	});
+
+
+
+	// 컨텐츠박스 드래그 구현
+
+	var blockOffsetX; // event offsetx from block
+	var blockOffsetY;
+
+	$(document).on('click', '.sl-block', function(ev){
+		blockOffsetX = ev.offsetX;
+		blockOffsetY = ev.offsetY;
+		$(this).addClass('isFocus');
+		addEditForm($(this));
+	});
+	$(document).on('dragstart', '.sl-block', function(ev){
+		blockOffsetX = ev.offsetX;
+		blockOffsetY = ev.offsetY;
+		$(this).addClass('isFocus');
+		addEditForm($(this));
+	});
+	$(document).on('drag', '.sl-block', function(ev){
+	//$('.sl-block').drag('start', function(ev){
+	//	console.log(ev.pageX + ',' + ev.pageY);
+		$(this).css({
+			top: ev.pageY - blockOffsetY - canvas.offset().top,
+			left: ev.pageX - blockOffsetX - canvas.offset().left
+		});
+	});
+
+	//$(document).drag('start', function(event, dd){
+	//	return $('<div class="selection" />')
+	//		.css('opacity', 65)
+	//		.css('backgroundColor', 'black')
+	//		.appendTo(document.body);
+	//})
+	//.drag(function( ev, dd ){
+	//	$( dd.proxy ).css({
+	//		top: Math.min( ev.pageY, dd.startY ),
+	//		left: Math.min( ev.pageX, dd.startX ),
+	//		height: Math.abs( ev.pageY - dd.startY ),
+	//		width: Math.abs( ev.pageX - dd.startX )
+	//	});
+	//})
+	//.drag("end",function( ev, dd ){
+	//	$( dd.proxy ).remove();
+	//});
+
 	// 바탕(.canvas) 이벤트 등록 drag selection
-	$('.canvas').on('mousedown', function(event) {
+	$('.sl-block-grid').on('mousedown', function(event) {
 		console.log('canvas.mousedown');
 		$('.sl-block-content.isFocus').removeClass('isFocus');
 		deletEditForm($('.sl-block-content'));
