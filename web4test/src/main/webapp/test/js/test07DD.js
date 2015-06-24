@@ -64,24 +64,6 @@ $(document).ready(function() {
 		svgTag.append(svgContent);
 		blockTag.append(svgTag);
 		presentSection.append(blockTag);
-		//$('.sl-block').draggable({
-		//	start: function(){
-		//		$(this).addClass('isFocus');
-		//		addEditForm($(this));
-		//		deletEditForm($.not(this));
-		//	}
-		//});
-        //
-		//$('.sl-block').droppable({
-		//	start: function(){
-		//		$(this).addClass('isFocus');
-		//		addEditForm($(this));
-		//	}
-		//});
-
-		//$('.sl-block').hover(function(){
-		//	$('body').css('cursor','hand');
-		//});
 	});
 	
 	
@@ -183,12 +165,13 @@ $(document).ready(function() {
 	var blockOffsetX; // event offsetx from block
 	var blockOffsetY;
 	var dragStartTarget;
-	$(presentCanvas).on('dragstart', function(ev){
+	
+	$(presentCanvas).drag('start', function(ev){
 		dragStartTarget = ev.target;
 		// 바탕 드래그
 		if (ev.target == $(presentCanvas)[0]) {
 			console.log('section_DS');
-			$('<div>')
+			return $('<div>')
 				.addClass('sl-block-selection')
 				.addClass('editing-ui')
 				.css({
@@ -200,17 +183,7 @@ $(document).ready(function() {
 				}).appendTo(presentSection);
 			
 			
-			$('.sl-block')
-				.drop("start",function(){
-					$( this ).addClass("active");
-				})
-				.drop(function( ev, dd ){
-					$( this ).toggleClass("dropped");
-				})
-				.drop("end",function(){
-					$( this ).removeClass("active");
-				});
-			$.drop({ multi: true });	
+
 		}
 		
 		// 콘텐츠 드래그
@@ -222,12 +195,12 @@ $(document).ready(function() {
 			$(ev.target).addClass('isFocus');
 			ev.stopPropagation();
 		}
-	});
-	$(presentCanvas).on('drag', function(ev, dd){
+	})
+	.drag(function(ev, dd){
 
 //		console.log(ev.target);
 		if (dragStartTarget == $(presentCanvas)[0]) {
-			$('div.sl-block-selection').css({
+			$(dd.proxy).css({
 				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
 				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
 				height: Math.abs( ev.pageY - dd.startY ),
@@ -242,10 +215,90 @@ $(document).ready(function() {
 			});
 			ev.stopPropagation();
 		}
+	})
+	.drag('end', function(ev, dd){
+		if (dragStartTarget == $(presentCanvas)[0]) {
+			$(dd.proxy).remove();
+		}
 	});
-	$(presentCanvas).on('dragend', function(ev, dd){
-		$('div.sl-block-selection').remove();
-	});
+	
+//	$('.sl-block')
+//		.drop("start",function(){
+//			$( this ).addClass("active");
+//		})
+//		.drop(function( ev, dd ){
+//			$( this ).toggleClass("dropped");
+//		})
+//		.drop("end",function(){
+//			$( this ).removeClass("active");
+//		});
+//	$.drop({ multi: true });	
+	
+//	$(presentCanvas).on('dragstart', function(ev){
+//		dragStartTarget = ev.target;
+//		// 바탕 드래그
+//		if (ev.target == $(presentCanvas)[0]) {
+//			console.log('section_DS');
+//			$('<div>')
+//				.addClass('sl-block-selection')
+//				.addClass('editing-ui')
+//				.css({
+//					'position': 'absolute',
+//					'border': 'rgb(1, 199, 234) solid 2px',
+//					'background-color': 'rgb(1, 150, 200)',
+//					'opacity': .25,
+//					'z-index': 9999
+//				}).appendTo(presentSection);
+//			
+//			
+//			$('.sl-block')
+//				.drop("start",function(){
+//					$( this ).addClass("active");
+//				})
+//				.drop(function( ev, dd ){
+//					$( this ).toggleClass("dropped");
+//				})
+//				.drop("end",function(){
+//					$( this ).removeClass("active");
+//				});
+//			$.drop({ multi: true });	
+//		}
+//		
+//		// 콘텐츠 드래그
+//		if (ev.target == $('.sl-block')[0]) {
+//			console.log('block_DS');
+//			blockOffsetX = ev.offsetX;
+//			blockOffsetY = ev.offsetY;
+//			addEditForm($(ev.target));
+//			$(ev.target).addClass('isFocus');
+//			ev.stopPropagation();
+//		}
+//	});
+	
+//	$(presentCanvas).on('drag', function(ev, dd){
+//
+////		console.log(ev.target);
+//		if (dragStartTarget == $(presentCanvas)[0]) {
+//			$('div.sl-block-selection').css({
+//				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
+//				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
+//				height: Math.abs( ev.pageY - dd.startY ),
+//				width: Math.abs( ev.pageX - dd.startX )
+//			});
+//		}
+//		
+//		if (dragStartTarget == $('.sl-block')[0]) {
+//			$('.sl-block').css({
+//				top: ev.pageY - blockOffsetY - presentSection.offset().top,
+//				left: ev.pageX - blockOffsetX - presentSection.offset().left
+//			});
+//			ev.stopPropagation();
+//		}
+//	});
+	
+//	$(presentCanvas).on('dragend', function(ev, dd){
+//		$('div.sl-block-selection').remove();
+//	});
 
 	// 컨텐츠박스 드래그 구현
 
@@ -340,17 +393,17 @@ $(document).ready(function() {
 
 
 	//drop
-//	$(document).on('dropstart', '.sl-block', function(){
-//		console.log(this);
-//		$( this ).addClass("active");
-//	});
-//	$(document).on('drop', '.sl-block', function(){
-//		$( this ).toggleClass("dropped");
-//	});
-//	$(document).on('dropend', '.sl-block', function(){
-//		$( this ).removeClass("active");
-//	});
-//	$.drop({ multi: true });// multi select
+	$(document).on('dropstart', '.sl-block', function(){
+		console.log(this);
+		$( this ).addClass("active");
+	});
+	$(document).on('drop', '.sl-block', function(){
+		$( this ).toggleClass("dropped");
+	});
+	$(document).on('dropend', '.sl-block', function(){
+		$( this ).removeClass("active");
+	});
+	$.drop({ multi: true });// multi select
 
 
 
