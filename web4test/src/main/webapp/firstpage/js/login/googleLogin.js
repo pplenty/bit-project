@@ -125,7 +125,7 @@ function googleCheckLogin(obj) {
 		},
 		success: function(data) {
 			console.log(data);
-			location.href='./mypage/mypage.html';
+			location.href='../mypage/mypage.html';
 		},
 		error: function(e) {
 			console.log(e);

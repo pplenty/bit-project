@@ -119,6 +119,7 @@ $(document).ready(function() {
 
 	var dragStartTarget;
 	$(presentCanvas).on('dragstart', function(ev, dd){
+
 		dragStartTarget = ev.target;
 		if (ev.target == $(presentCanvas)[0]) {
 			console.log('section_DS');
@@ -230,7 +231,7 @@ $(document).ready(function() {
 
 
 	//drop
-	var selectedDropStart = false;
+	var selectedDropStart = false;//select box -drop event boolean 변수
 	var selectedDrop = false;
 	$(document).on('dropstart', '.sl-block', function(ev){
 		//console.log(ev.target);
@@ -243,7 +244,7 @@ $(document).ready(function() {
 
 	});
 	$(document).on('drop', '.sl-block', function(ev){
-		//console.log(ev.target);
+		console.log($(ev.target));
 		//addEditForm($(this));
 		//$(this).addClass('isFocus');
 		if (dragStartTarget == $(presentCanvas)[0]) {
@@ -448,7 +449,7 @@ $(document).ready(function() {
 });
 
 function addEditForm(selectorIsFocus) {
-	if (selectorIsFocus.hasClass('isFocus')) return null;
+	if (selectorIsFocus.find('.editing-ui').length != 0) return null;
 	selectorIsFocus.append('<div>')
 		.children().last()
 		.addClass('sl-block-transform editing-ui visible')
@@ -494,7 +495,7 @@ function addEditForm(selectorIsFocus) {
 }
 
 function deletEditForm(selectorIsFocus) {
-	selectorIsFocus.children().last().detach();
+	selectorIsFocus.find('.editing-ui').detach();
 }
 
 function rgb2hex(rgb) {
