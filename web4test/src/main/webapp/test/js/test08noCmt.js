@@ -97,62 +97,17 @@ $(document).ready(function() {
 				'z-index' : '11'
 			}).appendTo(blockText);
 		
-		
 			var contentP = $("<p>")
 				.attr("id", "true")
 				.text("Text")
 				.appendTo(blockContent);
-			
-
 		
 		});// 텍스트박스 생성 마지막 괄호
 
-	
-	 // drag select
+
+
+	 // drag select(바탕 드래그)
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
-	
-
-//	$(presentCanvas).click(function(){
-//		console.log('section.click');
-//		deletEditForm($('.isFocus'));
-//		$('.isFocus').removeClass('isFocus');
-//	});
-
-
-
-//	$(document).on('click', presentCanvas, function(){
-//		console.log('section.click');
-//		deletEditForm($('.isFocus'));
-//		$('.isFocus').removeClass('isFocus');
-//	});
-//
-//	$(document).on('dragstart', presentCanvas, function(ev){
-//		console.log(ev.target);
-//		console.log('section_DS');
-//		$('<div>')
-//			.addClass('sl-block-selection')
-//			.addClass('editing-ui')
-//			.css({
-//				'position': 'absolute',
-//				'border': 'rgb(1, 199, 234) solid 2px',
-//				'background-color': 'rgb(1, 150, 200)',
-//				'opacity': .25,
-//				'z-index': 9999
-//			})
-//			.appendTo(presentSection);
-//	});
-//	$(document).on('drag', presentCanvas, function(ev, dd){
-//		$('div.sl-block-selection').css({
-//			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
-//			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
-//			height: Math.abs( ev.pageY - dd.startY ),
-//			width: Math.abs( ev.pageX - dd.startX )
-//		});
-//	});
-//	$(document).on('dragend', presentCanvas, function(ev, dd){
-//		$('div.sl-block-selection').remove();
-//	});
-
 
 	$(presentCanvas).on('click', function(ev){
 		if (ev.target == this) {
@@ -162,13 +117,9 @@ $(document).ready(function() {
 		}
 	});
 
-	var blockOffsetX; // event offsetx from block
-	var blockOffsetY;
 	var dragStartTarget;
-	
-	$(presentCanvas).drag('start', function(ev){
+	$(presentCanvas).on('dragstart', function(ev, dd){
 		dragStartTarget = ev.target;
-		// 바탕 드래그
 		if (ev.target == $(presentCanvas)[0]) {
 			console.log('section_DS');
 			return $('<div>')
@@ -181,132 +132,35 @@ $(document).ready(function() {
 					'opacity': .25,
 					'z-index': 9999
 				}).appendTo(presentSection);
-			
-			
+
 
 		}
-		
-		// 콘텐츠 드래그
-		if (ev.target == $('.sl-block')[0]) {
-			console.log('block_DS');
-			blockOffsetX = ev.offsetX;
-			blockOffsetY = ev.offsetY;
-			addEditForm($(ev.target));
-			$(ev.target).addClass('isFocus');
-			ev.stopPropagation();
-		}
-	})
-	.drag(function(ev, dd){
-
-//		console.log(ev.target);
+	});
+	
+	$(presentCanvas).on('drag', function(ev, dd){
 		if (dragStartTarget == $(presentCanvas)[0]) {
-			$(dd.proxy).css({
+			$('div.sl-block-selection').css({
 				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
 				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
 				height: Math.abs( ev.pageY - dd.startY ),
 				width: Math.abs( ev.pageX - dd.startX )
 			});
 		}
-		
-		if (dragStartTarget == $('.sl-block')[0]) {
-			$('.sl-block').css({
-				top: ev.pageY - blockOffsetY - presentSection.offset().top,
-				left: ev.pageX - blockOffsetX - presentSection.offset().left
-			});
-			ev.stopPropagation();
-		}
-	})
-	.drag('end', function(ev, dd){
+	});
+	
+	$(presentCanvas).on('dragend', function(ev, dd){
 		if (dragStartTarget == $(presentCanvas)[0]) {
 			$(dd.proxy).remove();
 		}
 	});
-	
-//	$('.sl-block')
-//		.drop("start",function(){
-//			$( this ).addClass("active");
-//		})
-//		.drop(function( ev, dd ){
-//			$( this ).toggleClass("dropped");
-//		})
-//		.drop("end",function(){
-//			$( this ).removeClass("active");
-//		});
-//	$.drop({ multi: true });	
-	
-//	$(presentCanvas).on('dragstart', function(ev){
-//		dragStartTarget = ev.target;
-//		// 바탕 드래그
-//		if (ev.target == $(presentCanvas)[0]) {
-//			console.log('section_DS');
-//			$('<div>')
-//				.addClass('sl-block-selection')
-//				.addClass('editing-ui')
-//				.css({
-//					'position': 'absolute',
-//					'border': 'rgb(1, 199, 234) solid 2px',
-//					'background-color': 'rgb(1, 150, 200)',
-//					'opacity': .25,
-//					'z-index': 9999
-//				}).appendTo(presentSection);
-//			
-//			
-//			$('.sl-block')
-//				.drop("start",function(){
-//					$( this ).addClass("active");
-//				})
-//				.drop(function( ev, dd ){
-//					$( this ).toggleClass("dropped");
-//				})
-//				.drop("end",function(){
-//					$( this ).removeClass("active");
-//				});
-//			$.drop({ multi: true });	
-//		}
-//		
-//		// 콘텐츠 드래그
-//		if (ev.target == $('.sl-block')[0]) {
-//			console.log('block_DS');
-//			blockOffsetX = ev.offsetX;
-//			blockOffsetY = ev.offsetY;
-//			addEditForm($(ev.target));
-//			$(ev.target).addClass('isFocus');
-//			ev.stopPropagation();
-//		}
-//	});
-	
-//	$(presentCanvas).on('drag', function(ev, dd){
-//
-////		console.log(ev.target);
-//		if (dragStartTarget == $(presentCanvas)[0]) {
-//			$('div.sl-block-selection').css({
-//				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
-//				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
-//				height: Math.abs( ev.pageY - dd.startY ),
-//				width: Math.abs( ev.pageX - dd.startX )
-//			});
-//		}
-//		
-//		if (dragStartTarget == $('.sl-block')[0]) {
-//			$('.sl-block').css({
-//				top: ev.pageY - blockOffsetY - presentSection.offset().top,
-//				left: ev.pageX - blockOffsetX - presentSection.offset().left
-//			});
-//			ev.stopPropagation();
-//		}
-//	});
-	
-//	$(presentCanvas).on('dragend', function(ev, dd){
-//		$('div.sl-block-selection').remove();
-//	});
 
 	// 컨텐츠박스 드래그 구현
 
-//	var blockOffsetX; // event offsetx from block
-//	var blockOffsetY;
+	var blockOffsetX; // event offsetx from block
+	var blockOffsetY;
 	
 
-/*	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
+	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
 		// color input 도형 색 설정
 		var rgbHex = rgb2hex($(this).css('background-color'));
 		$('#colorinput').val(rgbHex);
@@ -315,11 +169,11 @@ $(document).ready(function() {
 		blockOffsetY = event.offsetY;
 		
 
-		console.log('mousedown');
-
 		addEditForm($(this));
 		$(this).addClass('isFocus');
-		event.stopPropagation();
+		deletEditForm($('.sl-block').not(this));
+		$('.sl-block').not(this).removeClass('isFocus');
+		//event.stopPropagation();
 		document.body.style.cursor = "move";
 		
 		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
@@ -335,19 +189,18 @@ $(document).ready(function() {
 		
 		
 		$(document).on('mousemove', function(event) {
-			$('.sl-block').css({
+			$('.sl-block.isFocus').css({
 				top: event.pageY - blockOffsetY - presentSection.offset().top,
 				left: event.pageX - blockOffsetX - presentSection.offset().left
 			});
 			event.stopPropagation();
 
 		});
-		
 
 		$(this).on('mouseup', function(event) {
-//			event.stopPropagation();
-		    document.body.style.cursor = "auto";
 			event.stopPropagation();
+		    document.body.style.cursor = "auto";
+			//event.stopPropagation();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
 			$(document).off('mousemove');
 			$(this).off('mouseup');
@@ -357,51 +210,71 @@ $(document).ready(function() {
 		
 		
 		
-	});*/
+	});
 
-//	$(document).on('click', '.sl-block', function(ev){
-//		console.log('block.click');
-//
-//		// color input 도형 색 설정
-//		var rgbHex = rgb2hex($(this).css('background-color'));
-//		$('#colorinput').val(rgbHex);
-//
-//		blockOffsetX = ev.offsetX;
-//		blockOffsetY = ev.offsetY;
-//		addEditForm($(this));
-//		$(this).addClass('isFocus');
-//		ev.stopPropagation();
-//	});
-//	$(document).on('dragstart', '.sl-block', function(ev){
-//		console.log('block_DS');
-//		blockOffsetX = ev.offsetX;
-//		blockOffsetY = ev.offsetY;
-//		addEditForm($(this));
-//		$(this).addClass('isFocus');
-//		ev.stopPropagation();
-//	});
-//
-//	$(document).on('drag', '.sl-block', function(ev){
-//		//$('.sl-block').drag('start', function(ev){
-//		//	console.log(ev.pageX + ',' + ev.pageY);
-//		$(this).css({
-//			top: ev.pageY - blockOffsetY - presentSection.offset().top,
-//			left: ev.pageX - blockOffsetX - presentSection.offset().left
-//		});
-//		ev.stopPropagation();
-//	});
+	$(document).on('click', '.sl-block', function(ev){
+		//console.log('block.click!');
+
+		// color input 도형 색 설정
+		var rgbHex = rgb2hex($(this).css('background-color'));
+		$('#colorinput').val(rgbHex);
+
+		blockOffsetX = ev.offsetX;
+		blockOffsetY = ev.offsetY;
+		addEditForm($(this));
+		$(this).addClass('isFocus');
+		deletEditForm($('.sl-block').not(this));
+		$('.sl-block').not(this).removeClass('isFocus');
+		//ev.stopPropagation();
+	});
 
 
 	//drop
-	$(document).on('dropstart', '.sl-block', function(){
-		console.log(this);
-		$( this ).addClass("active");
+	var selectedDropStart = false;
+	var selectedDrop = false;
+	$(document).on('dropstart', '.sl-block', function(ev){
+		//console.log(ev.target);
+		if (dragStartTarget == $(presentCanvas)[0]) {
+			selectedDropStart = true;
+			addEditForm($(this));
+			$(this).addClass('isFocus');
+			$(this).addClass('selectActive');
+		}
+
 	});
-	$(document).on('drop', '.sl-block', function(){
-		$( this ).toggleClass("dropped");
+	$(document).on('drop', '.sl-block', function(ev){
+		//console.log(ev.target);
+		//addEditForm($(this));
+		//$(this).addClass('isFocus');
+		if (dragStartTarget == $(presentCanvas)[0]) {
+			selectedDrop = true;
+			if (selectedDropStart) {
+				addEditForm($(this));
+				$(this).addClass('isFocus');
+				$(this).removeClass('selectActive');
+				selectedDropStart = false;
+			} else {
+				deletEditForm($(this));
+				$(this).removeClass('isFocus');
+				$(this).removeClass('selectActive');
+			}
+		}
+
+		$(this).removeClass('selectActive');
 	});
-	$(document).on('dropend', '.sl-block', function(){
-		$( this ).removeClass("active");
+	$(document).on('dropend', '.sl-block', function(ev) {
+		//console.log(ev.target);
+		if (dragStartTarget == $(presentCanvas)[0]) {
+			if (selectedDrop) {
+
+			} else {
+				deletEditForm($(this));
+				$(this).removeClass('isFocus');
+			}
+			$(this).removeClass('selectActive');
+			selectedDropStart = false;
+			selectedDrop = false;
+		}
 	});
 	$.drop({ multi: true });// multi select
 
