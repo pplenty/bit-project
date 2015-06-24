@@ -83,16 +83,67 @@ $(document).ready(function() {
 		//	$('body').css('cursor','hand');
 		//});
 	});
+	
+	
+	// text box ADD
+	$('.toolbar-add-block-option[data-block-type="text"]').click(function() {
+		var blockText = $('<div>')
+				.addClass("sl-block")
+				.attr({
+						'data-block-type': 'text',
+						'data-block-blockId': blockId++
+						//'draggable': true
+					})
+				.css({
+					'height' : 'auto',
+					'min-width' : '30px',
+					'min-height' : '30px',
+					'width' : '600px',
+					'left' : '80px',
+					'top' : '191px',
+					'border' : '1px solid black'
+				}).appendTo(presentSection);
+				
+		var blockContent = 
+			$("<div>")
+			.addClass("sl-block-content")
+//			.attr({
+//				'data-placeholder-tag' : 'p',
+//				'data-placeholder-text': 'Text'
+//			})
+			.css({
+				'z-index' : '11'
+			}).appendTo(blockText);
+		
+		
+			var contentP = $("<p>")
+				.attr("id", "true")
+				.text("Text")
+				.appendTo(blockContent);
+			
+
+		
+		});// 텍스트박스 생성 마지막 괄호
 
 	 // drag select
-	var presentCanvas = '.projector';// 이벤트 등록 대상(바탕)
-	$(document).on('click', presentCanvas, function(){
+	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
+
+	$(presentCanvas).click(function(){
 		console.log('section.click');
 		deletEditForm($('.isFocus'));
 		$('.isFocus').removeClass('isFocus');
 	});
 
-	$(document).on('dragstart', presentCanvas, function(){
+
+
+	//$(document).on('click', presentCanvas, function(){
+	//	console.log('section.click');
+	//	deletEditForm($('.isFocus'));
+	//	$('.isFocus').removeClass('isFocus');
+	//});
+
+	$(document).on('dragstart', presentCanvas, function(ev){
+		console.log(ev.target);
 		console.log('section_DS');
 		$('<div>')
 			.addClass('sl-block-selection')
@@ -294,6 +345,69 @@ $(document).ready(function() {
 		
 		
 	});
+	
+	$(document).on('dblclick','.sl-block', function(){
+	    var content = $(this).children(".sl-block-content");
+	    var contentP = content.children(" p");	    
+	   
+	    //deletEditForm($(this)); //이건 빼도 되겠지만 나중에 deletEditForm div로 한정해야할 듯	
+	    $(contentP).html('');
+	    contentP.attr('content editable','true').focus();	    
+	    content.keypress(function(event){
+	    	if(event.which == 13){
+	    		event.preventDefault();
+	    		var addP = $("<p>").attr("content editable", 'true');
+	    		$(addP.appendTo(content)).focus();    		
+	    		
+	    	}// 엔터일 때 괄호 끝	
+	    });//keypress 괄호
+	    
+	    content.keydown(function(event){
+	    	if(event.which == 8){
+	    		var textLength = $(event.target).text().length;
+	    		if(textLength == 0){
+	    			event.preventDefault();
+	    			var prev = $($(event.target).prev());
+	    			$(event.target).remove();
+	    			$(prev).focus();
+	    			
+//	    			alert($(this).html());
+//	    			//alert($($(this).children("p:last")).text());
+	    		} // 길이 체크
+	    	}// 백스페이스 입력
+	    }); // 백스페이스 keydown
+	    
+	    //append($("<p>"));
+
+	     
+//	    $(this).children(".sl-block-content").children(" p").attr({'content editable':'true'}).focus();
+
+	    
+	    //		
+//		$(blockContent).keypress(function(event){
+//			if(event.which == 13){
+//				event.preventDefault();
+//				alert(this);
+//				$(this).last().after("<p>")
+//			}
+//		});
+		//$(this).attr({'content editable':'true'}).focus();
+
+	
+//		$("p").empty();
+//		$("p").attr({
+//			'content editable' : 'true'
+//		}).focus()
+		
+//		$("p").keypress(function(event){
+//			if(event.which == 13){
+//				event.preventDefault();
+//				$("p").clone().appendTo(slBlock).focus();
+//			}
+//		});//키프레스 이벤트
+	});// 텍스트 박스 더블 클릭 마지막 괄호
+	
+	
 	
 	
 	$('.anchor').on('mousedown', function(event){
