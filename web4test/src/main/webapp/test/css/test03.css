@@ -529,11 +529,11 @@ div.sl-block-content.isFocus {
 .i-eye:before {
    //content: "\e088";
   //content: "\0067"; //g
-  //content: "\2666"; // ´ÙÀÌ¾Æ
-  //content: "\1F440"; // ´«¾Ë
-  //content: "\f06e"; // ´«¾Ë
+  //content: "\2666"; // ï¿½ï¿½ï¿½Ì¾ï¿½
+  //content: "\1F440"; // ï¿½ï¿½ï¿½ï¿½
+  //content: "\f06e"; // ï¿½ï¿½ï¿½ï¿½
 }
-/*///////////////02¿¡¼­ Ãß°¡ÇÏ±â ½ÃÀÛ*/
+/*///////////////02ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .sl-block-grid {
   position: absolute;
   width: 100%;
@@ -567,4 +567,15 @@ div.sl-block-content.isFocus {
   height: 700px;
   font-weight: inherit;
   padding: 0;
+}
+section {
+  /*background-color: #c2fcad ;*/
+  
+  border: red solid 1px;
+  
+  
+	
+}
+.sl-block {
+  border: red solid 1px;
 }

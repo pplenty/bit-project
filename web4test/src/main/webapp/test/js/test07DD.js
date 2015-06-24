@@ -125,6 +125,7 @@ $(document).ready(function() {
 		
 		});// 텍스트박스 생성 마지막 괄호
 
+	
 	 // drag select
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
 	
@@ -137,89 +138,219 @@ $(document).ready(function() {
 
 
 
-	$(document).on('click', presentCanvas, function(){
-		console.log('section.click');
-		deletEditForm($('.isFocus'));
-		$('.isFocus').removeClass('isFocus');
-	});
+//	$(document).on('click', presentCanvas, function(){
+//		console.log('section.click');
+//		deletEditForm($('.isFocus'));
+//		$('.isFocus').removeClass('isFocus');
+//	});
+//
+//	$(document).on('dragstart', presentCanvas, function(ev){
+//		console.log(ev.target);
+//		console.log('section_DS');
+//		$('<div>')
+//			.addClass('sl-block-selection')
+//			.addClass('editing-ui')
+//			.css({
+//				'position': 'absolute',
+//				'border': 'rgb(1, 199, 234) solid 2px',
+//				'background-color': 'rgb(1, 150, 200)',
+//				'opacity': .25,
+//				'z-index': 9999
+//			})
+//			.appendTo(presentSection);
+//	});
+//	$(document).on('drag', presentCanvas, function(ev, dd){
+//		$('div.sl-block-selection').css({
+//			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
+//			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
+//			height: Math.abs( ev.pageY - dd.startY ),
+//			width: Math.abs( ev.pageX - dd.startX )
+//		});
+//	});
+//	$(document).on('dragend', presentCanvas, function(ev, dd){
+//		$('div.sl-block-selection').remove();
+//	});
 
-	$(document).on('dragstart', presentCanvas, function(ev){
-		console.log(ev.target);
-		console.log('section_DS');
-		$('<div>')
-			.addClass('sl-block-selection')
-			.addClass('editing-ui')
-			.css({
-				'position': 'absolute',
-				'border': 'rgb(1, 199, 234) solid 2px',
-				'background-color': 'rgb(1, 150, 200)',
-				'opacity': .25,
-				'z-index': 9999
-			})
-			.appendTo(presentSection);
-	});
-	$(document).on('drag', presentCanvas, function(ev, dd){
-		$('div.sl-block-selection').css({
-			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
-			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
-			height: Math.abs( ev.pageY - dd.startY ),
-			width: Math.abs( ev.pageX - dd.startX )
-		});
-	});
-	$(document).on('dragend', presentCanvas, function(ev, dd){
-		$('div.sl-block-selection').remove();
-	});
 
-
-	// 컨텐츠박스 드래그 구현
+	$(presentCanvas).on('click', function(ev){
+		if (ev.target == this) {
+			console.log('section.click');
+			deletEditForm($('.isFocus'));
+			$('.isFocus').removeClass('isFocus');
+		}
+	});
 
 	var blockOffsetX; // event offsetx from block
 	var blockOffsetY;
+	var dragStartTarget;
+	$(presentCanvas).on('dragstart', function(ev){
+		dragStartTarget = ev.target;
+		// 바탕 드래그
+		if (ev.target == $(presentCanvas)[0]) {
+			console.log('section_DS');
+			$('<div>')
+				.addClass('sl-block-selection')
+				.addClass('editing-ui')
+				.css({
+					'position': 'absolute',
+					'border': 'rgb(1, 199, 234) solid 2px',
+					'background-color': 'rgb(1, 150, 200)',
+					'opacity': .25,
+					'z-index': 9999
+				}).appendTo(presentSection);
+			
+			
+			$('.sl-block')
+				.drop("start",function(){
+					$( this ).addClass("active");
+				})
+				.drop(function( ev, dd ){
+					$( this ).toggleClass("dropped");
+				})
+				.drop("end",function(){
+					$( this ).removeClass("active");
+				});
+			$.drop({ multi: true });	
+		}
+		
+		// 콘텐츠 드래그
+		if (ev.target == $('.sl-block')[0]) {
+			console.log('block_DS');
+			blockOffsetX = ev.offsetX;
+			blockOffsetY = ev.offsetY;
+			addEditForm($(ev.target));
+			$(ev.target).addClass('isFocus');
+			ev.stopPropagation();
+		}
+	});
+	$(presentCanvas).on('drag', function(ev, dd){
 
-	$(document).on('click', '.sl-block', function(ev){
-		console.log('block.click');
+//		console.log(ev.target);
+		if (dragStartTarget == $(presentCanvas)[0]) {
+			$('div.sl-block-selection').css({
+				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
+				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
+				height: Math.abs( ev.pageY - dd.startY ),
+				width: Math.abs( ev.pageX - dd.startX )
+			});
+		}
+		
+		if (dragStartTarget == $('.sl-block')[0]) {
+			$('.sl-block').css({
+				top: ev.pageY - blockOffsetY - presentSection.offset().top,
+				left: ev.pageX - blockOffsetX - presentSection.offset().left
+			});
+			ev.stopPropagation();
+		}
+	});
+	$(presentCanvas).on('dragend', function(ev, dd){
+		$('div.sl-block-selection').remove();
+	});
 
+	// 컨텐츠박스 드래그 구현
+
+//	var blockOffsetX; // event offsetx from block
+//	var blockOffsetY;
+	
+
+/*	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
 		// color input 도형 색 설정
 		var rgbHex = rgb2hex($(this).css('background-color'));
 		$('#colorinput').val(rgbHex);
 
-		blockOffsetX = ev.offsetX;
-		blockOffsetY = ev.offsetY;
-		addEditForm($(this));
-		$(this).addClass('isFocus');
-		ev.stopPropagation();
-	});
-	$(document).on('dragstart', '.sl-block', function(ev){
-		console.log('block_DS');
-		blockOffsetX = ev.offsetX;
-		blockOffsetY = ev.offsetY;
-		addEditForm($(this));
-		$(this).addClass('isFocus');
-		ev.stopPropagation();
-	});
+		blockOffsetX = event.offsetX;
+		blockOffsetY = event.offsetY;
+		
 
-	$(document).on('drag', '.sl-block', function(ev){
-		//$('.sl-block').drag('start', function(ev){
-		//	console.log(ev.pageX + ',' + ev.pageY);
-		$(this).css({
-			top: ev.pageY - blockOffsetY - presentSection.offset().top,
-			left: ev.pageX - blockOffsetX - presentSection.offset().left
+		console.log('mousedown');
+
+		addEditForm($(this));
+		$(this).addClass('isFocus');
+		event.stopPropagation();
+		document.body.style.cursor = "move";
+		
+		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
+//		$('.sl-block').not(targetIdSelector).removeClass('isFocus');
+//		deletEditForm($('.sl-block').not(targetIdSelector));
+//		deletEditForm($('.sl-block-content').not(targetIdSelector));
+		
+//		
+//		$('.sl-block' + targetIdSelector).addClass('isFocus');
+//		if($(this).children().length ==0){
+//			addEditForm($('.sl-block' + targetIdSelector));
+//		}
+		
+		
+		$(document).on('mousemove', function(event) {
+			$('.sl-block').css({
+				top: event.pageY - blockOffsetY - presentSection.offset().top,
+				left: event.pageX - blockOffsetX - presentSection.offset().left
+			});
+			event.stopPropagation();
+
 		});
-		ev.stopPropagation();
-	});
+		
+
+		$(this).on('mouseup', function(event) {
+//			event.stopPropagation();
+		    document.body.style.cursor = "auto";
+			event.stopPropagation();
+//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+			$(document).off('mousemove');
+			$(this).off('mouseup');
+
+			
+		});
+		
+		
+		
+	});*/
+
+//	$(document).on('click', '.sl-block', function(ev){
+//		console.log('block.click');
+//
+//		// color input 도형 색 설정
+//		var rgbHex = rgb2hex($(this).css('background-color'));
+//		$('#colorinput').val(rgbHex);
+//
+//		blockOffsetX = ev.offsetX;
+//		blockOffsetY = ev.offsetY;
+//		addEditForm($(this));
+//		$(this).addClass('isFocus');
+//		ev.stopPropagation();
+//	});
+//	$(document).on('dragstart', '.sl-block', function(ev){
+//		console.log('block_DS');
+//		blockOffsetX = ev.offsetX;
+//		blockOffsetY = ev.offsetY;
+//		addEditForm($(this));
+//		$(this).addClass('isFocus');
+//		ev.stopPropagation();
+//	});
+//
+//	$(document).on('drag', '.sl-block', function(ev){
+//		//$('.sl-block').drag('start', function(ev){
+//		//	console.log(ev.pageX + ',' + ev.pageY);
+//		$(this).css({
+//			top: ev.pageY - blockOffsetY - presentSection.offset().top,
+//			left: ev.pageX - blockOffsetX - presentSection.offset().left
+//		});
+//		ev.stopPropagation();
+//	});
 
 
 	//drop
-	$(document).on('dropstart', '.sl-block', function(){
-		$( this ).addClass("active");
-	});
-	$(document).on('drop', '.sl-block', function(){
-		$( this ).toggleClass("dropped");
-	});
-	$(document).on('dropend', '.sl-block', function(){
-		$( this ).removeClass("active");
-	});
-	$.drop({ multi: true });// multi select
+//	$(document).on('dropstart', '.sl-block', function(){
+//		console.log(this);
+//		$( this ).addClass("active");
+//	});
+//	$(document).on('drop', '.sl-block', function(){
+//		$( this ).toggleClass("dropped");
+//	});
+//	$(document).on('dropend', '.sl-block', function(){
+//		$( this ).removeClass("active");
+//	});
+//	$.drop({ multi: true });// multi select
 
 
 
@@ -295,57 +426,6 @@ $(document).ready(function() {
 //		});
 //	});
 	
-	// 콘텐츠 이벤트 등록
-	$('.canvas').on('mousedown', '.sl-block-content', function(event) {
-		// color input 도형 색 설정
-		var rgbHex = rgb2hex($(this).css('background-color'));
-		$('#colorinput').val(rgbHex);
-		
-		
-		var FocusTarget = event.target;
-	    var targetIdSelector = '[blockId=' + FocusTarget.getAttribute('blockId') + ']';
-//	    console.log($(targetIdSelector));
-	    console.log('src ->' + event.pageX+','+event.pageY);
-		document.body.style.cursor = "move";
-		
-		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
-//		$('.canvas').trigger('mousedown');
-		$('.sl-block-content').not(targetIdSelector).removeClass('isFocus');
-		deletEditForm($('.sl-block-content').not(targetIdSelector));
-//		deletEditForm($('.sl-block-content').not(targetIdSelector));
-		
-		
-		$('.sl-block-content' + targetIdSelector).addClass('isFocus');
-		if($(this).children().length ==0){
-			addEditForm($('.sl-block-content' + targetIdSelector));
-		}
-		
-		event.stopPropagation();
-		
-		$(document).on('mousemove', function(event) {
-			var top = event.pageY - 100;
-			var left = event.pageX - 70 - 100;
-			
-			$('.sl-block-content' + targetIdSelector).css({
-				'left': left + 'px',
-				'top': top + 'px'
-			});
-
-		});
-		
-
-		$(this).on('mouseup', function(event) {
-//			event.stopPropagation();
-		    document.body.style.cursor = "auto";
-//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
-			$(document).off('mousemove');
-			$(this).off('mouseup');
-			
-		});
-		
-		
-		
-	});
 	
 	$(document).on('dblclick','.sl-block', function(){
 	    var content = $(this).children(".sl-block-content");
