@@ -127,20 +127,21 @@ $(document).ready(function() {
 
 	 // drag select
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
+	
 
-	$(presentCanvas).click(function(){
+//	$(presentCanvas).click(function(){
+//		console.log('section.click');
+//		deletEditForm($('.isFocus'));
+//		$('.isFocus').removeClass('isFocus');
+//	});
+
+
+
+	$(document).on('click', presentCanvas, function(){
 		console.log('section.click');
 		deletEditForm($('.isFocus'));
 		$('.isFocus').removeClass('isFocus');
 	});
-
-
-
-	//$(document).on('click', presentCanvas, function(){
-	//	console.log('section.click');
-	//	deletEditForm($('.isFocus'));
-	//	$('.isFocus').removeClass('isFocus');
-	//});
 
 	$(document).on('dragstart', presentCanvas, function(ev){
 		console.log(ev.target);
