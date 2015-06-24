@@ -85,37 +85,14 @@ $(document).ready(function() {
 	});
 
 	 // drag select
-	//$('section.present')
-	//	.drag('start', function(ev, dd){
-	//	return $('<div class="selection" />')
-	//		.addClass('sl-block-selection')
-	//		.addClass('editing-ui')
-	//		.css({
-	//			'position': 'absolute',
-	//			'border' : 'rgb(1, 199, 234) solid 2px',
-	//			'background-color': 'rgb(1, 150, 200)',
-	//			'opacity': .25,
-	//			'z-index': 9999
-	//		})
-	//		.appendTo(presentSection);
-	//	}).drag(function( ev, dd ){
-	//		$( dd.proxy ).css({
-	//			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
-	//			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
-	//			height: Math.abs( ev.pageY - dd.startY ),
-	//			width: Math.abs( ev.pageX - dd.startX )
-	//		});
-	//	}).drag("end",function( ev, dd ){
-	//		$( dd.proxy ).remove();
-	//	});
-
-	$(document).on('click', 'section.present', function(){
+	var presentCanvas = '.projector';// 이벤트 등록 대상(바탕)
+	$(document).on('click', presentCanvas, function(){
 		console.log('section.click');
 		deletEditForm($('.isFocus'));
 		$('.isFocus').removeClass('isFocus');
 	});
 
-	$(document).on('dragstart', 'section.present', function(){
+	$(document).on('dragstart', presentCanvas, function(){
 		console.log('section_DS');
 		$('<div>')
 			.addClass('sl-block-selection')
@@ -129,7 +106,7 @@ $(document).ready(function() {
 			})
 			.appendTo(presentSection);
 	});
-	$(document).on('drag', 'section.present', function(ev, dd){
+	$(document).on('drag', presentCanvas, function(ev, dd){
 		$('div.sl-block-selection').css({
 			top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
 			left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
@@ -137,7 +114,7 @@ $(document).ready(function() {
 			width: Math.abs( ev.pageX - dd.startX )
 		});
 	});
-	$(document).on('dragend', 'section.present', function(ev, dd){
+	$(document).on('dragend', presentCanvas, function(ev, dd){
 		$('div.sl-block-selection').remove();
 	});
 
