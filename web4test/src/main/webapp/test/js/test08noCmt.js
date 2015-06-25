@@ -235,16 +235,19 @@ $(document).ready(function() {
 	var selectedDrop = false;
 	$(document).on('dropstart', '.sl-block', function(ev){
 		//console.log(ev.target);
+		console.log('dropstart');
 		if (dragStartTarget == $(presentCanvas)[0]) {
 			selectedDropStart = true;
 			addEditForm($(this));
 			$(this).addClass('isFocus');
 			$(this).addClass('selectActive');
 		}
+		ev.stopPropagation();
 
 	});
 	$(document).on('drop', '.sl-block', function(ev){
-		console.log($(ev.target));
+//		console.log($(ev.target));
+		console.log('drop');
 		//addEditForm($(this));
 		//$(this).addClass('isFocus');
 		if (dragStartTarget == $(presentCanvas)[0]) {
@@ -259,12 +262,14 @@ $(document).ready(function() {
 				$(this).removeClass('isFocus');
 				$(this).removeClass('selectActive');
 			}
+			ev.stopPropagation();
 		}
 
 		$(this).removeClass('selectActive');
 	});
 	$(document).on('dropend', '.sl-block', function(ev) {
 		//console.log(ev.target);
+		console.log('dropend');
 		if (dragStartTarget == $(presentCanvas)[0]) {
 			if (selectedDrop) {
 
@@ -276,6 +281,7 @@ $(document).ready(function() {
 			selectedDropStart = false;
 			selectedDrop = false;
 		}
+		ev.stopPropagation();
 	});
 	$.drop({ multi: true });// multi select
 
@@ -360,7 +366,7 @@ $(document).ready(function() {
 	   
 	    //deletEditForm($(this)); //이건 빼도 되겠지만 나중에 deletEditForm div로 한정해야할 듯	
 	    $(contentP).html('');
-	    contentP.attr('content editable','true').focus();	    
+	    contentP.attr('contenteditable','true').focus();
 	    content.keypress(function(event){
 	    	if(event.which == 13){
 	    		event.preventDefault();
