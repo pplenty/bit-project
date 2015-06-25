@@ -12,8 +12,9 @@
 <script src="js/Edit.js"></script>
 </head>
 <body>
-  <div class='page-wrapper'>
-    <div class='preview-controls'>
+	<!-- <div class='page-wrapper'>
+	 -->
+	<div class='preview-controls'>
 		<button
 			class="button preview-controls-button preview-controls-exit grey l"
 			data-tooltip="Resume editing" data-tooltip-direction="b"
@@ -28,7 +29,7 @@
 		</a>
 	</div>
 
-	  <div class="sidebar">
+	<div class="sidebar">
 
 		<div class="primary">
 			<button class="button preview" data-tooltip-delay="500"
@@ -48,7 +49,7 @@
 			</button>
 		</div>
 
-			<div class="secondary">
+		<div class="secondary">
 			<button class="button settings" data-tooltip="Settings"
 				data-tooltip-alignment="r">
 				<span class="icon i-cog"><i class="fa fa-cog fa-2x fa-spin"></i></span><span
@@ -100,94 +101,203 @@
 			</button>
 
 		</div>
-				<!-- <input id="colorinput" type="color"> -->
-<div class="global-header">
+		<div class="global-header">
 			<div class="wrapper Set" data-tooltip="Set"
 				data-tooltip-alignment="r">
 				<span class="icon i-Set"> <i class="fa fa-bars fa-2x"></i></span>
 			</div>
 		</div>
-		
-		<!--  -->
-			<div class="scroll-shadow-top"
-				style="opacity: 0; top: 189.14225769043px;"></div>
-			<div class="scroll-shadow-bottom" style="opacity: 0; bottom: 53px;"></div>
-	  <div class="sidebar-panel"></div>
-	  <article class="projector">
-		  <div class="reveal-viewport">
-		  <!--<div class="reveal-viewport theme-font-montserrat theme-color-beige-brown">-->
-			  <div class="reveal zoom" role="application" data-transition-speed="default" data-background-transition="slide">
-				  <div class="slides" style="width: 960px; height: 700px;">
-					  <section class="overflowing present has-light-background" data-background-color="#d0e0e3" data-id="0279c11631561889345ddf52a9453fd5" style="display: block;" data-index-h="0" style="display: block;">
-					     <div class="sl-block isFocus dropped" data-block-type="shape" data-block-blockid="100000" style="min-width: 4px; min-height: 4px; width: 300px; height: 300px; left: 236.999984741211px; top: 75.2222137451172px; z-index: 10; background-color: rgb(186, 199, 234);"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 248 248"><rect width="248" height="248" fill="#000000" class="shape-element"></rect></svg><div class="sl-block-transform editing-ui visible"><div class="anchor" data-direction="n"></div><div class="anchor" data-direction="e"></div><div class="anchor" data-direction="s"></div><div class="anchor" data-direction="w"></div><div class="anchor" data-direction="nw"></div><div class="anchor" data-direction="ne"></div><div class="anchor" data-direction="se"></div><div class="anchor" data-direction="sw"></div></div></div>
-					  </section>
-				  </div>
-				  <div class="progress" style="display: none;"><span></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
-				  Text
-			  </div><div class="backgrounds"><div class="slide-background overflowing has-light-background present" data-background-hash="0#d0e0e3nullnullnull" data-loaded="true" style="display: block; background-color: rgb(208, 224, 227);"></div></div><div class="sl-block-grid"><canvas class="sl-block-grid-inner" width="960" height="700" style="left: 50.5px; top: 193px;"></canvas></div></div>
-		  </div>
-
-		  <div class="icon add-horizontal-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="l" data-tooltip-delay="1500">
-			  <span class="icon i-plus"></span>
-		  </div>
-		  <div class="icon add-vertical-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="t" data-tooltip-delay="1500">
-			  <span class="icon i-plus"></span>
-		  </div>
-
-
-	  </article>
-	  </div>
-
-
-
 	</div>
 
-  <div class="toolbars visible">
-	  <div class="toolbars-inner">
-		  <div class="toolbars-scroller" style="-webkit-transform: translateX(0px); transform: translateX(0px);">
-			  <div class="toolbar visible" data-type="add" style="left: 0px;">
-				  <div class="toolbar-list">
-					  <div class="toolbar-add-block-option" data-block-type="text">
-					   	<span class="toolbar-add-block-option-icon icon i-type"></span>
-						<span class="toolbar-add-block-option-label">Text</span>
-					  </div>
+	<!--onmouseover=open() onmouseout=close()  -->
+	<div class="nav-item">
+		<button class="button profile" data-tooltip="profile"
+			data-tooltip-alignment="r">
+			<span class="icon profile">Profile<i
+				class="fa fa-cloud-download fa-2x"></i></span>
+		</button>
+		<button class="button new deck" data-tooltip="new deck"
+			data-tooltip-alignment="r">
+			<span class="icon i-new-deck">New deck<i
+				class="fa fa-picture-o fa-2x"></i></span>
+		</button>
+		<button class="button setting" data-tooltip="setting"
+			data-tooltip-alignment="r">
+			<span class="icon i-share">Settings<i
+				class="fa fa-share-alt fa-2x"></i></span>
+		</button>
+		<button class="button upgrade" data-tooltip="upgrade"
+			data-tooltip-alignment="r">
+			<span class="icon i-upgrade">Upgrade<i
+				class="fa fa-question-circle fa-2x"></i></span>
+		</button>
+		<button class="button more-options">
+			<span class="icon i-sign-out">Sign out<i
+				class="fa fa-spinner fa-spin fa-2x"></i></span>
+		</button>
+	</div>
 
-					  <div class="toolbar-add-block-option" data-block-type="image">
-						<span class="toolbar-add-block-option-icon icon i-picture"></span>
-						<span class="toolbar-add-block-option-label">Image</span>
-					  </div>
 
-					  <div class="toolbar-add-block-option" data-block-type="shape">
-						  <span class="toolbar-add-block-option-icon icon i-shapes"></span>
-						  <span class="toolbar-add-block-option-label">Shape</span>
-					  </div>
 
-					  <div class="toolbar-add-block-option" data-block-type="iframe">
-						  <span class="toolbar-add-block-option-icon icon i-browser"></span>
-						  <span class="toolbar-add-block-option-label">Iframe</span>
-					  </div>
 
-					  <div class="toolbar-add-block-option" data-block-type="code">
-						  <span class="toolbar-add-block-option-icon icon i-file-css"></span>
-						  <span class="toolbar-add-block-option-label">Code</span>
-					  </div>
 
-					  <div class="toolbar-add-block-option" data-block-type="math">
-						  <span class="toolbar-add-block-option-icon icon i-divide"></span>
-						  <span class="toolbar-add-block-option-label">Math</span>
-					  </div>
-				  </div>
-			  </div>
-		  </div>
-	  </div>
-	  <div class="toolbars-footer">
-		  <a class="promotion-link upgrade-button" data-tooltip="You're using Slides Free.<br>Click to learn more about our Pro features." href="/pricing" target="_blank">Free</a>
-		  <div class="option editor-settings" data-tooltip="Editor settings">
-			  <span class="icon i-equalizer"></span>
-		  </div>
-	  </div>
-  </div>
+	<div class="sidebar-panel"></div>
+	<article class="projector">
+		<div class="reveal-viewport">
+			<div
+				class="reveal-viewport theme-font-montserrat theme-color-beige-brown">
+				<div class="reveal zoom" role="application"
+					data-transition-speed="default" data-background-transition="slide">
+					<div class="slides"">
+						<section class="overflowing present has-light-background"
+							data-background-color="#d0e0e3"
+							data-id="0279c11631561889345ddf52a9453fd5"
+							style="display: block;" data-index-h="0"></section>
+					</div>
+					<div class="progress" style="display: none;">
+						<span></span>
+					</div>
+					<aside class="controls" style="display: block;">
+						<div class="navigate-left"></div>
+						<div class="navigate-right"></div>
+						<div class="navigate-up"></div>
+						<div class="navigate-down"></div>
+					</aside>
+					<div class="slide-number"></div>
+					<div class="pause-overlay"></div>
+					<div id="aria-status-div" aria-live="polite" aria-atomic="true"
+						style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">asdfsadf
 
-  
+						Text</div>
+					<div class="backgrounds">
+						<div
+							class="slide-background overflowing has-light-background present"
+							data-background-hash="0#d0e0e3nullnullnull" data-loaded="true"
+							style="display: block; background-color: rgb(208, 224, 227);"></div>
+					</div>
+					<div class="sl-block-grid">
+						<canvas class="sl-block-grid-inner" width="960" height="700"
+							style="left: 50.5px; top: 193px;"></canvas>
+					</div>
+				</div>
+			</div>
+
+			<div class="icon add-horizontal-slide show"
+				data-tooltip="Add new slide<br>(Hold shift for blank)"
+				data-tooltip-alignment="l" data-tooltip-delay="1500">
+				<span class="icon i-plus"></span>
+			</div>
+			<div class="icon add-vertical-slide show"
+				data-tooltip="Add new slide<br>(Hold shift for blank)"
+				data-tooltip-alignment="t" data-tooltip-delay="1500">
+				<span class="icon i-plus"></span>
+			</div>
+		</div>
+
+
+	</article>
+
+
+	<div class="toolbars visible">
+		<div class="toolbars-inner">
+			<div class="toolbars-scroller"
+				style="-webkit-transform: translateX(0px); transform: translateX(0px);">
+				<div class="toolbar visible" data-type="add" style="left: 0px;">
+					<div class="toolbar-list">
+						<div class="toolbar-add-block-option" data-block-type="text">
+							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
+								class="toolbar-add-block-option-label"><h1>T</h1>
+								<br>Text</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="image">
+							<span class="toolbar-add-block-option-icon icon i-picture"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-picture-o fa-2x"></i><br>
+							<br>Image</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="shape">
+							<span class="toolbar-add-block-option-icon icon i-shapes"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-cubes fa-2x"></i><br>
+							<br>Shape</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="iframe">
+							<span class="toolbar-add-block-option-icon icon i-browser"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-desktop fa-2x"></i><br>
+							<br>Iframe</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="code">
+							<span class="toolbar-add-block-option-icon icon i-file-css"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-code fa-2x"></i><br>
+							<br>Code</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="math">
+							<span class="toolbar-add-block-option-icon icon i-divide"></span>
+							<span class="toolbar-add-block-option-label"><h1>+</h1>
+								<br>Math</span>
+						</div>
+					</div>
+					<div class="text-list">
+						<div class="toolbar-add-block-option" data-block-type="text">
+							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
+								class="toolbar-add-block-option-label"><h1>T</h1>
+								<br>Text</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="image">
+							<span class="toolbar-add-block-option-icon icon i-picture"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-picture-o fa-2x"></i><br>
+							<br>Image</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="shape">
+							<span class="toolbar-add-block-option-icon icon i-shapes"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-cubes fa-2x"></i><br>
+							<br>Shape</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="iframe">
+							<span class="toolbar-add-block-option-icon icon i-browser"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-desktop fa-2x"></i><br>
+							<br>Iframe</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="code">
+							<span class="toolbar-add-block-option-icon icon i-file-css"></span>
+							<span class="toolbar-add-block-option-label"><i
+								class="fa fa-code fa-2x"></i><br>
+							<br>Code</span>
+						</div>
+
+						<div class="toolbar-add-block-option" data-block-type="math">
+							<span class="toolbar-add-block-option-icon icon i-divide"></span>
+							<span class="toolbar-add-block-option-label"><h1>+</h1>
+								<br>Math</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="toolbars-footer">
+			<a class="promotion-link upgrade-button"
+				data-tooltip="You're using Slides Free.<br>Click to learn more about our Pro features."
+				href="/pricing" target="_blank">Free</a>
+			<div class="option editor-settings" data-tooltip="Editor settings">
+				<span class="icon i-equalizer"></span>
+			</div>
+		</div>
+	</div>
+	<!-- 해 봅 시 자 -->
+	<div> <a>가자 </a></div>
 </body>
 </html>
