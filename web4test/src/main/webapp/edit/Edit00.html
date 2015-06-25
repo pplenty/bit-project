@@ -1,103 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-	<title>web04test</title>
-	<script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<title>web04test</title>
+<script src="http://code.jquery.com/jquery-1.7.js"
+	type="text/javascript"></script>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="css/Edit00.css">
-	<script src="js/Edit00.js"></script>
+<link rel="stylesheet" href="css/Edit.css">
+<script src="js/Edit.js"></script>
 </head>
 <body>
   <div class='page-wrapper'>
     <div class='preview-controls'>
-      <button class="button preview-controls-button preview-controls-exit grey l" data-tooltip="Resume editing" data-tooltip-direction="b" data-tooltip-delay="1000">
-          <span class="icon i-pen-alt2"></span>
-      </button>
-    </div>
+		<button
+			class="button preview-controls-button preview-controls-exit grey l"
+			data-tooltip="Resume editing" data-tooltip-direction="b"
+			data-tooltip-delay="1000">
+			<span class="icon i-pen-alt2"></span>
+		</button>
+		<a
+			class="button preview-controls-button preview-controls-external grey l"
+			herf="http://www.naver.com" target="_blank"
+			data-tooltip="Present this deck" data-tooltip-direction="b"> <span
+			class="icon i-new-window"></span>
+		</a>
+	</div>
 
 	  <div class="sidebar">
 
-			<div class="primary">
-				<button class="button preview" data-tooltip-delay="500"
-					data-tooltip-alignment="r" data-tooltip="Preview (CTRL + F)">
-					<span class="icon i-eye"><i class="fa fa-eye fa-2x"></i></span>
-				</button>
-				<button class="button undo" data-tooltip-delay="500"
-					data-tooltip-alignment="r" data-tooltip="Undo (CTRL + Z)">
-					<span class="icon i-undo">실행취소</span>
-				</button>
-				<button class="button save disabled is-saved"
-					data-tooltip-delay="500" data-tooltip-alignment="r"
-					data-tooltip="Latest changes are saved">
-					<span class="icon download i-disk">저장</span>
-					<span class="icon check i-checkmark"></span>
-				</button>
+		<div class="primary">
+			<button class="button preview" data-tooltip-delay="500"
+				data-tooltip-alignment="r" data-tooltip="Preview (CTRL + F)"
+				style="background: #40cb90;">
+				<span class="icon i-eye"><i class="fa fa-eye fa-2x"></i></span>
+			</button>
+			<button class="button undo" data-tooltip-delay="500"
+				data-tooltip-alignment="r" data-tooltip="Undo (CTRL + Z)">
+				<span class="icon i-undo"><i class="fa fa-undo fa-2x"></i></span>
+			</button>
+			<button class="button save disabled is-saved"
+				data-tooltip-delay="500" data-tooltip-alignment="r"
+				data-tooltip="Undo (CTRL + S)">
+				<span class="icon download i-disk"><i
+					class="fa fa-floppy-o fa-2x"></i></span>
+			</button>
+		</div>
+
+			<div class="secondary">
+			<button class="button settings" data-tooltip="Settings"
+				data-tooltip-alignment="r">
+				<span class="icon i-cog"><i class="fa fa-cog fa-2x fa-spin"></i></span><span
+					class="close icon i-x"></span>
+			</button>
+			<button class="button style" data-tooltip="Style"
+				data-tooltip-alignment="r">
+				<span class="icon i-brush"><i class="fa fa-paint-brush fa-2x"></i></span><span
+					class="close icon i-x"></span>
+			</button>
+			<button class="button arrange no-arrow" data-tooltip="Arrange slides"
+				data-tooltip-alignment="r">
+				<span class="icon i-layers"><i class="fa fa-th-list fa-2x"></i></span><span
+					class="close icon i-x"></span>
+			</button>
+			<button class="button revisions" data-tooltip="Revision history"
+				data-tooltip-alignment="r">
+				<span class="icon i-clock"><i class="fa fa-clock-o fa-2x"></i></span><span
+					class="close icon i-x"></span>
+			</button>
+			<button class="button import" data-tooltip="Import"
+				data-tooltip-alignment="r">
+				<span class="icon i-cloud-upload"><i
+					class="fa fa-cloud-upload fa-2x"></i></span><span class="close icon i-x"></span>
+			</button>
+			<button class="button export" data-tooltip="Export"
+				data-tooltip-alignment="r">
+				<span class="icon i-cloud-download"><i
+					class="fa fa-cloud-download fa-2x"></i></span><span class="close icon i-x"></span>
+			</button>
+			<button class="button medialibrary" data-tooltip="Media library"
+				data-tooltip-alignment="r">
+				<span class="icon i-photo-library"><i
+					class="fa fa-picture-o fa-2x"></i></span>
+			</button>
+			<button class="button share" data-tooltip="Share"
+				data-tooltip-alignment="r">
+				<span class="icon i-share"><i class="fa fa-share-alt fa-2x"></i></span><span
+					class="close icon i-x"></span>
+			</button>
+			<button class="button QnA" data-tooltip="QnA"
+				data-tooltip-alignment="r">
+				<span class="icon i-QnA"><i class="fa fa-question fa-2x"></i></span>
+			</button>
+			<button class="button more-options">
+				<span class="more-options-dot"><i
+					class="fa fa-spinner fa-spin"></i></span><span class="more-options-dot"></span><span
+					class="more-options-dot"></span>
+			</button>
+
+		</div>
+				<!-- <input id="colorinput" type="color"> -->
+<div class="global-header">
+			<div class="wrapper Set" data-tooltip="Set"
+				data-tooltip-alignment="r">
+				<span class="icon i-Set"> <i class="fa fa-bars fa-2x"></i></span>
 			</div>
-
-			<div class="secondary" style="max-height: 915px;">
-				<button class="button settings" data-tooltip="Settings"
-					data-tooltip-alignment="r">
-					<span class="icon i-cog">설정</span><span class="close icon i-x"></span>
-				</button>
-				<button class="button style" data-tooltip="Style"
-					data-tooltip-alignment="r">
-					<span class="icon i-brush">스타일</span><span class="close icon i-x"></span>
-				</button>
-				<button class="button arrange no-arrow"
-					data-tooltip="Arrange slides" data-tooltip-alignment="r">
-					<span class="icon i-layers">슬라이드</span><span class="close icon i-x"></span>
-				</button>
-				<button class="button revisions" data-tooltip="Revision history"
-					data-tooltip-alignment="r">
-					<span class="icon i-clock">리비전</span><span class="close icon i-x"></span>
-				</button>
-				<button class="button import" data-tooltip="Import"
-					data-tooltip-alignment="r">
-					<span class="icon i-cloud-upload">임포트</span><span
-						class="close icon i-x"></span>
-				</button>
-				<button class="button export" data-tooltip="Export"
-					data-tooltip-alignment="r">
-					<span class="icon i-cloud-download">내보내기</span><span
-						class="close icon i-x"></span>
-				</button>
-				<button class="button medialibrary" data-tooltip="Media library"
-					data-tooltip-alignment="r">
-					<span class="icon i-photo-library">미디어</span>
-				</button>
-				<button class="button share" data-tooltip="Share"
-					data-tooltip-alignment="r">
-					<span class="icon i-share">공유</span><span class="close icon i-x"></span>
-				</button>
-				<a class="button support short" data-tooltip="Help &amp; feedback"
-					data-tooltip-alignment="r"
-					href="http://QNAURL" target="_blank"><span
-					class="icon i-question-mark">QnA</span></a>
-
-				<button class="button more-options">
-					<span class="more-options-dot">option</span><span
-						class="more-options-dot"></span><span class="more-options-dot"></span>
-				</button>
-				
-				<input id="colorinput" type="color">
-				
-			</div>
-			
-<!-- 			<div class="toolbar visible">
-			도형 편집 제어도구
-			  <div class="toolbar-list">
-			  </div>
-			
-			</div> -->
-
+		</div>
+		
+		<!--  -->
 			<div class="scroll-shadow-top"
 				style="opacity: 0; top: 189.14225769043px;"></div>
 			<div class="scroll-shadow-bottom" style="opacity: 0; bottom: 53px;"></div>
-
-	  </div>
-
 	  <div class="sidebar-panel"></div>
 	  <article class="projector">
 		  <div class="reveal-viewport">
@@ -105,10 +119,10 @@
 			  <div class="reveal zoom" role="application" data-transition-speed="default" data-background-transition="slide">
 				  <div class="slides" style="width: 960px; height: 700px;">
 					  <section class="overflowing present has-light-background" data-background-color="#d0e0e3" data-id="0279c11631561889345ddf52a9453fd5" style="display: block;" data-index-h="0" style="display: block;">
+					     <div class="sl-block isFocus dropped" data-block-type="shape" data-block-blockid="100000" style="min-width: 4px; min-height: 4px; width: 300px; height: 300px; left: 236.999984741211px; top: 75.2222137451172px; z-index: 10; background-color: rgb(186, 199, 234);"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 248 248"><rect width="248" height="248" fill="#000000" class="shape-element"></rect></svg><div class="sl-block-transform editing-ui visible"><div class="anchor" data-direction="n"></div><div class="anchor" data-direction="e"></div><div class="anchor" data-direction="s"></div><div class="anchor" data-direction="w"></div><div class="anchor" data-direction="nw"></div><div class="anchor" data-direction="ne"></div><div class="anchor" data-direction="se"></div><div class="anchor" data-direction="sw"></div></div></div>
 					  </section>
 				  </div>
-				  <div class="progress" style="display: none;"><span></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">asdfsadf
-
+				  <div class="progress" style="display: none;"><span></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">
 				  Text
 			  </div><div class="backgrounds"><div class="slide-background overflowing has-light-background present" data-background-hash="0#d0e0e3nullnullnull" data-loaded="true" style="display: block; background-color: rgb(208, 224, 227);"></div></div><div class="sl-block-grid"><canvas class="sl-block-grid-inner" width="960" height="700" style="left: 50.5px; top: 193px;"></canvas></div></div>
 		  </div>
@@ -122,6 +136,9 @@
 
 
 	  </article>
+	  </div>
+
+
 
 	</div>
 

@@ -9,31 +9,31 @@
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/Edit.css">
-<script src="js/Edit00.js"></script>
+<script src="js/Edit.js"></script>
 </head>
 <body>
-	<!-- <div class='page-wrapper'>
-	 -->
-	<div class='preview-controls'>
+  <div class='page-wrapper'>
+    <div class='preview-controls'>
 		<button
 			class="button preview-controls-button preview-controls-exit grey l"
 			data-tooltip="Resume editing" data-tooltip-direction="b"
-			data-tooltip-delay="1000" >
+			data-tooltip-delay="1000">
 			<span class="icon i-pen-alt2"></span>
 		</button>
 		<a
 			class="button preview-controls-button preview-controls-external grey l"
-			herf="#" target="_blank" data-tooltip="Present this deck"
-			data-tooltip-direction="b"  > <span class="icon i-new-window"></span>
+			herf="http://www.naver.com" target="_blank"
+			data-tooltip="Present this deck" data-tooltip-direction="b"> <span
+			class="icon i-new-window"></span>
 		</a>
 	</div>
 
-	<div class="sidebar">
+	  <div class="sidebar">
 
-		<div class="primary">
+			<div class="primary">
 			<button class="button preview" data-tooltip-delay="500"
 				data-tooltip-alignment="r" data-tooltip="Preview (CTRL + F)"
-				style = "background : #40cb90;">
+				style="background: #40cb90;">
 				<span class="icon i-eye"><i class="fa fa-eye fa-2x"></i></span>
 			</button>
 			<button class="button undo" data-tooltip-delay="500"
@@ -48,172 +48,150 @@
 			</button>
 		</div>
 
-		<div class="secondary">
+			<div class="secondary">
 			<button class="button settings" data-tooltip="Settings"
 				data-tooltip-alignment="r">
-				<span class="icon i-cog"><i class="fa fa-cog fa-2x fa-spin"></i></span><span class="close icon i-x"></span>
+				<span class="icon i-cog"><i class="fa fa-cog fa-2x fa-spin"></i></span><span
+					class="close icon i-x"></span>
 			</button>
 			<button class="button style" data-tooltip="Style"
 				data-tooltip-alignment="r">
-				<span class="icon i-brush"><i class="fa fa-paint-brush fa-2x"></i></span><span class="close icon i-x"></span>
+				<span class="icon i-brush"><i class="fa fa-paint-brush fa-2x"></i></span><span
+					class="close icon i-x"></span>
 			</button>
 			<button class="button arrange no-arrow" data-tooltip="Arrange slides"
 				data-tooltip-alignment="r">
-				<span class="icon i-layers"><i class="fa fa-th-list fa-2x"></i></span><span class="close icon i-x"></span>
+				<span class="icon i-layers"><i class="fa fa-th-list fa-2x"></i></span><span
+					class="close icon i-x"></span>
 			</button>
 			<button class="button revisions" data-tooltip="Revision history"
 				data-tooltip-alignment="r">
-				<span class="icon i-clock"><i class="fa fa-clock-o fa-2x"></i></span><span class="close icon i-x"></span>
+				<span class="icon i-clock"><i class="fa fa-clock-o fa-2x"></i></span><span
+					class="close icon i-x"></span>
 			</button>
 			<button class="button import" data-tooltip="Import"
 				data-tooltip-alignment="r">
-				<span class="icon i-cloud-upload"><i class="fa fa-cloud-upload fa-2x"></i></span><span
-					class="close icon i-x"></span>
+				<span class="icon i-cloud-upload"><i
+					class="fa fa-cloud-upload fa-2x"></i></span><span class="close icon i-x"></span>
 			</button>
 			<button class="button export" data-tooltip="Export"
 				data-tooltip-alignment="r">
-				<span class="icon i-cloud-download"><i class="fa fa-cloud-download fa-2x"></i></span><span
-					class="close icon i-x"></span>
+				<span class="icon i-cloud-download"><i
+					class="fa fa-cloud-download fa-2x"></i></span><span class="close icon i-x"></span>
 			</button>
 			<button class="button medialibrary" data-tooltip="Media library"
 				data-tooltip-alignment="r">
-				<span class="icon i-photo-library"><i class="fa fa-picture-o fa-2x"></i></span>
+				<span class="icon i-photo-library"><i
+					class="fa fa-picture-o fa-2x"></i></span>
 			</button>
 			<button class="button share" data-tooltip="Share"
 				data-tooltip-alignment="r">
-				<span class="icon i-share"><i class="fa fa-share-alt fa-2x"></i></span><span class="close icon i-x"></span>
+				<span class="icon i-share"><i class="fa fa-share-alt fa-2x"></i></span><span
+					class="close icon i-x"></span>
 			</button>
-			<button class="button QnA" data-tooltip="QnA" data-tooltip-alignment="r">
-				<span class="icon i-QnA"><i class="fa fa-question-circle fa-2x"></i></span>
+			<button class="button QnA" data-tooltip="QnA"
+				data-tooltip-alignment="r">
+				<span class="icon i-QnA"><i class="fa fa-question fa-2x"></i></span>
 			</button>
 			<button class="button more-options">
-				<span class="more-options-dot"><i class="fa fa-spinner fa-spin"></i></span><span
-					class="more-options-dot"></span><span class="more-options-dot"></span>
+				<span class="more-options-dot"><i
+					class="fa fa-spinner fa-spin"></i></span><span class="more-options-dot"></span><span
+					class="more-options-dot"></span>
 			</button>
 
 		</div>
-		<header class="global-header">
-			<div class="wrapper">
-				<span class="nav-item-burger">
-					<i class="fa fa-bars fa-2x"></i>
-				</span>
-			</div>
-		</header>
-		<!--onmouseover=open() onmouseout=close()  -->
-	<div class="global-div" id=global-div > 
-			
-	</div>
-	</div>
-	
-
-
-
-
-		<div class="sidebar-panel"></div>
-		<article class="projector">
-			<div class="reveal-viewport">
-				<div class="reveal-viewport theme-font-montserrat theme-color-beige-brown">
-				<div class="reveal zoom" role="application"
-					data-transition-speed="default" data-background-transition="slide">
-					<div class="slides" style="width: 960px; height: 700px;">
-						<section class="overflowing present has-light-background"
-							data-background-color="#d0e0e3"
-							data-id="0279c11631561889345ddf52a9453fd5"
-							style="display: block;" data-index-h="0"></section>
-					</div>
-					<div class="progress" style="display: none;">
-						<span></span>
-					</div>
-					<aside class="controls" style="display: block;">
-						<div class="navigate-left"></div>
-						<div class="navigate-right"></div>
-						<div class="navigate-up"></div>
-						<div class="navigate-down"></div>
-					</aside>
-					<div class="slide-number"></div>
-					<div class="pause-overlay"></div>
-					<div id="aria-status-div" aria-live="polite" aria-atomic="true"
-						style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">asdfsadf
-
-						Text</div>
-					<div class="backgrounds">
-						<div
-							class="slide-background overflowing has-light-background present"
-							data-background-hash="0#d0e0e3nullnullnull" data-loaded="true"
-							style="display: block; background-color: rgb(208, 224, 227);"></div>
-					</div>
-					<div class="sl-block-grid">
-						<canvas class="sl-block-grid-inner" width="960" height="700"
-							style="left: 50.5px; top: 193px;"></canvas>
-					</div>
-				</div>
-			</div>
-
-			<div class="icon add-horizontal-slide show"
-				data-tooltip="Add new slide<br>(Hold shift for blank)"
-				data-tooltip-alignment="l" data-tooltip-delay="1500">
-				<span class="icon i-plus"></span>
-			</div>
-			<div class="icon add-vertical-slide show"
-				data-tooltip="Add new slide<br>(Hold shift for blank)"
-				data-tooltip-alignment="t" data-tooltip-delay="1500">
-				<span class="icon i-plus"></span>
-			</div>
-
-
-		</article>
-
-	</div>
-
-	<div class="toolbars visible">
-		<div class="toolbars-inner">
-			<div class="toolbars-scroller"
-				style="-webkit-transform: translateX(0px); transform: translateX(0px);">
-				<div class="toolbar visible" data-type="add" style="left: 0px;">
-					<div class="toolbar-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label">Text</span>
-						</div>
-
-						<div class="toolbar-add-block-option" data-block-type="image">
-							<span class="toolbar-add-block-option-icon icon i-picture"></span>
-							<span class="toolbar-add-block-option-label">Image</span>
-						</div>
-
-						<div class="toolbar-add-block-option" data-block-type="shape">
-							<span class="toolbar-add-block-option-icon icon i-shapes"></span>
-							<span class="toolbar-add-block-option-label">Shape</span>
-						</div>
-
-						<div class="toolbar-add-block-option" data-block-type="iframe">
-							<span class="toolbar-add-block-option-icon icon i-browser"></span>
-							<span class="toolbar-add-block-option-label">Iframe</span>
-						</div>
-
-						<div class="toolbar-add-block-option" data-block-type="code">
-							<span class="toolbar-add-block-option-icon icon i-file-css"></span>
-							<span class="toolbar-add-block-option-label">Code</span>
-						</div>
-
-						<div class="toolbar-add-block-option" data-block-type="math">
-							<span class="toolbar-add-block-option-icon icon i-divide"></span>
-							<span class="toolbar-add-block-option-label">Math</span>
-						</div>
-					</div>
-				</div>
+			<div class="global-header">
+			<div class="wrapper Set" data-tooltip="Set"
+				data-tooltip-alignment="r">
+				<span class="icon i-Set"> <i class="fa fa-bars fa-2x"></i></span>
 			</div>
 		</div>
-		<div class="toolbars-footer">
-			<a class="promotion-link upgrade-button"
-				data-tooltip="You're using Slides Free.<br>Click to learn more about our Pro features."
-				href="/pricing" target="_blank">Free</a>
-			<div class="option editor-settings" data-tooltip="Editor settings">
-				<span class="icon i-equalizer"></span>
-			</div>
-		</div> 
+<!-- 			<div class="toolbar visible">
+			도형 편집 제어도구
+			  <div class="toolbar-list">
+			  </div>
+			
+			</div> -->
+
+			<div class="scroll-shadow-top"
+				style="opacity: 0; top: 189.14225769043px;"></div>
+			<div class="scroll-shadow-bottom" style="opacity: 0; bottom: 53px;"></div>
+
+	  </div>
+
+	  <div class="sidebar-panel"></div>
+	  <article class="projector">
+		  <div class="reveal-viewport">
+		  <!--<div class="reveal-viewport theme-font-montserrat theme-color-beige-brown">-->
+			  <div class="reveal zoom" role="application" data-transition-speed="default" data-background-transition="slide">
+				  <div class="slides" style="width: 960px; height: 700px;">
+					  <section class="overflowing present has-light-background" data-background-color="#d0e0e3" data-id="0279c11631561889345ddf52a9453fd5" style="display: block;" data-index-h="0">
+					  </section>
+				  </div>
+				  <div class="progress" style="display: none;"><span></span></div><aside class="controls" style="display: block;"><div class="navigate-left"></div><div class="navigate-right"></div><div class="navigate-up"></div><div class="navigate-down"></div></aside><div class="slide-number"></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px 1px 1px 1px);">asdfsadf
+
+				  Text
+			  </div><div class="backgrounds"><div class="slide-background overflowing has-light-background present" data-background-hash="0#d0e0e3nullnullnull" data-loaded="true" style="display: block; background-color: rgb(208, 224, 227);"></div></div><div class="sl-block-grid"><canvas class="sl-block-grid-inner" width="960" height="700" style="left: 50.5px; top: 193px;"></canvas></div></div>
+		  </div>
+
+		  <div class="icon add-horizontal-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="l" data-tooltip-delay="1500">
+			  <span class="icon i-plus"></span>
+		  </div>
+		  <div class="icon add-vertical-slide show" data-tooltip="Add new slide<br>(Hold shift for blank)" data-tooltip-alignment="t" data-tooltip-delay="1500">
+			  <span class="icon i-plus"></span>
+		  </div>
+
+
+	  </article>
+
 	</div>
 
+  <div class="toolbars visible">
+	  <div class="toolbars-inner">
+		  <div class="toolbars-scroller" style="-webkit-transform: translateX(0px); transform: translateX(0px);">
+			  <div class="toolbar visible" data-type="add" style="left: 0px;">
+				  <div class="toolbar-list">
+					  <div class="toolbar-add-block-option" data-block-type="text">
+					   	<span class="toolbar-add-block-option-icon icon i-type"></span>
+						<span class="toolbar-add-block-option-label">Text</span>
+					  </div>
 
+					  <div class="toolbar-add-block-option" data-block-type="image">
+						<span class="toolbar-add-block-option-icon icon i-picture"></span>
+						<span class="toolbar-add-block-option-label">Image</span>
+					  </div>
+
+					  <div class="toolbar-add-block-option" data-block-type="shape">
+						  <span class="toolbar-add-block-option-icon icon i-shapes"></span>
+						  <span class="toolbar-add-block-option-label">Shape</span>
+					  </div>
+
+					  <div class="toolbar-add-block-option" data-block-type="iframe">
+						  <span class="toolbar-add-block-option-icon icon i-browser"></span>
+						  <span class="toolbar-add-block-option-label">Iframe</span>
+					  </div>
+
+					  <div class="toolbar-add-block-option" data-block-type="code">
+						  <span class="toolbar-add-block-option-icon icon i-file-css"></span>
+						  <span class="toolbar-add-block-option-label">Code</span>
+					  </div>
+
+					  <div class="toolbar-add-block-option" data-block-type="math">
+						  <span class="toolbar-add-block-option-icon icon i-divide"></span>
+						  <span class="toolbar-add-block-option-label">Math</span>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+	  <div class="toolbars-footer">
+		  <a class="promotion-link upgrade-button" data-tooltip="You're using Slides Free.<br>Click to learn more about our Pro features." href="/pricing" target="_blank">Free</a>
+		  <div class="option editor-settings" data-tooltip="Editor settings">
+			  <span class="icon i-equalizer"></span>
+		  </div>
+	  </div>
+  </div>
+
+  
 </body>
 </html>
