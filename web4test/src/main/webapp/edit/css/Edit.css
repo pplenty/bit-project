@@ -338,6 +338,7 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
 }
 .toolbars .toolbar .toolbar-list {
   position: absolute;
+  visibility:visible;
   top: 0;
   right: 0;
   bottom: 0;
@@ -348,6 +349,328 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+/* text */
+.toolbars .toolbar .text-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+ 
+.toolbar .text-list .toolbar-divider {
+
+  height: 1px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .text-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .text-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .text-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .text-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .text-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .text-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  text-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  text-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  text-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-options {
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .text-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .text-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .text-list .toolbar-select .toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background:red;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .text-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .text-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+/* image */
+.toolbars .toolbar .image-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* shape */
+.toolbars .toolbar .shape-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* iframe */
+.toolbars .toolbar .iframe-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+
+/* code */
+.toolbars .toolbar .code-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* math */
+.toolbars .toolbar .math-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
 .toolbars .toolbar-add-block-option {
   width: 80%;
   margin: 0 auto;
@@ -578,7 +901,6 @@ div.sl-block-content.isFocus {
   padding: 0;
 }
 section {
-  /*background-color: #c2fcad ;*/
   
   border: red solid 1px;
   
@@ -588,20 +910,29 @@ section {
 .sl-block {
   border: red solid 1px;
 }
-<!-- 아 힘들다 -->
 
-.global-header {
+.sidebar .global-header {
   position: absolute;
   width: 100%;
   height: 52px;
   line-height: 52px;
+  padding : 5px 17px 5px 17px ;
   bottom: 0;
   left: 0;
   border-top: 1px solid #111;
   border-bottom: 0;
-  background: #ababab;
+  background: #111;
   background: -webkit-linear-gradient(top, #222 0%, #111 100%);
   background: linear-gradient(to bottom, #222 0%, #111 100%);
+}
+
+.sidebar .global-header .wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: -3px 10px;
+  color: #fff;
 }
 
 div.nav-item{

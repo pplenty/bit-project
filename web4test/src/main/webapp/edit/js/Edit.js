@@ -43,5 +43,102 @@ $( "div.nav-item" ).hover(
 		  }
 		);
  
+
+//text
+$( ".toolbar-text" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".text-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".text-list")).click(
+		function() {
+			 $(".text-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+
+//image
+$( ".toolbar-image" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".image-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".image-list")).click(
+		function() {
+			 $(".image-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+
+//shape
+$( ".toolbar-shape" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".shape-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".image-list")).click(
+		function() {
+			 $(".shape-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+
+//iframe
+$( ".toolbar-iframe" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".iframe-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".image-list")).click(
+		function() {
+			 $(".iframe-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+
+//code
+$( ".toolbar-code" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".code-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".image-list")).click(
+		function() {
+			 $(".code-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+
+//math
+$( ".toolbar-math" ).click(
+		function() {
+			 $(".toolbar-list").css('visibility', 'hidden');
+			 $(".math-list").css('visibility', 'visible');
+		  }
+		);
+
+$(".page-wrapper").not($(".image-list")).click(
+		function() {
+			 $(".math-list").css('visibility', 'hidden');
+			 $(".toolbar-list").css('visibility', 'visible');
+		  }
+		);
+//\$( "div.nav-item" ).onclick(
+//				  function() {
+//					  $(".toolbars .toolbar .toolbar-list").css('visibility', 'visible');
+//				  }, function() {
+//						$(".toolbars .toolbar .text-list").css('visibility', 'hidden');
+//				  }
+//				);
 	
 });
