@@ -21,7 +21,6 @@ body {
   background-color: #fff;
   color: #000;
 }
-
 body {
   height: 100%;
   min-width: 1220px;
@@ -54,17 +53,95 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
   margin-bottom: 0px;
   margin-left: 0px;
   padding: 0;
+  /* border: 0; */
+  /* font-size: 100%; */
+  /* font: inherit; */
+  /* vertical-align: baseline; */
 }
+/*.is-editing .reveal section:not(.stack):before {*/
+/*.is-editing .reveal section:before {*/
+  /*content: '';*/
+  /*display: block;*/
+  /*border: 1px dashed rgba(150,150,150,0.5);*/
+  /*-moz-box-sizing: border-box;*/
+  /*box-sizing: border-box;*/
+  /*position: absolute;*/
+  /*width: 90%;*/
+  /*height: 100%;*/
+  /*left: 0;*/
+  /*top: 0;*/
+/*}*/
 
-div.page-wrapper{
+
+.page-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   padding-left: 240px;
 }
+.projector {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.projector .reveal-viewport {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.projector .reveal-viewport .reveal {
+  position: relative;
+  z-index: 10;
+}
+.reveal .slides {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: visible;
+  z-index: 1;
+  text-align: center;
+  -webkit-perspective: 600px;
+  perspective: 600px;
+  -webkit-perspective-origin: 50% 40%;
+  perspective-origin: 50% 40%;
+}
 
-sidebar.preview-controls {
+
+
+
+/*//////////////////////*/
+
+
+div.canvas {
+  position: absolute;
+  top: 0px;
+  left: 70px;
+  width: 1000px;
+  height: 800px;
+  background-color: rgb(255,248,220);
+  border: solid red 1px;
+}
+.preview-controls {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-transform: translateX(50px);
+  -ms-transform: translateX(50px);
+  transform: translateX(50px);
+}
+ sidebar.preview-controls {
   position: absolute;
   top: 10px;
   left: 8px;
@@ -72,24 +149,88 @@ sidebar.preview-controls {
   visibility: hidden;
   opacity: 0;
 }
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 240px;
+}
 
-
-
-div.sidebar {
+/* sidebar ******************************************/
+.sidebar {
   position: absolute;
   width: 70px;
   height: 100%;
   left: 0;
   top: 0;
+  padding: 0;
+  z-index: 102;
   background: #222;
   font-size: 17px;
-  z-index: 100;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
 
+
+/* 1st primary */
 .sidebar .primary {
   width: 100%;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar .primary .button {
+  display: inline-block;
+  height: 50px;
+  padding: 0;
+  margin-bottom: 6px;
+  background: #40cb90;
+  text-align: center;
+}
+
+.sidebar .primary .undo {
+  background: #666666;
+}
+
+.sidebar .primary .save {
+  background: #666666;
+}
+
+body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
+  display: inline-block;
+  height: 50px;
+  padding: 0;
+  margin-bottom: 6px;
+  background: #40cb90;
+  text-align: center;
+
+  width: 50px;
+}
+.sidebar .primary .button:hover {
+  background: #68d6a7;
+}
+
+/* 2nd */
+.sidebar .secondary {
+  position: relative;
+  overflow: auto;
+  padding: 0 0 8px 0;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.sidebar .secondary .button:not(.active):not(:hover) {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.sidebar .secondary .button+.button {
+  border-top: 1px solid #2a2a2a;
+}
+/* 2nd hover */
+.sidebar .secondary .button:hover {
+  background: #333;
+}
+.sidebar .primary .button:hover, .sidebar .secondary .button:hover {
+  background: #515151;
 }
 
 .sidebar .primary .button {
@@ -104,17 +245,6 @@ div.sidebar {
   background: #bec3bf;
   cursor: pointer;
   text-align: center;
-}
-
-body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
-  display: inline-block;
-  height: 50px;
-  padding: 0;
-  margin-bottom: 6px;
-  background: #40cb90;
-  text-align: center;
-
-  width: 50px;
 }
 
 .sidebar .secondary {
@@ -143,61 +273,8 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
 }
 
 
-.sidebar .global-header {
-position: absolute;
-  width: 100%;
-  height: 52px;
-  line-height: 52px;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid #111;
-  border-bottom: 0;
-  background: #111;
-  background: -webkit-linear-gradient(top, #222 0%, #111 100%);
-  background: linear-gradient(to bottom, #222 0%, #111 100%);
-}
 
-
-
-.sidebar .global-header .wrapper  {
-  display: block;
-  position: absolute;
-  width: 30px;
-  height : 40px;
-  padding : 0 10px;
-  margin : 10px;
-  color: #eee;
-}
-
-div.nav-item{
-  visibility:hidden;
-  position: absolute;
-  bottom : 33px;
-  left : 20px; 
-  width :130px;
-  height : 220px;
-  color: #eee;
-  background: #2b2b2b;
-  z-index : 130;
-}
-
-
-.nav-item .button {
-  display: block;
-  position: relative;
-  width: 120px;
-  height : 40px;
-  margin: 3px;
-  color: #eee;
-  border: 0;
-  cursor: pointer;
-  background: #222;
-}
-
-
----------------------------------------------
-
-
+/* toolbars */
 .toolbars.visible {
   visibility: visible;
 }
@@ -212,7 +289,7 @@ div.nav-item{
   background: #333333;
   border-right: 1px solid #222;
   border-left: 1px solid #222;
-  visibility: visible;
+  visibility: hidden;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
@@ -261,11 +338,11 @@ div.nav-item{
 }
 .toolbars .toolbar .toolbar-list {
   position: absolute;
+  visibility:visible;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  visibility: hidden;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 12px;
@@ -273,21 +350,346 @@ div.nav-item{
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+/* text */
 .toolbars .toolbar .text-list {
-  background : red;
   position: absolute;
+  visibility : hidden;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  visibility: visible;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 12px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+ 
+.toolbar .text-list .toolbar-divider {
 
+  height: 1px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .text-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .text-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger .text-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .text-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .text-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .text-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .text-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .text-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  text-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  text-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  text-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-options {
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .text-list .toolbar-group .toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .text-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .text-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .text-list .toolbar-select .toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background:red;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .text-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .text-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .text-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+/* image */
+.toolbars .toolbar .image-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* shape */
+.toolbars .toolbar .shape-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* iframe */
+.toolbars .toolbar .iframe-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+
+/* code */
+.toolbars .toolbar .code-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
+
+/* math */
+.toolbars .toolbar .math-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+} 
 .toolbars .toolbar-add-block-option {
   width: 80%;
   margin: 0 auto;
@@ -354,63 +756,7 @@ div.nav-item{
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-
-.projector {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.projector .reveal-viewport {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-.projector .reveal-viewport .reveal {
-  position: relative;
-  z-index: 10;
-}
-.reveal .slides {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  overflow: visible;
-  z-index: 1;
-  text-align: center;
-  -webkit-perspective: 600px;
-  perspective: 600px;
-  -webkit-perspective-origin: 50% 40%;
-  perspective-origin: 50% 40%;
-}
-
-
-div.canvas {
-  position: absolute;
-  top: 0px;
-  left: 70px;
-  width: 1000px;
-  height: 800px;
-  background-color: rgb(255,248,220);
-  border: solid red 1px;
-}
-.preview-controls {
-  position: absolute;
-  top: 10px;
-  left: 8px;
-  z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  -webkit-transform: translateX(50px);
-  -ms-transform: translateX(50px);
-  transform: translateX(50px);
-}
+/*  ****  */
 
 .reveal .sl-block {
   display: block;
@@ -572,4 +918,62 @@ div.sl-block-content.isFocus {
   height: 700px;
   font-weight: inherit;
   padding: 0;
+}
+section {
+  
+  border: red solid 1px;
+  
+  
+	
+}
+.sl-block {
+  border: red solid 1px;
+}
+
+.sidebar .global-header {
+  position: absolute;
+  width: 100%;
+  height: 52px;
+  line-height: 52px;
+  padding : 5px 17px 5px 17px ;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #111;
+  border-bottom: 0;
+  background: #111;
+  background: -webkit-linear-gradient(top, #222 0%, #111 100%);
+  background: linear-gradient(to bottom, #222 0%, #111 100%);
+}
+
+.sidebar .global-header .wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: -3px 10px;
+  color: #fff;
+}
+
+div.nav-item{
+  visibility:hidden;
+  position: absolute;
+  bottom : 33px;
+  left : 20px; 
+  width :130px;
+  height : 220px;
+  color: #eee;
+  background: #2b2b2b;
+  z-index : 130;
+}
+
+.nav-item .button {
+  display: block;
+  position: relative;
+  width: 120px;
+  height : 40px;
+  margin: 3px;
+  color: #eee;
+  border: 0;
+  cursor: pointer;
+  background: #222;
 }

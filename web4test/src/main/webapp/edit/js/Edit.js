@@ -59,6 +59,39 @@ $(".page-wrapper").not($(".text-list")).click(
 		  }
 		);
 
+
+$( ".toolbar-group-trigger" ).click(
+		function() {
+			if(!$(this).hasClass("open")){
+			 $(".toolbar-group-options").css({
+				 'height': '274px',
+				 'visibility': 'visible',
+				 'opacity': '1'
+			 });
+			 $(this).addClass("open");
+			 } else if($(this).hasClass("open")){
+			 $(".toolbar-group-options").css({
+				 'height': '0px',
+				 'visibility': 'hidden',
+				 'opacity': '0'
+			 });
+			 $(this).removeClass("open");
+			 }
+			}
+		);
+
+$(".page-wrapper").not($(".text-list")).click(
+		function() {
+			 $(".text-list").css('visibility', 'hidden');
+			 $(".toolbar-group-options").css({
+				 'height': '0px',
+				 'visibility': 'hidden',
+				 'opacity': '0'
+			 });
+			 $(this).removeClass("open");
+			 }
+		);
+
 //image
 $( ".toolbar-image" ).click(
 		function() {
@@ -133,6 +166,15 @@ $(".page-wrapper").not($(".image-list")).click(
 			 $(".toolbar-list").css('visibility', 'visible');
 		  }
 		);
+
+
+//$(".page-wrapper").not($(".image-list")).click(
+//		function() {
+//			 $(".math-list").css('visibility', 'hidden');
+//			 $(".toolbar-list").css('visibility', 'visible');
+//		  }
+//		);
+
 //\$( "div.nav-item" ).onclick(
 //				  function() {
 //					  $(".toolbars .toolbar .toolbar-list").css('visibility', 'visible');
