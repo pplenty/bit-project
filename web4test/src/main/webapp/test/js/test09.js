@@ -82,6 +82,9 @@ $(document).ready(function() {
 		//blockTag.append(blockContentTag);
 		blockTag.append(svgTag);
 		presentSection.append(blockTag);
+
+	 $(".toolbar-list").css('visibility', 'hidden');
+	 $(".text-list").css('visibility', 'visible');
 		e.stopPropagation();
 	});
 
@@ -245,6 +248,11 @@ $(document).ready(function() {
 
 	var blockOffsetX; // event offsetx from block
 	var blockOffsetY;
+
+	$(presentCanvas).on('mousedown', '.anchor', function(event) {
+		console.log('anchor');
+		
+	});
 	
 
 	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
@@ -302,9 +310,17 @@ $(document).ready(function() {
 	$(document).on('click', '.sl-block', function(ev){
 		//console.log('block.click!');
 
-		// color input 도형 색 설정
+		
+	
+		$(".toolbar-list").css('visibility', 'hidden');
+		$(".text-list").css('visibility', 'visible');
 		var rgbHex = rgb2hex($('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
-		$('#colorinput').val(rgbHex);
+		$('.back-colorinput').val(rgbHex);
+		 
+		 
+		// color input 도형 색 설정
+//		var rgbHex = rgb2hex($('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
+//		$('#colorinput').val(rgbHex);
 
 		blockOffsetX = ev.offsetX;
 		blockOffsetY = ev.offsetY;
@@ -568,7 +584,7 @@ $(document).ready(function() {
 	//});
 	
 	
-	$('#colorinput').on('change', function() {
+	$('.back-colorinput').on('change', function() {
 		$('.sl-block.isFocus').find('svg').find('rect').attr('fill',  $(this).val())
 	});
 //
