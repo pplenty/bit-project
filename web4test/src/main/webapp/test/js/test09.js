@@ -227,7 +227,7 @@ $(document).ready(function() {
 	
 	$(presentCanvas).on('dragend', function(ev, dd){
 		if (dragStartTarget == $(presentCanvas)[0]) {
-			console.log('dragend');
+			//console.log('dragend');
 			if (!ContentsDragFlag) {
 				deletEditForm($('.isFocus'));
 				if($('.isFocus').length != 0)

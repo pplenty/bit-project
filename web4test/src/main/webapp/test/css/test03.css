@@ -461,6 +461,7 @@ body > div.canvas > div.sl-block-content.isFocus > div {
   border: 1px solid #1baee1;
   cursor: pointer;
   pointer-events: all;
+  z-index: 100;
 /*   visibility: hidden; */
 }
 
