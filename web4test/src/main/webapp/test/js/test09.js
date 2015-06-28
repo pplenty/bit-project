@@ -78,63 +78,15 @@ $(document).ready(function() {
 				});
 
 		svgTag.append(svgContent);
-		//blockContentTag.append(svgTag);
-		//blockTag.append(blockContentTag);
-		blockTag.append(svgTag);
+		blockContentTag.append(svgTag);
+		blockTag.append(blockContentTag);
+		//blockTag.append(svgTag);
 		presentSection.append(blockTag);
 
-	 $(".toolbar-list").css('visibility', 'hidden');
-	 $(".text-list").css('visibility', 'visible');
+	 //$(".toolbar-list").css('visibility', 'hidden');
+	 //$(".text-list").css('visibility', 'visible');
 		e.stopPropagation();
 	});
-
-	//$('.toolbar-add-block-option[data-block-type="shape"]').click(function() {
-    //
-	//	var svgContent =
-	//		$('<rect>')
-	//			.attr({
-	//				'width': '248',
-	//				'height': '248',
-	//				'fill': '#000000'
-	//			})
-	//			.addClass('shape-element');
-    //
-	//	var svgTag =
-	//		$('<svg>')
-	//			.attr({
-	//				'xmlns': 'http://www.w3.org/2000/svg',
-	//				'version': '1.1',
-	//				'width': '100%',
-	//				'height': '100%',
-	//				'preserveAspectRatio': 'xMidYMid',
-	//				'viewBox': '0 0 248 248'
-	//			});
-    //
-	//	var blockTag =
-	//		$('<div>')
-	//			.addClass('sl-block')
-	//			.attr({
-	//				'data-block-type': 'shape',
-	//				'data-block-blockId': blockId++,
-	//				'selectedDropStart': false,
-	//				'selectedDrop': false
-	//				//'draggable': true
-	//			})
-	//			.css({
-	//				'background-color': 'rgb(186, 199, 234)',
-	//				'min-width': '4px',
-	//				'min-height': '4px',
-	//				'width': '300px',
-	//				'height': '300px',
-	//				'left': '200px',
-	//				'top': '200px',
-	//				'z-index': block_zIndex++
-	//			});
-    //
-	//	svgTag.append(svgContent);
-	//	blockTag.append(svgTag);
-	//	presentSection.append(blockTag);
-	//});
 
 
 	// text box ADD
@@ -249,11 +201,6 @@ $(document).ready(function() {
 	var blockOffsetX; // event offsetx from block
 	var blockOffsetY;
 
-	$(presentCanvas).on('mousedown', '.anchor', function(event) {
-		console.log('anchor');
-		
-	});
-	
 
 	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
 		// color input 도형 색 설정
@@ -271,17 +218,6 @@ $(document).ready(function() {
 		//event.stopPropagation();
 		document.body.style.cursor = "move";
 
-		// unFocus에 isFocus 클래스 제거 / focus에 isFocus 클래스 추가
-//		$('.sl-block').not(targetIdSelector).removeClass('isFocus');
-//		deletEditForm($('.sl-block').not(targetIdSelector));
-//		deletEditForm($('.sl-block-content').not(targetIdSelector));
-
-//
-//		$('.sl-block' + targetIdSelector).addClass('isFocus');
-//		if($(this).children().length ==0){
-//			addEditForm($('.sl-block' + targetIdSelector));
-//		}
-
 
 		$(document).on('mousemove', function(event) {
 			$('.sl-block.isFocus').css({
@@ -292,13 +228,13 @@ $(document).ready(function() {
 
 		});
 
-		$(this).on('mouseup', function(event) {
+		$(document).on('mouseup', function(event) {
 			event.stopPropagation();
 		    document.body.style.cursor = "auto";
 			//event.stopPropagation();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
 			$(document).off('mousemove');
-			$(this).off('mouseup');
+			$(document).off('mouseup');
 
 
 		});
@@ -312,8 +248,9 @@ $(document).ready(function() {
 
 		
 	
-		$(".toolbar-list").css('visibility', 'hidden');
-		$(".text-list").css('visibility', 'visible');
+		//$(".toolbar-list").css('visibility', 'hidden');
+		//$(".text-list").css('visibility', 'visible');
+
 		var rgbHex = rgb2hex($('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
 		$('.back-colorinput').val(rgbHex);
 		 
@@ -329,6 +266,89 @@ $(document).ready(function() {
 		deletEditForm($('.sl-block').not(this));
 		$('.sl-block').not(this).removeClass('isFocus');
 		//ev.stopPropagation();
+	});
+
+
+	// 크기조절 구현
+	$(presentCanvas).on('mousedown', '.anchor', function(event) {
+		//console.log( $(this).parent().parent().height());
+		event.stopPropagation();
+		var editTargetSelector = $(this).parent().parent();
+		var editDirection = $(this).attr('data-direction');
+		var targetStyle = {
+			'top'   : editTargetSelector.offset().top,
+			'left'  : editTargetSelector.offset().left,
+			'height': editTargetSelector.height(),
+			'width' : editTargetSelector.width()
+		};
+
+		$(document).on('mousemove', function(event) {
+			event.stopPropagation();
+
+			switch (editDirection) {
+				case 'n':
+					if (event.pageY < targetStyle.top + targetStyle.height) {
+						editTargetSelector.css({
+							top: event.pageY - presentSection.offset().top,
+							height: targetStyle.top - event.pageY + targetStyle.height
+						}); break;
+					}
+				case 'e':
+					editTargetSelector.css({
+						width:  event.pageX - targetStyle.left
+					}); break;
+				case 's':
+					editTargetSelector.css({
+						height: event.pageY - targetStyle.top
+					}); break;
+				case 'w':
+					if (event.pageX < targetStyle.left + targetStyle.width) {
+						editTargetSelector.css({
+							left: event.pageX - presentSection.offset().left,
+							width: targetStyle.left - event.pageX + targetStyle.width,
+						}); break;
+					}
+				case 'se':
+					//$('rect').attr('width', event.pageX - targetStyle.left);
+					editTargetSelector.css({
+						width:  event.pageX - targetStyle.left ,
+						height: event.pageY - targetStyle.top
+					}); break;
+				case 'nw':
+					editTargetSelector.css({
+						left:   event.pageX - presentSection.offset().left,
+						top:    event.pageY - presentSection.offset().top,
+						width:  targetStyle.left - event.pageX + targetStyle.width,
+						height: targetStyle.top - event.pageY + targetStyle.height
+					}); break;
+				case 'ne':
+					editTargetSelector.css({
+						top:    event.pageY - presentSection.offset().top,
+						width:  event.pageX - targetStyle.left ,
+						height: targetStyle.top - event.pageY + targetStyle.height
+					}); break;
+				case 'sw':
+					editTargetSelector.css({
+						left:   event.pageX - presentSection.offset().left,
+						width:  targetStyle.left - event.pageX + targetStyle.width,
+						height: event.pageY - targetStyle.top
+					}); break;
+			}
+
+		});
+
+		$(document).on('mouseup', function(event) {
+			event.stopPropagation();
+			document.body.style.cursor = "auto";
+			//event.stopPropagation();
+//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+			$(document).off('mousemove');
+			$(document).off('mouseup');
+
+
+		});
+
+
 	});
 
 
