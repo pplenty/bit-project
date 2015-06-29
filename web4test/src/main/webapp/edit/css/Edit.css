@@ -583,7 +583,6 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   border: 1px solid #292929;
   box-shadow: none;
   cursor: pointer;
-  background:red;
   background-repeat: no-repeat;
   background-position: right 50%;
   -webkit-transition: opacity 0.15s ease;
@@ -623,19 +622,42 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   cursor: col-resize;
 }
 
- .toolbar-panel {
+ .text-toolbar-panel {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 395px;
+  left: 145px;
   margin-left: 9px;
-  color: #222;
-  background-color: #eee;
+  color: #ffffff;
+  background: #4e4e4e;
   font-size: 14px;
   z-index: 2;
   box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
-  width: 144px;
-  left: 157px;
-  top: 496px;
+  width: 100px;
+  visibility: hidden;
+}
+
+.text-toolbar-panel .toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.text-toolbar-panel .toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.text-toolbar-panel .toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
 }
 /* image */
 .toolbars .toolbar .image-list {
@@ -777,6 +799,7 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   vertical-align: top;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
 
 /*  ****  */
 

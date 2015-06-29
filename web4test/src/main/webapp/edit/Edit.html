@@ -35,7 +35,7 @@
 				data-tooltip-direction="b"> <span class="icon i-new-window"></span>
 			</a>
 		</div>
-		
+
 		<!-- 추가 1번  -->
 		<div class="sidebar">
 
@@ -328,7 +328,7 @@
 								<div class="range-numeric">1.00</div>
 							</div>
 						</div>
-						<div class="toolbar-option toolbar-stepper"
+						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
@@ -341,14 +341,15 @@
 							data-group-type="border-css">
 							<div class="toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"></span>
+									class="checkbox icon i-checkmark">
+									</span>
 							</div>
-							<div class="toolbar-group-options" style="height: 0px;">
+							<div class="toolbar-group-options">
 								<div class="toolbar-group-options-inner">
 									<div class="toolbar-option toolbar-select"
 										data-option-type="border-style">
 										<h4 class="toolbar-option-label">Style</h4>
-										<div class="toolbar-select-trigger"></div>
+										<div class="toolbar-select-trigger">Solid</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
@@ -457,6 +458,15 @@
 			<div class="option editor-settings" data-tooltip="Editor settings">
 				<span class="icon i-equalizer"></span>
 			</div>
+		</div>
+		<div class="text-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
 	</div>
 
