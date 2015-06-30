@@ -15,10 +15,31 @@
 
 <link rel="stylesheet" href="css/Edit.css">
 
+<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<script src="js/bootstrap.js"></script>
+<!-- Optional theme -->
+ <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+<script type="text/javascript" src="js/jquery-fileupload/vendor/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/jquery-fileupload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="js/jquery-fileupload/jquery.fileupload.js"></script>
+<script type="text/javascript" src="js/myuploadfunction.js"></script>
+
+
+
 <script src="js/Edit.js"></script> <!-- 우인규 코드 html 기본 코드 -->
 <script src="js/text.js"></script> <!--이혜인 text 코드  -->
 <script src="js/test09.js"></script> <!-- 고유식 코드 shape, 기본 코드-->
+<script src="js/myuploadfunction.js"></script> <!-- 고유식 코드 shape, 기본 코드-->
 
+<style type="text/css">
+.pnt {
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
 	<div class='page-wrapper'>
@@ -761,6 +782,38 @@
 	</div>
 
 
+<!-- 모달 -->
+  <div id="test" class="modal fade" id="layerpop">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+          <!-- 닫기(x) 버튼 -->
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <!-- header title -->
+          <h4 class="modal-title" id="myModalLabel">Media Library</h4>
+        </div>
+        <!-- body -->
+        <div id="modal-div" class="modal-body form-inline">
+
+          <div style="width: 500px; padding: 20px">
+            <input id="fileupload" type="file" name="files[]"
+              data-url="/web4test/file.do" multiple>
+          </div>
+
+          <div id="img-div">
+            <p>이미지라인</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
-</html>
 </html>
