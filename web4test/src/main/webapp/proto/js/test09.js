@@ -446,7 +446,7 @@ $(document).ready(function() {
 		ev.stopPropagation();
 	});
 	
-	$.drop({ multi: true });// multi select
+	$.drop({multi: true });// multi select
 
 
 

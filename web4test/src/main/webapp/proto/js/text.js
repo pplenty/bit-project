@@ -45,31 +45,60 @@ $(function(){
 					  $(".text-list").css('visibility', 'visible');
 					  
 			  }
-			}
-			);
-
+			}); // 기본 텍스트 버튼 끝
 	
-
+	
+//	$(document).not($(".sl-block").hasClass("isFocus")).on("click", function(){
+//	})
+	
+//	
+//	// 여기서부터 아래 세줄은 텍스트 박스 관련 
+//	var contentB =	$('.isFocus').children(".sl-block-content");
+//	$(contentB).children("p").attr("contenteditable", "false");
+//	$(contentB).attr("contenteditable", "false");
+//	
+//	if($(contentB).attr("contenteditable") == "false"){
+//	console.log("contenteditable 수정 완료")
+//	}
+//	/////////
+	
+	
+	
 	$(document).on('dblclick','.sl-block', function(){
 	    var contentBox = $(this).children(".sl-block-content");
-	    var contentP = contentBox.children(" p");	    
+	    var contentP = contentBox.children("p");	    
 	    
 	    $(".toolbar-list").css('visibility', 'hidden');
 	    $(".text-list").css('visibility', 'visible');
 	    
+	    // 첫 텍스트 박스 수정할 때
+	    if($('.sl-block .sl-block-content p').hasClass("placeHolder")){
+	    	console.log("처음 생성된 텍스트 박스")
+	    $(contentP).removeClass("placeHolder");
 	    contentBox.attr("contenteditable",'true').focus();
 	    contentP.attr("contenteditable", "true").text('').focus();
 		  
+	    // 재편집일 때
+	    } else if(!$('.sl-block.content p').hasClass("placeHolder")) {
+	    	console.log("재 편집 더블클릭");
+	    	contentBox.attr("contenteditable",'true').focus();
+	    	contentP.attr("contenteditable", "true");
+//	    	$(contentP).last().focus();
 
+	    	//contentP.children
+//	    	$(":focus").attr("id","tktk");
+	    	
+	    }
+	    
+	   
 	    $(contentBox).keypress(function(event){
 	    	if(event.which == 13){ 	
-    		$('.sl-block-content div').each(function(){
-	    	    	var where= $($(this).replaceWith($('<p>' +$(this).html()+ '</p>')));
-	    	    	$(where).focus();
-	    	    }); //div 태그를 p 태그로 교체	    		
+	    		$('.sl-block-content div').each(function(){
+	    			var where= $($(this).replaceWith($('<p>' +$(this).html()+ '</p>')));
+	    			$(where).focus();
+	    		}); //div 태그를 p 태그로 교체	    		
 	    	}// 엔터일 때 괄호 끝	
 	    });//keypress 괄호
-  
 
 	});// 텍스트 박스 더블 클릭 마지막 괄호
 	
@@ -105,18 +134,18 @@ $(function(){
 // - font-size 관리 변수
 	var fontSizeInput;
 	
-	//-font-size 스크롤 조정
-	$(".font.size-scroll").on("mousemove", function(ev){	
-		fontSizeInput = $(ev.target).val();
-			$(".font.size-box").val(fontSizeInput);
-		}); 
+		//-font-size 스크롤 조정
+		$(".font.size-scroll").on("mousemove", function(ev){	
+			fontSizeInput = $(ev.target).val();
+				$(".font.size-box").val(fontSizeInput);
+			}); 
 
 // TEXT - font 사이즈 관리			
-	//-font-size 스크롤 완료
-	$(".font.size-scroll").on("mouseup", function(){
-		$(".font.size-box").val(fontSizeInput);
-
-	});
+		//-font-size 스크롤 완료
+		$(".font.size-scroll").on("mouseup", function(){
+			$(".font.size-box").val(fontSizeInput);
+	
+		});
 		//- font size 직접 입력받기
 		 $(".font.size-scroll").on("dblclick", function(ev){
 			$(this).css("z-index", "0");
@@ -151,18 +180,18 @@ $(function(){
 	// - 투명도 변수
 	var opSizeInput;
 	
-	//-투명도 값 스크롤 조정
-	$(".opacity.size-scroll").on("mousemove", function(ev){	
-		opSizeInput = $(ev.target).val();
+		//-투명도 값 스크롤 조정
+		$(".opacity.size-scroll").on("mousemove", function(ev){	
+			opSizeInput = $(ev.target).val();
+				$(".opacity.size-box").val(opSizeInput);
+				console.log(opSizeInput);
+			}); 
+		
+		//-투명도값 관리 
+		$(".opacity.size-scroll").on("mouseup", function(){
 			$(".opacity.size-box").val(opSizeInput);
-			console.log(opSizeInput);
-		}); 
 	
-	//-투명도값 관리 
-	$(".opacity.size-scroll").on("mouseup", function(){
-		$(".opacity.size-box").val(opSizeInput);
-
-	});
+		});
 		//- 투명도값 직접 입력받기
 		 $(".opacity.size-scroll").on("dblclick", function(ev){
 			$(this).css("z-index", "0");
@@ -185,39 +214,42 @@ $(function(){
 	// - padding 변수
 	var paddingSizeInput;
 	
-	//-투명도 값 스크롤 조정
-	$(".padding.size-scroll").on("mousemove", function(ev){	
-		paddingSizeInput = $(ev.target).val();
-			$(".padding.size-box").val(paddingSizeInput);
-			console.log(paddingSizeInput);
-		}); 
+		//-패딩 값 스크롤 조정
+		$(".padding.size-scroll").on("mousemove", function(ev){	
+			paddingSizeInput = $(ev.target).val();
+				$(".padding.size-box").val(paddingSizeInput);
+				console.log(paddingSizeInput);
+			}); 
 	
-	//-투명도값 관리 
-	$(".padding.size-scroll").on("mouseup", function(){
-		$(".padding.size-box").val(paddingSizeInput);
-
-	});
-		//- 투명도값 직접 입력받기
+		//-패딩 관리 
+		$(".padding.size-scroll").on("mouseup", function(){
+			$(".padding.size-box").val(paddingSizeInput);
+	
+		});
+		//- 패딩 직접 입력받기
 		 $(".padding.size-scroll").on("dblclick", function(ev){
 			$(this).css("z-index", "0");
 			$(this).addClass("back");
 			$(".padding.size-box").focus();
 			fontSizeInput = $(".padding.size-box").val();			
-		}); 
-		 // - 투명도 입력 완료
+		 }); 
+		 // - 패딩 입력 완료
 		 $(document).not($(".padding.size-box")).click(function(){
 		    	$(".padding.size-scroll").css("z-index", "2");
 		    	$(".padding.size-scroll").removeClass("back");
 		    });
 
-		//투명도값 적용
+		//패딩 적용
 			$('.padding.size-scroll').on('change', function(){	
 				$('.sl-block.isFocus').css({'padding': $(this).val()+'px'});
 			});
 			
+// Border 선 설정 부분
+			$(".toolbar-select-trigger").on("change", function(){
+				$('.sl-block.isFocus').css({'border' : $(this).val()});
+			})
 			
+			
+}); // 맨 끝			
    
 
-
-	
-});
