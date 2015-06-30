@@ -35,6 +35,7 @@
 				data-tooltip-direction="b"> <span class="icon i-new-window"></span>
 			</a>
 		</div>
+
 		<!-- 추가 1번  -->
 		<div class="sidebar">
 
@@ -270,8 +271,8 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 					<!-- text -->
 					<div class="text-list">
 						<div class="toolbar-option toolbar-radio"
@@ -296,8 +297,9 @@
 							data-option-type="text-size">
 							<h4 class="toolbar-option-label">Text Scale</h4>
 							<div class="stepper">
-								<input type="text" class="stepper-number">
-							</div>
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -305,7 +307,7 @@
 							data-option-type="text-color">
 							<h4 class="toolbar-option-label">Text Color</h4>
 							<div class="toolbar-color-trigger">
-								<input class ="text-colorinput" type ="color">
+								<input class="text-colorinput" type="color">
 								<div class="toolbar-color-reset icon i-undo"
 									data-tooltip="Use default color" data-tooltip-delay="500"></div>
 							</div>
@@ -313,8 +315,8 @@
 						<div class="toolbar-option toolbar-color"
 							data-option-type="background-color">
 							<h4 class="toolbar-option-label">Background Color</h4>
-							<div class="toolbar-color-trigger transparent" >
-								<input class ="back-colorinput" type ="color">
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
 								<div class="toolbar-color-reset icon i-undo"
 									data-tooltip="Use default color" data-tooltip-delay="500"></div>
 							</div>
@@ -323,16 +325,16 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-								<div class="range-progress" style="width: 100%;"></div>
-								<div class="range-numeric">1.00</div>
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
 							</div>
 						</div>
-						<div class="toolbar-option toolbar-stepper"
+						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-								<input type="text" class="stepper-number">
-							</div>
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -340,14 +342,15 @@
 							data-group-type="border-css">
 							<div class="toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"></span>
+									class="checkbox icon i-checkmark">
+									</span>
 							</div>
-							<div class="toolbar-group-options" style="height: 0px;">
+							<div class="toolbar-group-options">
 								<div class="toolbar-group-options-inner">
 									<div class="toolbar-option toolbar-select"
 										data-option-type="border-style">
 										<h4 class="toolbar-option-label">Style</h4>
-										<div class="toolbar-select-trigger"></div>
+										<div class="toolbar-select-trigger">Solid</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
@@ -367,8 +370,8 @@
 										data-option-type="border-color">
 										<h4 class="toolbar-option-label">Color</h4>
 										<div class="toolbar-color-trigger">
-											<div class="toolbar-color-trigger-inner"
-												style="background-color: rgb(0, 0, 0);"></div>
+
+											<input class="text-border-colorinput" type="color">
 											<div class="toolbar-color-reset icon i-undo"
 												data-tooltip="Use default color" data-tooltip-delay="500"></div>
 										</div>
@@ -456,6 +459,15 @@
 			<div class="option editor-settings" data-tooltip="Editor settings">
 				<span class="icon i-equalizer"></span>
 			</div>
+		</div>
+		<div class="text-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
 	</div>
 
