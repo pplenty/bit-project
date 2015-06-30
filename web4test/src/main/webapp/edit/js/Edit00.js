@@ -27,6 +27,37 @@
 //$( document ).on( "mousemove", function( event ) {
 //  $( "#log" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
 //});
+
+	// - font-size 관리 변수
+	var fontSizeInput;
+	
+	//-font-size 스크롤 조정
+	$(".font.size-scroll").on("mousemove", function(ev){	
+		fontSizeInput = $(ev.target).val();
+			$(".font.size-box").val(fontSizeInput);
+			console.log(fontSizeInput);
+		}); 
+
+// TEXT - font 사이즈 관리			
+	//-font-size 스크롤 완료
+	$(".font.size-scroll").on("mouseup", function(){
+		$(".font.size-box").val(fontSizeInput);
+
+	});
+		//- font size 직접 입력받기
+		 $(".font.size-scroll").on("dblclick", function(ev){
+			$(this).css("z-index", "0");
+			$(this).addClass("back");
+			$(".font.size-box").focus();
+			fontSizeInput = $(".font.size-box").val();			
+		}); 
+   // - font size 입력 완료
+	$(document).not($(".font.size-box")).click(function(){
+		    	$(".font.size-scroll").css("z-index", "2");
+		    	$(".font.size-scroll").removeClass("back");
+		    });
+
+//	
 $(function() {
 
 	$(".wrapper").hover(function() {
@@ -52,16 +83,16 @@ $(function() {
 		$(".toolbar-list").css('visibility', 'visible');
 	});
 
-	$(".toolbar-group-trigger").click(function() {
+	$(".text-toolbar-group-trigger").click(function() {
 		if (!$(this).hasClass("open")) {
-			$(".toolbar-group-options").css({
+			$(".text-toolbar-group-options").css({
 				'height' : '274px',
 				'visibility' : 'visible',
 				'opacity' : '1'
 			});
 			$(this).addClass("open");
 		} else if ($(this).hasClass("open")) {
-			$(".toolbar-group-options").css({
+			$(".text-toolbar-group-options").css({
 				'height' : '0px',
 				'visibility' : 'hidden',
 				'opacity' : '0'
@@ -111,7 +142,7 @@ $(function() {
 
 	$(".page-wrapper").not($(".text-list")).click(function() {
 		$(".text-list").css('visibility', 'hidden');
-		$(".toolbar-group-options").css({
+		$(".text-toolbar-group-options").css({
 			'height' : '0px',
 			'visibility' : 'hidden',
 			'opacity' : '0'
