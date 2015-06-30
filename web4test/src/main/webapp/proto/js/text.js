@@ -30,10 +30,12 @@ $(function(){
 				$("<div>")
 				.addClass("sl-block-content")
 				.css({
-					'z-index' : '11'					
+					'z-index' : '11',
+					'padding' : '10px'
 				}).appendTo(blockText);
 			
 				 $("<p>")
+				 	.addClass("placeHolder")
 					.text("Text")
 					.appendTo(blockContent);
 			
@@ -60,9 +62,7 @@ $(function(){
 		  
 
 	    $(contentBox).keypress(function(event){
-	    	//alert($(this).attr("id"))
 	    	if(event.which == 13){ 	
-	    		//alert('디폴트 이벤트실행')
     		$('.sl-block-content div').each(function(){
 	    	    	var where= $($(this).replaceWith($('<p>' +$(this).html()+ '</p>')));
 	    	    	$(where).focus();
@@ -109,7 +109,6 @@ $(function(){
 	$(".font.size-scroll").on("mousemove", function(ev){	
 		fontSizeInput = $(ev.target).val();
 			$(".font.size-box").val(fontSizeInput);
-			console.log(fontSizeInput);
 		}); 
 
 // TEXT - font 사이즈 관리			
