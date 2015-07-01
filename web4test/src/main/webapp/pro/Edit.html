@@ -19,7 +19,7 @@
 <script src="http://threedubmedia.com/inc/js/jquery.event.drop-2.2.js"></script>
 <script src="http://threedubmedia.com/inc/js/jquery.event.drop.live-2.2.js"></script>
 <!-- 정준호:이미지 업로드js -->
-<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-fileupload/vendor/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="js/jquery-fileupload/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="js/jquery-fileupload/jquery.fileupload.js"></script>
@@ -38,6 +38,42 @@
 </style>
 </head>
 <body>
+
+<!-- 모달 -->
+  <div class="modal fade" id="layerpop">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+          <!-- 닫기(x) 버튼 -->
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <!-- header title -->
+          <h4 class="modal-title" id="myModalLabel">Media Library</h4>
+        </div>
+        <!-- body -->
+        <div id="modal-div" class="modal-body form-inline">
+
+          <div style="width: 500px; padding: 20px">
+            <input id="fileupload" type="file" name="files[]"
+              data-url="/web4test/file.do" multiple>
+          </div>
+
+          <div id="img-div">
+            <p>이미지라인</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
     <div class='page-wrapper'>
         <div class='preview-controls'>
             <button
@@ -1253,38 +1289,7 @@
         </div>
     </div>
     
-<!-- 모달 -->
-  <div id="test" class="modal fade" id="layerpop">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <!-- header -->
-        <div class="modal-header">
-          <!-- 닫기(x) 버튼 -->
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <!-- header title -->
-          <h4 class="modal-title" id="myModalLabel">Media Library</h4>
-        </div>
-        <!-- body -->
-        <div id="modal-div" class="modal-body form-inline">
 
-          <div style="width: 500px; padding: 20px">
-            <input id="fileupload" type="file" name="files[]"
-              data-url="/web4test/file.do" multiple>
-          </div>
-
-          <div id="img-div">
-            <p>이미지라인</p>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
-        </div>
-      </div>
-    </div>
-  </div>
     
     
 
