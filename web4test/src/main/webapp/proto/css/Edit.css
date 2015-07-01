@@ -1557,21 +1557,8 @@ width : 142px;
 height : 28px;
 left : 100;
 top : 100;
-z-index : 1000;
+z-index : 15;
 }
-
-input[type="number"].font{
-font-size: 18px;
-}
-
-input[type="number"].opacity{
-font-size: 15px;
-}
-
-input[type="number"].padding{
-font-size: 15px;
-}
-
 .size-scroll{
 position : absolute;
 width : 142px;
@@ -1579,7 +1566,22 @@ height : 28px;
 left : 100;
 top : 100;
 opacity : 0.00;
-z-index : 1100;
+z-index : 16;
 cursor: col-resize;
 }
+input[type="number"].font{
+font-size: 18px;
+color : black;
+}
+
+input[type="number"].opacity{
+font-size: 15px;
+color : black;
+}
+
+input[type="number"].padding{
+font-size: 15px;
+color : black;
+}
+
 /**/

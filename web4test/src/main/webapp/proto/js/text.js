@@ -155,7 +155,7 @@ $(function(){
 		}); 
 		 // - font size 입력 완료
 		 $(document).not($(".font.size-box")).click(function(){
-		    	$(".font.size-scroll").css("z-index", "2");
+		    	$(".font.size-scroll").css("z-index", "16");
 		    	$(".font.size-scroll").removeClass("back");
 		    });
 
@@ -201,7 +201,7 @@ $(function(){
 		}); 
 		 // - 투명도 입력 완료
 		 $(document).not($(".opacity.size-box")).click(function(){
-		    	$(".opacity.size-scroll").css("z-index", "2");
+		    	$(".opacity.size-scroll").css("z-index", "16");
 		    	$(".opacity.size-scroll").removeClass("back");
 		    });
 
@@ -235,7 +235,7 @@ $(function(){
 		 }); 
 		 // - 패딩 입력 완료
 		 $(document).not($(".padding.size-box")).click(function(){
-		    	$(".padding.size-scroll").css("z-index", "2");
+		    	$(".padding.size-scroll").css("z-index", "16");
 		    	$(".padding.size-scroll").removeClass("back");
 		    });
 
