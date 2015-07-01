@@ -11,32 +11,9 @@ $(function () {
 //	<!-- 이미지 버튼 클릭 -->
 	 $('.toolbar-image').on('click', function() {
 		 refreshAjax();
-		 console.log("fkfk");
 		 $('div.modal').modal('show');
 	});
 
-////	<!-- 파일업로드 -->
-//	$(function() {
-//		$('#btn').click(function() {
-//			console.log('aassaass');
-//			var formData = new FormData();
-//			formData.append('file', $('input[name=file]').val());
-//			
-//			$.ajax({
-//				url: '/web4test/file.do',
-//				data: formData,
-//				processData: false,
-//				contentType: false,
-//				type: 'POST',
-//				success: function(data) {
-//					alert('bbbb');
-//					alert('리프레쉬 호출');
-//					refreshAjax();
-//				}
-//			});
-//			
-//		});
-//	});
 
 //	<!-- 이미지 뿌리는 요청 -->
 	function refreshAjax(){
