@@ -20,45 +20,22 @@ $(document).ready(function() {
 	var block_zIndex = 10;
 
 
-	$(document).on('change', '.sl-block', function() {
-		console.log('chnage');
-	});
+
 	 //shape ADD
 	$('.toolbar-add-block-option[data-block-type="shape"]').click(function(e) {
+
 		console.log(guid());
-		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-		var svgTag = $(svg)
-						.attr({
-							'version': '1.1',
-							'width': '100%',
-							'height': '100%',
-							'preserveAspectRatio': 'xMidYMid',
-							'viewBox': '0 0 300 300'
-						});
-
-		var svgNS = svg.namespaceURI;
-
-		var rect = document.createElementNS(svgNS,'rect');
-		var svgContent = $(rect)
-							.attr({
-								'width': '300',
-								'fill': 'rgb(186, 199, 234)',
-								'height': '300'
-							})
-							.addClass('shape-element');
-
 
 		var blockContentTag =
 			$("<div>")
 				.addClass("sl-block-content")
-			.attr({
-				'data-shape-type' : 'rect',
-				//'data-shape-fill-color': 'rgb(186, 199, 234)',
-				'data-shape-stretch': 'false'
-			})
-			.css({
-				'z-index' : 'auto'
-			});
+				.attr({
+					'data-shape-type' : 'rect',
+					'data-shape-stretch': 'false'
+				})
+				.css({
+					'z-index' : 'auto'
+				});
 
 		var blockTag =
 			$('<div>')
@@ -80,6 +57,27 @@ $(document).ready(function() {
 					'top': '200px',
 					'z-index': block_zIndex++
 				});
+
+		//var Cwidth = blockTag.css('width').substring(0, this.length-2);
+		//var Cheight = blockTag.css('height');
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttributeNS(null, 'version', '1.1');
+		svg.setAttributeNS(null, 'width', '100%');
+		svg.setAttributeNS(null, 'height', '100%');
+		svg.setAttributeNS(null, 'preserveAspectRatio', 'xMidYMid');
+		svg.setAttributeNS(null, 'viewBox', '0 0 300 300');
+		var svgTag = $(svg);
+
+		var svgNS = svg.namespaceURI;
+
+		var rect = document.createElementNS(svgNS,'rect');
+		rect.setAttributeNS(null, 'width', '300');
+		rect.setAttributeNS(null, 'height', '300');
+		rect.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
+
+		var svgContent = $(rect);
+
+
 
 		svgTag.append(svgContent);
 		blockContentTag.append(svgTag);
@@ -338,6 +336,10 @@ $(document).ready(function() {
 						height: event.pageY - targetStyle.top
 					}); break;
 			}
+
+			//var setViewBox = '0 0 ' + targetStyle.width + ' ' + targetStyle.height;
+			//editTargetSelector.find('svg')[0].setAttributeNS(null, 'viewBox', setViewBox);
+
 
 		});
 
