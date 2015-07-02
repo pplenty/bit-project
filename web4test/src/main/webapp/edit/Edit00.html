@@ -350,7 +350,7 @@
 									<div class="toolbar-option toolbar-select"
 										data-option-type="border-style">
 										<h4 class="toolbar-option-label">Style</h4>
-										<div class="toolbar-select-trigger">Solid</div>
+										<div class="text-toolbar-select-trigger">Solid</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
@@ -414,39 +414,740 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
 					<!-- image -->
 					<div class="image-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label"><h1>T</h1> <br>Text</span>
+						<div class="toolbar-option toolbar-radio"
+							data-option-type="image-align" data-number-of-items="4">
+							<h4 class="toolbar-option-label">image Alignment</h4>
+							<div class="toolbar-radio-inner">
+								<div class="toolbar-radio-item" data-value="left">
+									<i class="fa fa-align-left"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="center">
+									<i class="fa fa-align-center"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="right">
+									<i class="fa fa-align-right"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="justify">
+									<i class="fa fa-align-justify"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-stepper"
+							data-option-type="image-size">
+							<h4 class="toolbar-option-label">image Scale</h4>
+							<div class="stepper">
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="image-color">
+							<h4 class="toolbar-option-label">image Color</h4>
+							<div class="toolbar-color-trigger">
+								<input class="image-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="background-color">
+							<h4 class="toolbar-option-label">Background Color</h4>
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">Opacity</h4>
+							<div class="range">
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+							</div>
+						</div>
+						<div id="padding" class="toolbar-option toolbar-stepper"
+							data-option-type="padding">
+							<h4 class="toolbar-option-label">Padding</h4>
+							<div class="stepper">
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="image-toolbar-group-trigger">
+								<span class="label">Border</span><span
+									class="checkbox icon i-checkmark">
+									</span>
+							</div>
+							<div class="image-toolbar-group-options">
+								<div class="image-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-select"
+										data-option-type="border-style">
+										<h4 class="toolbar-option-label">Style</h4>
+										<div class="image-toolbar-select-trigger">Solid</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<h4 class="toolbar-option-label">Width</h4>
+										<div class="stepper">
+											<input type="image" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-radius">
+										<h4 class="toolbar-option-label">Radius</h4>
+										<div class="stepper">
+											<input type="image" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-color"
+										data-option-type="border-color">
+										<h4 class="toolbar-option-label">Color</h4>
+										<div class="toolbar-color-trigger">
+
+											<input class="image-border-colorinput" type="color">
+											<div class="toolbar-color-reset icon i-undo"
+												data-tooltip="Use default color" data-tooltip-delay="500"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-depth" data-number-of-items="2">
+							<h4 class="toolbar-option-label">Depth</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="back"
+									data-tooltip="Move to back">
+									<i class="fa fa-arrow-down fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="front"
+									data-tooltip="Move to front">
+									<i class="fa fa-arrow-up fa-2x"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
 					<!-- shape -->
 					<div class="shape-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label"><h1>T</h1> <br>Text</span>
+						<div class="toolbar-option toolbar-radio"
+							data-option-type="shape-align" data-number-of-items="4">
+							<h4 class="toolbar-option-label">shape Alignment</h4>
+							<div class="toolbar-radio-inner">
+								<div class="toolbar-radio-item" data-value="left">
+									<i class="fa fa-align-left"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="center">
+									<i class="fa fa-align-center"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="right">
+									<i class="fa fa-align-right"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="justify">
+									<i class="fa fa-align-justify"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-stepper"
+							data-option-type="shape-size">
+							<h4 class="toolbar-option-label">shape Scale</h4>
+							<div class="stepper">
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="shape-color">
+							<h4 class="toolbar-option-label">shape Color</h4>
+							<div class="toolbar-color-trigger">
+								<input class="shape-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="background-color">
+							<h4 class="toolbar-option-label">Background Color</h4>
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">Opacity</h4>
+							<div class="range">
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+							</div>
+						</div>
+						<div id="padding" class="toolbar-option toolbar-stepper"
+							data-option-type="padding">
+							<h4 class="toolbar-option-label">Padding</h4>
+							<div class="stepper">
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="shape-toolbar-group-trigger">
+								<span class="label">Border</span><span
+									class="checkbox icon i-checkmark">
+									</span>
+							</div>
+							<div class="shape-toolbar-group-options">
+								<div class="shape-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-select"
+										data-option-type="border-style">
+										<h4 class="toolbar-option-label">Style</h4>
+										<div class="shape-toolbar-select-trigger">Solid</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<h4 class="toolbar-option-label">Width</h4>
+										<div class="stepper">
+											<input type="shape" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-radius">
+										<h4 class="toolbar-option-label">Radius</h4>
+										<div class="stepper">
+											<input type="shape" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-color"
+										data-option-type="border-color">
+										<h4 class="toolbar-option-label">Color</h4>
+										<div class="toolbar-color-trigger">
+
+											<input class="shape-border-colorinput" type="color">
+											<div class="toolbar-color-reset icon i-undo"
+												data-tooltip="Use default color" data-tooltip-delay="500"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-depth" data-number-of-items="2">
+							<h4 class="toolbar-option-label">Depth</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="back"
+									data-tooltip="Move to back">
+									<i class="fa fa-arrow-down fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="front"
+									data-tooltip="Move to front">
+									<i class="fa fa-arrow-up fa-2x"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
 						</div>
 					</div>
+					
+					
+					
+					
 					<!-- iframe -->
 					<div class="iframe-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label"><h1>T</h1> <br>Text</span>
+						<div class="toolbar-option toolbar-radio"
+							data-option-type="iframe-align" data-number-of-items="4">
+							<h4 class="toolbar-option-label">iframe Alignment</h4>
+							<div class="toolbar-radio-inner">
+								<div class="toolbar-radio-item" data-value="left">
+									<i class="fa fa-align-left"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="center">
+									<i class="fa fa-align-center"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="right">
+									<i class="fa fa-align-right"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="justify">
+									<i class="fa fa-align-justify"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-stepper"
+							data-option-type="iframe-size">
+							<h4 class="toolbar-option-label">iframe Scale</h4>
+							<div class="stepper">
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="iframe-color">
+							<h4 class="toolbar-option-label">iframe Color</h4>
+							<div class="toolbar-color-trigger">
+								<input class="iframe-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="background-color">
+							<h4 class="toolbar-option-label">Background Color</h4>
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">Opacity</h4>
+							<div class="range">
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+							</div>
+						</div>
+						<div id="padding" class="toolbar-option toolbar-stepper"
+							data-option-type="padding">
+							<h4 class="toolbar-option-label">Padding</h4>
+							<div class="stepper">
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="iframe-toolbar-group-trigger">
+								<span class="label">Border</span><span
+									class="checkbox icon i-checkmark">
+									</span>
+							</div>
+							<div class="iframe-toolbar-group-options">
+								<div class="iframe-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-select"
+										data-option-type="border-style">
+										<h4 class="toolbar-option-label">Style</h4>
+										<div class="iframe-toolbar-select-trigger">Solid</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<h4 class="toolbar-option-label">Width</h4>
+										<div class="stepper">
+											<input type="iframe" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-radius">
+										<h4 class="toolbar-option-label">Radius</h4>
+										<div class="stepper">
+											<input type="iframe" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-color"
+										data-option-type="border-color">
+										<h4 class="toolbar-option-label">Color</h4>
+										<div class="toolbar-color-trigger">
+
+											<input class="iframe-border-colorinput" type="color">
+											<div class="toolbar-color-reset icon i-undo"
+												data-tooltip="Use default color" data-tooltip-delay="500"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-depth" data-number-of-items="2">
+							<h4 class="toolbar-option-label">Depth</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="back"
+									data-tooltip="Move to back">
+									<i class="fa fa-arrow-down fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="front"
+									data-tooltip="Move to front">
+									<i class="fa fa-arrow-up fa-2x"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
 					<!-- code -->
 					<div class="code-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label"><h1>T</h1> <br>Text</span>
+						<div class="toolbar-option toolbar-radio"
+							data-option-type="code-align" data-number-of-items="4">
+							<h4 class="toolbar-option-label">code Alignment</h4>
+							<div class="toolbar-radio-inner">
+								<div class="toolbar-radio-item" data-value="left">
+									<i class="fa fa-align-left"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="center">
+									<i class="fa fa-align-center"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="right">
+									<i class="fa fa-align-right"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="justify">
+									<i class="fa fa-align-justify"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-stepper"
+							data-option-type="code-size">
+							<h4 class="toolbar-option-label">code Scale</h4>
+							<div class="stepper">
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="code-color">
+							<h4 class="toolbar-option-label">code Color</h4>
+							<div class="toolbar-color-trigger">
+								<input class="code-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="background-color">
+							<h4 class="toolbar-option-label">Background Color</h4>
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">Opacity</h4>
+							<div class="range">
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+							</div>
+						</div>
+						<div id="padding" class="toolbar-option toolbar-stepper"
+							data-option-type="padding">
+							<h4 class="toolbar-option-label">Padding</h4>
+							<div class="stepper">
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="code-toolbar-group-trigger">
+								<span class="label">Border</span><span
+									class="checkbox icon i-checkmark">
+									</span>
+							</div>
+							<div class="code-toolbar-group-options">
+								<div class="code-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-select"
+										data-option-type="border-style">
+										<h4 class="toolbar-option-label">Style</h4>
+										<div class="code-toolbar-select-trigger">Solid</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<h4 class="toolbar-option-label">Width</h4>
+										<div class="stepper">
+											<input type="code" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-radius">
+										<h4 class="toolbar-option-label">Radius</h4>
+										<div class="stepper">
+											<input type="code" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-color"
+										data-option-type="border-color">
+										<h4 class="toolbar-option-label">Color</h4>
+										<div class="toolbar-color-trigger">
+
+											<input class="code-border-colorinput" type="color">
+											<div class="toolbar-color-reset icon i-undo"
+												data-tooltip="Use default color" data-tooltip-delay="500"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-depth" data-number-of-items="2">
+							<h4 class="toolbar-option-label">Depth</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="back"
+									data-tooltip="Move to back">
+									<i class="fa fa-arrow-down fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="front"
+									data-tooltip="Move to front">
+									<i class="fa fa-arrow-up fa-2x"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
 					<!-- math -->
 					<div class="math-list">
-						<div class="toolbar-add-block-option" data-block-type="text">
-							<span class="toolbar-add-block-option-icon icon i-type"></span> <span
-								class="toolbar-add-block-option-label"><h1>T</h1> <br>Text</span>
+						<div class="toolbar-option toolbar-radio"
+							data-option-type="math-align" data-number-of-items="4">
+							<h4 class="toolbar-option-label">math Alignment</h4>
+							<div class="toolbar-radio-inner">
+								<div class="toolbar-radio-item" data-value="left">
+									<i class="fa fa-align-left"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="center">
+									<i class="fa fa-align-center"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="right">
+									<i class="fa fa-align-right"></i>
+								</div>
+								<div class="toolbar-radio-item" data-value="justify">
+									<i class="fa fa-align-justify"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-stepper"
+							data-option-type="math-size">
+							<h4 class="toolbar-option-label">math Scale</h4>
+							<div class="stepper">
+                            <input class="font size-box" type=number value=20>
+                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
+                            </div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="math-color">
+							<h4 class="toolbar-option-label">math Color</h4>
+							<div class="toolbar-color-trigger">
+								<input class="math-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-color"
+							data-option-type="background-color">
+							<h4 class="toolbar-option-label">Background Color</h4>
+							<div class="toolbar-color-trigger transparent">
+								<input class="back-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">Opacity</h4>
+							<div class="range">
+							<input class="opacity size-box" type=number value=1.00>
+                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+							</div>
+						</div>
+						<div id="padding" class="toolbar-option toolbar-stepper"
+							data-option-type="padding">
+							<h4 class="toolbar-option-label">Padding</h4>
+							<div class="stepper">
+                            <input class="padding size-box" type=number>
+                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="math-toolbar-group-trigger">
+								<span class="label">Border</span><span
+									class="checkbox icon i-checkmark">
+									</span>
+							</div>
+							<div class="math-toolbar-group-options">
+								<div class="math-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-select"
+										data-option-type="border-style">
+										<h4 class="toolbar-option-label">Style</h4>
+										<div class="math-toolbar-select-trigger">Solid</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<h4 class="toolbar-option-label">Width</h4>
+										<div class="stepper">
+											<input type="math" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-radius">
+										<h4 class="toolbar-option-label">Radius</h4>
+										<div class="stepper">
+											<input type="math" class="stepper-number">
+										</div>
+									</div>
+									<div class="toolbar-option toolbar-color"
+										data-option-type="border-color">
+										<h4 class="toolbar-option-label">Color</h4>
+										<div class="toolbar-color-trigger">
+
+											<input class="math-border-colorinput" type="color">
+											<div class="toolbar-color-reset icon i-undo"
+												data-tooltip="Use default color" data-tooltip-delay="500"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-depth" data-number-of-items="2">
+							<h4 class="toolbar-option-label">Depth</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="back"
+									data-tooltip="Move to back">
+									<i class="fa fa-arrow-down fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="front"
+									data-tooltip="Move to front">
+									<i class="fa fa-arrow-up fa-2x"></i>
+								</div>
+							</div>
+						</div>
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -460,12 +1161,67 @@
 				<span class="icon i-equalizer"></span>
 			</div>
 		</div>
+		<!-- text -->
 		<div class="text-toolbar-panel" data-panel-type="select">
 			<div class="toolbar-panel-content"
 				style="width: auto; height: auto; max-height: 300px;">
-				<div class="toolbar-select-item1" data-value="solid">Solid</div>
-				<div class="toolbar-select-item2" data-value="dashed">Dashed</div>
-				<div class="toolbar-select-item3" data-value="dotted">Dotted</div>
+				<div class="text-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="text-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="text-toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
+		</div>
+		<!-- image -->
+		<div class="image-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="image-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="image-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="image-toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
+		</div>
+		
+		<!-- shape -->
+		<div class="shape-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="shape-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="shape-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="shape-toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
+		</div>
+		
+		<!-- iframe -->
+		<div class="iframe-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="iframe-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="iframe-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="iframe-toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
+		</div>
+		
+		<!-- code -->
+		<div class="code-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="code-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="code-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="code-toolbar-select-item3" data-value="dotted">Dotted</div>
+			</div>
+			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
+		</div>
+		
+		<!-- math -->
+		<div class="math-toolbar-panel" data-panel-type="select">
+			<div class="toolbar-panel-content"
+				style="width: auto; height: auto; max-height: 300px;">
+				<div class="math-toolbar-select-item1" data-value="solid">Solid</div>
+				<div class="math-toolbar-select-item2" data-value="dashed">Dashed</div>
+				<div class="math-toolbar-select-item3" data-value="dotted">Dotted</div>
 			</div>
 			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>

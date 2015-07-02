@@ -574,7 +574,7 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   border-radius: 2px;
 }
 
-.toolbar .text-list .toolbar-select .toolbar-select-trigger {
+.toolbar .text-list .toolbar-select .text-toolbar-select-trigger {
   width: 100%;
   height: 30px;
   line-height: 30px;
@@ -637,7 +637,7 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   visibility: hidden;
 }
 
-.text-toolbar-panel .toolbar-select-item1 {
+.text-toolbar-panel .text-toolbar-select-item1 {
   min-height: 30px;
   line-height: 28px;
   padding: 0 10px;
@@ -645,7 +645,7 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   border: 1px solid transparent;
 }
 
-.text-toolbar-panel .toolbar-select-item2 {
+.text-toolbar-panel .text-toolbar-select-item2 {
   min-height: 30px;
   line-height: 28px;
   padding: 0 10px;
@@ -653,13 +653,16 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   border: 1px solid transparent;
 }
 
-.text-toolbar-panel .toolbar-select-item3 {
+.text-toolbar-panel .text-toolbar-select-item3 {
   min-height: 30px;
   line-height: 28px;
   padding: 0 10px;
   cursor: pointer;
   border: 1px solid transparent;
 }
+
+
+
 /* image */
 .toolbars .toolbar .image-list {
   position: absolute;
@@ -673,7 +676,308 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   padding: 12px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-} 
+}
+ 
+.toolbar .image-list .toolbar-divider {
+  margin-top: 10px;
+  height: 3px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .image-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .image-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  image-align: center;
+}
+
+.toolbar .image-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .image-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .image-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .image-list .toolbar-color .toolbar-color-trigger .image-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .image-list .toolbar-color .toolbar-color-trigger .image-border-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .image-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .image-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .image-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .image-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .image-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .image-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  image-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .image-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .image-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .image-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .image-list .toolbar-group .image-toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  image-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .image-list .toolbar-group .image-toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .image-list .toolbar-group .image-toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  image-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .image-list .toolbar-group .image-toolbar-group-options {
+  height:0px;
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .image-list .toolbar-group .image-toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .image-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .image-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  image-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .image-list .toolbar-select .image-toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .image-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  image-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .image-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .image-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+ .image-toolbar-panel {
+  position: absolute;
+  top: 395px;
+  left: 145px;
+  margin-left: 9px;
+  color: #ffffff;
+  background: #4e4e4e;
+  font-size: 14px;
+  z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 100px;
+  visibility: hidden;
+}
+
+.image-toolbar-panel .image-toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.image-toolbar-panel .image-toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.image-toolbar-panel .image-toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+
+
+
+
 
 /* shape */
 .toolbars .toolbar .shape-list {
@@ -688,7 +992,304 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   padding: 12px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-} 
+}
+ 
+.toolbar .shape-list .toolbar-divider {
+  margin-top: 10px;
+  height: 3px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .shape-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .shape-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  shape-align: center;
+}
+
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger .shape-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger .shape-border-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .shape-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .shape-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .shape-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .shape-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .shape-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .shape-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  shape-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .shape-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .shape-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .shape-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .shape-list .toolbar-group .shape-toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  shape-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .shape-list .toolbar-group .shape-toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .shape-list .toolbar-group .shape-toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  shape-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .shape-list .toolbar-group .shape-toolbar-group-options {
+  height:0px;
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .shape-list .toolbar-group .shape-toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .shape-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .shape-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  shape-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .shape-list .toolbar-select .shape-toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .shape-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  shape-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .shape-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .shape-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+ .shape-toolbar-panel {
+  position: absolute;
+  top: 395px;
+  left: 145px;
+  margin-left: 9px;
+  color: #ffffff;
+  background: #4e4e4e;
+  font-size: 14px;
+  z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 100px;
+  visibility: hidden;
+}
+
+.shape-toolbar-panel .shape-toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.shape-toolbar-panel .shape-toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.shape-toolbar-panel .shape-toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
 
 /* iframe */
 .toolbars .toolbar .iframe-list {
@@ -703,7 +1304,304 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   padding: 12px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-} 
+}
+ 
+.toolbar .iframe-list .toolbar-divider {
+  margin-top: 10px;
+  height: 3px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .iframe-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .iframe-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  iframe-align: center;
+}
+
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger .iframe-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger .iframe-border-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .iframe-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .iframe-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .iframe-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .iframe-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .iframe-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .iframe-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  iframe-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .iframe-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .iframe-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .iframe-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .iframe-list .toolbar-group .iframe-toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  iframe-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .iframe-list .toolbar-group .iframe-toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .iframe-list .toolbar-group .iframe-toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  iframe-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .iframe-list .toolbar-group .iframe-toolbar-group-options {
+  height:0px;
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .iframe-list .toolbar-group .iframe-toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .iframe-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .iframe-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  iframe-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .iframe-list .toolbar-select .iframe-toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .iframe-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  iframe-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .iframe-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .iframe-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+ .iframe-toolbar-panel {
+  position: absolute;
+  top: 395px;
+  left: 145px;
+  margin-left: 9px;
+  color: #ffffff;
+  background: #4e4e4e;
+  font-size: 14px;
+  z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 100px;
+  visibility: hidden;
+}
+
+.iframe-toolbar-panel .iframe-toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.iframe-toolbar-panel .iframe-toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.iframe-toolbar-panel .iframe-toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
 
 
 /* code */
@@ -719,9 +1617,623 @@ body > div.page-wrapper > div.sidebar > div.primary > button.button.preview {
   padding: 12px;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-} 
+}
+ 
+.toolbar .code-list .toolbar-divider {
+  margin-top: 10px;
+  height: 3px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .code-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .code-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  code-align: center;
+}
+
+.toolbar .code-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .code-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .code-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .code-list .toolbar-color .toolbar-color-trigger .code-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .code-list .toolbar-color .toolbar-color-trigger .code-border-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .code-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .code-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .code-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .code-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .code-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .code-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  code-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .code-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .code-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .code-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .code-list .toolbar-group .code-toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  code-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .code-list .toolbar-group .code-toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .code-list .toolbar-group .code-toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  code-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .code-list .toolbar-group .code-toolbar-group-options {
+  height:0px;
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .code-list .toolbar-group .code-toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .code-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .code-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  code-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .code-list .toolbar-select .code-toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .code-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  code-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .code-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .code-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+ .code-toolbar-panel {
+  position: absolute;
+  top: 395px;
+  left: 145px;
+  margin-left: 9px;
+  color: #ffffff;
+  background: #4e4e4e;
+  font-size: 14px;
+  z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 100px;
+  visibility: hidden;
+}
+
+.code-toolbar-panel .code-toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.code-toolbar-panel .code-toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.code-toolbar-panel .code-toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+
+
 
 /* math */
+.toolbars .toolbar .math-list {
+  position: absolute;
+  visibility : hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+ 
+.toolbar .math-list .toolbar-divider {
+  margin-top: 10px;
+  height: 3px;
+  width: 100%;
+  padding: 0;
+  background-color: #444;
+}
+
+
+.toolbar .math-list .toolbar-radio .toolbar-radio-inner {
+  background: #4e4e4e;
+  border: 1px solid #292929;
+}
+
+.toolbar .math-list .toolbar-radio .toolbar-radio-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  math-align: center;
+}
+
+.toolbar .math-list .toolbar-color .toolbar-color-trigger {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929;
+  cursor: pointer;
+}
+
+.toolbar .math-list .toolbar-color .toolbar-color-trigger .colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .math-list .toolbar-color .toolbar-color-trigger .back-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+
+.toolbar .math-list .toolbar-color .toolbar-color-trigger .math-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .math-list .toolbar-color .toolbar-color-trigger .math-border-colorinput{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding : 0;
+  margin : 0;
+
+}
+.toolbar .math-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .math-list .toolbar-color .toolbar-color-trigger.transparent {
+  background : blue;
+  background-repeat: repeat;
+}
+
+.toolbar .math-list .toolbar-color-trigger .toolbar-color-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 7px;
+  z-index: 2;
+  color: #fff;
+  opacity: 0.3;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.toolbar .math-list .toolbar-range .range {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .math-list .toolbar-range .range .range-progress {
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  -webkit-transition: background 0.15s ease;
+  transition: background 0.15s ease;
+}
+
+.toolbar .math-list .toolbar-range .range .range-numeric {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 28px;
+  padding: 0 6px;
+  line-height: 28px;
+  color: #fff;
+  math-shadow: 0px 0px 1px #000;
+}
+
+.toolbar .math-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+.toolbar .math-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .math-list .toolbar-group {
+  margin-bottom: 15px;
+}
+
+.toolbar .math-list .toolbar-group .math-toolbar-group-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 28px;
+  color: #ddd;
+  font-size: 11px;
+  math-transform: uppercase;
+  cursor: pointer;
+  clear: both;
+}
+
+.toolbar .math-list .toolbar-group .math-toolbar-group-trigger .label {
+  float: left;
+}
+
+.toolbar .math-list .toolbar-group .math-toolbar-group-trigger .checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  top: 6px;
+  border: 1px solid #555;
+  math-align: center;
+  font-size: 14px;
+  line-height: 0.8;
+  float: right;
+  color: rgba(0,0,0,0);
+}
+
+.toolbar .math-list .toolbar-group .math-toolbar-group-options {
+  height:0px;
+  position: relative;
+  background: #3f3f3f;
+  margin-left: -12px;
+  width: 168px;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.135, 1);
+}
+
+.toolbar .math-list .toolbar-group .math-toolbar-group-options-inner {
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
+  padding: 12px 12px 0 12px;
+}
+
+.toolbar .math-list .toolbar-multi {
+  display: block;
+  position: relative;
+  height: auto;
+  margin-bottom: 15px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none
+}
+
+.toolbar .math-list .toolbar-multi .toolbar-multi-item {
+  display: inline-block;
+  padding: 6px 8px;
+  cursor: pointer;
+  math-align: center;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  border-radius: 2px;
+}
+
+.toolbar .math-list .toolbar-select .math-toolbar-select-trigger {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 28px 0 6px;
+  color: #fff;
+  background-color: #4e4e4e;
+  border: 1px solid #292929;
+  box-shadow: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  -webkit-transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease;
+}
+
+.toolbar .math-list .toolbar-option .toolbar-option-label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: normal;
+  math-transform: uppercase;
+  color: #ddd;
+  cursor: default;
+}
+
+
+.toolbar .math-list .toolbar-stepper .stepper .stepper-number {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  outline-offset: 0;
+  cursor: col-resize;
+}
+
+.toolbar .math-list .toolbar-stepper .stepper {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: #4e4e4e;
+  border: 1px solid #292929;
+  cursor: col-resize;
+}
+
+ .math-toolbar-panel {
+  position: absolute;
+  top: 395px;
+  left: 145px;
+  margin-left: 9px;
+  color: #ffffff;
+  background: #4e4e4e;
+  font-size: 14px;
+  z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  width: 100px;
+  visibility: hidden;
+}
+
+.math-toolbar-panel .math-toolbar-select-item1 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.math-toolbar-panel .math-toolbar-select-item2 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.math-toolbar-panel .math-toolbar-select-item3 {
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+
+
+
+
+
 .toolbars .toolbar .math-list {
   position: absolute;
   visibility : hidden;
