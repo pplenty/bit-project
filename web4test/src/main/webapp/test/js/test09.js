@@ -15,13 +15,17 @@ $(window).load(function() {
 $(document).ready(function() {
 
 	var presentSection = $('section.present');
+	//var presentSection = $('.sl-block-gird');
 	var blockId = 100000;
 	var block_zIndex = 10;
 
 
+	$(document).on('change', '.sl-block', function() {
+		console.log('chnage');
+	});
 	 //shape ADD
 	$('.toolbar-add-block-option[data-block-type="shape"]').click(function(e) {
-
+		console.log(guid());
 		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 		var svgTag = $(svg)
 						.attr({
@@ -61,7 +65,7 @@ $(document).ready(function() {
 				.addClass('sl-block')
 				.attr({
 					'data-block-type': 'shape',
-					'data-block-blockId': blockId++,
+					'data-block-id': blockId++,
 					'selectedDropStart': false,
 					'selectedDrop': false
 					//'draggable': true
@@ -679,3 +683,12 @@ function rgb2hex(rgb) {
     }
 }
 
+function guid() {
+	function s4() {
+		return Math.floor((1 + Math.random()) * 0x10000)
+			.toString(16)
+			.substring(1);
+	}
+	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+		s4() + '-' + s4() + s4() + s4();
+}
