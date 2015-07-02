@@ -9,9 +9,78 @@
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/Edit.css">
+<!-- 정준호:이미지 업로드css -->
+<link rel="stylesheet" href="../pro/css/bootstrap.css">
+<link rel="stylesheet" href="../pro/css/bootstrap-theme.css">
+
+<!-- 고유식:드래그 관련 js -->
+<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+<script src="http://threedubmedia.com/inc/js/jquery.event.drag-2.2.js"></script>
+<script
+	src="http://threedubmedia.com/inc/js/jquery.event.drag.live-2.2.js"></script>
+<script src="http://threedubmedia.com/inc/js/jquery.event.drop-2.2.js"></script>
+<script
+	src="http://threedubmedia.com/inc/js/jquery.event.drop.live-2.2.js"></script>
+<!-- 정준호:이미지 업로드js -->
+<script type="text/javascript" src="../pro/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="../pro/js/jquery-fileupload/vendor/jquery.ui.widget.js"></script>
+<script type="text/javascript"
+	src="../pro/js/jquery-fileupload/jquery.iframe-transport.js"></script>
+<script type="text/javascript"
+	src="../pro/js/jquery-fileupload/jquery.fileupload.js"></script>
+<script type="text/javascript" src="../pro/js/myuploadfunction.js"></script>
+
 <script src="js/Edit.js"></script>
+<script src="../pro/js/text.js"></script>
+<!--이혜인 text 코드  -->
+<script src="../pro/js/test09.js"></script>
+<!-- 고유식 코드 shape, 기본 코드-->
+<script src="../pro/js/myuploadfunction.js"></script>
+<!-- 정준호:이미지 업로드js -->
+
+<style type="text/css">
+.pnt {
+	cursor: pointer;
+}
+</style>
+
 </head>
 <body>
+
+	<!-- 모달 -->
+	<div class="modal fade" id="layerpop">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!-- header -->
+				<div class="modal-header">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">×</button>
+					<!-- header title -->
+					<h4 class="modal-title" id="myModalLabel">Media Library</h4>
+				</div>
+				<!-- body -->
+				<div id="modal-div" class="modal-body form-inline">
+
+					<div style="width: 500px; padding: 20px">
+						<input id="fileupload" type="file" name="files[]"
+							data-url="/web4test/file.do" multiple>
+					</div>
+
+					<div id="img-div">
+						<p>이미지라인</p>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class='page-wrapper'>
 		<div class='preview-controls'>
 			<button
@@ -297,9 +366,9 @@
 							data-option-type="text-size">
 							<h4 class="toolbar-option-label">Text Scale</h4>
 							<div class="stepper">
-                            <input class="font size-box" type=number value=20>
-                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
-                            </div>
+								<input class="font size-box" type=number value=20> <input
+									class="font size-scroll" type=range min="0" max="100" step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -325,16 +394,19 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-                            <input class="padding size-box" type=number>
-                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+								<input class="padding size-box" type=number> <input
+									class="padding size-scroll" type=range min="0" max="100"
+									step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -342,8 +414,7 @@
 							data-group-type="border-css">
 							<div class="text-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="text-toolbar-group-options">
 								<div class="text-toolbar-group-options-inner">
@@ -414,12 +485,12 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
 					<!-- image -->
 					<div class="image-list">
 						<div class="toolbar-option toolbar-divider"
@@ -428,8 +499,9 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -438,8 +510,7 @@
 							data-group-type="border-css">
 							<div class="image-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="image-toolbar-group-options">
 								<div class="image-toolbar-group-options-inner">
@@ -510,16 +581,16 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
+
 					<!-- shape -->
 					<div class="shape-list">
-						
+
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
 						<div class="toolbar-option toolbar-color"
@@ -544,16 +615,19 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-                            <input class="padding size-box" type=number>
-                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+								<input class="padding size-box" type=number> <input
+									class="padding size-scroll" type=range min="0" max="100"
+									step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -561,8 +635,7 @@
 							data-group-type="border-css">
 							<div class="shape-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="shape-toolbar-group-options">
 								<div class="shape-toolbar-group-options-inner">
@@ -633,10 +706,10 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
+
+
+
+
 					<!-- iframe -->
 					<div class="iframe-list">
 						<div class="toolbar-option toolbar-radio"
@@ -661,9 +734,9 @@
 							data-option-type="iframe-size">
 							<h4 class="toolbar-option-label">iframe Scale</h4>
 							<div class="stepper">
-                            <input class="font size-box" type=number value=20>
-                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
-                            </div>
+								<input class="font size-box" type=number value=20> <input
+									class="font size-scroll" type=range min="0" max="100" step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -689,16 +762,19 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-                            <input class="padding size-box" type=number>
-                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+								<input class="padding size-box" type=number> <input
+									class="padding size-scroll" type=range min="0" max="100"
+									step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -706,8 +782,7 @@
 							data-group-type="border-css">
 							<div class="iframe-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="iframe-toolbar-group-options">
 								<div class="iframe-toolbar-group-options-inner">
@@ -778,13 +853,13 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
+
 					<!-- code -->
 					<div class="code-list">
 						<div class="toolbar-option toolbar-radio"
@@ -809,9 +884,9 @@
 							data-option-type="code-size">
 							<h4 class="toolbar-option-label">code Scale</h4>
 							<div class="stepper">
-                            <input class="font size-box" type=number value=20>
-                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
-                            </div>
+								<input class="font size-box" type=number value=20> <input
+									class="font size-scroll" type=range min="0" max="100" step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -837,16 +912,19 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-                            <input class="padding size-box" type=number>
-                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+								<input class="padding size-box" type=number> <input
+									class="padding size-scroll" type=range min="0" max="100"
+									step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -854,8 +932,7 @@
 							data-group-type="border-css">
 							<div class="code-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="code-toolbar-group-options">
 								<div class="code-toolbar-group-options-inner">
@@ -926,13 +1003,13 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
-					
-					
-					
-					
+
+
+
+
+
+
+
 					<!-- math -->
 					<div class="math-list">
 						<div class="toolbar-option toolbar-radio"
@@ -957,9 +1034,9 @@
 							data-option-type="math-size">
 							<h4 class="toolbar-option-label">math Scale</h4>
 							<div class="stepper">
-                            <input class="font size-box" type=number value=20>
-                            <input class="font size-scroll" type=range  min="0" max="100" step="1">							
-                            </div>
+								<input class="font size-box" type=number value=20> <input
+									class="font size-scroll" type=range min="0" max="100" step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -985,16 +1062,19 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-							<input class="opacity size-box" type=number value=1.00>
-                            <input class="opacity size-scroll" type=range  min="0" max="100" step="1">     
+								<input class="opacity size-box" type=number value=1.00>
+								<input class="opacity size-scroll" type=range min="0" max="100"
+									step="1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-                            <input class="padding size-box" type=number>
-                            <input class="padding size-scroll" type=range  min="0" max="100" step="1">     							</div>
+								<input class="padding size-box" type=number> <input
+									class="padding size-scroll" type=range min="0" max="100"
+									step="1">
+							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
@@ -1002,8 +1082,7 @@
 							data-group-type="border-css">
 							<div class="math-toolbar-group-trigger">
 								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark">
-									</span>
+									class="checkbox icon i-checkmark"> </span>
 							</div>
 							<div class="math-toolbar-group-options">
 								<div class="math-toolbar-group-options-inner">
@@ -1105,7 +1184,7 @@
 			</div>
 			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
-		
+
 		<!-- shape -->
 		<div class="shape-toolbar-panel" data-panel-type="select">
 			<div class="toolbar-panel-content"
@@ -1116,7 +1195,7 @@
 			</div>
 			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
-		
+
 		<!-- iframe -->
 		<div class="iframe-toolbar-panel" data-panel-type="select">
 			<div class="toolbar-panel-content"
@@ -1127,7 +1206,7 @@
 			</div>
 			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
-		
+
 		<!-- code -->
 		<div class="code-toolbar-panel" data-panel-type="select">
 			<div class="toolbar-panel-content"
@@ -1138,7 +1217,7 @@
 			</div>
 			<div class="toolbar-panel-arrow" style="top: 15px;"></div>
 		</div>
-		
+
 		<!-- math -->
 		<div class="math-toolbar-panel" data-panel-type="select">
 			<div class="toolbar-panel-content"
