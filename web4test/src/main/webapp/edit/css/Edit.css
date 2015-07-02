@@ -1786,7 +1786,7 @@ ease
 	border: 1px solid transparent;
 }
 
-ß /* math */ 
+ /* math */ 
 .toolbar . math-list .toolbar-group .text-toolbar-group-trigger .checkbox
 	{
 	position: relative;
@@ -2452,18 +2452,27 @@ div.nav-item {
 	left: 100;
 	top: 100;
 	z-index: 1;
+	color : black;
+	
 }
 
 input[type="number"].font {
 	font-size: 18px;
+	font-color : black;
 }
 
 input[type="number"].opacity {
 	font-size: 15px;
+	   font-color : black;
+	
 }
 
 input[type="number"].padding {
-	font-size: 15px;
+font-size: 15px;
+font-color : black;
+}
+input[type="number"]{
+	font-color : black;
 }
 
 .size-scroll {

@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>web04test</title>
-<script src="http://code.jquery.com/jquery-1.7.js"
-	type="text/javascript"></script>
-<link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
+<!-- 우인규 기본 CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/Edit.css">
 <!-- 정준호:이미지 업로드css -->
 <link rel="stylesheet" href="../pro/css/bootstrap.css">
 <link rel="stylesheet" href="../pro/css/bootstrap-theme.css">
 
+<!--  우인규 기본 JS -->
+<script src="http://code.jquery.com/jquery-1.7.js"  type="text/javascript"></script>
 <!-- 고유식:드래그 관련 js -->
 <script type="text/javascript" src="../pro/js/jquery-1.11.2.js"></script>
 <script src="http://threedubmedia.com/inc/js/jquery.event.drag-2.2.js"></script>
@@ -31,13 +31,14 @@
 	src="../pro/js/jquery-fileupload/jquery.fileupload.js"></script>
 <script type="text/javascript" src="../pro/js/myuploadfunction.js"></script>
 
+<!-- 우인규 바탕 코드 -->
 <script src="js/Edit.js"></script>
-<script src="../pro/js/text.js"></script>
 <!--이혜인 text 코드  -->
-<script src="../pro/js/test09.js"></script>
+<script src="../pro/js/text.js"></script>
 <!-- 고유식 코드 shape, 기본 코드-->
-<script src="../pro/js/myuploadfunction.js"></script>
+<script src="../pro/js/test09.js"></script>
 <!-- 정준호:이미지 업로드js -->
+<script src="../pro/js/myuploadfunction.js"></script>
 
 <style type="text/css">
 .pnt {
@@ -360,8 +361,8 @@
 							data-option-type="text-size">
 							<h4 class="toolbar-option-label">Text Scale</h4>
 							<div class="stepper">
-								<input class="font size-box" type=number value=20> <input
-									class="font size-scroll" type=range min="0" max="100" step="1">
+								 <input class="font size-box" type=number value=20> <input
+                                    class="font size-scroll" type=range min="0" max="100" step="1">
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -388,9 +389,9 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-								<input class="opacity size-box" type=number value=1.00>
-								<input class="opacity size-scroll" type=range min="0" max="100"
-									step="1">
+								 <input class="opacity size-box" type=number value=1>
+                                <input class="opacity size-scroll" type=range min="0" max="1"
+                                    step="0.1">
 							</div>
 						</div>
 						<div id="padding" class="toolbar-option toolbar-stepper"
@@ -398,8 +399,8 @@
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
 								<input class="padding size-box" type=number> <input
-									class="padding size-scroll" type=range min="0" max="100"
-									step="1">
+                                    class="padding size-scroll" type=range min="0" max="100"
+                                    step="1">
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -407,8 +408,8 @@
 						<div class="toolbar-option toolbar-group"
 							data-group-type="border-css">
 							<div class="text-toolbar-group-trigger">
-								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"> </span>
+								<span class="label">Border</span>
+								<input type="checkbox" id="borderCheckbox" class="border checkbox" name="border" value="border" >
 							</div>
 							<div class="text-toolbar-group-options">
 								<div class="text-toolbar-group-options-inner">
@@ -421,21 +422,20 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">Width</h4>
 										<div class="stepper">
-											<input type="text" class="stepper-number">
-										</div>
+                                             <input class="lineWidth size-box" type=number> 
+                                            <input class="lineWidth size-scroll" type=range min="1" max="200" step="1">   										</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-radius">
 										<h4 class="toolbar-option-label">Radius</h4>
 										<div class="stepper">
-											<input type="text" class="stepper-number">
-										</div>
+                                             <input class="lineRadius size-box" type=number> 
+                                            <input class="lineRadius size-scroll" type=range min="0" max="200" step="1"> 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
 										data-option-type="border-color">
 										<h4 class="toolbar-option-label">Color</h4>
 										<div class="toolbar-color-trigger">
-
 											<input class="text-border-colorinput" type="color">
 											<div class="toolbar-color-reset icon i-undo"
 												data-tooltip="Use default color" data-tooltip-delay="500"></div>

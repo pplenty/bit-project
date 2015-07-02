@@ -27,7 +27,7 @@ $(function(){
 						'width' : '600px',
 						'left' : '80px',
 						'top' : '191px',
-						'border' : '1px solid black',
+						'border' : '1px solid rgba(255,255,0,0)',
 						//'font-size' : '50px'
 					}).appendTo(presentSection);
 					
@@ -74,8 +74,11 @@ $(function(){
 //	/////////
 	
 	
+	$(presentSection).not($('.sl-block.isFocus')).on("click", function(){
+		   		$(".sl-block.isFocus .sl-block-content p").attr('contenteditable', 'false');
+	   });
 	
-	$(document).on('dblclick','.sl-block', function(){
+	$(document).on('dblclick','.sl-block[data-block-type="text"]', function(){
 	    var contentBox = $(this).children(".sl-block-content");
 	    var contentP = contentBox.children("p");	    
 	    
@@ -87,22 +90,21 @@ $(function(){
 	    $(".toolbar-list").css('visibility', 'hidden');
 	    $(".text-list").css('visibility', 'visible');
 	   
-	    
-	    
+	       
 	    // 첫 텍스트 박스 수정할 때
 	    if($('.sl-block .sl-block-content p').hasClass("placeHolder")){
 	    console.log("처음 생성된 텍스트 박스")
 	    $(contentP).removeClass("placeHolder");
 	    
-	    contentBox.attr("contenteditable",'true').focus();
+	    //contentBox.attr("contenteditable",'true').focus();
 	    contentP.attr("contenteditable", "true").text('').focus();
 	    
 		  
 	    // 재편집일 때
 	    } else if(!$('.sl-block.content p').hasClass("placeHolder")) {
 	    	console.log("재 편집 더블클릭");
-	    	contentBox.attr("contenteditable",'true').focus();
-	    	contentP.attr("contenteditable", "true");	    	
+	    	//contentBox.attr("contenteditable",'true').focus();
+	    	contentP.attr("contenteditable", "true").focus();	    	
 	    }
 	    	   
 	    $(contentBox).keypress(function(event){
@@ -113,10 +115,12 @@ $(function(){
 	    		}); //div 태그를 p 태그로 교체	    		
 	    	}// 엔터일 때 괄호 끝	
 	    });//keypress 괄호
+	  
 
 	});// 텍스트 박스 더블 클릭 마지막 괄호
 	
 	
+
 	// 텍스트 정렬
 	$('.toolbar-radio-item[data-value="left"]').on('click', function() {
 		$('.sl-block.isFocus').css('text-align','left');
@@ -199,7 +203,6 @@ $(function(){
 		$(".opacity.size-scroll").on("mousemove", function(ev){	
 			opSizeInput = $(ev.target).val();
 				$(".opacity.size-box").val(opSizeInput);
-				console.log(opSizeInput);
 			}); 
 		
 		//-투명도값 관리 
@@ -233,7 +236,6 @@ $(function(){
 		$(".padding.size-scroll").on("mousemove", function(ev){	
 			paddingSizeInput = $(ev.target).val();
 				$(".padding.size-box").val(paddingSizeInput);
-				console.log(paddingSizeInput);
 			}); 
 	
 		//-패딩 관리 
@@ -260,12 +262,116 @@ $(function(){
 			});
 			
 // Border 선 설정 부분
-			
-			$(".checkbox").on('click', function(){
-				$(".sl-block")
+		
+			var lineStyle = 'solid';
+			var lineWidth = '3';
+			var lineRadius = '0';
+			var lineColor = 'yellow';
+			var line = lineStyle + ' ' + lineWidth + 'px ' +  lineRadius +'px '+ lineColor+';'
+				
+	// 디폴트 선 설정 및 적용
+			$('.checkbox').on('click', function(){
+				if($('.border.checkbox').prop('checked')){
+					$(".sl-block.isFocus").css('border-width','1px');
+					$(".sl-block.isFocus").css('border-style','solid');
+					$(".sl-block.isFocus").css('border-color','black');
+				} else {
+					$(".sl-block.isFocus").css('border-color','rgba(255,255,0,0)');
+				}
+			})
+		
+	// 선 모양 결정
+			$(".text-toolbar-select-trigger").on("click", function(){
+				lineStyle = $(this).text();
+					$('.sl-block.isFocus').css("border-style", lineStyle);	
 			});
-			$(".toolbar-select-trigger").on("change", function(){
-				$('.sl-block.isFocus').css({'border' : $(this).val()});
+					
+			
+	//선 굵기 
+			//선 굵기 스크롤 관리
+			$(".lineWidth.size-scroll").on("mousemove", function(ev){	
+				lineWidth = $(ev.target).val();
+					$(".lineWidth.size-box").val(lineWidth);
+					console.log(lineWidth);
+				}); 
+		
+			//-선 굵기 관리 
+			$(".lineWidth.size-scroll").on("mouseup", function(){
+				$(".lineWidth.size-box").val(lineWidth);
+		
+			});
+			//- 선 굵기 직접 입력받기
+			 $(".lineWidth.size-scroll").on("dblclick", function(ev){
+				$(this).css("z-index", "0");
+				$(this).addClass("back");
+				$(".lineWidth.size-box").focus();
+				lineWidth = $(".lineWidth.size-box").val();			
+			 }); 
+			 
+			 // - 선굵기 입력 완료
+			 $(document).not($(".lineWidth.size-box")).click(function(){
+
+				 	lineWidth = $(".lineWidth.size-box").val();
+					$('.sl-block.isFocus').css('border-width', lineWidth +'px' );
+					
+			    	$(".lineWidth.size-scroll").css("z-index", "16");
+			    	$(".lineWidth.size-scroll").removeClass("back");
+			    });
+
+	// 선 굵기 적용
+			$(".lineWidth.size-scroll").on("mouseup", function(){
+				lineWidth = $(this).val();
+				$('.sl-block.isFocus').css('border-width', lineWidth +'px' );
+				console.log("곡선 적용 " + lineWidth);
+				
+			});
+			
+			
+			
+	// 선 색깔 적용
+			$(".text-border-colorinput").on("change", function(){
+				borderColor = $(this).val();
+				$('.sl-block.isFocus').css('border-color', borderColor);
+				
+			});
+
+	// radius 
+			// 곡선 스크롤 관리
+			$(".lineRadius.size-scroll").on("mousemove", function(ev){	
+				lineRadius = $(ev.target).val();
+					$(".lineRadius.size-box").val(lineRadius);
+					console.log(lineRadius);
+				}); 
+		
+			//- 곡선 관리 
+			$(".lineRadius.size-scroll").on("mouseup", function(){
+				$(".lineRadius.size-box").val(lineRadius);
+		
+			});
+			//- 곡선 직접 입력받기
+			 $(".lineRadius.size-scroll").on("dblclick", function(ev){
+				$(this).css("z-index", "0");
+				$(this).addClass("back");
+				$(".lineRadius.size-box").focus();
+				lineRadius = $(".lineRadius.size-box").val();			
+			 }); 
+		 
+			 // - 곡선 입력 완료
+			 $(document).not($(".lineRadius.size-box")).click(function(){
+				 	lineWidth = $(".lineWidth.size-box").val();
+					$('.sl-block.isFocus').css('border-width', lineWidth +'px' );
+					
+			    	$(".lineRadius.size-scroll").css("z-index", "16");
+			    	$(".lineRadius.size-scroll").removeClass("back");
+			    });
+
+			
+			// 곡선 적용
+			$(".lineRadius.size-scroll").on("mouseup", function(){
+				lineRadius = $(this).val();
+				$('.sl-block.isFocus').css('border-radius' , lineRadius +'px');
+				console.log("곡선 적용 " + lineRadius)
+				
 			})
 			
 			
