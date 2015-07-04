@@ -45,6 +45,19 @@
 		<load-on-startup>1</load-on-startup>
 
 	</servlet>
+	
+	<!--  -->
+  <servlet>
+      <servlet-name>WsChatServlet</servlet-name>
+      <servlet-class>ChatAnnotation</servlet-class>
+  </servlet>
+<!--  -->
+
+
+  <servlet-mapping>
+      <servlet-name>WsChatServlet</servlet-name>
+      <url-pattern>/websocket/chat.htm</url-pattern>
+  </servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>

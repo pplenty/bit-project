@@ -1,7 +1,6 @@
-$(window).load(function() {
+//$(window).load(function() {
 	// alert(2);
-});
-
+//});
 // document.body.style.cursor = "?";
 // Auto:	브라우저가 현재의 컨텍스트에 맞는 마우스 커서를 결정한다.
 // Crosshair	십자가 모양
@@ -18,115 +17,6 @@ $_old(document).ready(function() {
 	//var presentSection = $_old('.sl-block-gird');
 	var blockId = 100000;
 	var block_zIndex = 10;
-
-
-
-	 //shape ADD
-	$_old('.toolbar-add-block-option[data-block-type=shape]').click(function(e) {
-
-//		console.log(guid());
-		var blockContentTag =
-			$_old("<div>")
-				.addClass("sl-block-content")
-				.attr({
-					'data-shape-type' : 'rect',
-					'data-shape-stretch': 'false'
-				})
-				.css({
-					'z-index' : 'auto'
-				});
-
-		var blockTag =
-			$_old('<div>')
-				.addClass('sl-block')
-				.attr({
-					'data-block-type': 'shape',
-					'data-block-id': blockId++,
-					'selectedDropStart': false,
-					'selectedDrop': false
-					//'draggable': true
-				})
-				.css({
-					//'background-color': 'rgb(186, 199, 234)',
-					'min-width': '4px',
-					'min-height': '4px',
-					'width': '300px',
-					'height': '300px',
-					'left': '200px',
-					'top': '200px',
-					'z-index': block_zIndex++
-				});
-
-		//var Cwidth = blockTag.css('width').substring(0, this.length-2);
-		//var Cheight = blockTag.css('height');
-		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-		svg.setAttributeNS(null, 'version', '1.1');
-		svg.setAttributeNS(null, 'width', '100%');
-		svg.setAttributeNS(null, 'height', '100%');
-		svg.setAttributeNS(null, 'preserveAspectRatio', 'xMidYMid');
-		svg.setAttributeNS(null, 'viewBox', '0 0 300 300');
-		var svgTag = $_old(svg);
-
-		var svgNS = svg.namespaceURI;
-
-		var rect = document.createElementNS(svgNS,'rect');
-		rect.setAttributeNS(null, 'width', '300');
-		rect.setAttributeNS(null, 'height', '300');
-		rect.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
-
-		var svgContent = $_old(rect);
-
-
-
-		svgTag.append(svgContent);
-		blockContentTag.append(svgTag);
-		blockTag.append(blockContentTag);
-		//blockTag.append(svgTag);
-		presentSection.append(blockTag);
-
-	 //$_old(".toolbar-list").css('visibility', 'hidden');
-	 //$_old(".text-list").css('visibility', 'visible');
-		e.stopPropagation();
-	});
-
-
-	// text box ADD
-	$_old('.toolbar-add-block-option[data-block-type="text"]').click(function(e) {
-		var blockText = $_old('<div>')
-				.addClass("sl-block")
-				.attr({
-						'data-block-type': 'text',
-						'data-block-blockId': blockId++
-						//'draggable': true
-					})
-				.css({
-					'height' : 'auto',
-					'min-width' : '30px',
-					'min-height' : '30px',
-					'width' : '600px',
-					'left' : '80px',
-					'top' : '191px',
-					'border' : '1px solid black'
-				}).appendTo(presentSection);
-
-		var blockContent =
-			$_old("<div>")
-			.addClass("sl-block-content")
-//			.attr({
-//				'data-placeholder-tag' : 'p',
-//				'data-placeholder-text': 'Text'
-//			})
-			.css({
-				'z-index' : '11'
-			}).appendTo(blockText);
-
-			var contentP = $_old("<p>")
-				.attr("id", "true")
-				.text("Text")
-				.appendTo(blockContent);
-		e.stopPropagation();
-
-		});// 텍스트박스 생성 마지막 괄호
 
 
 
@@ -252,8 +142,8 @@ $_old(document).ready(function() {
 		//$_old(".toolbar-list").css('visibility', 'hidden');
 		//$_old(".text-list").css('visibility', 'visible');
 
-		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
-		$_old('.back-colorinput').val(rgbHex);// rgb에러부분 
+		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').children().attr('fill'));
+		$_old('.back-colorinput').val(rgbHex);// rgb에러부분 >> find('rect') -> children()
 		 
 		 
 		// color input 도형 색 설정
@@ -453,11 +343,6 @@ $_old(document).ready(function() {
 	$_old.drop({ multi: true });// multi select
 
 
-
-
-
-
-
 	// 바탕(.canvas) 이벤트 등록 drag selection
 	$_old('.sl-block-grid').on('mousedown', function(event) {
 		console.log('canvas.mousedown');
@@ -527,35 +412,10 @@ $_old(document).ready(function() {
 	});
 	
 	
-	
-	
-	//$_old('.anchor').on('mousedown', function(event){
-	//	event.stopPropagation();
-	//	var currentX = event.pageX;
-	//	var currentY = event.pageY;
-	//	console.log(currentX + ',' + currentY);
-	//
-	//
-	//	$_old(document).on('mousemove', function(event) {
-    //
-	//		$_old('.sl-block-content.isFocus').css({
-	//			'width': currentX - event.pageX + 'px',
-	//			'height': currentY - event.pageY + 'px'
-	//		});
-	//	});
-	//
-	//});
-	
-	
 	$_old('.back-colorinput').on('change', function() {
 		$_old('.sl-block.isFocus').find('svg').find('rect').attr('fill',  $_old(this).val())
 	});
-//
-//	$_old('.sl-block-content').on('mouseup', function(event) {
-//	    document.body.style.cursor = "auto";
-//	    console.log('des ->' + event.pageX+','+event.pageY);
-//		$_old(document).off('mousemove');
-//	});
+	
 	
 });
 
