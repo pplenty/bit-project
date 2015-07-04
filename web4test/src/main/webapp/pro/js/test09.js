@@ -12,56 +12,36 @@ $(window).load(function() {
 // Resize	끝부분을 나타내는 양방향 화살표 모양으로 지정될 수 있는 값은 방향에 따라 n, ne, nw, s, se, sw, e, w
 // Text	I바
 // Wait	모래시계
-$(document).ready(function() {
 
-	var presentSection = $('section.present');
+$_old(document).ready(function() {
+	var presentSection = $_old('section.present');
+	//var presentSection = $_old('.sl-block-gird');
 	var blockId = 100000;
 	var block_zIndex = 10;
 
 
+
 	 //shape ADD
-	$('.toolbar-add-block-option[data-block-type="shape"]').click(function(e) {
+	$_old('.toolbar-add-block-option[data-block-type=shape]').click(function(e) {
 
-		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-		var svgTag = $(svg)
-						.attr({
-							'version': '1.1',
-							'width': '100%',
-							'height': '100%',
-							'preserveAspectRatio': 'xMidYMid',
-							'viewBox': '0 0 300 300'
-						});
-
-		var svgNS = svg.namespaceURI;
-
-		var rect = document.createElementNS(svgNS,'rect');
-		var svgContent = $(rect)
-							.attr({
-								'width': '300',
-								'fill': 'rgb(186, 199, 234)',
-								'height': '300'
-							})
-							.addClass('shape-element');
-
-
+//		console.log(guid());
 		var blockContentTag =
-			$("<div>")
+			$_old("<div>")
 				.addClass("sl-block-content")
-			.attr({
-				'data-shape-type' : 'rect',
-				//'data-shape-fill-color': 'rgb(186, 199, 234)',
-				'data-shape-stretch': 'false'
-			})
-			.css({
-				'z-index' : 'auto'
-			});
+				.attr({
+					'data-shape-type' : 'rect',
+					'data-shape-stretch': 'false'
+				})
+				.css({
+					'z-index' : 'auto'
+				});
 
 		var blockTag =
-			$('<div>')
+			$_old('<div>')
 				.addClass('sl-block')
 				.attr({
 					'data-block-type': 'shape',
-					'data-block-blockId': blockId++,
+					'data-block-id': blockId++,
 					'selectedDropStart': false,
 					'selectedDrop': false
 					//'draggable': true
@@ -77,84 +57,105 @@ $(document).ready(function() {
 					'z-index': block_zIndex++
 				});
 
+		//var Cwidth = blockTag.css('width').substring(0, this.length-2);
+		//var Cheight = blockTag.css('height');
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttributeNS(null, 'version', '1.1');
+		svg.setAttributeNS(null, 'width', '100%');
+		svg.setAttributeNS(null, 'height', '100%');
+		svg.setAttributeNS(null, 'preserveAspectRatio', 'xMidYMid');
+		svg.setAttributeNS(null, 'viewBox', '0 0 300 300');
+		var svgTag = $_old(svg);
+
+		var svgNS = svg.namespaceURI;
+
+		var rect = document.createElementNS(svgNS,'rect');
+		rect.setAttributeNS(null, 'width', '300');
+		rect.setAttributeNS(null, 'height', '300');
+		rect.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
+
+		var svgContent = $_old(rect);
+
+
+
 		svgTag.append(svgContent);
 		blockContentTag.append(svgTag);
 		blockTag.append(blockContentTag);
 		//blockTag.append(svgTag);
 		presentSection.append(blockTag);
 
-	 //$(".toolbar-list").css('visibility', 'hidden');
-	 //$(".text-list").css('visibility', 'visible');
+	 //$_old(".toolbar-list").css('visibility', 'hidden');
+	 //$_old(".text-list").css('visibility', 'visible');
 		e.stopPropagation();
 	});
 
-//
-//	// text box ADD  text.js 에서 적용함
-//	$('.toolbar-add-block-option[data-block-type="text"]').click(function(e) {
-//		var blockText = $('<div>')
-//				.addClass("sl-block")
-//				.attr({
-//						'data-block-type': 'text',
-//						'data-block-blockId': blockId++
-//						//'draggable': true
-//					})
-//				.css({
-//					'height' : 'auto',
-//					'min-width' : '30px',
-//					'min-height' : '30px',
-//					'width' : '600px',
-//					'left' : '80px',
-//					'top' : '191px',
-//					'border' : '1px solid black'
-//				}).appendTo(presentSection);
-//
-//		var blockContent =
-//			$("<div>")
-//			.addClass("sl-block-content")
-////			.attr({
-////				'data-placeholder-tag' : 'p',
-////				'data-placeholder-text': 'Text'
-////			})
-//			.css({
-//				'z-index' : '11'
-//			}).appendTo(blockText);
-//
-//			var contentP = $("<p>")
-//				.attr("id", "true")
-//				.text("Text")
-//				.appendTo(blockContent);
-//		e.stopPropagation();
-//
-//		});// 텍스트박스 생성 마지막 괄호
-//
+
+	// text box ADD
+	$_old('.toolbar-add-block-option[data-block-type="text"]').click(function(e) {
+		var blockText = $_old('<div>')
+				.addClass("sl-block")
+				.attr({
+						'data-block-type': 'text',
+						'data-block-blockId': blockId++
+						//'draggable': true
+					})
+				.css({
+					'height' : 'auto',
+					'min-width' : '30px',
+					'min-height' : '30px',
+					'width' : '600px',
+					'left' : '80px',
+					'top' : '191px',
+					'border' : '1px solid black'
+				}).appendTo(presentSection);
+
+		var blockContent =
+			$_old("<div>")
+			.addClass("sl-block-content")
+//			.attr({
+//				'data-placeholder-tag' : 'p',
+//				'data-placeholder-text': 'Text'
+//			})
+			.css({
+				'z-index' : '11'
+			}).appendTo(blockText);
+
+			var contentP = $_old("<p>")
+				.attr("id", "true")
+				.text("Text")
+				.appendTo(blockContent);
+		e.stopPropagation();
+
+		});// 텍스트박스 생성 마지막 괄호
+
 
 
 	 // drag select(바탕 드래그)
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
 
-	$(presentCanvas).on('click', function(ev, dd){
+	$_old(presentCanvas).on('click', function(ev, dd){
 		if (ev.target == this) {
 			console.log('section.click');
-			//$(presentCanvas).trigger('dragstart');
-			//$(presentCanvas).trigger('drag');
-			//$(presentCanvas).trigger('dragend');
-			deletEditForm($('.isFocus'));
-			if($('.isFocus').length != 0)
-				$('.isFocus').removeClass('isFocus');
+			//$_old(presentCanvas).trigger('dragstart');
+			//$_old(presentCanvas).trigger('drag');
+			//$_old(presentCanvas).trigger('dragend');
+			deletEditForm($_old('.isFocus'));
+			if($_old('.isFocus').length != 0)
+				$_old('.isFocus').removeClass('isFocus');
 		}
 	});
 
 	var dragStartTarget;
 	var selectContentsList = [];
-	$(presentCanvas).on('dragstart', function(ev, dd){
+	$_old(presentCanvas).on('dragstart', function(ev, dd){
 
 		//console.log(dd.proxy);
 		dragStartTarget = ev.target;
-		if (ev.target == $(presentCanvas)[0]) {
+		if (ev.target == $_old(presentCanvas)[0]) {
 			console.log('section_DS');
-			//if($(presentCanvas).children().last().hasClass('.sl-block-selection'))
+			//if($_old(presentCanvas).children().last().hasClass('.sl-block-selection'))
 			//	return null;
-			return $('<div>')
+			return $_old('<div>')
 				.addClass('sl-block-selection')
 				.addClass('editing-ui')
 				.css({
@@ -168,9 +169,9 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(presentCanvas).on('drag', function(ev, dd){
-		if (dragStartTarget == $(presentCanvas)[0]) {
-			$('div.sl-block-selection').css({
+	$_old(presentCanvas).on('drag', function(ev, dd){
+		if (dragStartTarget == $_old(presentCanvas)[0]) {
+			$_old('div.sl-block-selection').css({
 				top: Math.min( ev.pageY, dd.startY ) - presentSection.offset().top,
 				left: Math.min( ev.pageX, dd.startX )- presentSection.offset().left,
 				height: Math.abs( ev.pageY - dd.startY ),
@@ -180,19 +181,19 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(presentCanvas).on('dragend', function(ev, dd){
-		if (dragStartTarget == $(presentCanvas)[0]) {
+	$_old(presentCanvas).on('dragend', function(ev, dd){
+		if (dragStartTarget == $_old(presentCanvas)[0]) {
 			//console.log('dragend');
 			if (!ContentsDragFlag) {
-				deletEditForm($('.isFocus'));
-				if($('.isFocus').length != 0)
-					$('.isFocus').removeClass('isFocus');
+				deletEditForm($_old('.isFocus'));
+				if($_old('.isFocus').length != 0)
+					$_old('.isFocus').removeClass('isFocus');
 			}
 
 			ContentsDragFlag = false; // contents 드래그 인지 바탕 드래그인지 체크 다시 초기화
 
 			ev.stopPropagation();
-			$(dd.proxy).remove();
+			$_old(dd.proxy).remove();
 		}
 	});
 
@@ -202,25 +203,25 @@ $(document).ready(function() {
 	var blockOffsetY;
 
 
-	$(presentCanvas).on('mousedown', '.sl-block', function(event) {
+	$_old(presentCanvas).on('mousedown', '.sl-block', function(event) {
 		// color input 도형 색 설정
-		var rgbHex = rgb2hex($(this).css('background-color'));
-		$('#colorinput').val(rgbHex);
+		var rgbHex = rgb2hex($_old(this).css('background-color'));
+		$_old('#colorinput').val(rgbHex);
 
 		blockOffsetX = event.offsetX;
 		blockOffsetY = event.offsetY;
 
 
-		addEditForm($(this));
-		$(this).addClass('isFocus');
-		deletEditForm($('.sl-block').not(this));
-		$('.sl-block').not(this).removeClass('isFocus');
+		addEditForm($_old(this));
+		$_old(this).addClass('isFocus');
+		deletEditForm($_old('.sl-block').not(this));
+		$_old('.sl-block').not(this).removeClass('isFocus');
 		//event.stopPropagation();
 		document.body.style.cursor = "move";
 
 
-		$(document).on('mousemove', function(event) {
-			$('.sl-block.isFocus').css({
+		$_old(document).on('mousemove', function(event) {
+			$_old('.sl-block.isFocus').css({
 				top: event.pageY - blockOffsetY - presentSection.offset().top,
 				left: event.pageX - blockOffsetX - presentSection.offset().left
 			});
@@ -228,13 +229,13 @@ $(document).ready(function() {
 
 		});
 
-		$(document).on('mouseup', function(event) {
+		$_old(document).on('mouseup', function(event) {
 			event.stopPropagation();
 		    document.body.style.cursor = "auto";
 			//event.stopPropagation();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
-			$(document).off('mousemove');
-			$(document).off('mouseup');
+			$_old(document).off('mousemove');
+			$_old(document).off('mouseup');
 
 
 		});
@@ -243,38 +244,38 @@ $(document).ready(function() {
 
 	});
 
-	$(document).on('click', '.sl-block', function(ev){
+	$_old(document).on('click', '.sl-block', function(ev){
 		//console.log('block.click!');
 
 		
 	
-		//$(".toolbar-list").css('visibility', 'hidden');
-		//$(".text-list").css('visibility', 'visible');
+		//$_old(".toolbar-list").css('visibility', 'hidden');
+		//$_old(".text-list").css('visibility', 'visible');
 
-		var rgbHex = rgb2hex($('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
-		$('.back-colorinput').val(rgbHex);
+		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
+		$_old('.back-colorinput').val(rgbHex);// rgb에러부분 
 		 
 		 
 		// color input 도형 색 설정
-//		var rgbHex = rgb2hex($('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
-//		$('#colorinput').val(rgbHex);
+//		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
+//		$_old('#colorinput').val(rgbHex);
 
 		blockOffsetX = ev.offsetX;
 		blockOffsetY = ev.offsetY;
-		addEditForm($(this));
-		$(this).addClass('isFocus');
-		deletEditForm($('.sl-block').not(this));
-		$('.sl-block').not(this).removeClass('isFocus');
+		addEditForm($_old(this));
+		$_old(this).addClass('isFocus');
+		deletEditForm($_old('.sl-block').not(this));
+		$_old('.sl-block').not(this).removeClass('isFocus');
 		//ev.stopPropagation();
 	});
 
 
 	// 크기조절 구현
-	$(presentCanvas).on('mousedown', '.anchor', function(event) {
-		//console.log( $(this).parent().parent().height());
+	$_old(presentCanvas).on('mousedown', '.anchor', function(event) {
+		//console.log( $_old(this).parent().parent().height());
 		event.stopPropagation();
-		var editTargetSelector = $(this).parent().parent();
-		var editDirection = $(this).attr('data-direction');
+		var editTargetSelector = $_old(this).parent().parent();
+		var editDirection = $_old(this).attr('data-direction');
 		var targetStyle = {
 			'top'   : editTargetSelector.offset().top,
 			'left'  : editTargetSelector.offset().left,
@@ -282,7 +283,7 @@ $(document).ready(function() {
 			'width' : editTargetSelector.width()
 		};
 
-		$(document).on('mousemove', function(event) {
+		$_old(document).on('mousemove', function(event) {
 			event.stopPropagation();
 
 			switch (editDirection) {
@@ -309,7 +310,7 @@ $(document).ready(function() {
 						}); break;
 					}
 				case 'se':
-					//$('rect').attr('width', event.pageX - targetStyle.left);
+					//$_old('rect').attr('width', event.pageX - targetStyle.left);
 					editTargetSelector.css({
 						width:  event.pageX - targetStyle.left ,
 						height: event.pageY - targetStyle.top
@@ -335,15 +336,19 @@ $(document).ready(function() {
 					}); break;
 			}
 
+			//var setViewBox = '0 0 ' + targetStyle.width + ' ' + targetStyle.height;
+			//editTargetSelector.find('svg')[0].setAttributeNS(null, 'viewBox', setViewBox);
+
+
 		});
 
-		$(document).on('mouseup', function(event) {
+		$_old(document).on('mouseup', function(event) {
 			event.stopPropagation();
 			document.body.style.cursor = "auto";
 			//event.stopPropagation();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
-			$(document).off('mousemove');
-			$(document).off('mouseup');
+			$_old(document).off('mousemove');
+			$_old(document).off('mouseup');
 
 
 		});
@@ -355,98 +360,97 @@ $(document).ready(function() {
 	//drop
 	//var selectedDropStart = false;//select box -drop event boolean 변수
 	//var selectedDrop = false;
-	//var selector_block = $('.sl-block').not($('.sl-block').children());
+	//var selector_block = $_old('.sl-block').not($_old('.sl-block').children());
 	var selectCountFlag = 0;
 	var ContentsDragFlag = false;
-	$(document).on('dropstart', '.sl-block', function(ev){
-		//console.log($(this));
-		//if ($(this) == $('.sl-block')){
+	$_old(document).on('dropstart', '.sl-block', function(ev){
+		//console.log($_old(this));
+		//if ($_old(this) == $_old('.sl-block')){
 			//console.log(ev.target);
 		//console.log(document.getElementsByClassName("sl-block"));
 		//console.log(ev.target);
 		//console.log(document.getElementsByClassName(ev.currentTarget));
-		if (dragStartTarget == $(presentCanvas)[0]) {
-			if($(this).hasClass("selectActive")) return null;
+		if (dragStartTarget == $_old(presentCanvas)[0]) {
+			if($_old(this).hasClass("selectActive")) return null;
 
 				console.log('dragStartTarget');
 				//selectedDropStart = true;
-				$(this).attr('selectedDropStart', true);
-				addEditForm($(this));
-				$(this).addClass('isFocus');
-				$(this).addClass('selectActive');
+				$_old(this).attr('selectedDropStart', true);
+				addEditForm($_old(this));
+				$_old(this).addClass('isFocus');
+				$_old(this).addClass('selectActive');
 				//ev.stopPropagation();
 		}
 		//}
 
 	});
-	$(document).on('drop','.sl-block', function(ev){
+	$_old(document).on('drop','.sl-block', function(ev){
 		//console.log(ev.target);
 
 
-		//addEditForm($(this));
-		//$(this).addClass('isFocus');
-		if (dragStartTarget == $(presentCanvas)[0]) {
-			if(!$(this).hasClass("selectActive")) return null;
+		//addEditForm($_old(this));
+		//$_old(this).addClass('isFocus');
+		if (dragStartTarget == $_old(presentCanvas)[0]) {
+			if(!$_old(this).hasClass("selectActive")) return null;
 			console.log('drop');
 
 			//selectedDrop = true;
-			$(this).attr('selectedDrop', true);
+			$_old(this).attr('selectedDrop', true);
 
-			if ($(this).attr('selectedDropStart') == "true") {
-				selectContentsList.push($(this).attr('data-block-blockid'));
+			if ($_old(this).attr('selectedDropStart') == "true") {
+				selectContentsList.push($_old(this).attr('data-block-blockid'));
 				selectCountFlag = selectContentsList.length - 1;
-				addEditForm($(this));
-				$(this).addClass('isFocus');
-				$(this).addClass('dropEndCall');
-				$(this).removeClass('selectActive');
+				addEditForm($_old(this));
+				$_old(this).addClass('isFocus');
+				$_old(this).addClass('dropEndCall');
+				$_old(this).removeClass('selectActive');
 				//selectedDropStart = false;
-				$(this).attr('selectedDropStart', false);
+				$_old(this).attr('selectedDropStart', false);
 			} else {
-				deletEditForm($(this));
-				$(this).removeClass('isFocus');
-				$(this).removeClass('selectActive');
+				deletEditForm($_old(this));
+				$_old(this).removeClass('isFocus');
+				$_old(this).removeClass('selectActive');
 			}
 			//ev.stopPropagation();
 		}
 
-		$(this).removeClass('selectActive');
+		$_old(this).removeClass('selectActive');
 
 	});
-	$(document).on('dropend', '.sl-block', function(ev) {
-		if (dragStartTarget == $(presentCanvas)[0]) {
-			if(!$(this).hasClass("dropEndCall") && !$(this).hasClass('selectActive')) {
+	$_old(document).on('dropend', '.sl-block', function(ev) {
+		if (dragStartTarget == $_old(presentCanvas)[0]) {
+			if(!$_old(this).hasClass("dropEndCall") && !$_old(this).hasClass('selectActive')) {
 				return null;
 			}
 			console.log('dropend');
 			//console.log(ev);
 
-			if ($(this).attr('selectedDrop') == "true") {
+			if ($_old(this).attr('selectedDrop') == "true") {
 				selectContentsList.pop();
 				//console.log(selectContentsList);
 				if (selectCountFlag == selectContentsList.length) {
-					var excludeSelector = $('.sl-block[selectedDrop=false]');
+					var excludeSelector = $_old('.sl-block[selectedDrop=false]');
 					//console.log(excludeSelector);
 					deletEditForm(excludeSelector);
 					excludeSelector.removeClass('isFocus');
 					ContentsDragFlag = true; // contents 드래그 인지 바탕 드래그인지 체크
 				}
 			} else {
-				deletEditForm($(this));
-				$(this).removeClass('isFocus');
+				deletEditForm($_old(this));
+				$_old(this).removeClass('isFocus');
 			}
 
 
-			$(this).removeClass('selectActive');
-			$(this).removeClass('dropEndCall');
+			$_old(this).removeClass('selectActive');
+			$_old(this).removeClass('dropEndCall');
 			//selectedDropStart = false;
 			//selectedDrop = false;
-			$(this).attr('selectedDropStart', false);
-			$(this).attr('selectedDrop', false);
+			$_old(this).attr('selectedDropStart', false);
+			$_old(this).attr('selectedDrop', false);
 		}
 		ev.stopPropagation();
 	});
-	
-	$.drop({multi: true });// multi select
+	$_old.drop({ multi: true });// multi select
 
 
 
@@ -455,16 +459,16 @@ $(document).ready(function() {
 
 
 	// 바탕(.canvas) 이벤트 등록 drag selection
-	$('.sl-block-grid').on('mousedown', function(event) {
+	$_old('.sl-block-grid').on('mousedown', function(event) {
 		console.log('canvas.mousedown');
-		$('.sl-block-content.isFocus').removeClass('isFocus');
-		deletEditForm($('.sl-block-content'));
+		$_old('.sl-block-content.isFocus').removeClass('isFocus');
+		deletEditForm($_old('.sl-block-content'));
 
 		var startX = event.pageX - 70;
 		var startY = event.pageY;
 
 
-		$('<div>')
+		$_old('<div>')
 		.addClass('sl-block-selection')
 		.addClass('editing-ui')
 		.css({
@@ -481,24 +485,24 @@ $(document).ready(function() {
 		.appendTo(presentSection);
 
 //		event.stopPropagation();
-		$(document).on('mousemove', function(event) {
+		$_old(document).on('mousemove', function(event) {
 			var width = event.pageX - startX - 70;
 			var height = event.pageY - startY;
 
 			if(width < 0) {
-				$('.sl-block-selection.editing-ui').css({
+				$_old('.sl-block-selection.editing-ui').css({
 					'left' : event.pageX - 70 + 'px',
 					'width':  -1 * width + 'px'
 				});
 			}
 			if(height < 0) {
-				$('.sl-block-selection.editing-ui').css({
+				$_old('.sl-block-selection.editing-ui').css({
 					'top' : event.pageY + 'px',
 					'height': -1 * height + 'px',
 				});
 			}
 			if (width >= 0 && height >= 0) {
-				$('.sl-block-selection.editing-ui').css({
+				$_old('.sl-block-selection.editing-ui').css({
 					'height': height + 'px',
 					'width': width + 'px'
 				});
@@ -509,94 +513,32 @@ $(document).ready(function() {
 		});
 
 
-		$(this).on('mouseup', function(event) {
-//			console.log($('.sl-block-selection.editing-ui').css('left'));
+		$_old(this).on('mouseup', function(event) {
+//			console.log($_old('.sl-block-selection.editing-ui').css('left'));
 //			event.stopPropagation();
 		    document.body.style.cursor = "auto";
-		    $('.sl-block-selection.editing-ui').remove();
+		    $_old('.sl-block-selection.editing-ui').remove();
 //		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
 
-			$(document).off('mousemove');
-			$(this).off('mouseup');
+			$_old(document).off('mousemove');
+			$_old(this).off('mouseup');
 
 		});
 	});
 	
-// 텍스트박스 수정 코드 - 잘못된 코드 text.js에서 입력	
-//	$(document).on('dblclick','.sl-block', function(){
-//	    var content = $(this).children(".sl-block-content");
-//	    var contentP = content.children(" p");
-//
-//	    //deletEditForm($(this)); //이건 빼도 되겠지만 나중에 deletEditForm div로 한정해야할 듯
-//	    $(contentP).html('');
-//	    contentP.attr('contenteditable','true').focus();
-//	    content.keypress(function(event){
-//	    	if(event.which == 13){
-//	    		event.preventDefault();
-//	    		var addP = $("<p>").attr("contenteditable", 'true');
-//	    		$(addP.appendTo(content)).focus();
-//
-//	    	}// 엔터일 때 괄호 끝
-//	    });//keypress 괄호
-//
-//	    content.keydown(function(event){
-//	    	if(event.which == 8){
-//	    		var textLength = $(event.target).text().length;
-//	    		if(textLength == 0){
-//	    			event.preventDefault();
-//	    			var prev = $($(event.target).prev());
-//	    			$(event.target).remove();
-//	    			$(prev).focus();
-//
-////	    			alert($(this).html());
-////	    			//alert($($(this).children("p:last")).text());
-//	    		} // 길이 체크
-//	    	}// 백스페이스 입력
-//	    }); // 백스페이스 keydown
-//	    
-//	    //append($("<p>"));
-//
-//	     
-//	    $(this).children(".sl-block-content").children(" p").attr({'contenteditable':'true'}).focus();
-//
-//	    
-//
-//		$(blockContent).keypress(function(event){
-//			if(event.which == 13){
-//				event.preventDefault();
-//				alert(this);
-//				$(this).last().after("<p>")
-//			}
-//		});
-//		$(this).attr({'contenteditable':'true'}).focus();
-//
-//	
-//		$("p").empty();
-//		$("p").attr({
-//			'contenteditable' : 'true'
-//		}).focus()
-//		
-//		$("p").keypress(function(event){
-//			if(event.which == 13){
-//				event.preventDefault();
-//				$("p").clone().appendTo(slBlock).focus();
-//			}
-//		});//키프레스 이벤트
-//	});// 텍스트 박스 더블 클릭 마지막 괄호
-//	
-//	
 	
 	
-	//$('.anchor').on('mousedown', function(event){
+	
+	//$_old('.anchor').on('mousedown', function(event){
 	//	event.stopPropagation();
 	//	var currentX = event.pageX;
 	//	var currentY = event.pageY;
 	//	console.log(currentX + ',' + currentY);
 	//
 	//
-	//	$(document).on('mousemove', function(event) {
+	//	$_old(document).on('mousemove', function(event) {
     //
-	//		$('.sl-block-content.isFocus').css({
+	//		$_old('.sl-block-content.isFocus').css({
 	//			'width': currentX - event.pageX + 'px',
 	//			'height': currentY - event.pageY + 'px'
 	//		});
@@ -605,14 +547,14 @@ $(document).ready(function() {
 	//});
 	
 	
-	$('.back-colorinput').on('change', function() {
-		$('.sl-block.isFocus').find('svg').find('rect').attr('fill',  $(this).val())
+	$_old('.back-colorinput').on('change', function() {
+		$_old('.sl-block.isFocus').find('svg').find('rect').attr('fill',  $_old(this).val())
 	});
 //
-//	$('.sl-block-content').on('mouseup', function(event) {
+//	$_old('.sl-block-content').on('mouseup', function(event) {
 //	    document.body.style.cursor = "auto";
 //	    console.log('des ->' + event.pageX+','+event.pageY);
-//		$(document).off('mousemove');
+//		$_old(document).off('mousemove');
 //	});
 	
 });
@@ -669,7 +611,7 @@ function deletEditForm(selectorIsFocus) {
 }
 
 function rgb2hex(rgb) {
-    if ( rgb.search("rgb") == -1 ) {
+    if (  rgb.search("rgb") == -1 ) {
          return rgb;
     } else {
          rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
@@ -678,5 +620,15 @@ function rgb2hex(rgb) {
          }
          return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
     }
+}
+
+function guid() {
+	function s4() {
+		return Math.floor((1 + Math.random()) * 0x10000)
+			.toString(16)
+			.substring(1);
+	}
+	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+		s4() + '-' + s4() + s4() + s4();
 }
 
