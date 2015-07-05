@@ -98,10 +98,13 @@ $_old(document).ready(function() {
 		if(event.currentTarget.getAttribute("data-block-type") == 'shape') {
 			$(".toolbar-list").css('visibility', 'hidden');
 			$(".shape-list").css('visibility', 'visible');
+			
+//			console.log($(event.currentTarget).find('.sl-block-content')[0].getAttribute("data-shape-fill"));
+			var rgbHex = $(event.currentTarget).find('.sl-block-content')
+							.attr('data-shape-fill')
+			$('.shape-colorinput').val(rgbHex);
 		}
-		
-		var rgbHex = rgb2hex($_old(this).css('background-color'));
-		$_old('#colorinput').val(rgbHex);
+
 
 		blockOffsetX = event.offsetX;
 		blockOffsetY = event.offsetY;
@@ -139,34 +142,27 @@ $_old(document).ready(function() {
 
 	});
 
-	$_old(document).on('click', '.sl-block', function(ev){
+	$_old(document).on('click', '.sl-block', function(event){
 		//console.log('block.click!');
-		console.log(ev.currentTarget.getAttribute("data-block-type"));
-		if(ev.currentTarget.getAttribute("data-block-type") == 'shape') {
+		console.log(event.currentTarget.getAttribute("data-block-type"));
+		
+		// 이벤트타겟== shape
+		if(event.currentTarget.getAttribute("data-block-type") == 'shape') {
 			$(".toolbar-list").css('visibility', 'hidden');
 			$(".shape-list").css('visibility', 'visible');
 			
-			var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').children().attr('fill'));
-			$_old('.back-colorinput').val(rgbHex);// rgb에러부분 >> find('rect') -> children()
+			var rgbColor = $(event.currentTarget).find('.sl-block-content').attr('data-shape-fill');
+			$('.shape-colorinput').val(rgbColor);
 		}
 
 		
-	
-		//$_old(".toolbar-list").css('visibility', 'hidden');
-		//$_old(".text-list").css('visibility', 'visible');
-
-		 
-		// color input 도형 색 설정
-//		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').find('rect').attr('fill'));
-//		$_old('#colorinput').val(rgbHex);
-
-		blockOffsetX = ev.offsetX;
-		blockOffsetY = ev.offsetY;
+		blockOffsetX = event.offsetX;
+		blockOffsetY = event.offsetY;
 		addEditForm($_old(this));
 		$_old(this).addClass('isFocus');
 		deletEditForm($_old('.sl-block').not(this));
 		$_old('.sl-block').not(this).removeClass('isFocus');
-		//ev.stopPropagation();
+		//event.stopPropagation();
 	});
 
 
@@ -421,12 +417,6 @@ $_old(document).ready(function() {
 		});
 	});
 	
-	
-	$_old('.back-colorinput').on('change', function() {
-		$_old('.sl-block.isFocus').find('svg').find('rect').attr('fill',  $_old(this).val())
-	});
-	
-	
 });
 
 function addEditForm(selectorIsFocus) {
@@ -490,6 +480,10 @@ function rgb2hex(rgb) {
          }
          return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
     }
+}
+
+function changeShapeColor(selector, color) {//selector: '.sl-block-content'
+	selector.find('svg').children().attr('fill', color);
 }
 
 function guid() {
