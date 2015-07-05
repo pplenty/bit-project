@@ -29,18 +29,9 @@ $(document).ready(function() {
 		var blockTag = createBlockTag();
 			
 
-//		var svg = createSvg('0 0 300 300');
-//		var svgTag = $(svg);
-//		var rect = drawSvg(svg.namespaceURI, 'rect');
-//		var svgContent = $(rect);
-		var svg = createSvg('0 0 32 32');
-		var svgTag = $(svg);
-		var rect = drawSvg(svg.namespaceURI, 'symbol-earth');
-		var svgContent = $(rect);
-
-
-
-		svgTag.append(svgContent);
+		
+		var svgTag = addSvgTag('rect');
+		
 		blockContentTag.append(svgTag);
 		blockTag.append(blockContentTag);
 		//blockTag.append(svgTag);
@@ -50,6 +41,29 @@ $(document).ready(function() {
 	 //$(".text-list").css('visibility', 'visible');
 		e.stopPropagation();
 	});
+	
+	$('.toolbar-select-item').click(function(event){
+		var clickedItem = event.currentTarget.getAttribute('data-value');
+		switch (clickedItem) {
+		case 'rect':
+			reShape('.isFocus', 'rect');
+			break;
+
+		case 'symbol-earth':
+			reShape('.isFocus', 'symbol-earth');
+			break;
+			
+		case 'circle':
+			reShape('.isFocus', 'circle');
+			break;
+
+		default:
+			break;
+		}
+	});
+	
+	
+	
 });
 
 function createBlockContentTag() {
@@ -95,6 +109,45 @@ function createSvg(viewBox) {
 	return svg;
 }
 
+// svg태그 추가
+function addSvgTag(shape) {
+	var returnSvgTag;
+	var svg, svgTag, svgContent;
+	
+	switch (shape) {
+	case 'rect':
+		svg = createSvg('0 0 300 300');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+
+	case 'circle':
+		svg = createSvg('0 0 300 300');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+		
+	case 'symbol-earth':
+		svg = createSvg('0 0 32 32');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+		
+	default:
+		break;
+	}
+	
+	return returnSvgTag;
+	
+};
+
+// svg 하위 태그 그리기
 function drawSvg(svgNS, shape) {
 	
 	var returnTag;
@@ -104,6 +157,16 @@ function drawSvg(svgNS, shape) {
 		var rect = document.createElementNS(svgNS,'rect');
 		rect.setAttributeNS(null, 'width', '300');
 		rect.setAttributeNS(null, 'height', '300');
+		rect.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
+		returnTag = rect;
+		break;
+
+	case 'circle':
+		var rect = document.createElementNS(svgNS,'ellipse');
+		rect.setAttributeNS(null, 'rx', '150');
+		rect.setAttributeNS(null, 'ry', '150');
+		rect.setAttributeNS(null, 'cx', '150');
+		rect.setAttributeNS(null, 'cy', '150');
 		rect.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
 		returnTag = rect;
 		break;
@@ -129,11 +192,15 @@ function drawSvg(svgNS, shape) {
 	}
 	
 	return returnTag;
-//	var g = document.createElementNS(svgNS,'g');
-//	g.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
-//	var path = document.createElementNS(g.namespaceURI,'path');
-//	g.setAttributeNS(null, 'fill', 'rgb(186, 199, 234)');
-//	return rect;
 }
 
+// svg 도형 변경
+function reShape(selector, shape) {
+	var blockContentTag = $(selector).find('.sl-block-content');
+
+	blockContentTag.children().detach();
+	
+	var svgTag = addSvgTag(shape);
+	blockContentTag.append(svgTag);
+}
 

@@ -95,6 +95,11 @@ $_old(document).ready(function() {
 
 	$_old(presentCanvas).on('mousedown', '.sl-block', function(event) {
 		// color input 도형 색 설정
+		if(event.currentTarget.getAttribute("data-block-type") == 'shape') {
+			$(".toolbar-list").css('visibility', 'hidden');
+			$(".shape-list").css('visibility', 'visible');
+		}
+		
 		var rgbHex = rgb2hex($_old(this).css('background-color'));
 		$_old('#colorinput').val(rgbHex);
 
@@ -136,15 +141,20 @@ $_old(document).ready(function() {
 
 	$_old(document).on('click', '.sl-block', function(ev){
 		//console.log('block.click!');
+		console.log(ev.currentTarget.getAttribute("data-block-type"));
+		if(ev.currentTarget.getAttribute("data-block-type") == 'shape') {
+			$(".toolbar-list").css('visibility', 'hidden');
+			$(".shape-list").css('visibility', 'visible');
+			
+			var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').children().attr('fill'));
+			$_old('.back-colorinput').val(rgbHex);// rgb에러부분 >> find('rect') -> children()
+		}
 
 		
 	
 		//$_old(".toolbar-list").css('visibility', 'hidden');
 		//$_old(".text-list").css('visibility', 'visible');
 
-		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').children().attr('fill'));
-		$_old('.back-colorinput').val(rgbHex);// rgb에러부분 >> find('rect') -> children()
-		 
 		 
 		// color input 도형 색 설정
 //		var rgbHex = rgb2hex($_old('.sl-block.isFocus').find('svg').find('rect').attr('fill'));

@@ -1424,22 +1424,19 @@ ease
 
 .shape-toolbar-panel .toolbar-select-item {
     display: inline-block;
-    width: 24px;
-    height: 31px;
-    margin : 10px;
+    /* width: 24px;
+    height: 31px; */
+    width: 25%;
+    height: 61px;
     padding: 14px;
     cursor: pointer;
     border: 1px solid transparent;
 }
 
 .shape-toolbar-panel .toolbar-select-item.selected {
-    display: inline-block;
-    width: 24px;
-    height: 31px;
-    margin : 10px;
-    padding: 14px;
-    cursor: pointer;
-    border: 1px solid transparent;
+/*     color: #fff;
+	  cursor: default;
+	  background-color: #1baee1; */
 }
 
 .shape-list .toolbar-select-trigger {

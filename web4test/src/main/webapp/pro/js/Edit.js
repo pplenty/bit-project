@@ -245,10 +245,10 @@ $(function() {
 		$(".shape-list").css('visibility', 'visible');
 	});
 
-	$(".page-wrapper").not($(".shape-list")).click(function() {
+/*	$(".page-wrapper").not($(".shape-list")).click(function() {
 		$(".shape-list").css('visibility', 'hidden');
 		$(".toolbar-list").css('visibility', 'visible');
-	});
+	});*/
 
 	$(".shape-toolbar-group-trigger-border").click(function() {
 		if (!$(this).hasClass("open")) {
