@@ -135,9 +135,86 @@ $(document).ready(function() {
 		case 'symbol-star':
 			reShape('.isFocus', 'symbol-star');
 			break;
-			//////진행중
+		case 'symbol-bolt':
+			reShape('.isFocus', 'symbol-bolt');
+			break;
+		case 'symbol-sun':
+			reShape('.isFocus', 'symbol-sun');
+			break;
+		case 'symbol-moon':
+			reShape('.isFocus', 'symbol-moon');
+			break;
+		case 'symbol-cloud':
+			reShape('.isFocus', 'symbol-cloud');
+			break;
+		case 'symbol-rain':
+			reShape('.isFocus', 'symbol-rain');
+			break;
+		case 'symbol-umbrella':
+			reShape('.isFocus', 'symbol-umbrella');
+			break;
+		case 'symbol-eye':
+			reShape('.isFocus', 'symbol-eye');
+			break;
+		case 'symbol-ribbon':
+			reShape('.isFocus', 'symbol-ribbon');
+			break;
+		case 'symbol-iphone':
+			reShape('.isFocus', 'symbol-iphone');
+			break;
+		case 'symbol-camera':
+			reShape('.isFocus', 'symbol-camera');
+			break;
+		case 'symbol-cog':
+			reShape('.isFocus', 'symbol-cog');
+			break;
+		case 'symbol-lock':
+			reShape('.isFocus', 'symbol-lock');
+			break;
+		case 'symbol-unlock':
+			reShape('.isFocus', 'symbol-unlock');
+			break;
+		case 'symbol-fork':
+			reShape('.isFocus', 'symbol-fork');
+			break;
+		case 'symbol-paperclip':
+			reShape('.isFocus', 'symbol-paperclip');
+			break;
+		case 'symbol-facebook':
+			reShape('.isFocus', 'symbol-facebook');
+			break;
+		case 'symbol-twitter':
+			reShape('.isFocus', 'symbol-twitter');
+			break;
 		case 'symbol-earth':
 			reShape('.isFocus', 'symbol-earth');
+			break;
+		case 'symbol-globe':
+			reShape('.isFocus', 'symbol-globe');
+			break;
+		case 'symbol-thin-arrow-up':
+			reShape('.isFocus', 'symbol-thin-arrow-up');
+			break;
+		case 'symbol-thin-arrow-down':
+			reShape('.isFocus', 'symbol-thin-arrow-down');
+			break;
+		case 'symbol-thin-arrow-up-left':
+			reShape('.isFocus', 'symbol-thin-arrow-up-left');
+			break;
+		case 'symbol-thin-arrow-up-right':
+			reShape('.isFocus', 'symbol-thin-arrow-up-right');
+			break;
+		case 'symbol-thin-arrow-left':
+			reShape('.isFocus', 'symbol-thin-arrow-left');
+			break;
+		case 'symbol-thin-arrow-right':
+			reShape('.isFocus', 'symbol-thin-arrow-right');
+			break;
+		case 'symbol-thin-arrow-down-left':
+			reShape('.isFocus', 'symbol-thin-arrow-down-left');
+			break;
+		case 'symbol-thin-arrow-down-right':
+			reShape('.isFocus', 'symbol-thin-arrow-down-right');
 			break;
 		default:
 			break;
@@ -208,6 +285,10 @@ function addSvgTag(shape, rgbColor) {
 
 	if (shape.match('heart')) shapeClass = 'symbolHeartShape';
 	else if (shape.match('pin')) shapeClass = 'symbolPinShape';
+	else if (shape.match('user')) shapeClass = 'symbolUserShape';
+	else if (shape.match('mail')) shapeClass = 'symbolMailShape';
+	else if (shape.match('globe')) shapeClass = 'symbolGlobeShape';
+	//작업중
 	else if (shape.match('symbol-')) shapeClass = 'symbolShape';
 	else shapeClass = 'simpleShape';
 		
@@ -240,7 +321,29 @@ function addSvgTag(shape, rgbColor) {
 		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor));
 		svgTag.append(svgContent);
 		returnSvgTag = svgTag;
-		break;//작업중
+		break;
+	case 'symbolUserShape':
+		svg = createSvg('0 0 24 32');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+	case 'symbolMailShape':
+		svg = createSvg('0 4 32 24');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+	case 'symbolGlobeShape':
+		svg = createSvg('0 2 30 30');
+		svgTag = $(svg);
+		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor));
+		svgTag.append(svgContent);
+		returnSvgTag = svgTag;
+		break;
+		//작업중
 	}
 	
 	return returnSvgTag;
