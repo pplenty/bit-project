@@ -1,10 +1,15 @@
-$(document).ready(function () {
+$(function () {
 
 	//파일업로드 클릭 이벤트
 	$('#fileupload').click(function(event) {
-		$('#fileupload').fileupload();
+		$('#fileupload').fileupload().bind('fileuploaddone', function () {
+			refreshAjax();
+		});
+//		$('#fileupload').fileupload();
+		
 	});
-    
+
+	
 	  
 //	<!-- 이미지 버튼 클릭 -->
 	 $('.toolbar-image').click(function(event) {
