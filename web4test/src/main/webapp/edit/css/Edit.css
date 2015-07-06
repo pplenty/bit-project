@@ -150,6 +150,90 @@ div.canvas {
 	border: solid red 1px;
 }
 
+/* 1번 시작 */
+.preview-ep {
+	margin: 10px 0 0 10px;
+	width: 120px;
+	heigh: 50px;
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	color: white;
+	z-index: 100;
+}
+
+.preview-ep .preview-edi {
+	width: 50px;
+	height: 50px;
+	margin: 0 10px 0 0;
+	background: #868384;
+	cursor: pointer;
+	background: #868384
+}
+
+.preview-ep .preview-pre {
+	width: 50px;
+	height: 50px;
+	background: #868384;
+	cursor: pointer;
+}
+/* 1번 끝 */
+
+/* 2번 시작 */
+.pres {
+	bottom: 30px;
+	right: 30px;
+	margin: 10px 0 0 10px;
+	width: 110px;
+	heigh: 50px;
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	color: white;
+	z-index: 100;
+}
+
+.pres .pres-b {
+	width: 50px;
+	height: 50px;
+	background: #868384;
+	cursor: pointer;
+}
+
+.pres .pres-f {
+	width: 50px;
+	height: 50px;
+	background: #868384;
+	cursor: pointer;
+}
+
+.pres-exit {
+	top: 30px;
+	right: 50px;
+	width: 30px;
+	height: 30px;
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	color: #868384;
+	z-index: 100;
+}
+
+/* 2번 끝  */
+
+/* 3번 시작 */
+.slid-plus {
+	top: 400px;
+	right: 50px;
+	width: 50px;
+	heigh: 50px;
+	visibility: visible;
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+	color: #bbb6b8;
+}
+/* 3번 끝 */
 .preview-controls {
 	position: absolute;
 	top: 10px;
@@ -180,6 +264,17 @@ sidebar.preview-controls {
 	overflow: hidden;
 	padding-left: 240px;
 }
+
+.button {
+	display: inline-block;
+	width: 54px;
+	height: 50px;
+	padding: 0;
+	background: rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+/* 작업중*/
 
 /* sidebar ******************************************/
 .sidebar {
@@ -243,47 +338,111 @@ body>div.page-wrapper>div.sidebar>div.primary>button.button.preview {
 }
 
 .sidebar
+
+
  
+
+
 .secondary
+
+
  
+
+
 .button
+
+
+
+
 :not
+
+
  
+
+
 (
 .active
+
+
  
+
+
 )
 :not
+
+
  
+
+
 (
 :hover
+
+
  
+
+
 )
 {
 -webkit-transition
+
+
+
+
 :
+
+
  
+
+
 opacity
+
+
  
+
+
 0
 .5s
- 
-ease
-;
 
-	
+
+ 
+
+
+ease
+
+
+
+
+;
 transition
+
+
+
+
 :
+
+
  
+
+
 opacity
+
+
  
+
+
 0
 .5s
+
+
  
+
+
 ease
+
+
+
+
 ;
-
-
 }
 .sidebar .secondary .button+.button {
 	border-top: 1px solid #2a2a2a;
@@ -1424,23 +1583,22 @@ ease
 
 .shape-toolbar-panel .toolbar-select-item {
 	display: inline-block;
-	width: 24px;
-	height: 31px;
-	margin : 10px;
+	width: 23%;
+	height: 61px;
 	padding: 14px;
 	cursor: pointer;
 	border: 1px solid transparent;
 }
 
-.shape-toolbar-panel .toolbar-select-item.selected {
+/* .shape-toolbar-panel .toolbar-select-item.selected {
 	display: inline-block;
 	width: 24px;
 	height: 31px;
-	margin : 10px;
+	margin: 10px;
 	padding: 14px;
 	cursor: pointer;
 	border: 1px solid transparent;
-}
+} */
 
 .shape-list .toolbar-select-trigger {
 	width: 100%;
@@ -1450,7 +1608,7 @@ ease
 	text-align: center;
 	background-color: #444;
 	background-image: #444;
-	cursor : pointer;
+	cursor: pointer;
 }
 
 /* iframe */
@@ -1786,7 +1944,7 @@ ease
 	border: 1px solid transparent;
 }
 
- /* math */ 
+/* math */
 .toolbar . math-list .toolbar-group .text-toolbar-group-trigger .checkbox
 	{
 	position: relative;
@@ -2452,27 +2610,26 @@ div.nav-item {
 	left: 100;
 	top: 100;
 	z-index: 1;
-	color : black;
-	
+	color: black;
 }
 
 input[type="number"].font {
 	font-size: 18px;
-	font-color : black;
+	font-color: black;
 }
 
 input[type="number"].opacity {
 	font-size: 15px;
-	   font-color : black;
-	
+	font-color: black;
 }
 
 input[type="number"].padding {
-font-size: 15px;
-font-color : black;
+	font-size: 15px;
+	font-color: black;
 }
-input[type="number"]{
-	font-color : black;
+
+input[type="number"] {
+	font-color: black;
 }
 
 .size-scroll {
