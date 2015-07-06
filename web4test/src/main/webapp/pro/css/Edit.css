@@ -2445,6 +2445,17 @@ body>div.canvas>div.sl-block-content.isFocus>div {
 	font-size: 12px;
 }
 
+.sl-block-transform.editing-ui {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 255;
+  border: 1px solid #1baee1;
+  font-size: 12px;
+}
+
 .editing-ui>.anchor {
 	position: absolute;
 	width: 0.8em;
@@ -2587,9 +2598,7 @@ section {
 	border: red solid 1px;
 }
 
-.sl-block {
-	border: red solid 1px;
-}
+
 
 .sidebar .global-header {
 	position: absolute;
