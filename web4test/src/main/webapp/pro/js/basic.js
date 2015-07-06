@@ -20,6 +20,7 @@ $_old(document).ready(function() {
 
 	$('button.button.save').click(function(event) {
 		console.log('save');
+		console.log(JSON.stringify($('section').html()));
 	});
 	
 	
