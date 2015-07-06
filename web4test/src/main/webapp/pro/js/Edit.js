@@ -607,7 +607,7 @@ $(function() {
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
-		$(".slid-plus"-ver).css({
+		$(".slid-plus-ver").css({
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
