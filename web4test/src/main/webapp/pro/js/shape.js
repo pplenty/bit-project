@@ -267,6 +267,12 @@ function createBlockTag () {
 				});
 }
 
+//viewBox="ULCx ULCy UUwidth UUheight"
+//upper left corner x
+//upper left corner y 	→ 뷰의 좌표 이동(상하좌우)
+//user unit width
+//user unit height 		→ 뷰의 확대/축소
+//UUwidth 및 UUheight - 두 값은 각각 가로 및 세로 방향에서 사용자 단위당 뷰포트 픽셀 수를 결정
 function createSvg(viewBox) {
 	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	svg.setAttributeNS(null, 'version', '1.1');
@@ -278,10 +284,17 @@ function createSvg(viewBox) {
 }
 
 // svg태그 추가
-function addSvgTag(shape, rgbColor) {
+function addSvgTag(shape, rgbColor, targetSize) {
 	var returnSvgTag;
 	var svg, svgTag, svgContent;
 	var shapeClass;
+	var viewBoxBasic = '300';
+	// 크기조절할때 svg viewbox 같이 변경되게 구현하려고 만듬
+	if (targetSize != null) {
+//		console.log(typeof(targetSize.width));
+		viewBoxBasic = Math.min(targetSize.width, targetSize.height); 
+	}
+	var viewBoxValue = '0 0 ' + viewBoxBasic + ' ' + viewBoxBasic;
 
 	if (shape.match('heart')) shapeClass = 'symbolHeartShape';
 	else if (shape.match('pin')) shapeClass = 'symbolPinShape';
@@ -295,9 +308,10 @@ function addSvgTag(shape, rgbColor) {
 	
 	switch (shapeClass) {
 	case 'simpleShape':
-		svg = createSvg('0 0 300 300');
+//		svg = createSvg('0 0 300 300');
+		svg = createSvg(viewBoxValue);
 		svgTag = $(svg);
-		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor));
+		svgContent = $(drawSvg(svg.namespaceURI, shape, rgbColor, viewBoxBasic));
 		svgTag.append(svgContent);
 		returnSvgTag = svgTag;
 		break;
@@ -351,13 +365,18 @@ function addSvgTag(shape, rgbColor) {
 };
 
 // svg 하위 태그 그리기
-function drawSvg(svgNS, shape, rgbColor) {
-	
+function drawSvg(svgNS, shape, rgbColor, divSize) {
 	var returnTag;
+	var rectSizeBasic = '300';
+	if (divSize != null) {
+		divSizeBasic = divSize;
+	}
 	
 	switch (shape) {
 	case 'rect':
 		var rect = document.createElementNS(svgNS,'rect');
+//		rect.setAttributeNS(null, 'width', divSizeBasic);
+//		rect.setAttributeNS(null, 'height', divSizeBasic);
 		rect.setAttributeNS(null, 'width', '300');
 		rect.setAttributeNS(null, 'height', '300');
 		rect.setAttributeNS(null, 'fill', rgbColor);
@@ -799,13 +818,14 @@ function drawSvg(svgNS, shape, rgbColor) {
 }
 
 // svg 도형 변경
-function reShape(selector, shape) {
+function reShape(selector, shape, targetSize) {
 	var blockContentTag = $(selector).find('.sl-block-content');
 	var rgbColor = blockContentTag.attr('data-shape-fill');
-
+	
+	blockContentTag.attr('data-shape-type', shape);
 	blockContentTag.children().detach();
 	
-	var svgTag = addSvgTag(shape, rgbColor);
+	var svgTag = addSvgTag(shape, rgbColor, targetSize);
 	blockContentTag.append(svgTag);
 }
 

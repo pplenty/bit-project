@@ -178,8 +178,12 @@ $_old(document).ready(function() {
 			'height': editTargetSelector.height(),
 			'width' : editTargetSelector.width()
 		};
+		
 
+
+		
 		$_old(document).on('mousemove', function(event) {
+			
 			event.stopPropagation();
 
 			switch (editDirection) {
@@ -231,7 +235,22 @@ $_old(document).ready(function() {
 						height: event.pageY - targetStyle.top
 					}); break;
 			}
+			
 
+			// 크기조절할때 svg viewbox 같이 변경되게 구현하려고 만듬(shape.js - 293 line)
+			var editTargetSelectorType = editTargetSelector.attr('data-block-type');
+			if (editTargetSelectorType == 'shape') {
+				var editTargetSelectorShapeType = 
+					editTargetSelector.find('.sl-block-content').attr('data-shape-type');
+			}
+			var targetSize = {};
+			targetSize.width = editTargetSelector.width();
+			targetSize.height = editTargetSelector.height();
+
+//			reShape('.isFocus', editTargetSelectorShapeType, targetSize);
+			reShape('.isFocus', editTargetSelectorShapeType);
+
+			
 			//var setViewBox = '0 0 ' + targetStyle.width + ' ' + targetStyle.height;
 			//editTargetSelector.find('svg')[0].setAttributeNS(null, 'viewBox', setViewBox);
 
