@@ -158,24 +158,25 @@ div.canvas {
 	visibility: hidden;
 	display: none;
 	position: absolute;
-	color: white;
+	color: #868384;
 	z-index: 100;
 }
 
 .preview-ep .preview-edi {
+	left : 0;
 	width: 50px;
 	height: 50px;
 	margin: 0 10px 0 0;
-	background: #868384;
 	cursor: pointer;
-	background: #868384
+	position: absolute;
 }
 
 .preview-ep .preview-pre {
+	right : 0;
 	width: 50px;
 	height: 50px;
-	background: #868384;
 	cursor: pointer;
+	position: absolute;
 }
 /* 1번 끝 */
 
