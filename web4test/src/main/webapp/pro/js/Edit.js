@@ -603,7 +603,11 @@ $(function() {
 			'visibility' : "visible",
 			'display' : 'block'
 		});
-		$(".slid-plus").css({
+		$(".slid-plus-hor").css({
+			'visibility' : "hidden",
+			'display' : 'none'
+		});
+		$(".slid-plus"-ver).css({
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
@@ -617,7 +621,11 @@ $(function() {
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
-		$(".slid-plus").css({
+		$(".slid-plus-hor").css({
+			'visibility' : "visible",
+			'display' : 'block'
+		});
+		$(".slid-plus-ver").css({
 			'visibility' : "visible",
 			'display' : 'block'
 		});
@@ -653,13 +661,27 @@ $(function() {
 	});
 	//	3번 추가
 
-	$(".slid-plus").hover(function() {
-		$(".slid-plus").css('color', 'black');
+	$(".slid-plus-hor").hover(function() {
+		$(".slid-plus-hor").css('color', 'black');
 	}, function() {
-		$(".slid-plus").css('color', '#bbb6b8');
+		$(".slid-plus-hor").css('color', '#bbb6b8');
 	});
 
-	$('.slid-plus').click(function() {
+	$('.slid-plus-hor').click(function() {
+		$(".pres").css({
+			'visibility' : "visible",
+			'display' : 'block'
+		})
+	});
+	
+
+	$(".slid-plus-ver").hover(function() {
+		$(".slid-plus-ver").css('color', 'black');
+	}, function() {
+		$(".slid-plus-ver").css('color', '#bbb6b8');
+	});
+
+	$('.slid-plus-ver').click(function() {
 		$(".pres").css({
 			'visibility' : "visible",
 			'display' : 'block'
