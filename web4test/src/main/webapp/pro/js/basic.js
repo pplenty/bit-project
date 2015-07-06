@@ -18,8 +18,15 @@ $_old(document).ready(function() {
 	var blockId = 100000;
 	var block_zIndex = 10;
 
-
-
+	$('button.button.save').click(function(event) {
+		console.log('save');
+	});
+	
+	
+	
+	
+	
+	
 	 // drag select(바탕 드래그)
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
 
