@@ -659,8 +659,25 @@ $(function() {
 			'display' : 'block'
 		});
 	});
+	
+	
+	
 	//	3번 추가
-
+// slide 추가 해보자
+	
+	var x = 0;
+	var y = y;
+	var blockSlide = 
+		$("<div>")
+		.addClass("sl-block-content")
+		.css({
+			'z-index' : '11',
+			//'padding' : '10px',
+			"font-size": "20px",
+		    "opacity" : "1"
+				
+		}).appendTo(blockText);
+	
 	$(".slid-plus-hor").hover(function() {
 		$(".slid-plus-hor").css('color', 'black');
 	}, function() {
@@ -672,6 +689,8 @@ $(function() {
 			'visibility' : "visible",
 			'display' : 'block'
 		})
+		x = x + 1;
+		console.log(x);
 	});
 	
 
@@ -686,6 +705,7 @@ $(function() {
 			'visibility' : "visible",
 			'display' : 'block'
 		})
+		y = y + 1;
 	});
 	// $(".page-wrapper").not($(".image-list")).click(
 	// function() {
