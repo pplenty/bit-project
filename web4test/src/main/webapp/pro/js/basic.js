@@ -20,9 +20,26 @@ $_old(document).ready(function() {
 
 	$('button.button.save').click(function(event) {
 		console.log('save');
-		console.log(JSON.stringify($('section').html()));
+		$.ajax({
+			url: '/web4test/presentationSave.do',
+			method: 'POST',
+			dataType: 'text',
+			data: {
+//				content: JSON.stringify($('section').html())
+				content: $('section').html()
+			},
+			success: function(result) {
+				console.log('result: ' + result);
+			},
+			error: function(e) {
+				console.error('ajax 에러: ' + e);
+			}
+		});
 	});
 	
+	$('button.undo').click(function(event) {
+		window.open('../reveal/index.html');
+	});
 	
 	
 	

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.bitacademy.java67.dao.PresentationDao">
+  
+  <resultMap type="PresentationVo" id="PresentationVoMap">
+    <id       column="pre_no"       property="preNo" />
+    <result   column="user_no"      property="userNo" />
+    <result   column="title"        property="title" />
+    <result   column="author"       property="author" />
+    <result   column="create_date"  property="createDate" />
+    <result   column="public"       property="isPublic" />
+    <result   column="content"      property="content" />
+    <result   column="likes"        property="likes" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="PresentationVo"
+        keyColumn="pre_no" keyProperty="preNo" useGeneratedKeys="true">
+      INSERT INTO presentation (user_no, title, author, create_date, public, content) 
+      VALUES (1, 'title', 'koh', now(), 'y', #{content})
+  </insert>
+  
+  <select id="selectList" parameterType="map" resultMap="PresentationVoMap">
+      SELECT pre_no, user_no, title, author, create_date, public, content 
+      FROM presentation
+  </select>
+  
+  <select id="selectOne" parameterType="int" resultType="PresentationVo">
+      SELECT pre_no, user_no, title, author, create_date, public, content
+      FROM presentation
+      WHERE pre_no=#{no}
+  </select>
+  
+    <update id="update" parameterType="PresentationVo">
+      UPDATE presentation SET 
+        content=#{content}
+      WHERE pre_no=6
+  </update>
+</mapper>
+
+
+
+
+
+
+
+
+
