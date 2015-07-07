@@ -667,31 +667,7 @@ $(function() {
 	
 	var x = 0;
 	var y = y;
-	var blockSlide = 
-		$("<div>")
-		.addClass("sl-block-content")
-		.css({
-			'z-index' : '11',
-			//'padding' : '10px',
-			"font-size": "20px",
-		    "opacity" : "1"
-				
-		}).appendTo(blockText);
 	
-	$(".slid-plus-hor").hover(function() {
-		$(".slid-plus-hor").css('color', 'black');
-	}, function() {
-		$(".slid-plus-hor").css('color', '#bbb6b8');
-	});
-
-	$('.slid-plus-hor').click(function() {
-		$(".pres").css({
-			'visibility' : "visible",
-			'display' : 'block'
-		})
-		x = x + 1;
-		console.log(x);
-	});
 	
 
 	$(".slid-plus-ver").hover(function() {
