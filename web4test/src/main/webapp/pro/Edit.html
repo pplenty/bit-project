@@ -731,99 +731,67 @@
 
 					<!-- iframe -->
 					<div class="iframe-list">
-						<div class="toolbar-option toolbar-radio"
-							data-option-type="iframe-align" data-number-of-items="4">
-							<h4 class="toolbar-option-label">iframe Alignment</h4>
-							<div class="toolbar-radio-inner">
-								<div class="toolbar-radio-item" data-value="left">
-									<i class="fa fa-align-left"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="center">
-									<i class="fa fa-align-center"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="right">
-									<i class="fa fa-align-right"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="justify">
-									<i class="fa fa-align-justify"></i>
-								</div>
+
+						<div class="toolbar-option toolbar-select"
+							data-option-type="iframe-type" style="heigh: 82px;">
+							<h4 class="toolbar-option-label">iframe</h4>
+							<div class="toolbar-select-trigger">
+								<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32"
+									height="32" preserveAspectRatio="xMidYMid" viewBox="0 0 32 32">
+                                    <rect width="32" height="32"
+										fill="#ffffff"></rect></svg>
 							</div>
 						</div>
-						<div class="toolbar-option toolbar-stepper"
-							data-option-type="iframe-size">
-							<h4 class="toolbar-option-label">iframe Scale</h4>
-							<div class="stepper">
-								<input class="iframe scale size-box" type=number value=20> 
-							</div>
-						</div>
+
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
+
 						<div class="toolbar-option toolbar-color"
 							data-option-type="iframe-color">
-							<h4 class="toolbar-option-label">iframe Color</h4>
+							<h4 class="toolbar-option-label">COLOR</h4>
 							<div class="toolbar-color-trigger">
 								<input class="iframe-colorinput" type="color">
 								<div class="toolbar-color-reset icon i-undo"
 									data-tooltip="Use default color" data-tooltip-delay="500"></div>
 							</div>
 						</div>
-						<div class="toolbar-option toolbar-color"
-							data-option-type="background-color">
-							<h4 class="toolbar-option-label">Background Color</h4>
-							<div class="toolbar-color-trigger transparent">
-								<input class="back-colorinput" type="color">
-								<div class="toolbar-color-reset icon i-undo"
-									data-tooltip="Use default color" data-tooltip-delay="500"></div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-range"
-							data-option-type="opacity">
-							<h4 class="toolbar-option-label">Opacity</h4>
-							<div class="range">
-								<input class="iframe opacity size-box" type=number value=1.00>
-								<input class="iframe opacity size-scroll" type=range min="0" max="100"
-									step="1">
-							</div>
-						</div>
-						<div id="padding" class="toolbar-option toolbar-stepper"
-							data-option-type="padding">
-							<h4 class="toolbar-option-label">Padding</h4>
-							<div class="stepper">
-								<input class="iframe padding size-box" type=number> 
-							</div>
-						</div>
+
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
+
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">OPACITY</h4>
+							<div class="range">
+								<input class="iframe opacity size-box" type=number value=1.00>
+								<input class="iframe opacity size-scroll" type=range min="0" max="1.00"
+									step="0.1">
+							</div>
+						</div>
+
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+
+
 						<div class="toolbar-option toolbar-group"
 							data-group-type="border-css">
-							<div class="iframe-toolbar-group-trigger">
-								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"> </span>
+							<div class="iframe-toolbar-group-trigger-border">
+								<h4 class="toolbar-option-label">
+									Border <input type="checkbox" class="iframe-checkbox">
+								</h4>
 							</div>
-							<div class="iframe-toolbar-group-options">
+							<div class="iframe-toolbar-group-options-border">
 								<div class="iframe-toolbar-group-options-inner">
-									<div class="toolbar-option toolbar-select"
-										data-option-type="border-style">
-										<h4 class="toolbar-option-label">Style</h4>
-										<div class="iframe-toolbar-select-trigger">Solid</div>
-									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
-										<h4 class="toolbar-option-label">Width</h4>
+										<h4 class="toolbar-option-label">WIDTH</h4>
 										<div class="stepper">
 											<input type="iframe border-width size-box" class="stepper-number">
 										</div>
 									</div>
-									<div class="toolbar-option toolbar-stepper"
-										data-option-type="border-radius">
-										<h4 class="toolbar-option-label">Radius</h4>
-										<div class="stepper">
-											<input type="iframe border-radius size-box" class="stepper-number">
-										</div>
-									</div>
 									<div class="toolbar-option toolbar-color"
 										data-option-type="border-color">
-										<h4 class="toolbar-option-label">Color</h4>
+										<h4 class="toolbar-option-label">COLOR</h4>
 										<div class="toolbar-color-trigger">
 
 											<input class="iframe-border-colorinput" type="color">
@@ -834,8 +802,35 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="toolbar-option toolbar-divider"
 							data-option-type="divider"></div>
+
+						<div class="toolbar-option toolbar-group"
+							data-group-type="border-css">
+							<div class="iframe-toolbar-group-trigger-link">
+								<h4 class="toolbar-option-label">
+									LINK <input type="checkbox" class="iframe-checkbox">
+								</h4>
+							</div>
+							<div class="iframe-toolbar-group-options-link">
+								<div class="iframe-toolbar-group-options-inner">
+									<div class="toolbar-option toolbar-stepper"
+										data-option-type="border-width">
+										<div class="stepper">
+											<input type="iframe" class="stepper-number"
+												placeholder="http://">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+
+
 						<div class="toolbar-option toolbar-multi"
 							data-option-type="block-depth" data-number-of-items="2">
 							<h4 class="toolbar-option-label">Depth</h4>
@@ -869,6 +864,7 @@
 							</div>
 						</div>
 					</div>
+
 
 
 
