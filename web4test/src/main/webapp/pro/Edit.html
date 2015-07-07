@@ -35,7 +35,10 @@
 <script src="js/text.js"></script> <!--이혜인 text 코드  -->
 <script src="js/basic.js"></script> <!-- 고유식 코드 shape, 기본 코드-->
 <script src="js/shape.js"></script> <!-- 고유식 코드 shape, 기본 코드-->
+<script src="js/shape-edit.js"></script><!-- shape 편집 코드 이혜인 -->
+<script src="js/image-edit.js"></script><!-- shape 편집 코드 이혜인 -->
 <script src="js/myuploadfunction.js"></script>
+
 
 
 
@@ -368,8 +371,7 @@
 							data-option-type="text-size">
 							<h4 class="toolbar-option-label">Text Scale</h4>
 							<div class="stepper">
-								<input class="font size-box" type=number value=20> <input
-									class="font size-scroll" type=range min="0" max="100" step="1">
+								<input class="font size-box" type=number value=20> 
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -405,9 +407,7 @@
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-								<input class="padding size-box" type=number> <input
-									class="padding size-scroll" type=range min="0" max="100"
-									step="1">
+								<input class="padding size-box" type=number> 
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -416,7 +416,7 @@
 							data-group-type="border-css">
 							<div class="text-toolbar-group-trigger">
 								<span class="label">Border</span> <input type="checkbox"
-									id="borderCheckbox" class="border checkbox" name="border"
+									class="border checkbox" name="border"
 									value="border">
 							</div>
 							<div class="text-toolbar-group-options">
@@ -430,18 +430,14 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">Width</h4>
 										<div class="stepper">
-											<input class="lineWidth size-box" type=number> <input
-												class="lineWidth size-scroll" type=range min="1" max="200"
-												step="1">
+											<input class="lineWidth size-box" type=number>
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-radius">
 										<h4 class="toolbar-option-label">Radius</h4>
 										<div class="stepper">
-											<input class="lineRadius size-box" type=number> <input
-												class="lineRadius size-scroll" type=range min="0" max="200"
-												step="1">
+											<input class="lineRadius size-box" type=number> 
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
@@ -505,9 +501,9 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-								<input class="opacity size-box" type=number value=1.00>
-								<input class="opacity size-scroll" type=range min="0" max="100"
-									step="1">
+								<input class="image opacity size-box" type=number value=1.00>
+								<input class="image opacity size-scroll" type=range min="0" max="1.00"
+									step="0.1">
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -529,14 +525,14 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">Width</h4>
 										<div class="stepper">
-											<input type="image" class="stepper-number">
+											<input type="number" class="image border-width size-box">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-radius">
 										<h4 class="toolbar-option-label">Radius</h4>
 										<div class="stepper">
-											<input type="image" class="stepper-number">
+											<input type="number" class="image border-radius size-box">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
@@ -628,8 +624,8 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">OPACITY</h4>
 							<div class="range">
-								<input class="opacity size-box" type=number value=1.00>
-								<input class="opacity size-scroll" type=range min="0" max="100"
+								<input class="shape opacity size-box" type=number value=1.00>
+								<input class="shape opacity size-scroll" type=range min="0" max="100"
 									step="1">
 							</div>
 						</div>
@@ -651,7 +647,7 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">WIDTH</h4>
 										<div class="stepper">
-											<input type="shape" class="stepper-number">
+											<input type="shape border-width size-box" class="stepper-number">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
@@ -757,8 +753,7 @@
 							data-option-type="iframe-size">
 							<h4 class="toolbar-option-label">iframe Scale</h4>
 							<div class="stepper">
-								<input class="font size-box" type=number value=20> <input
-									class="font size-scroll" type=range min="0" max="100" step="1">
+								<input class="iframe scale size-box" type=number value=20> 
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -785,8 +780,8 @@
 							data-option-type="opacity">
 							<h4 class="toolbar-option-label">Opacity</h4>
 							<div class="range">
-								<input class="opacity size-box" type=number value=1.00>
-								<input class="opacity size-scroll" type=range min="0" max="100"
+								<input class="iframe opacity size-box" type=number value=1.00>
+								<input class="iframe opacity size-scroll" type=range min="0" max="100"
 									step="1">
 							</div>
 						</div>
@@ -794,9 +789,7 @@
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-								<input class="padding size-box" type=number> <input
-									class="padding size-scroll" type=range min="0" max="100"
-									step="1">
+								<input class="iframe padding size-box" type=number> 
 							</div>
 						</div>
 						<div class="toolbar-option toolbar-divider"
@@ -818,14 +811,14 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">Width</h4>
 										<div class="stepper">
-											<input type="iframe" class="stepper-number">
+											<input type="iframe border-width size-box" class="stepper-number">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-radius">
 										<h4 class="toolbar-option-label">Radius</h4>
 										<div class="stepper">
-											<input type="iframe" class="stepper-number">
+											<input type="iframe border-radius size-box" class="stepper-number">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
