@@ -2741,7 +2741,10 @@ input[type="number"].padding {
 input[type="number"] {
 	font-color: black;
 }
-
+.shape-link-input{
+	
+	color : black;
+}
 .size-scroll {
 	position: absolute;
 	width: 142px;
