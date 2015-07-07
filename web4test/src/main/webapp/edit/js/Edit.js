@@ -603,7 +603,11 @@ $(function() {
 			'visibility' : "visible",
 			'display' : 'block'
 		});
-		$(".slid-plus").css({
+		$(".slid-plus-hor").css({
+			'visibility' : "hidden",
+			'display' : 'none'
+		});
+		$(".slid-plus-ver").css({
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
@@ -617,7 +621,11 @@ $(function() {
 			'visibility' : "hidden",
 			'display' : 'none'
 		});
-		$(".slid-plus").css({
+		$(".slid-plus-hor").css({
+			'visibility' : "visible",
+			'display' : 'block'
+		});
+		$(".slid-plus-ver").css({
 			'visibility' : "visible",
 			'display' : 'block'
 		});
@@ -651,19 +659,29 @@ $(function() {
 			'display' : 'block'
 		});
 	});
+	
+	
+	
 	//	3번 추가
+// slide 추가 해보자
+	
+	var x = 0;
+	var y = y;
+	
+	
 
-	$(".slid-plus").hover(function() {
-		$(".slid-plus").css('color', 'black');
+	$(".slid-plus-ver").hover(function() {
+		$(".slid-plus-ver").css('color', 'black');
 	}, function() {
-		$(".slid-plus").css('color', '#bbb6b8');
+		$(".slid-plus-ver").css('color', '#bbb6b8');
 	});
 
-	$('.slid-plus').click(function() {
+	$('.slid-plus-ver').click(function() {
 		$(".pres").css({
 			'visibility' : "visible",
 			'display' : 'block'
 		})
+		y = y + 1;
 	});
 	// $(".page-wrapper").not($(".image-list")).click(
 	// function() {

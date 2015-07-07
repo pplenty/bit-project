@@ -1,15 +1,18 @@
 $(function () {
-//    $('#fileupload').fileupload());
 
 	//파일업로드 클릭 이벤트
 	$('#fileupload').click(function(event) {
-		$('#fileupload').fileupload();
-		$('div.modal').modal('hide');
+		$('#fileupload').fileupload().bind('fileuploaddone', function () {
+			refreshAjax();
+		});
+//		$('#fileupload').fileupload();
+		
 	});
-    
+
+	
 	  
 //	<!-- 이미지 버튼 클릭 -->
-	 $('.toolbar-image').on('click', function() {
+	 $('.toolbar-image').click(function(event) {
 		 refreshAjax();
 		 $('div.modal').modal('show');
 	});
@@ -25,15 +28,14 @@ $(function () {
 	        preNo: 1
 	      },
 	      success: function(result) {
-	    	  console.log("11111111111111" + result.data);
+	    	  console.log("refreshAjax()" + result.data);
 	        var rows = result.data;
-	        
-	        $('#img-div > img').remove();
+	        $('#img-div > span').remove();
 	        
 	        for (var i in rows) {
 	            $('#img-div').append(
-	            		"<img src=\'" + rows[i].thumbnailPath + "\' class='pnt show-images'" +
-	            				" data-image=\'" + rows[i].filePath + "\'>");
+	            		"<span class='blur pic'><img src=\'" + rows[i].thumbnailPath + "\' class='pnt show-images'" +
+	            				" data-image=\'" + rows[i].filePath + "\' style='padding: 5px 5px 5px 5px; border-radius: 25px;' radius></span>");
 	          }
 	      },
 	      error: function(e) {
@@ -49,7 +51,9 @@ $(function () {
 		
 		console.log("imgShow: " + imgShow);
 		
-		$('section').append("<div class='sl-block' data-block-type='image' style='min-width: 30px; width: 360px; height: 225px; left: 300px; top: 237.5px;'> <div class='sl-block-content'> <img src='" + imgShow + "'data-natural-width='1024' data-natural-height='640'></div></div>");
+		$('section').append("<div class='sl-block' data-block-type='image' style='min-width: 30px; width: 360px; height: 225px; left: 300px; top: 237.5px;'> " +
+				"<div class='sl-block-content'> <img src='" + imgShow + "'data-natural-width='1024' data-natural-height='640'" +
+						"style='width: 100%; height: 100%; margin: 0; padding: 0; border: 0; vertical-align: top;'></div></div>");
 		
 		
 		$('div.modal').modal('hide');

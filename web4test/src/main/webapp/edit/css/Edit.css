@@ -158,24 +158,25 @@ div.canvas {
 	visibility: hidden;
 	display: none;
 	position: absolute;
-	color: white;
+	color: #868384;
 	z-index: 100;
 }
 
 .preview-ep .preview-edi {
+	left : 0;
 	width: 50px;
 	height: 50px;
 	margin: 0 10px 0 0;
-	background: #868384;
 	cursor: pointer;
-	background: #868384
+	position: absolute;
 }
 
 .preview-ep .preview-pre {
+	right : 0;
 	width: 50px;
 	height: 50px;
-	background: #868384;
 	cursor: pointer;
+	position: absolute;
 }
 /* 1번 끝 */
 
@@ -183,29 +184,53 @@ div.canvas {
 .pres {
 	bottom: 30px;
 	right: 30px;
-	margin: 10px 0 0 10px;
-	width: 110px;
-	heigh: 50px;
+	padding : 0 3% 3% 0;
+	width: 60px;
+	heigh: 60px;
 	visibility: hidden;
 	display: none;
 	position: absolute;
-	color: white;
+	color: #868384;
 	z-index: 100;
+	
+}
+
+.pres .pres-t {
+	top : 0 px;
+	right : 20px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	position: absolute;
 }
 
 .pres .pres-b {
-	width: 50px;
-	height: 50px;
-	background: #868384;
+	top : 20px;
+	right : 40px;
+	width: 10px;
+	height: 10px;
 	cursor: pointer;
+	position: absolute;
 }
 
 .pres .pres-f {
-	width: 50px;
-	height: 50px;
-	background: #868384;
+	top : 20px;
+	right : 0px;
+	width: 10px;
+	height: 10px;
 	cursor: pointer;
+	position: absolute;
 }
+
+.pres .pres-bb {
+	top : 40px;
+	right : 20px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	position: absolute;
+}
+
 
 .pres-exit {
 	top: 30px;
@@ -222,9 +247,22 @@ div.canvas {
 /* 2번 끝  */
 
 /* 3번 시작 */
-.slid-plus {
-	top: 400px;
+.slid-plus-hor {
+	top: 50%;
 	right: 50px;
+	width: 50px;
+	heigh: 50px;
+	visibility: visible;
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+	color: #bbb6b8;
+}
+
+
+.slid-plus-ver {
+	bottom: 5px;
+	right: 40%;
 	width: 50px;
 	heigh: 50px;
 	visibility: visible;
@@ -2407,6 +2445,17 @@ body>div.canvas>div.sl-block-content.isFocus>div {
 	font-size: 12px;
 }
 
+.sl-block-transform.editing-ui {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 255;
+  border: 1px solid #1baee1;
+  font-size: 12px;
+}
+
 .editing-ui>.anchor {
 	position: absolute;
 	width: 0.8em;
@@ -2549,9 +2598,7 @@ section {
 	border: red solid 1px;
 }
 
-.sl-block {
-	border: red solid 1px;
-}
+
 
 .sidebar .global-header {
 	position: absolute;
