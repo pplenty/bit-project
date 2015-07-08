@@ -26,7 +26,7 @@ $_old(document).ready(function() {
 			dataType: 'text',
 			data: {
 //				content: JSON.stringify($('section').html())
-				content: $('section').html()
+				content: $('.slides').html()
 			},
 			success: function(result) {
 				console.log('result: ' + result);
@@ -264,7 +264,7 @@ $_old(document).ready(function() {
 
 			// 크기조절할때 svg viewbox 같이 변경되게 구현하려고 만듬(shape.js - 293 line)
 			var editTargetSelectorType = editTargetSelector.attr('data-block-type');
-			if (editTargetSelectorType == 'shape') {
+			if (editTargetSelectorType == 'shape') {//조절대상이 shape 일 때
 				var editTargetSelectorShapeType = 
 					editTargetSelector.find('.sl-block-content').attr('data-shape-type');
 				
