@@ -1,53 +1,68 @@
 $(function(){
-	var preX ;
-	var moveX;
-	var sLineWidthFinalInput;
-	var sLineFlag = false;
-	var spxLineWidthSize;
-	var snumLineWidthSize;
-	var i;
-	var objContent;
-	var middle;
-	
-	
+//	var preX ;
+//	var moveX;
+//	var sLineWidthFinalInput;
+//	var sLineFlag = false;
+//	var spxLineWidthSize;
+//	var snumLineWidthSize;
+//	var i;
+//	var objContent;
+//	var middle;
+//	
 	//-투명도 값 스크롤 조정
-	var opSizeInput;
-	var opFlag = false;
-	$(".opacity.size-scroll").on('mousedown', function(event){
-		opFlag = true;
-		if(opFlag == true){
-		$(".opacity.size-scroll").on("mousemove", function(ev){	
-			opSizeInput = $(ev.target).val();
-			$(".opacity.size-box").val(opSizeInput);
+	var iopSizeInput;
+	var iopFlag = false;
+	$(".image.opacity.size-scroll").on('mousedown', function(event){
+		iopFlag = true;
+		if(iopFlag == true){
+		$(".image.opacity.size-scroll").on("mousemove", function(ev){
+			console.log("ddd")
+			iopSizeInput = $(ev.target).val();
+			$(".image.opacity.size-box").val(iopSizeInput);
 		}); 
 		}
 	})
-	
+	//-투명도 값 스크롤 조정
+		$(".image.opacity.size-scroll").on('mousedown', function(event){
+			iopFlag = true;
+			if(iopFlag == true){
+			$(".image.opacity.size-scroll").on("mousemove", function(ev){	
+				iopSizeInput = $(ev.target).val();
+				$(".image.opacity.size-box").val(iopSizeInput);
+		    }); 
+		  }
+	    })
+			
 	//-투명도값 관리 
-	$(".shape.opacity.size-scroll").on("mouseup", function(){
-		$(".shape.opacity.size-box").val(opSizeInput);
-		$('.sl-block.isFocus .sl-block-content').css('opacity', opSizeInput);
-		console.log(opSizeInput)
-		opFlag = false;
-
-	});
+		$(".image.opacity.size-scroll").on("mouseup", function(){
+		   objContent = $(".isFocus").children('.sl-block-content');
+		   $(".image.opacity.size-box").val(iopSizeInput );
+			objContent.css('opacity', iopSizeInput);		
+			iopFlag = false;
+		});
+			
 	//- 투명도값 직접 입력받기
-	 $(".shape.opacity.size-scroll").on("dblclick", function(ev){
-		$(this).css("z-index", "0");
-		$(this).addClass("back");
-		$(".shape.opacity.size-box").focus();
-		opSizeInput = $(".shape.opacity.size-box").val();			
-	}); 
-	 // - 투명도 입력 완료
-	 $(document).not($(".shape.opacity.size-box")).click(function(){
-	    	$(".shape.opacity.size-scroll").css("z-index", "16");
-	    	$(".shape.opacity.size-scroll").removeClass("back");
-	    });
+	$(".image.opacity.size-scroll").on("dblclick", function(ev){
+		objContent = $(".isFocus").children('.sl-block-content');
+	  $(this).css("z-index", "0");
+	  $(this).addClass("back");
+	  $(".image.opacity.size-scroll").focus();
+		  	$(".image.opacity.size-box").on('keyup', function(){
+		  		iopSizeInput = $(".image.opacity.size-box").val();
+				objContent.css('opacity', iopSizeInput);		
+			});// 입력값 적용 
+	 }); 
+	
+	 // - 투명도 직접 입력 받기 해제
+	$(document).not($(".image.opacity.size-box")).click(function(){
+      $("image.opacity.size-scroll").css("z-index", "16");
+      $("image.opacity.size-scroll").removeClass("back");
+	});
 
 	//투명도값 적용
-		$('.shape.opacity.size-scroll').on('change', function(){	
-			$('.sl-block.isFocus .sl-block-content').css('opacity', $(this).val());
-		})
+	$(".image.opacity.size-scroll").on('change', function(){	
+	  $('.sl-block.isFocus .sl-block-content').css('opacity', $(this).val());
+	});
 
 //	// 디폴트 선 설정 및 적용
 	$('.shape-checkbox').on('click', function(){
