@@ -187,8 +187,7 @@ div.canvas {
 	padding : 0 3% 3% 0;
 	width: 60px;
 	heigh: 60px;
-	visibility: hidden;
-	display: none;
+	visibility: visible;
 	position: absolute;
 	color: #868384;
 	z-index: 100;
