@@ -420,7 +420,7 @@ $(function() {
 		});
 		$(this).removeClass("open");
 	});
-	
+
 	$(".iframe-list .toolbar-select-trigger").click(function() {
 		if (!$(".iframe-toolbar-panel").hasClass("open")) {
 			$(".iframe-toolbar-panel").css({
@@ -443,7 +443,6 @@ $(function() {
 			$(".iframe-toolbar-panel").removeClass("open");
 		}
 	});
-
 
 	// code
 	$(".toolbar-code").click(function() {
@@ -679,16 +678,48 @@ $(function() {
 			'display' : 'block'
 		});
 	});
-	
-	
-	
+
 	//	3번 추가
-// slide 추가 해보자
-	
+	// slide 추가 해보자
+
 	var x = 0;
-	var y = y;
-	
-	
+	var y = 0;
+
+	$(".slid-plus-hor").hover(function() {
+		$(".slid-plus-hor").css('color', 'black');
+	}, function() {
+		$(".slid-plus-hor").css('color', '#bbb6b8');
+	});
+
+	$('.slid-plus-hor').click(function() {
+		$(".pres").css({
+			'visibility' : "visible",
+			'display' : 'block'
+		})
+		x = x + 1;
+		y = 0;
+		if ($("section").hasClass("present")) {
+			$('.present').attr('x' , x);
+			$("section").removeClass("present")
+						.addClass("past")
+		}
+
+		$('.past').css({
+			'transform' : 'translate(-150%, 0)',
+			'display' : 'none',
+			'visible' : 'hidden'
+		})
+		$("<section>")
+					.addClass('present')
+					.appendTo($('div.slides'))
+					.css('display', 'block')
+					.attr({
+						//'hidden'
+						'aria-hidden' : 'true'
+							});
+		console.log(x);
+		console.log(y);
+	});
 
 	$(".slid-plus-ver").hover(function() {
 		$(".slid-plus-ver").css('color', 'black');
@@ -701,21 +732,31 @@ $(function() {
 			'visibility' : "visible",
 			'display' : 'block'
 		})
-		y = y + 1;
-	});
-	// $(".page-wrapper").not($(".image-list")).click(
-	// function() {
-	// $(".math-list").css('visibility', 'hidden');
-	// $(".toolbar-list").css('visibility', 'visible');
-	// }
-	// );
 
-	// \$( "div.nav-item" ).onclick(
-	// function() {
-	// $(".toolbars .toolbar .toolbar-list").css('visibility', 'visible');
-	// }, function() {
-	// $(".toolbars .toolbar .text-list").css('visibility', 'hidden');
-	// }
-	// );
+		y = y + 1;
+		if ($("section").hasClass("present")) {
+			$('.present').attr('x' , x)
+			$('.present').attr('y' , y);
+
+			$("section").removeClass("present")
+						.addClass("past")
+		}
+
+		$('.past').css({
+			'transform' : 'translate(0, -150%)',
+			'display' : 'none',
+			'visible' : 'hidden'
+		})
+		$("<section>")
+					.addClass('present')
+					.appendTo($('div.slides'))
+					.css('display', 'block')
+					.attr({
+						//'hidden'
+						'aria-hidden' : 'true'
+							});
+		console.log(x);
+		console.log(y);
+	});
 
 });
