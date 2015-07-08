@@ -267,13 +267,14 @@ $_old(document).ready(function() {
 			if (editTargetSelectorType == 'shape') {
 				var editTargetSelectorShapeType = 
 					editTargetSelector.find('.sl-block-content').attr('data-shape-type');
+				
+//				reShape('.isFocus', editTargetSelectorShapeType, targetSize);
+				reShape('.isFocus', editTargetSelectorShapeType);
 			}
 			var targetSize = {};
 			targetSize.width = editTargetSelector.width();
 			targetSize.height = editTargetSelector.height();
 
-//			reShape('.isFocus', editTargetSelectorShapeType, targetSize);
-			reShape('.isFocus', editTargetSelectorShapeType);
 
 			
 			//var setViewBox = '0 0 ' + targetStyle.width + ' ' + targetStyle.height;

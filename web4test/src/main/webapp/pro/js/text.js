@@ -29,8 +29,8 @@ $(function(){
 						'left' : '80px',
 						'top' : '191px',
 						'color' : 'rgb(0,0,0)',
-						'background-color' : 'rgb(255,255,255)',
-						'border' : '1px solid rgb(255,255,255)',
+//						'background-color' : 'rgb(255,255,255)',
+//						'border' : '1px solid rgb(255,255,255)',
 						//'font-size' : '50px'
 					}).appendTo(presentSection);
 					
