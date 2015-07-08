@@ -106,11 +106,11 @@ $(function(){
 	
 // shape 박스 Border 관리
  // border 유무 
-	$('.shape-border-checkbox').on('click', function(){
-		if($('.shape-border-checkbox').prop('checked')){
+	$('.shape-checkbox').on('click', function(){
+		if($('.shape-checkbox').prop('checked')){
 			$(".sl-block.isFocus .sl-block-content").css('border-width','1px');
 			$(".sl-block.isFocus .sl-block-content").css('border-style','solid');
-			$(".sl-block.isFocus .sl-block-content").css('border-color','red');
+			$(".sl-block.isFocus .sl-block-content").css('border-color','black');
 		} else {
 			$(".sl-block.isFocus .sl-block-content").css('border','');
 		}

@@ -83,8 +83,8 @@ $(function(){
 	
 // image 박스 Border 관리
 $(".image.border-width.size-box").on('mousedown', function(){	
-	objContent = $(".isFocus").children('.sl-block-content')
-	ipxLineWidthSize = objContent.css('border-width');
+	objContent = $(".isFocus").children('.sl-block-content');	
+	ipxLineWidthSize = objContent.css('border-width');	
 	inumLineWidthSize = pxRemove(ipxLineWidthSize);
 	$(".image.border-width.size-box").val(inumLineWidthSize);
     preX = event.offsetX;

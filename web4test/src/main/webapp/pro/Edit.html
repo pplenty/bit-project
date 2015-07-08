@@ -439,7 +439,7 @@
                             data-option-type="padding">
                             <h4 class="toolbar-option-label">Padding</h4>
                             <div class="stepper">
-                                <input class="text padding size-box" type=number>
+                                <input class="text padding size-box" type=number value=1>
                             </div>
                         </div>
                         <div class="toolbar-option toolbar-divider"
@@ -542,8 +542,8 @@
 						<div class="toolbar-option toolbar-group"
 							data-group-type="border-css">
 							<div class="image-toolbar-group-trigger">
-								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"> </span>
+								<span class="label">Border</span>
+								<input type="checkbox" class="image border checkbox" name="border" value="border">
 							</div>
 							<div class="image-toolbar-group-options">
 								<div class="image-toolbar-group-options-inner">
@@ -678,8 +678,8 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">WIDTH</h4>
 										<div class="stepper">
-											<input type="shape border-width size-box"
-												class="stepper-number">
+											<input type="text"
+												class="shape border-width size-box">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
@@ -703,7 +703,7 @@
 							data-group-type="border-css">
 							<div class="shape-toolbar-group-trigger-link">
 								<h4 class="toolbar-option-label">
-									LINK <input type="checkbox" class="shape-checkbox">
+									LINK <input type="checkbox" class="shape-link-checkbox">
 								</h4>
 							</div>
 							<div class="shape-toolbar-group-options-link">
@@ -711,8 +711,7 @@
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
 										<div class="stepper">
-											<input type="shape" class="stepper-number"
-												placeholder="http://">
+											<input type="text" class="shape-link-input">
 										</div>
 									</div>
 								</div>

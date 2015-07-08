@@ -1495,6 +1495,18 @@ ease
 	float: right;
 	color: rgba(0, 0, 0, 0);
 }
+.toolbar .shape-list .shape-link-checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    top: 0px;
+    border: 1px solid #555;
+    shape-align: center;
+    font-size: 14px;
+    line-height: 0.8;
+    float: right;
+    color: rgba(0, 0, 0, 0);
+}
 
 .toolbar .shape-list .toolbar-group .shape-toolbar-group-trigger-link {
 	width: 100%;
@@ -2741,6 +2753,10 @@ input[type="number"].padding {
 
 input[type="number"] {
 	font-color: black;
+}
+
+.shape-link-input{
+	color : black;
 }
 
 .size-scroll {
