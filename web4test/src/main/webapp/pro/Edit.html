@@ -103,21 +103,18 @@
                 </div>
                 <!-- body -->
                 <div id="modal-div" class="modal-body form-inline">
-
-                    <div style="width: 500px; padding: 20px">
-                        <input id="fileupload" type="file" name="files[]"
-                            data-url="/web4test/file.do" multiple>
-                    </div>
-
-                    <div id="img-div">
-                        <p>이미지라인</p>
-                    </div>
+                    <div id="img-div"></div>
                 </div>
 
                 <!-- Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
+                <div class="modal-footer" style="text-align: left">
+                    <div>
+                    <span class="btn btn-default btn-file">
+                    upload
+                    <input id="fileupload" class="pnt" type="file" name="files[]"
+                             data-url="/web4test/file.do" multiple>
+                    </span>
+                    </div>
                 </div>
             </div>
         </div>
