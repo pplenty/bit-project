@@ -47,8 +47,8 @@ public class FileController {
     String filePath = null;
     final String uploadPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/images/";
     final String thumbnailPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/thumbnail/";
-    final String imgDbPath = "http://localhost:8080/web4test/test2/upload2/images/";
-    final String thumbDbPath = "http://localhost:8080/web4test/test2/upload2/thumbnail/";
+    final String imgDbPath = "http://localhost:9999/web4test/test2/upload2/images/";
+    final String thumbDbPath = "http://localhost:9999/web4test/test2/upload2/thumbnail/";
     
     // 2. get each file
     while (itr.hasNext()) {
