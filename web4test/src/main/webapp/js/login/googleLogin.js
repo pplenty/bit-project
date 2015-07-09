@@ -39,6 +39,7 @@ function signinCallback(authResult) {
 		console.log('id_token: ' + authResult['id_token']);
 		console.log('access_token: ' + authResult['access_token']);
 		console.log('expires_in: ' + authResult['expires_in']);
+//	    location.href = './mypage/mypage.html';
 
 
 	} else if (authResult['error']) {
@@ -108,7 +109,7 @@ function disconnectUser() {
 function googleCheckLogin(obj) {
 	console.log('호출됨');
 	//var url = 'http://192.168.103.87:9999/web4test/checkLogin.do';
-	var url = 'http://127.0.0.1:9999/web4test/checkLogin.do';
+	var url = './checkLogin.do';
 	email = obj['email'];
 	name = obj['name'];
 
@@ -125,7 +126,7 @@ function googleCheckLogin(obj) {
 		},
 		success: function(data) {
 			console.log(data);
-			location.href='./mypage/mypage.html';
+//			location.href='./mypage/mypage.html';
 		},
 		error: function(e) {
 			console.log(e);
