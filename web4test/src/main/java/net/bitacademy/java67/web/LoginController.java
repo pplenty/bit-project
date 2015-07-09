@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,7 +39,7 @@ public class LoginController {
       HttpSession session, HttpServletRequest request, HttpServletResponse response)
           throws IOException {
     String email = request.getParameter("email");
-//    String name = request.getParameter("name");
+    String name = request.getParameter("name");
 //    String accessToken = request.getParameter("accessToken");
 //    String expiresIn = request.getParameter("expiresIn");
 //    String signedRequest = request.getParameter("signedRequest");
@@ -49,6 +50,13 @@ public class LoginController {
     HashMap<String, Object> sqlParams = new HashMap<String, Object>();
     sqlParams.put("email", email);
     
+    System.out.println(email + name);
+    session.setAttribute("email", email);
+    session.setAttribute("name", name);
+
+//    Cookie emailCookie = new Cookie("email", email);
+//    emailCookie.setMaxAge(60 * 60 * 24 * 30); // 30일간 쿠키 유지할 것!
+//    response.addCookie(emailCookie);
     
     // return type은 json으로
     JSONObject JSONResult = new JSONObject();
@@ -65,6 +73,28 @@ public class LoginController {
 
 //    return "redirect:/mypage/mypage.html";
   }
+
+  @RequestMapping("/getUser")
+  public HashMap<String, Object> getUserInfo(
+      HttpSession session, HttpServletRequest request, 
+        HttpServletResponse response) {
+    System.out.println(session.getAttribute("email"));
+    String email = (String) session.getAttribute("email");
+    String name  = (String) session.getAttribute("name");
+//    String expiresIn = request.getParameter("expiresIn");
+//    String signedRequest = request.getParameter("signedRequest");
+//    String userID = request.getParameter("userID");
+    
+    
+
+    HashMap<String, Object> sqlParams = new HashMap<String, Object>();
+    sqlParams.put("email", email);
+    sqlParams.put("name", name);
+    
+
+    return sqlParams;
+  }
+  
   
   //
   @RequestMapping(value = "/facebookLogin")
