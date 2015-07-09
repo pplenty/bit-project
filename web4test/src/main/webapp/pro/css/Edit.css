@@ -381,7 +381,7 @@ body>div.page-wrapper>div.sidebar>div.primary>button.button.preview {
 
 /* 2nd */
 .sidebar .secondary {
-	position: relative;
+	position: relative;z
 	overflow: auto;
 	padding: 0 0 8px 0;
 	-webkit-overflow-scrolling: touch;
@@ -528,7 +528,7 @@ ease
 	line-height: initial;
 	padding: 0 0 8px 0;
 	display: block;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
