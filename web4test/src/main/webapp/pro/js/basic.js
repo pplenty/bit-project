@@ -38,7 +38,8 @@ $_old(document).ready(function() {
 	});
 	
 	$('button.undo').click(function(event) {
-		window.open('../reveal/index.html');
+		//'channelmode'
+		window.open('../reveal/index.html', 'scrollbars');
 	});
 	
 	
