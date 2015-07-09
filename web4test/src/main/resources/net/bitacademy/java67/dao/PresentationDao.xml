@@ -12,7 +12,7 @@
     <result   column="create_date"  property="createDate" />
     <result   column="public"       property="isPublic" />
     <result   column="content"      property="content" />
-    <result   column="likes"        property="likes" />
+    <result   column="good"         property="likes" />
   </resultMap>
   
   <insert id="insert" parameterType="PresentationVo"
@@ -35,7 +35,7 @@
     <update id="update" parameterType="PresentationVo">
       UPDATE presentation SET 
         content=#{content}
-      WHERE pre_no=6
+      WHERE pre_no=1
   </update>
 </mapper>
 
