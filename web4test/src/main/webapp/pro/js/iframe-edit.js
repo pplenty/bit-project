@@ -22,8 +22,8 @@ $(function(){
 						'left' : '80px',
 						'top' : '191px',
 						'color' : 'rgb(0,0,0)',
-//						'background-color' : 'rgb(255,255,255)',
-//						'border' : '1px solid rgb(255,255,255)',
+						'background-color' : '#ffffff',
+						'border' : '0px solid #000000',
 						//'font-size' : '50px'
 					}).appendTo(presentSection);
 					
@@ -48,29 +48,32 @@ $(function(){
 		
 		} // 선택한게 없는 상태에서 버튼 클릭시 iframe 생성
 		else if ($('.sl-block.isFocus').length > 0) {
+			
 			var initOpacity = $('.sl-block.isFocus').css('opacity');
 			$('.iframe.opacity.size-scroll').val(initOpacity);
 			$('.iframe.opacity.size-box').val(initOpacity);
 			
-			var initPadding = $('.sl-block.isFocus').css('padding');
+			var initPadding = $('.sl-block.isFocus .sl-block-content').css('padding');
 			var nInitPadding = pxRemove(initPadding);
 			$('.iframe.padding.size-box').val(nInitPadding);
 			
 			// 선 유무 체크 박스
-		    var initBorderYn = rgb2hex($(".sl-block.isFocus").css('border-color')); 
-		    console.log(initBorderYn);
-		    if(initBorderYn == '#ffffff'){ //투명값일 경우
+		    var initBorderYnC = rgb2hex($(".sl-block.isFocus .sl-block-content").css('border-color')); 
+		    console.log(initBorderYnC)
+		    var initBorderYnW = pxRemove($('.sl-block.isFocus .sl-block-content').css('border-width'));
+		    console.log(initBorderYnW)
+		    if(initBorderYnC == '#ffffff' || initBorderYnW == 0){ //투명값일 경우
 		    	$('.iframe-checkbox').prop('checked', false) // 체크박스에 표시 안되게 해야함
 		    } else {
-		    	$('.iframe-checkbox').prop('checked', 'true') // 체크박스에 표시하기 
+		    	$('.iframe-checkbox').prop('checked', true) // 체크박스에 표시하기 
 		    }			
 		    
-			var initBorderWidth = $('.sl-block.isFocus').css('border-width');
+			var initBorderWidth = $('.sl-block.isFocus .sl-block-content').css('border-width');
 			var nInitBorderWidth = pxRemove(initBorderWidth);
 			$('.iframe.border-width.size-box').val(nInitBorderWidth);
 			
 			///////// 색깔 초기값 입력
-			var initBorderColor = rgb2hex($('.sl-block.isFocus').css('border-color'));
+			var initBorderColor = rgb2hex($('.sl-block.isFocus .sl-block-content').css('border-color'));
 		    $('.iframe-border-colorinput').val(initBorderColor);
 			
 			
@@ -130,7 +133,7 @@ $(function(){
 	  $(this).css("z-index", "0");
 	  $(this).addClass("back");
 	  $(".iframe.opacity.size-box").focus();
-		  	$(".iframe.opacity.size-box").on('keyup', function(){
+		  	$(".iframe.opacity.size-box").blur(function(){
 		  		fopSizeInput = $(".iframe.opacity.size-box").val();
 				objContent.css('opacity', fopSizeInput);		
 			});// 입력값 적용 
@@ -148,7 +151,71 @@ $(function(){
 	});
 	
 	
-	/// iframe 패딩값 관리
+//////Iframe padding 값 설정
+/// - padding 변수
+		    	var fpaddingFinalInput;
+		    	var fpaddingFlag = false;
+		    	var fpxPaddingSize;
+		    	var fnumPaddingSize;
+		    	//var i;
+		    	//var objContent;
+		    	//var middle;
+		    	
+	////////-padding-size 스크롤 조정
+		$(".iframe.padding.size-box").on('mousedown', function(event){
+			objContent = $(".isFocus").children('.sl-block-content')
+			fpxPaddingSize = objContent.css('padding');
+			fnumPaddingSize = pxRemove(fpxPaddingSize);
+			$(".iframe.padding.size-box").val(fnumPaddingSize);
+		    preX = event.offsetX;
+		    i = parseInt($(".iframe.padding.size-box").val());
+		    fpaddingFlag = true;
+		    	
+		    	$(".iframe.padding.size-box").on('mousemove', function(ev){
+		    		if(fpaddingFlag == true){ // 마우스 무브 
+		    		moveX = ev.offsetX;
+		    		if(preX < moveX){
+		    				 if(i < 100){
+		    					 i = parseInt($(".iframe.padding.size-box").val());
+		    					 middle = $(".iframe.padding.size-box").val(i+1);
+		    					 objContent.css('padding', middle + 'px');
+		    				 }// 증가 범위 설정
+		    				 else if (i > 100){
+		    					 $(".iframe.padding.size-box").val(100);
+		    				 } // 최고점 100 마지막 괄호
+		    		}// 오른쪽 으로 움직일 때 닫는 괄호
+		    		else if(moveX < preX){ // 왼쪽으로 움직일 때
+		    			if (i > 1){ // 일반적 감소
+		    				i = parseInt($(".iframe.padding.size-box").val());
+		    				middle = $(".iframe.padding.size-box").val(i -1);	    					 
+		    				objContent.css('padding', middle + 'px'); 				
+		    				}// 감소할 때 값 마지막 괄호
+		    			else if (i <= 0){
+		    				i = parseInt($(".iframe.padding.size-box").val());
+		    				$(".iframe.padding.size-box").val(0);
+		    				}// 감소 최저값
+		    		} // 왼쪽으로 움직일 때 마지막 괄호
+		     }// 마우스 무브 열림 내용 닫는 괄호
+		});// 마우스 무브 마지막 괄호
+	});
+		$(".iframe.padding.size-box").on('mouseup', function(){
+			console.log(objContent)
+			fpaddingFlag = false;
+			preX = '0';
+			$(".iframe.padding.size-box").blur();
+			fpaddingFinalInput = $(".iframe.padding.size-box").val();
+			objContent.css('padding', fpaddingFinalInput + 'px');
+		});// 마우스 업일 때 동작 해제
+		
+		$(".iframe.padding.size-box").on('dblclick', function(){ // 직접 입력받기
+			$(".iframe.padding.size-box").focus();
+			$(".iframe.padding.size-box").blur(function(){
+				console.log(objContent)
+				fpaddingFinalInput = $(".iframe.padding.size-box").val();
+				objContent.css('padding', fpaddingFinalInput +'px');
+			});
+		}); // 직접 입력 받기
+
 	
 	
 	
@@ -157,9 +224,9 @@ $(function(){
  // border 유무 
 	$('.iframe-checkbox').on('click', function(){
 		if($('.iframe-checkbox').prop('checked')){
-			$(".sl-block.isFocus .sl-block-content").css('border-width','10px');
+			$(".sl-block.isFocus .sl-block-content").css('border-width','1px');
 			$(".sl-block.isFocus .sl-block-content").css('border-style','solid');
-			$(".sl-block.isFocus .sl-block-content").css('border-color','red');
+			$(".sl-block.isFocus .sl-block-content").css('border-color','black');
 		} else {
 			$(".sl-block.isFocus .sl-block-content").css('border','');
 		}

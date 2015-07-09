@@ -28,9 +28,9 @@ $(function(){
 						'width' : '600px',
 						'left' : '80px',
 						'top' : '191px',
-						'color' : 'rgb(0,0,0)',
-//						'background-color' : 'rgb(255,255,255)',
-//						'border' : '1px solid rgb(255,255,255)',
+						'color' : '#000000',
+						'background-color' : '#ffffff',
+						'border' : '0px solid #ffffff',
 						//'font-size' : '50px'
 					}).appendTo(presentSection);
 					
@@ -73,7 +73,6 @@ $(function(){
 	    $(".text.font.size-box").val(initFontSize);
 	    //폰트 색깔
 	    var initFontColor = rgb2hex($('.sl-block.isFocus p').css('color'));
-	    console.log(initFontColor)
 		$('.text-colorinput').val(initFontColor);
 	    //배경 색깔
 	    var initBackColor = rgb2hex($('.sl-block.isFocus').css('background-color'));
@@ -86,12 +85,12 @@ $(function(){
 	    var initPaddingSize = pxRemove(contentBox.css('padding'));
 	    $(".text.padding.size-box").val(initPaddingSize);
 	    // 선 유무 체크 박스
-	    var initBorderYn = rgb2hex($(".sl-block.isFocus").css('border-color')); 
-	    console.log(initBorderYn);
-	    if(initBorderYn == '#ffffff'){ //투명값일 경우
+	    var initBorderYnC = rgb2hex($(".sl-block.isFocus").css('border-color'));
+	    var initBorderYnW = pxRemove($('.sl-block.isFocus').css('border-width'));
+	    if(initBorderYnC == '#ffffff' || initBorderYnW == 0){ //투명값일 경우
 	    	$('.text.border.checkbox').prop('checked', false) // 체크박스에 표시 안되게 해야함
 	    } else {
-	    	$('.text.border.checkbox').prop('checked', 'true') // 체크박스에 표시하기 
+	    	$('.text.border.checkbox').prop('checked', true) // 체크박스에 표시하기 
 	    }
 	    // 선 두께 lineWidth
 	    var initBorderWidth = pxRemove($(this).css('border-width'));
@@ -233,12 +232,24 @@ $(function(){
 				opFlag = false;
 		
 			});
+			
+			$('.toolbar-text-input').on('focusin', function(){
+				console.log("ok")
+				$(this).blur(function(){		
+					var objFrame = $('.sl-block.isFocus .sl-block-content .test');
+					objFrame.attr('src', $('.toolbar-text-input').val() );
+				});
+			});
 			//- 투명도값 직접 입력받기
 			 $(".text.opacity.size-scroll").on("dblclick", function(ev){
 				$(this).css("z-index", "0");
 				$(this).addClass("back");
 				$(".text.opacity.size-box").focus();
-				opSizeInput = $(".text.opacity.size-box").val();			
+					$('.text.opacity.size-box').blur(function(){	
+						console.log("야")
+						opSizeInput = $(".text.opacity.size-box").val();
+						$('.sl-block.isFocus .sl-block-content p').css('opacity' , opSizeInput);
+					});
 			}); 
 			 // - 투명도 입력 완료
 			 $(document).not($(".text.opacity.size-box")).click(function(){
