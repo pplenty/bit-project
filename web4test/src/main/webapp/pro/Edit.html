@@ -87,40 +87,37 @@
 	<div class = "section-delete">
 		<i class="fa fa-times fa-2x"></i>
 	</div>
-	<!-- 준호형 추가 -->
-	<!-- 모달 -->
-	<div class="modal fade" id="layerpop">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<!-- header -->
-				<div class="modal-header">
-					<!-- 닫기(x) 버튼 -->
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<!-- header title -->
-					<h4 class="modal-title" id="myModalLabel">Media Library</h4>
-				</div>
-				<!-- body -->
-				<div id="modal-div" class="modal-body form-inline">
+	 <!-- 준호형 추가 -->
+    <!-- 모달 -->
+    <div class="modal fade" id="layerpop">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                    <!-- 닫기(x) 버튼 -->
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <!-- header title -->
+                    <h4 class="modal-title" id="myModalLabel">Media Library</h4>
+                </div>
+                <!-- body -->
+                <div id="modal-div" class="modal-body form-inline">
+                    <div id="img-div"></div>
+                </div>
 
-					<div style="width: 500px; padding: 20px">
-						<input id="fileupload" type="file" name="files[]"
-							data-url="/web4test/file.do" multiple>
-					</div>
-
-					<div id="img-div">
-						<p>이미지라인</p>
-					</div>
-				</div>
-
-				<!-- Footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					<button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 준호형  -->
+                <!-- Footer -->
+                <div class="modal-footer" style="text-align: left">
+                    <div>
+                    <span class="btn btn-default btn-file">
+                    upload
+                    <input id="fileupload" class="pnt" type="file" name="files[]"
+                             data-url="/web4test/file.do" multiple>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 준호형  -->
 	<div class='page-wrapper'>
 
 		<!--  추가 1번  -->
