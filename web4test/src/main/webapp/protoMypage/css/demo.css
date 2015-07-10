@@ -146,37 +146,32 @@ p {
 
 
 /*내가 임의로 써놓은 css  */
-.tabs.tabs-style-tzoid .content-wrap #section-tzoid-1 .section.inner .inner-title{
+.tabs.tabs-style-tzoid .content-wrap section .section.inner .inner-title{
 	margin : 0 0 1em 0;
 	color : #616161;
-}
-
-.tabs.tabs-style-tzoid .content-wrap #section-tzoid-1 .section.inner .inner-title i{
-	margin : 0 10px 0 0;
+	width : 100%;
 }
 
 .divider {
 	margin : 1em 0 1em 0;
 	border : 1px solid #616161;
 }
+
 .tabs.tabs-style-tzoid .content-wrap #section-tzoid-1 .section.one.inner.two .inner-title{
 	position : relative;
 	display : inline-block;
 }
-
-
 	
-.tabs.tabs-style-tzoid .content-wrap #section-tzoid-1 .section.one.inner.two span{
+ .tabs.tabs-style-tzoid .content-wrap #section-tzoid-1 .section.one.inner.two .input-group{
 position : relative;
-left : 200px;
+float : right;
 height : 25px;
 }
-
-
+ 
 .tabs.tabs-style-tzoid{
 	margin : 1em 0 0 10em
 }
 
 .tabs.tabs-style-tzoid nav ul li a span {
     margin : 0 0 0 1em
-	}
+}

@@ -10,6 +10,9 @@
 	font-style: normal;
 }
 
+body {
+	 font-family: 'cbp-tmicons'
+}
 /* reset  list style */
 .cbp-tm-menu,
 .cbp-tm-menu ul {
@@ -49,7 +52,7 @@
 
 .no-touch .cbp-tm-menu > li > a:hover,
 .no-touch .cbp-tm-menu > li > a:active {
-	color: #02639d;
+	color: #47424A;
 }
 
 /* sumbenu with transitions */
@@ -152,7 +155,7 @@ the right position for the arrow
 	display: block;
 	font-size: 1.2em;
 	position: relative;
-	color: #47a3da;
+	color: #47424A;
 	border: 4px solid #fff;
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
@@ -162,7 +165,7 @@ the right position for the arrow
 .no-touch .cbp-tm-submenu > li > a:hover,
 .no-touch .cbp-tm-submenu > li > a:active {
 	color: #fff;
-	background: #47a3da;
+	background: #47424A;
 }
 
 /* the icons (main level menu icon and sublevel icons) */
@@ -292,7 +295,7 @@ the right position for the arrow
 	.no-touch .cbp-tm-menu > li > a:hover,
 	.no-touch .cbp-tm-menu > li > a:active {
 		color: #fff;
-		background: #02639d;
+		background: #47424A;
 	}
 
 	.cbp-tm-submenu {
