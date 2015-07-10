@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.bitacademy.java67.dao.PresentationDao;
+import net.bitacademy.java67.dao.UserDao;
 import net.bitacademy.java67.domain.PresentationVo;
+import net.bitacademy.java67.domain.UserVo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +21,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PresentationController {
   @Autowired
+  UserDao userDao;
+
+  @Autowired
   PresentationDao presentDao;
 
   @RequestMapping(value = "/presentationSave", method = RequestMethod.POST)
-  public void saveP(HttpServletRequest request, HttpServletResponse response) 
+  public void saveP(HttpServletRequest request, HttpServletResponse response,
+      HttpSession session) 
                                                             throws IOException {
     System.out.println("presentation.do 진입");
     String htmlSource = request.getParameter("content");
+    
+    String email = (String)session.getAttribute("email");
+    HashMap<String, Object> paramMap = new HashMap<String, Object>();
+    paramMap.put("email", email);
+    UserVo user = new UserVo();
+    user = userDao.selectOne(paramMap);
+    System.out.println(user.getUserNo() + user.getEmail());
     
     // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
     // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
