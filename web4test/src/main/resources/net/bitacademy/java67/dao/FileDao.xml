@@ -14,20 +14,20 @@
   <insert id="insert" parameterType="FileVo"
         keyColumn="user_no" keyProperty="userNo" useGeneratedKeys="true">
       INSERT INTO image (user_no,pre_no,img,thumbnail) 
-      VALUES (1,1,#{filePath},#{thumbnailPath})
+      VALUES (#{userNo},1,#{filePath},#{thumbnailPath})
   </insert>
   
   <select id="selectList" parameterType="map" resultMap="FileVoMap">
       SELECT user_no, pre_no, img, thumbnail 
       FROM image 
-      WHERE user_no=1 AND pre_no=1
+      WHERE user_no=#{userNo}
 <!--       WHERE user_no=#{userNo} AND pre_no=#{preNo} -->
   </select>
   
   <select id="selectOne" parameterType="FileVo" resultType="string">
       SELECT img
       FROM image
-      WHERE user_no=1 AND pre_no=1
+      WHERE user_no=#{userNo}
   </select>
 </mapper>
 

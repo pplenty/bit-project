@@ -16,16 +16,16 @@ public class FileService {
 
   public int add(FileVo fileVo) {
     List<FileVo> resultVo;
-    System.out.println("service ok");
+    System.out.println("service add 진입");
     resultVo = getList(fileVo);
     if (resultVo != null) {
-      System.out.println(fileVo.getFilePath());
+      System.out.println("널아님: " + fileVo.getFilePath());
     }
     return fileDao.insert(fileVo);
   }
   
   public List<FileVo> getList(FileVo fileVo) {
-    System.out.println("DB 조회");
+    System.out.println("DB service 조회");
     HashMap<String, Object> sqlParams = new HashMap<String, Object>();
     sqlParams.put("userNo", fileVo.getUserNo());
     sqlParams.put("preNo", fileVo.getPreNo());

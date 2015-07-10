@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.bitacademy.java67.domain.FileVo;
 import net.bitacademy.java67.service.FileService;
@@ -39,7 +40,7 @@ public class FileController {
 
   @RequestMapping(value = "/file", method = RequestMethod.POST)
   public @ResponseBody void upload(MultipartHttpServletRequest request,
-      HttpServletResponse response) {
+      HttpServletResponse response, HttpSession session) {
     System.out.println("file.do진입");
     // 1. build an iterator
     Iterator<String> itr = request.getFileNames();
@@ -75,6 +76,9 @@ public class FileController {
         fileVo.setFileType(mpf.getContentType());
         System.out.println("컨텐트타입 : " + mpf.getContentType());
 
+        fileVo.setUserNo((int) session.getAttribute("userNo")); 
+        fileVo.setPreNo(1);// preNo 임의로 때려넣음 
+        
         try {
           fileVo.setBytes(mpf.getBytes());
           
@@ -128,16 +132,13 @@ public class FileController {
   }
   
   @RequestMapping(value = "/showimage", method = RequestMethod.GET)
-  public ResponseEntity<String> showImage(int userNo, int preNo){ //파라미터로 넘긴 값 사용
+  public ResponseEntity<String> showImage(HttpSession session){ //파라미터로 넘긴 값 사용
     System.out.println("showimage 진입");
-    
+
     List<FileVo> resultVo;
     FileVo fileVo = new FileVo();
-    fileVo.setUserNo(userNo);
-    fileVo.setPreNo(preNo);
-    
-    System.out.println(fileVo.getUserNo());
-    System.out.println(fileVo.getPreNo());
+    fileVo.setUserNo((int) session.getAttribute("userNo"));
+    fileVo.setPreNo(1); //임의로 떄려박음
     
     resultVo = fileService.getList(fileVo);
     
