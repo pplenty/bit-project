@@ -1,0 +1,103 @@
+
+ul {
+	list-style : none;	
+}
+.oneCanvas{
+/* 	border : 1px solid black;
+ */	margin : 5px;
+	padding : 5px;
+	width : 100%;
+	height : 180px;
+	color : #47424A;
+	background-color : #F5F3AC;
+	
+}
+
+.canvasIn.preThumbnail{
+/* 	border : 1px solid yellow;
+ */	margin : 5px;
+	width : 30%;
+	position : relative;
+ 	float : left;
+ 	height : 160px <!--임시 값-->
+}
+.canvasIn.preThumbnail img{
+    height : 160px;
+    width : 100%;	
+    padding : 0;
+}
+.canvasIn.canvasInfo {	
+	float : left;
+	border : 1px solid blue;
+	margin : 5px 5px 5px 15px;
+	width : 65%;
+	height : 160px;
+}
+.canvasIn.Title{
+	border : 1px solid black;
+    width : 95%;
+    height : 90px;
+    position : relative;
+    margin : 5px auto;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */    
+}
+
+
+.canvasIn.TitleInner.prename {
+	border : 1px solid #bc50f4;
+	display : inline-block;
+	width : 100%;
+	height : 80px;
+	margin : 5px auto;
+    padding : 0px;
+    font-size : 50px;
+	text-align : center ;
+    line-height : 80px;  조금 위험한 설정이라는데 그냥 할란다 텍스트 가운데 정렬
+ }
+
+
+.canvasIn.Tool{
+	border : 1px solid green;
+    width : 95%;
+    height : 55px;
+    position : relative;
+    margin : 5px auto;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */ 
+}
+
+.canvasIn.Tool .create_date{
+	border : 1px solid yellow; 
+	position : relative;
+	display : inline-block;
+	margin : 5px 15px 5px 15px;
+	height : 45px;
+	width : 65%;
+	line-height : 45px;
+
+}
+.canvasIn.Tool .useTool{
+	border : 1px solid red;
+	position : relative;
+    display : inline-block;
+    height : 45px;
+    width : 23%;
+    float : right;
+    margin : 5px ;
+    padding : 0px 5px 0px 8px;
+}
+
+.canvasIn.useTool span{
+	margin : 10px 5px 10px 10px;
+	font-size : 35px;
+	line-height : 43px;
+	width : 30px;
+}
+
+.canvasIn.useTool span i.private{
+} 
+
+ .canvasIn.useTool span i.public{
+}
+ 
+
+
+
+
