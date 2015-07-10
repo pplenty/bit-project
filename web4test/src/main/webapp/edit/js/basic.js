@@ -20,9 +20,27 @@ $_old(document).ready(function() {
 
 	$('button.button.save').click(function(event) {
 		console.log('save');
-		console.log(JSON.stringify($('section').html()));
+		$.ajax({
+			url: '/web4test/presentationSave.do',
+			method: 'POST',
+			dataType: 'text',
+			data: {
+//				content: JSON.stringify($('section').html())
+				content: $('.slides').html()
+			},
+			success: function(result) {
+				console.log('result: ' + result);
+			},
+			error: function(e) {
+				console.error('ajax 에러: ' + e);
+			}
+		});
 	});
 	
+	$('button.undo').click(function(event) {
+		//'channelmode'
+		window.open('../reveal/index.html', 'scrollbars');
+	});
 	
 	
 	
@@ -247,16 +265,17 @@ $_old(document).ready(function() {
 
 			// 크기조절할때 svg viewbox 같이 변경되게 구현하려고 만듬(shape.js - 293 line)
 			var editTargetSelectorType = editTargetSelector.attr('data-block-type');
-			if (editTargetSelectorType == 'shape') {
+			if (editTargetSelectorType == 'shape') {//조절대상이 shape 일 때
 				var editTargetSelectorShapeType = 
 					editTargetSelector.find('.sl-block-content').attr('data-shape-type');
+				
+//				reShape('.isFocus', editTargetSelectorShapeType, targetSize);
+				reShape('.isFocus', editTargetSelectorShapeType);
 			}
 			var targetSize = {};
 			targetSize.width = editTargetSelector.width();
 			targetSize.height = editTargetSelector.height();
 
-//			reShape('.isFocus', editTargetSelectorShapeType, targetSize);
-			reShape('.isFocus', editTargetSelectorShapeType);
 
 			
 			//var setViewBox = '0 0 ' + targetStyle.width + ' ' + targetStyle.height;

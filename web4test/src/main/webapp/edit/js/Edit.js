@@ -344,7 +344,6 @@ $(function() {
 	// iframe
 
 	$(".toolbar-iframe").click(function() {
-		console.log('고 ')
 		$(".toolbar-list").css('visibility', 'hidden');
 		$(".iframe-list").css('visibility', 'visible');
 	});
@@ -420,7 +419,7 @@ $(function() {
 		});
 		$(this).removeClass("open");
 	});
-	
+
 	$(".iframe-list .toolbar-select-trigger").click(function() {
 		if (!$(".iframe-toolbar-panel").hasClass("open")) {
 			$(".iframe-toolbar-panel").css({
@@ -443,7 +442,6 @@ $(function() {
 			$(".iframe-toolbar-panel").removeClass("open");
 		}
 	});
-
 
 	// code
 	$(".toolbar-code").click(function() {
@@ -669,7 +667,6 @@ $(function() {
 	});
 
 	$('.pres-exit').click(function() {
-		console.log("작동");
 		$(".pres-exit").css({
 			'visibility' : "hidden",
 			'display' : 'none'
@@ -679,54 +676,527 @@ $(function() {
 			'display' : 'block'
 		});
 	});
-	
-	
-	
-//	3번 추가
+
+	// 3번 추가
 	// slide 추가 해보자
-		
-		var x = 0;
-		var y = 0;
-		
 
-		$(".slid-plus-hor").hover(function() {
-			$(".slid-plus-hor").css('color', 'black');
-		}, function() {
-			$(".slid-plus-hor").css('color', '#bbb6b8');
-		});
+	var x = 0;
+	var y = 0;
+	var countX = 0;
+	var countY = 0;
 
-		$('.slid-plus-hor').click(function() {
-			$(".pres").css({
-				'visibility' : "visible",
-				'display' : 'block'
-			})
-			x = x + 1;
-
-			$('.section').css({
-				'transform' : 'translate(-150%, 0)'})
-			$("<section>")
-				.addClass("present")
-				.appendTo($('div.slides'));
-				.attr({
-					'hidden': '',
-					'aria-hidden' : 'true'
-			})
-			console.log(x);
-		});
-
-		$(".slid-plus-ver").hover(function() {
-			$(".slid-plus-ver").css('color', 'black');
-		}, function() {
-			$(".slid-plus-ver").css('color', '#bbb6b8');
-		});
-
-		$('.slid-plus-ver').click(function() {
-			$(".pres").css({
-				'visibility' : "visible",
-				'display' : 'block'
-			});
-			
-			y = y + 1;
-		});
-
+	$(".slid-plus-hor").hover(function() {
+		$(".slid-plus-hor").css('color', 'black');
+	}, function() {
+		$(".slid-plus-hor").css('color', '#bbb6b8');
 	});
+
+	$('.slid-plus-hor').click(
+			function() {
+				countX = parseInt(countX) + 1;
+				var hereX = parseInt($('.present').attr('x'));
+				var hereY = parseInt($('.present').attr('y'));
+				var nextX = parseInt(hereX) + 1;
+				y = 0;
+				if (nextX == countX) {
+					$("section").removeClass("present").removeClass("future")
+							.addClass("past")
+
+					$('.past').css({
+						'transform' : 'translate(-150%, 0)',
+						'display' : 'none',
+						'visible' : 'hidden'
+					})
+					$("<section>").addClass('present')
+							.appendTo($('div.slides')).css('display', 'block')
+							.attr({
+								// 'hidden'
+								'aria-hidden' : 'true'
+							}).attr('x', nextX).attr('y', 0).attr('maxY', 1);
+				}
+
+				// 가운데 삽입
+				if (nextX != countX) {
+					var futureX = countX;
+
+					for (futureX; futureX > nextX; futureX--) {
+						var preFutureX = futureX - 1;
+						var selector = 'section.past[x=' + preFutureX + ']';
+						$(selector).attr('x', futureX);
+						var selector = 'section.future[x=' + preFutureX + ']';
+						$(selector).attr('x', futureX);
+					}
+
+					// 맨위에서 생성
+					if (hereY = 0) {
+						if ($("section").hasClass("present")) {
+							$(".present").removeClass("present").addClass(
+									"past")
+						}
+
+						$('.past').css({
+							'transform' : 'translate(-150%, 0)',
+							'display' : 'none',
+							'visible' : 'hidden'
+						})
+						$("<section>").addClass('present').appendTo(
+								$('div.slides')).css('display', 'block').attr({
+							// 'hidden'
+							'aria-hidden' : 'true'
+						}).attr('x', nextX).attr('y', 0).attr('maxY', 1);
+						$('.pres-b').css('color', 'black');
+					}
+
+					else {
+						var selector = 'section.future[x=' + hereX
+								+ '].future[y=' + 0 + ']';
+
+						$(selector).addClass('past').removeClass("future")
+						// 추가
+
+						var futureX = countX;
+						for (futureX; futureX > nextX; futureX--) {
+							var preFutureX = futureX - 1;
+							var selector = 'section.future[x=' + preFutureX
+									+ ']';
+							$(selector).attr('x', futureX);
+						}
+						if ($("section").hasClass("present")) {
+							$(".present").removeClass("present").addClass(
+									"past")
+						}
+
+						$('.past').css({
+							'transform' : 'translate(-150%, 0)',
+							'display' : 'none',
+							'visible' : 'hidden'
+						})
+						$("<section>").addClass('present').appendTo(
+								$('div.slides')).css('display', 'block').attr({
+							// 'hidden'
+							'aria-hidden' : 'true'
+						}).attr('x', nextX).attr('y', 0).attr('maxY', 1);
+						$('.pres-b').css('color', 'black');
+
+					}
+				}
+
+				presf();
+				presb();
+				prest();
+				presbb();
+			});
+
+	// 앞뒤 생성 끝
+
+	$(".slid-plus-ver").hover(function() {
+		$(".slid-plus-ver").css('color', 'black');
+	}, function() {
+		$(".slid-plus-ver").css('color', '#bbb6b8');
+	});
+
+	$('.slid-plus-ver').click(
+			function() {
+				var hereX = parseInt($('.present').attr('x'));
+				var hereY = parseInt($('.present').attr('y'));
+				var nextY = hereY + 1;
+				var hereMax = parseInt($('.present').attr('maxy'));
+				if (hereMax == 1) {
+					if (hereY != 0) {
+						$(".present").removeClass("present").addClass("past")
+								.attr('maxy', 0)
+						$('.past').css({
+							'transform' : 'translate(0, -150%)',
+							'display' : 'none',
+							'visible' : 'hidden'
+						})
+					} else {
+						$(".present").removeClass("present").addClass("future")
+								.attr('maxy', 0).css({
+									'transform' : 'translate(0, -150%)',
+									'display' : 'none',
+									'visible' : 'hidden'
+								})
+					}
+
+					$("<section>").addClass('present')
+							.appendTo($('div.slides')).css('display', 'block')
+							.attr({
+								// 'hidden'
+								'aria-hidden' : 'true'
+							}).attr('x', hereX).attr('y', nextY)
+							.attr('maxy', 1);
+				} else {
+					for ( ;  ; ++hereY){
+						var selector = $('section.past[y=' + hereY + '].past[x='
+								+ hereX + ']');
+						var max = parseInt(selector.attr('maxy'));
+						var y = parseInt(selector.attr('y'));
+						if (max == 1){
+							var endY = y
+						break;
+						}
+					}
+						for (endY; endY > nextY-1 ; endY--) {
+							var selector = $('section.past[y=' + endY + '].past[x='
+									+ hereX + ']');
+							var nowY = endY +1;
+							$(selector).attr('y', nowY);
+						}
+						
+						
+						var lastY = parseInt($('.present').attr('y'));
+						var toLastY = lastY +1;
+						if (lastY != 0) {
+							
+							$(".present").removeClass("present").addClass("past")
+									.attr('maxy', 0)
+							$('.past').css({
+								'transform' : 'translate(0, -150%)',
+								'display' : 'none',
+								'visible' : 'hidden'
+							})
+						} else {
+
+							$(".present").removeClass("present").addClass("future")
+									.attr('maxy', 0).css({
+										'transform' : 'translate(0, -150%)',
+										'display' : 'none',
+										'visible' : 'hidden'
+									})
+						}
+
+						$("<section>").addClass('present')
+								.appendTo($('div.slides')).css('display', 'block')
+								.attr({
+									// 'hidden'
+									'aria-hidden' : 'true'
+								}).attr('x', hereX).attr('y', toLastY)
+								.attr('maxy', 0);
+
+				}
+
+				presf();
+				presb();
+				prest();
+				presbb();
+			});
+
+	// 섹션 이동
+	// 앞으로
+
+	// 버튼 유무 설정
+	// f버튼
+	function presf() {
+		var presentX = parseInt($(".present").attr('x'));
+		var presentY = parseInt($(".present").attr('y'));
+		var nextX = presentX + 1
+		var nextY = presentY + 1
+		var berforeX = presentX - 1
+		var berforeY = presentY - 1
+		var maxY = parseInt($('.present').attr('maxy'));
+		if (presentX != countX) {
+			$(".pres-f").css({
+				'visibility' : "visible",
+				'color' : 'black'
+			})
+		} else {
+			$(".pres-f").css({
+				'visibility' : "hidden"
+			})
+		}
+	}
+	// b버튼
+	function presb() {
+		var presentX = parseInt($(".present").attr('x'));
+		var presentY = parseInt($(".present").attr('y'));
+		var nextX = presentX + 1
+		var nextY = presentY + 1
+		var berforeX = presentX - 1
+		var berforeY = presentY - 1
+		var maxY = parseInt($('.present').attr('maxy'));
+		if (presentX != 0) {
+			$(".pres-b").css({
+				'visibility' : "visible",
+				'color' : 'black'
+			})
+		} else {
+			$(".pres-b").css({
+				'visibility' : "hidden"
+			})
+		}
+	}
+
+	// t버튼
+	function prest() {
+		var presentX = parseInt($(".present").attr('x'));
+		var presentY = parseInt($(".present").attr('y'));
+		var nextX = presentX + 1
+		var nextY = presentY + 1
+		var berforeX = presentX - 1
+		var berforeY = presentY - 1
+		var maxY = parseInt($('.present').attr('maxy'));
+		if (presentY != 0) {
+			$(".pres-t").css({
+				'visibility' : "visible",
+				'color' : 'black'
+			})
+		} else {
+			$(".pres-t").css({
+				'visibility' : "hidden"
+			})
+		}
+	}
+
+	// bb버튼
+	function presbb() {
+		var presentX = parseInt($(".present").attr('x'));
+		var presentY = parseInt($(".present").attr('y'));
+		var nextX = presentX + 1
+		var nextY = presentY + 1
+		var berforeX = presentX - 1
+		var berforeY = presentY - 1
+		var maxY = parseInt($('.present').attr('maxy'));
+		if (maxY != 1) {
+			$(".pres-bb").css({
+				'visibility' : "visible",
+				'color' : 'black'
+			})
+		} else {
+			$(".pres-bb").css({
+				'visibility' : "hidden"
+			})
+		}
+	}
+
+	// 앞
+	$(".pres-f").hover(function() {
+		var presentX = parseInt($(".present").attr("x"))
+		if (presentX != countX) {
+			$(".pres-f").css('color', 'blue');
+		}
+	}, function() {
+		presf();
+		presb();
+		prest();
+		presbb();
+	});
+
+	$('.pres-f').click(
+			function() {
+				var presentX = parseInt($(".present").attr('x'));
+				var presentY = parseInt($(".present").attr('y'));
+
+				if (presentX != countX) {
+					var nextX = parseInt($('.present').attr('x')) + 1;
+					$('.present').addClass('past').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(-150%, 0)'
+					})
+					$('.present').addClass('past').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(-150%, 0)'
+					})
+					if (presentY == 0) {
+
+						var selector = 'section.future[x=' + nextX
+								+ '].future[y=' + 0 + ']';
+						$(selector).addClass('present').removeClass('future')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+					} else {
+
+						var selector = 'section.future[x=' + nextX
+								+ '].future[y=' + 0 + ']';
+						$(selector).addClass('present').removeClass('future')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+						var beforeSelector = 'section.future[x=' + presentX
+								+ '].future[y=' + 0 + ']';
+						$(beforeSelector).addClass('past')
+								.removeClass('future').css({
+									'visibility' : "hidden",
+									'display' : 'none',
+									'transform' : 'translate(-150%, 0)'
+								})
+					}
+				}
+				presf();
+				presb();
+				prest();
+				presbb();
+			})
+	// 뒤로
+
+	$(".pres-b").hover(function() {
+		if ($("present").attr("x") > 0) {
+			$(".pres-b").css('color', 'blue');
+		}
+	}, function() {
+		presf();
+		presb();
+		prest();
+		presbb();
+	});
+	$('.pres-b').click(function() {
+
+		if ($('.present').attr('x') > 0) {
+			var nextX = parseInt($('.present').attr('x')) - 1;
+			var hereY = parseInt($('.present').attr('y'))
+			if (hereY == 0) {
+				$('.present').addClass('future').removeClass('present').css({
+					'visibility' : "hidden",
+					'display' : 'none',
+					'transform' : 'translate(150%, 0)'
+				})
+			} else {
+				$('.present').addClass('past').removeClass('present').css({
+					'visibility' : "hidden",
+					'display' : 'none',
+					'transform' : 'translate(150%, 0)'
+				})
+			}
+			var selector = 'section.past[x=' + nextX + '].past[y=' + 0 + ']';
+			$(selector).addClass('present').removeClass('past').css({
+				'visibility' : "visible",
+				'display' : 'block',
+				'transform' : 'translate(0, 0)'
+			})
+		}
+		presf();
+		presb();
+		prest();
+		presbb();
+	})
+
+	// 위로
+	$(".pres-t").hover(function() {
+		if ($("present").attr("y") > 0) {
+			$(".pres-t").css('color', 'blue');
+		}
+	}, function() {
+		presf();
+		presb();
+		prest();
+		presbb();
+	});
+	$('.pres-t').click(
+			function() {
+				var nowY = parseInt($('.present').attr('y'))
+
+				if (nowY > 1) {
+					var hereY = parseInt($('.present').attr('y')) - 1;
+					var hereX = parseInt($('.present').attr('x'));
+					$('.present').addClass('past').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(0, -150%)'
+					})
+					var selector = 'section.past[x=' + hereX + '].past[y='
+							+ hereY + ']';
+					$(selector).addClass('present').removeClass('past').css({
+						'visibility' : "visible",
+						'display' : 'block',
+						'transform' : 'translate(0, 0)'
+					})
+				} else {
+
+					var hereX = parseInt($('.present').attr('x'));
+					$('.present').addClass('past').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(0, -150%)'
+					})
+					var selector = 'section.future[x=' + hereX + '].future[y='
+							+ 0 + ']';
+					$(selector).addClass('present').removeClass('future').css({
+						'visibility' : "visible",
+						'display' : 'block',
+						'transform' : 'translate(0, 0)'
+					})
+				}
+				presf();
+				presb();
+				prest();
+				presbb();
+			})
+
+	// 아래$
+	$(".pres-bb").hover(function() {
+		if ($("present").attr("maxy") != 1) {
+			$(".pres-bb").css('color', 'blue');
+		}
+	}, function() {
+		presf();
+		presb();
+		prest();
+		presbb();
+	});
+	$('.pres-bb').click(
+			function() {
+				var goY = parseInt($('.present').attr('maxy'))
+				var nowY = parseInt($('.present').attr('y'))
+				var hereY = parseInt($('.present').attr('y')) + 1;
+				var hereX = parseInt($('.present').attr('x'))
+				if (goY != 1) {
+					if (nowY != 0) {
+						$('.present').addClass('past').removeClass('present')
+								.css({
+									'visibility' : "hidden",
+									'display' : 'none',
+									'transform' : 'translate(0, -150%)'
+								})
+						var selector = 'section.past[x=' + hereX + '].past[y='
+								+ hereY + ']';
+						$(selector).addClass('present').removeClass('past')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+					} else {
+						$('.present').addClass('future').removeClass('present')
+								.css({
+									'visibility' : "hidden",
+									'display' : 'none',
+									'transform' : 'translate(0, -150%)'
+								})
+						var selector = 'section.past[x=' + hereX + '].past[y='
+								+ hereY + ']';
+						$(selector).addClass('present').removeClass('past')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+					}
+
+					presf();
+					presb();
+					prest();
+					presbb();
+				}
+			})
+
+	// 세션 삭제
+	$(".section-delete").hover(function() {
+		$(".section-delete").css('color', 'black');
+	}, function() {
+		$(".section-delete").css('color', '#bbb6b8');
+	});
+
+	$('.section-delete').click(function() {
+		if ($('.present').attr('x') > 0) {
+			$('.past')
+		}
+	});
+	// 섹션 삭제 끝
+});

@@ -32,22 +32,16 @@
 <script type="text/javascript"
 	src="js/jquery-fileupload/jquery.fileupload.js"></script>
 
-<!-- 기능ㅂ -->
-<script src="js/Edit.js"></script>
-<!-- 우인규 코드 html 기본 코드 -->
-<script src="js/slide.js"></script>
-<!-- 우인규 코드 slide 기본 코 -->
-<script src="js/text.js"></script>
-<!--이혜인 text 코드  -->
-<script src="js/basic.js"></script>
-<!-- 고유식 코드 shape, 기본 코드-->
-<script src="js/shape.js"></script>
-<!-- 고유식 코드 shape, 기본 코드-->
-<script src="js/shape-edit.js"></script>
-<!-- shape 편집 코드 이혜인 -->
-<script src="js/image-edit.js"></script>
-<!-- shape 편집 코드 이혜인 -->
-<script src="js/myuploadfunction.js"></script>
+<!-- 기능별코드 -->
+<script src="js/Edit.js"></script><!-- 우인규 코드 html 기본 코드 -->
+<script src="js/slide.js"></script><!-- 우인규 코드 slide 기본 코 -->
+<script src="js/text.js"></script><!--이혜인 text 코드  -->
+<script src="js/basic.js"></script><!-- 고유식 코드 shape, 기본 코드-->
+<script src="js/shape.js"></script><!-- 고유식 코드 shape, 기본 코드-->
+<script src="js/shape-edit.js"></script><!-- shape 편집 코드 이혜인 -->
+<script src="js/image-edit.js"></script><!-- shape 편집 코드 이혜인 -->
+<script src="js/iframe-edit.js"></script><!-- iFrame 코드 이혜인 -->
+<script src="js/myuploadfunction.js"></script><!-- 정준호 이미지파일 업로드코드 -->
 
 
 
@@ -89,40 +83,41 @@
 	<div class="slid-plus-ver">
 		<i class="fa fa-plus-circle fa-3x"></i>
 	</div>
-	<!-- 준호형 추가 -->
-	<!-- 모달 -->
-	<div class="modal fade" id="layerpop">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<!-- header -->
-				<div class="modal-header">
-					<!-- 닫기(x) 버튼 -->
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<!-- header title -->
-					<h4 class="modal-title" id="myModalLabel">Media Library</h4>
-				</div>
-				<!-- body -->
-				<div id="modal-div" class="modal-body form-inline">
-
-					<div style="width: 500px; padding: 20px">
-						<input id="fileupload" type="file" name="files[]"
-							data-url="/web4test/file.do" multiple>
-					</div>
-
-					<div id="img-div">
-						<p>이미지라인</p>
-					</div>
-				</div>
-
-				<!-- Footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					<button id="modalAddBtn" type="button" class="btn btn-primary">확인</button>
-				</div>
-			</div>
-		</div>
+	<!--섹션 삭제-->
+	<div class = "section-delete">
+		<i class="fa fa-times fa-2x"></i>
 	</div>
-	<!-- 준호형  -->
+	 <!-- 준호형 추가 -->
+    <!-- 모달 -->
+    <div class="modal fade" id="layerpop">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                    <!-- 닫기(x) 버튼 -->
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <!-- header title -->
+                    <h4 class="modal-title" id="myModalLabel">Media Library</h4>
+                </div>
+                <!-- body -->
+                <div id="modal-div" class="modal-body form-inline">
+                    <div id="img-div"></div>
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer" style="text-align: left">
+                    <div>
+                    <span class="btn btn-default btn-file">
+                    upload
+                    <input id="fileupload" class="pnt" type="file" name="files[]"
+                             data-url="/web4test/file.do" multiple>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 준호형  -->
 	<div class='page-wrapper'>
 
 		<!--  추가 1번  -->
@@ -276,6 +271,9 @@
 					<!-- 문제1 -->
 					<div class="slides" style="width: 960px; height: 700px;">
 						<section class="overflowing present has-light-background"
+							x="0"
+							y="0"
+							maxY="1"
 							data-background-color="#ffffff"
 							data-id="0279c11631561889345ddf52a9453fd5"
 							style="display: block;" data-index-h="0" style="display: block;">
@@ -374,145 +372,145 @@
 					</div>
 
 
-					<!-- text -->
-					<div class="text-list">
-						<div class="toolbar-option toolbar-radio"
-							data-option-type="text-align" data-number-of-items="4">
-							<h4 class="toolbar-option-label">Text Alignment</h4>
-							<div class="toolbar-radio-inner">
-								<div class="toolbar-radio-item" data-value="left">
-									<i class="fa fa-align-left"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="center">
-									<i class="fa fa-align-center"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="right">
-									<i class="fa fa-align-right"></i>
-								</div>
-								<div class="toolbar-radio-item" data-value="justify">
-									<i class="fa fa-align-justify"></i>
-								</div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-stepper"
-							data-option-type="text-size">
-							<h4 class="toolbar-option-label">Text Scale</h4>
-							<div class="stepper">
-								<input class="font size-box" type=number value=20>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-divider"
-							data-option-type="divider"></div>
-						<div class="toolbar-option toolbar-color"
-							data-option-type="text-color">
-							<h4 class="toolbar-option-label">Text Color</h4>
-							<div class="toolbar-color-trigger">
-								<input class="text-colorinput" type="color">
-								<div class="toolbar-color-reset icon i-undo"
-									data-tooltip="Use default color" data-tooltip-delay="500"></div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-color"
-							data-option-type="background-color">
-							<h4 class="toolbar-option-label">Background Color</h4>
-							<div class="toolbar-color-trigger transparent">
-								<input class="back-colorinput" type="color">
-								<div class="toolbar-color-reset icon i-undo"
-									data-tooltip="Use default color" data-tooltip-delay="500"></div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-range"
-							data-option-type="opacity">
-							<h4 class="toolbar-option-label">Opacity</h4>
-							<div class="range">
-								<input class="opacity size-box" type=number value=1> <input
-									class="opacity size-scroll" type=range min="0" max="1"
-									step="0.1">
-							</div>
-						</div>
-						<div id="padding" class="toolbar-option toolbar-stepper"
-							data-option-type="padding">
-							<h4 class="toolbar-option-label">Padding</h4>
-							<div class="stepper">
-								<input class="padding size-box" type=number>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-divider"
-							data-option-type="divider"></div>
-						<div class="toolbar-option toolbar-group"
-							data-group-type="border-css">
-							<div class="text-toolbar-group-trigger">
-								<span class="label">Border</span> <input type="checkbox"
-									class="border checkbox" name="border" value="border">
-							</div>
-							<div class="text-toolbar-group-options">
-								<div class="text-toolbar-group-options-inner">
-									<div class="toolbar-option toolbar-select"
-										data-option-type="border-style">
-										<h4 class="toolbar-option-label">Style</h4>
-										<div class="text-toolbar-select-trigger">Solid</div>
-									</div>
-									<div class="toolbar-option toolbar-stepper"
-										data-option-type="border-width">
-										<h4 class="toolbar-option-label">Width</h4>
-										<div class="stepper">
-											<input class="lineWidth size-box" type=number>
-										</div>
-									</div>
-									<div class="toolbar-option toolbar-stepper"
-										data-option-type="border-radius">
-										<h4 class="toolbar-option-label">Radius</h4>
-										<div class="stepper">
-											<input class="lineRadius size-box" type=number>
-										</div>
-									</div>
-									<div class="toolbar-option toolbar-color"
-										data-option-type="border-color">
-										<h4 class="toolbar-option-label">Color</h4>
-										<div class="toolbar-color-trigger">
-											<input class="text-border-colorinput" type="color">
-											<div class="toolbar-color-reset icon i-undo"
-												data-tooltip="Use default color" data-tooltip-delay="500"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-divider"
-							data-option-type="divider"></div>
-						<div class="toolbar-option toolbar-multi"
-							data-option-type="block-depth" data-number-of-items="2">
-							<h4 class="toolbar-option-label">Depth</h4>
-							<div class="toolbar-multi-inner">
-								<div class="toolbar-multi-item" data-value="back"
-									data-tooltip="Move to back">
-									<i class="fa fa-arrow-down fa-2x"></i>
-								</div>
-								<div class="toolbar-multi-item" data-value="front"
-									data-tooltip="Move to front">
-									<i class="fa fa-arrow-up fa-2x"></i>
-								</div>
-							</div>
-						</div>
-						<div class="toolbar-option toolbar-multi"
-							data-option-type="block-actions" data-number-of-items="3">
-							<h4 class="toolbar-option-label">Actions</h4>
-							<div class="toolbar-multi-inner">
-								<div class="toolbar-multi-item" data-value="html"
-									data-tooltip="Edit HTML">
-									<i class="fa fa-edit fa-2x"></i>
-								</div>
-								<div class="toolbar-multi-item" data-value="duplicate"
-									data-tooltip="Duplicate">
-									<i class="fa fa-clipboard fa-2x"></i>
-								</div>
-								<div class="toolbar-multi-item" data-value="delete"
-									data-tooltip="Delete">
-									<i class="fa fa-trash fa-2x"></i>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <!-- text -->
+                    <div class="text-list">
+                        <div class="toolbar-option toolbar-radio"
+                            data-option-type="text-align" data-number-of-items="4">
+                            <h4 class="toolbar-option-label">Text Alignment</h4>
+                            <div class="toolbar-radio-inner">
+                                <div class="toolbar-radio-item" data-value="left">
+                                    <i class="fa fa-align-left"></i>
+                                </div>
+                                <div class="toolbar-radio-item" data-value="center">
+                                    <i class="fa fa-align-center"></i>
+                                </div>
+                                <div class="toolbar-radio-item" data-value="right">
+                                    <i class="fa fa-align-right"></i>
+                                </div>
+                                <div class="toolbar-radio-item" data-value="justify">
+                                    <i class="fa fa-align-justify"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-stepper"
+                            data-option-type="text-size">
+                            <h4 class="toolbar-option-label">Text Scale</h4>
+                            <div class="stepper">
+                                <input class="text font size-box" type=number value=20>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-divider"
+                            data-option-type="divider"></div>
+                        <div class="toolbar-option toolbar-color"
+                            data-option-type="text-color">
+                            <h4 class="toolbar-option-label">Text Color</h4>
+                            <div class="toolbar-color-trigger">
+                                <input class="text-colorinput" type="color">
+                                <div class="toolbar-color-reset icon i-undo"
+                                    data-tooltip="Use default color" data-tooltip-delay="500"></div>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-color"
+                            data-option-type="background-color">
+                            <h4 class="toolbar-option-label">Background Color</h4>
+                            <div class="toolbar-color-trigger transparent">
+                                <input class="back-colorinput" type="color">
+                                <div class="toolbar-color-reset icon i-undo"
+                                    data-tooltip="Use default color" data-tooltip-delay="500"></div>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-range"
+                            data-option-type="opacity">
+                            <h4 class="toolbar-option-label">Opacity</h4>
+                            <div class="range">
+                                <input class="text opacity size-box" type=number value=1> <input
+                                    class="text opacity size-scroll" type=range min="0" max="1"
+                                    step="0.1">
+                            </div>
+                        </div>
+                        <div id="padding" class="toolbar-option toolbar-stepper"
+                            data-option-type="padding">
+                            <h4 class="toolbar-option-label">Padding</h4>
+                            <div class="stepper">
+                                <input class="text padding size-box" type=number value=1>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-divider"
+                            data-option-type="divider"></div>
+                        <div class="toolbar-option toolbar-group"
+                            data-group-type="border-css">
+                            <div class="text-toolbar-group-trigger">
+                                <span class="label">Border</span> <input type="checkbox"
+                                    class="text border checkbox" name="border" value="border">
+                            </div>
+                            <div class="text-toolbar-group-options">
+                                <div class="text-toolbar-group-options-inner">
+                                    <div class="toolbar-option toolbar-select"
+                                        data-option-type="border-style">
+                                        <h4 class="toolbar-option-label">Style</h4>
+                                        <div class="text-toolbar-select-trigger">Solid</div>
+                                    </div>
+                                    <div class="toolbar-option toolbar-stepper"
+                                        data-option-type="border-width">
+                                        <h4 class="toolbar-option-label">Width</h4>
+                                        <div class="stepper">
+                                            <input class="text lineWidth size-box" type=number>
+                                        </div>
+                                    </div>
+                                    <div class="toolbar-option toolbar-stepper"
+                                        data-option-type="border-radius">
+                                        <h4 class="toolbar-option-label">Radius</h4>
+                                        <div class="stepper">
+                                            <input class="text lineRadius size-box" type=number>
+                                        </div>
+                                    </div>
+                                    <div class="toolbar-option toolbar-color"
+                                        data-option-type="border-color">
+                                        <h4 class="toolbar-option-label">Color</h4>
+                                        <div class="toolbar-color-trigger">
+                                            <input class="text-border-colorinput" type="color">
+                                            <div class="toolbar-color-reset icon i-undo"
+                                                data-tooltip="Use default color" data-tooltip-delay="500"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-divider"
+                            data-option-type="divider"></div>
+                        <div class="toolbar-option toolbar-multi"
+                            data-option-type="block-depth" data-number-of-items="2">
+                            <h4 class="toolbar-option-label">Depth</h4>
+                            <div class="toolbar-multi-inner">
+                                <div class="toolbar-multi-item" data-value="back"
+                                    data-tooltip="Move to back">
+                                    <i class="fa fa-arrow-down fa-2x"></i>
+                                </div>
+                                <div class="toolbar-multi-item" data-value="front"
+                                    data-tooltip="Move to front">
+                                    <i class="fa fa-arrow-up fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toolbar-option toolbar-multi"
+                            data-option-type="block-actions" data-number-of-items="3">
+                            <h4 class="toolbar-option-label">Actions</h4>
+                            <div class="toolbar-multi-inner">
+                                <div class="toolbar-multi-item" data-value="html"
+                                    data-tooltip="Edit HTML">
+                                    <i class="fa fa-edit fa-2x"></i>
+                                </div>
+                                <div class="toolbar-multi-item" data-value="duplicate"
+                                    data-tooltip="Duplicate">
+                                    <i class="fa fa-clipboard fa-2x"></i>
+                                </div>
+                                <div class="toolbar-multi-item" data-value="delete"
+                                    data-tooltip="Delete">
+                                    <i class="fa fa-trash fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -537,8 +535,8 @@
 						<div class="toolbar-option toolbar-group"
 							data-group-type="border-css">
 							<div class="image-toolbar-group-trigger">
-								<span class="label">Border</span><span
-									class="checkbox icon i-checkmark"> </span>
+								<span class="label">Border</span>
+								<input type="checkbox" class="image border checkbox" name="border" value="border">
 							</div>
 							<div class="image-toolbar-group-options">
 								<div class="image-toolbar-group-options-inner">
@@ -673,8 +671,8 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">WIDTH</h4>
 										<div class="stepper">
-											<input type="shape border-width size-box"
-												class="stepper-number">
+											<input type="text"
+												class="shape border-width size-box">
 										</div>
 									</div>
 									<div class="toolbar-option toolbar-color"
@@ -698,7 +696,7 @@
 							data-group-type="border-css">
 							<div class="shape-toolbar-group-trigger-link">
 								<h4 class="toolbar-option-label">
-									LINK <input type="checkbox" class="shape-checkbox">
+									LINK <input type="checkbox" class="shape-link-checkbox">
 								</h4>
 							</div>
 							<div class="shape-toolbar-group-options-link">
@@ -706,8 +704,7 @@
 									<div class="toolbar-option toolbar-stepper"
 										data-option-type="border-width">
 										<div class="stepper">
-											<input type="shape" class="stepper-number"
-												placeholder="http://">
+											<input type="text" class="shape-link-input">
 										</div>
 									</div>
 								</div>
@@ -787,7 +784,7 @@
 							data-option-type="padding">
 							<h4 class="toolbar-option-label">Padding</h4>
 							<div class="stepper">
-								<input class="padding size-box" type=number>
+								<input class="iframe padding size-box" type=number value=1>
 							</div>
 						</div>
 
@@ -808,10 +805,10 @@
 										data-option-type="border-width">
 										<h4 class="toolbar-option-label">WIDTH</h4>
 										<div class="stepper">
-											<input type="iframe border-width size-box"
-												class="stepper-number">
+											<input type="text"
+												class="iframe border-width size-box">
 										</div>
-									</div>
+									</div> 
 									<div class="toolbar-option toolbar-color"
 										data-option-type="border-color">
 										<h4 class="toolbar-option-label">COLOR</h4>

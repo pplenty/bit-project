@@ -187,10 +187,9 @@ div.canvas {
 	padding : 0 3% 3% 0;
 	width: 60px;
 	heigh: 60px;
-	visibility: hidden;
-	display: none;
+	visibility: visible;
 	position: absolute;
-	color: #868384;
+	color: white;
 	z-index: 100;
 	
 }
@@ -272,6 +271,20 @@ div.canvas {
 	color: #bbb6b8;
 }
 /* 3번 끝 */
+
+/* 섹션 삭제 */
+.section-delete {
+	top: 3%;
+	right: 40px;
+	width: 50px;
+	heigh: 50px;
+	visibility: visible;
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+	color: #bbb6b8;
+}
+
 .preview-controls {
 	position: absolute;
 	top: 10px;
@@ -368,7 +381,7 @@ body>div.page-wrapper>div.sidebar>div.primary>button.button.preview {
 
 /* 2nd */
 .sidebar .secondary {
-	position: relative;
+	position: relative;z
 	overflow: auto;
 	padding: 0 0 8px 0;
 	-webkit-overflow-scrolling: touch;
@@ -515,7 +528,7 @@ ease
 	line-height: initial;
 	padding: 0 0 8px 0;
 	display: block;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -1480,6 +1493,18 @@ ease
 	line-height: 0.8;
 	float: right;
 	color: rgba(0, 0, 0, 0);
+}
+.toolbar .shape-list .shape-link-checkbox {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    top: 0px;
+    border: 1px solid #555;
+    shape-align: center;
+    font-size: 14px;
+    line-height: 0.8;
+    float: right;
+    color: rgba(0, 0, 0, 0);
 }
 
 .toolbar .shape-list .toolbar-group .shape-toolbar-group-trigger-link {
@@ -2727,6 +2752,10 @@ input[type="number"].padding {
 
 input[type="number"] {
 	font-color: black;
+}
+
+.shape-link-input{
+	color : black;
 }
 
 .size-scroll {
