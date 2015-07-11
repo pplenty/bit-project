@@ -1,4 +1,24 @@
+ @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+ @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+ 
+ @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+ 
+ @font-face {
+  font-family: 'Nanum Pen Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.ttf) format('truetype');
+}
+ 
+.container .codrops-header span {
+	     font-family: 'Nanum Pen Script';
+	     font-size : 120px	
+}
 ul {
 	list-style : none;	
 }
@@ -10,7 +30,14 @@ ul {
 	height : 180px;
 	color : #47424A;
 	background-color: #F1F1E7;
-/* 	background-color : #F5F3AC;
+	  font-family: 'Nanum Pen Script';
+	
+/* 	font-family: 'Jeju Gothic', sans-serif;
+ */ 
+/*  font-family: 'Jeju Hallasan', cursive;
+ */
+/*     font-family : 'Hanna', sans-serif; */
+ /* 	background-color : #F5F3AC;
  */	
 }
 
@@ -52,7 +79,8 @@ ul {
     padding : 0px;
     font-size : 50px;
 	text-align : center ;
-    line-height : 80px;  조금 위험한 설정이라는데 그냥 할란다 텍스트 가운데 정렬
+	font-family: 'Jeju Gothic', sans-serif;
+    line-height : 80px;  /* 조금 위험한 설정이라는데 그냥 할란다 텍스트 가운데 정렬 */
  }
 
 
