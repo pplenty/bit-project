@@ -389,6 +389,18 @@ body>div.page-wrapper>div.sidebar>div.primary>button.button.preview {
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+
+.section-color{
+	top : 3px;
+	display : block ;
+	opacity : 0;
+	position : absolute;
+	z-index : 5;
+	cursor : pointer;
+	width : 45px;
+	height : 45px;
+}
+
 .sidebar
 
 
