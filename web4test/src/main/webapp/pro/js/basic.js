@@ -43,6 +43,12 @@ $_old(document).ready(function() {
 	});
 	
 	
+	//contents delete
+	$('.toolbar-multi-item[data-value=delete]').click(function(){
+		$('.isFocus').detach();
+	});
+	
+	
 	
 	
 	
