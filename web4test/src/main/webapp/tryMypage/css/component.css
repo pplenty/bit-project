@@ -65,16 +65,19 @@ body {
 
 .side-left {
 	left: 0;
-	background: #47a3da;
-	color: #fff;
+	background: white;
+	color: #007Ebf;
 	outline: 1px solid #47a3da; /* avoid gap */
 }
 
 .side-right {
 	right: 0;
-	background: #fff;
-	color: #47a3da;
+	background-color: #34495E;
+	color: white;
 	outline: 1px solid #fff; /* avoid gap */
+	text-shadow: 0 0 10px white;
+    -moz-text-shadow: 0 0 10px white;
+    -webkit-text-shadow: 0 0 10px white;
 }
 
 .side-center{
@@ -92,6 +95,9 @@ body {
 	cursor: pointer;
 	-webkit-transform: translateY(-50%) translateX(-50%);
 	transform: translateY(-50%) translateX(-50%);
+	text-shadow: 0 0 1px black;
+    -moz-text-shadow: 0 0 1px black;
+    -webkit-text-shadow: 0 0 1px black;
 }
 
 .profile {
@@ -99,6 +105,7 @@ body {
 	width: 140px;
 	height: 140px;
 	border-radius: 50%;
+	border : 1px black solid;
 	background: #47a3da;
 	z-index : 120;
 }
