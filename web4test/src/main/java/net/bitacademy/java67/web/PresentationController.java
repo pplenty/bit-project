@@ -34,6 +34,7 @@ public class PresentationController {
     String htmlSource = request.getParameter("content");
     
     String email = (String)session.getAttribute("email");
+    String name = (String)session.getAttribute("name");
     HashMap<String, Object> paramMap = new HashMap<String, Object>();
     paramMap.put("email", email);
     UserVo user = new UserVo();
@@ -47,6 +48,8 @@ public class PresentationController {
     
     PresentationVo presentVo = new PresentationVo();
     presentVo.setContent(htmlSource);
+    presentVo.setUserNo(user.getUserNo());
+    presentVo.setAuthor(name);
 //    presentDao.insert(presentVo);
     presentDao.update(presentVo);
     
