@@ -693,7 +693,7 @@ $(function() {
 
 	$('.slid-plus-hor').click(
 			function() {
-				countX = parseInt(countX) + 1;
+				countX = countX + 1;
 				var hereX = parseInt($('.present').attr('x'));
 				var hereY = parseInt($('.present').attr('y'));
 				var nextX = parseInt(hereX) + 1;
@@ -785,10 +785,12 @@ $(function() {
 				presb();
 				prest();
 				presbb();
+				sectionDel();
 			});
 
 	// 앞뒤 생성 끝
 
+	// 위 아래 위위 아래 생성!
 	$(".slid-plus-ver").hover(function() {
 		$(".slid-plus-ver").css('color', 'black');
 	}, function() {
@@ -802,7 +804,6 @@ $(function() {
 				var nextY = hereY + 1;
 				var hereMax = parseInt($('.present').attr('maxy'));
 				if (hereMax == 1) {
-					console.log('일반적인 y 생성 ')
 					if (hereY != 0) {
 						$(".present").removeClass("present").addClass("past")
 								.attr('maxy', 0)
@@ -828,60 +829,51 @@ $(function() {
 							}).attr('x', hereX).attr('y', nextY)
 							.attr('maxy', 1);
 				} else {
-					console.log('복잡한 y 생성 ')
-					for ( ;  ; ++hereY){
-						var selector = $('section.past[y=' + hereY + '].past[x='
-								+ hereX + ']');
+					for (;; ++hereY) {
+						var selector = $('section.past[y=' + hereY
+								+ '].past[x=' + hereX + ']');
 						var max = parseInt(selector.attr('maxy'));
 						var y = parseInt(selector.attr('y'));
-						if (max == 1){
+						if (max == 1) {
 							var endY = y
-							console.log(y)
-						break;
+							break;
 						}
 					}
-						for (endY; endY > nextY-1 ; endY--) {
-							console.log('endY', endY)
-							console.log('nextY', nextY)
-							console.log('hereX', hereX)
-							var selector = $('section.past[y=' + endY + '].past[x='
-									+ hereX + ']');
-							var nowY = endY +1;
-							$(selector).attr('y', nowY);
-						}
-						
-						
-						var lastY = parseInt($('.present').attr('y'));
-						var toLastY = lastY +1;
-						console.log('복잡한 y 생성 ')
-						if (lastY != 0) {
-							console.log('복잡한 0번째 y 생성 ')
-							
-							$(".present").removeClass("present").addClass("past")
-									.attr('maxy', 0)
-							$('.past').css({
-								'transform' : 'translate(0, -150%)',
-								'display' : 'none',
-								'visible' : 'hidden'
-							})
-						} else {
+					for (endY; endY > nextY - 1; endY--) {
+						var selector = $('section.past[y=' + endY + '].past[x='
+								+ hereX + ']');
+						var nowY = endY + 1;
+						$(selector).attr('y', nowY);
+					}
 
-							console.log('복잡한 1이상 y 생성 ')
-							$(".present").removeClass("present").addClass("future")
-									.attr('maxy', 0).css({
-										'transform' : 'translate(0, -150%)',
-										'display' : 'none',
-										'visible' : 'hidden'
-									})
-						}
+					var lastY = parseInt($('.present').attr('y'));
+					var toLastY = lastY + 1;
+					if (lastY != 0) {
 
-						$("<section>").addClass('present')
-								.appendTo($('div.slides')).css('display', 'block')
-								.attr({
-									// 'hidden'
-									'aria-hidden' : 'true'
-								}).attr('x', hereX).attr('y', toLastY)
-								.attr('maxy', 0);
+						$(".present").removeClass("present").addClass("past")
+								.attr('maxy', 0)
+						$('.past').css({
+							'transform' : 'translate(0, -150%)',
+							'display' : 'none',
+							'visible' : 'hidden'
+						})
+					} else {
+
+						$(".present").removeClass("present").addClass("future")
+								.attr('maxy', 0).css({
+									'transform' : 'translate(0, -150%)',
+									'display' : 'none',
+									'visible' : 'hidden'
+								})
+					}
+
+					$("<section>").addClass('present')
+							.appendTo($('div.slides')).css('display', 'block')
+							.attr({
+								// 'hidden'
+								'aria-hidden' : 'true'
+							}).attr('x', hereX).attr('y', toLastY).attr('maxy',
+									0);
 
 				}
 
@@ -889,6 +881,7 @@ $(function() {
 				presb();
 				prest();
 				presbb();
+				sectionDel();
 			});
 
 	// 섹션 이동
@@ -989,6 +982,7 @@ $(function() {
 		presb();
 		prest();
 		presbb();
+		sectionDel();
 	});
 
 	$('.pres-f').click(
@@ -1042,6 +1036,7 @@ $(function() {
 				presb();
 				prest();
 				presbb();
+				sectionDel();
 			})
 	// 뒤로
 
@@ -1054,6 +1049,7 @@ $(function() {
 		presb();
 		prest();
 		presbb();
+		sectionDel();
 	});
 	$('.pres-b').click(function() {
 
@@ -1084,6 +1080,7 @@ $(function() {
 		presb();
 		prest();
 		presbb();
+		sectionDel();
 	})
 
 	// 위로
@@ -1096,6 +1093,7 @@ $(function() {
 		presb();
 		prest();
 		presbb();
+		sectionDel();
 	});
 	$('.pres-t').click(
 			function() {
@@ -1136,6 +1134,7 @@ $(function() {
 				presb();
 				prest();
 				presbb();
+				sectionDel();
 			})
 
 	// 아래$
@@ -1148,6 +1147,7 @@ $(function() {
 		presb();
 		prest();
 		presbb();
+		sectionDel();
 	});
 	$('.pres-bb').click(
 			function() {
@@ -1192,22 +1192,169 @@ $(function() {
 					presb();
 					prest();
 					presbb();
+					sectionDel();
 				}
 			})
 
-	// 세션 삭제
+	// 세션 삭제 호벌
 	$(".section-delete").hover(function() {
 		$(".section-delete").css('color', 'black');
 	}, function() {
 		$(".section-delete").css('color', '#bbb6b8');
 	});
 
-	$('.section-delete').click(function() {
-		if ($('.present').attr('x') > 0) {
-			$('.past')
-			console.log('1차 성공')
+	// 섹션 삭제 유무
+	function sectionDel() {
+		var presentX = parseInt($(".present").attr('x'));
+		var presentY = parseInt($(".present").attr('y'));
+		$(".section-delete").css({
+			'visibility' : "visible",
+			'display' : 'block'
+		})
+		if (presentX == 0) {
+
+			if (presentY == 0) {
+				$(".section-delete").css({
+					'visibility' : "hidden",
+					'display' : 'none'
+				})
+
+			}
 		}
-		console.log($('.present').attr('x'))
-	});
+	}
+	;
+	// 섹션 삭제
+
+	$('.section-delete').click(
+			function() {
+
+				var presentX = parseInt($(".present").attr('x'));
+				var presentY = parseInt($(".present").attr('y'));
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = parseInt($('.present').attr('maxy'));
+
+				if (maxY == 1) {
+					if (presentY == 0) {
+						$(".present").remove();
+
+						var selector = $('section.past[y=' + 0 + '].past[x='
+								+ berforeX + ']');
+
+						$(selector).addClass('present').removeClass('past')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								});
+
+						var nexX = nextX;
+						for (nexX; nexX < countX + 1; nexX++) {
+							// nexX 다음칸부터 이숫자 까지
+							// countX 끝
+							var nowX = nexX - 1
+							var selector = $('section.future[y=' + 0
+									+ '].future[x=' + nexX + ']');
+							$(selector).attr('x', nowX)
+
+							selector = $('section.past[y= 1].past[x=' + nexX
+									+ ']');
+
+							hereY = parseInt($(selector).attr('y'));
+							// 이제 x내에서 와이값 찾기
+							// 작업중
+							if (hereY > 0) {
+								for (;; hereY++) {
+
+									var selector = $('section.past[y=' + hereY
+											+ '].past[x=' + nexX + ']');
+									$(selector).attr('x', nowX)
+									var max = parseInt(selector.attr('maxy'));
+									var y = parseInt(selector.attr('y'));
+									if (max == 1) {
+										var endY = y
+										break;
+									}
+								}
+							}
+							// 와이 맥심값 찾기 끝
+							var zoroY = 0;
+							for (zoroY; zoroY + 1 < endY; ++zoroY) {
+								var selector = $('section.past[y=' + zoroY
+										+ '].past[x=' + nexX + ']');
+								$(selector).attr('y', zoroY);
+							}// x값 ㅇㅣ후값 변경
+						}
+						countX = countX - 1;
+
+					} else if (presentY == 1) {
+						$(".present").remove();
+
+						var selector = $('section.future[y=' + 0
+								+ '].future[x=' + presentX + ']');
+
+						$(selector).addClass('present').removeClass('future')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								}).attr('maxy', 1);
+
+					} else {
+						$(".present").remove();
+						var selector = $('section.past[y=' + berforeY
+								+ '].past[x=' + presentX + ']');
+
+						$(selector).addClass('present').removeClass('past')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								}).attr('maxy', 1);
+					}
+
+				}// 밑바닥에 삭제 할때 끝
+
+				// 중간쯤에서 삭제 했을때
+				else {
+					hereY = parseInt($(".present").attr('y'));
+					$(".present").remove();
+
+					for (;; ++hereY) {
+						var selector = $('section.past[y=' + hereY
+								+ '].past[x=' + presentX + ']');
+						var max = parseInt(selector.attr('maxy'));
+						var y = parseInt(selector.attr('y'));
+						if (max == 1) {
+							var endY = y
+							break;
+						}
+					}
+					nexY = presentY;
+					for (nexY; nexY < endY; ++nexY) {
+						var selectY = nexY + 1;
+						var selector = $('section.past[y=' + selectY
+								+ '].past[x=' + presentX + ']');
+						$(selector).attr('y', nexY);
+					}
+
+					var selector = $('section.past[y=' + presentY + '].past[x='
+							+ presentX + ']');
+					$(selector).addClass('present').removeClass('past').css({
+						'visibility' : "visible",
+						'display' : 'block',
+						'transform' : 'translate(0, 0)'
+					})
+
+				}
+
+				presf();
+				presb();
+				prest();
+				presbb();
+				sectionDel();
+			});
 	// 섹션 삭제 끝
 });
