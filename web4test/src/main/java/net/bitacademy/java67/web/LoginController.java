@@ -94,6 +94,7 @@ public class LoginController {
     HashMap<String, Object> sqlParams = new HashMap<String, Object>();
     sqlParams.put("email", email);
     sqlParams.put("name", name);
+    sqlParams.put("userNo", userNo);
     
 
     return sqlParams;

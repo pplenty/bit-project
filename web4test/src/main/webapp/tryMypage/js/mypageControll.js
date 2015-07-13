@@ -7,7 +7,7 @@ $(function(){
 		dataType: 'json',
 		data: {
 //			email: 'rabbit622hyein@gmail.com'// 이메일 정보 로그인 페이지에서 빼오기
-			email : 'hyeinlee622@gmail.com'
+			email : 'usikzzang7@gmail.com'
 		},
 		success: function(result) {
 			console.log("받아오기")

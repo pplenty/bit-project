@@ -1,1 +1,0 @@
-var $_old = $.noConflict(true);
