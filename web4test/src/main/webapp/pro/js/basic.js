@@ -346,8 +346,13 @@ $_old(document).ready(function() {
 			$_old(this).attr('selectedDrop', true);
 
 			if ($_old(this).attr('selectedDropStart') == "true") {
-				selectContentsList.push($_old(this).attr('data-block-blockid'));
+				selectContentsList.push($_old(this).attr('data-block-id'));
 				selectCountFlag = selectContentsList.length - 1;
+				// 셀렉된 리스트 로그
+				if(selectContentsList.length > 1) {
+					console.log(selectContentsList);
+					
+				}
 				addEditForm($_old(this));
 				$_old(this).addClass('isFocus');
 				$_old(this).addClass('dropEndCall');
