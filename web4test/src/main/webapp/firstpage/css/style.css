@@ -30,14 +30,14 @@ h2.ss-subtitle:after{
 	bottom: -4px;
 }
 .ss-links{
-	position: fixed;
-	left: 10px;
-	top: 166px;
-	width: 25%;
+ 	position: fixed;
+ 	top : 150px;
+ 	left: 10px;
+	width: 3000px;
 	z-index: 100;
 }
 .ss-links a{
-	background: rgba(0,0,0,0.2);
+	background: black;
 	font-size: 16px;
 	width: 40px;
 	height: 40px;
@@ -116,7 +116,7 @@ h2.ss-subtitle:after{
 		0px 0px 0px 12px rgba(61,64,85,0.3);
     box-shadow: 
 		0px 2px 5px rgba(0,0,0,0.7) inset, 
-		0px 0px 0px 12px rgba(61,64,85,0.3);
+		0px 0px 0px 12px black;
 	background-size: cover;
 	background-color: #f0f0f0;
 	background-repeat: no-repeat;
@@ -139,7 +139,7 @@ h2.ss-subtitle:after{
 	width: 29%;
 	height: 0px;
 	border-bottom: 5px dotted #ddd;
-	border-bottom: 5px dotted rgba(17, 17, 22, 0.3);
+	border-bottom: 5px dotted black;
 	-webkit-box-shadow: 0px 1px 1px #fff;
 	-moz-box-shadow: 0px 1px 1px #fff;
 	box-shadow: 0px 1px 1px #fff;
@@ -230,7 +230,7 @@ h2.ss-subtitle:after{
 .ss-circle-6{
     background-image: url(../images/6.jpg);
 }
-.ss-circle-7{
+/* .ss-circle-7{
     background-image: url(../images/7.jpg);
 }
 .ss-circle-8{
@@ -301,4 +301,4 @@ h2.ss-subtitle:after{
 }
 .ss-circle-30{
     background-image: url(../images/30.jpg);
-}
+} */

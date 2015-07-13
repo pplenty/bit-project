@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="css/login/demo.css" />
-<link rel="stylesheet" type="text/css" href="css/login/style.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Kelly+Slab'rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/login/login-demo.css" />
@@ -75,20 +75,18 @@ body {
                     </ul>
                 </li>
                 <li>
-                 <a href="#">로그인</a>
+                 <!-- <a href="#">로그인</a>
                     <ul class="cbp-tm-submenu">
                         <li>
+                        </li>
+                        <li><a href="#" class="cbp-tm-icon-mail">Raisin kakadu</a></li>
+                    </ul>  -->
+                <div class="ss-right loginBtn">
                         <div class="naverBtn">
                              <a href="http://192.168.103.78:9999/web4test/naverLogin.do"
                                 onclick="window.open(this.href,'_blank','width=800,height=600, scrollbars=yes');return false;">
                                     <img src="./images/login/naver.png" ></a>
                         </div>
-                        </a></li>
-                        <li><a href="#" class="cbp-tm-icon-mail">Raisin kakadu</a></li>
-                    </ul> 
-                <div class="ss-right loginBtn">
-                        
-
                         <div class="facebookBtn" onclick="FBLogin();">                          
                         <a><img src="./images/login/facebook.png" ></a>
                         </div>
@@ -126,9 +124,8 @@ body {
 			<div class="ss-row"
 				style="-webkit-perspective: 600px; -webkit-perspective-origin: 50% 0%; height: 350px; border-top-width: 20px;">
 				<div class="ss-left">
-					<h2>
-						<FONT face="Arial Black"> <br><br>Free-sentation<br> <span
-							style='font-size: 70%;'>produce, present in freedom</span></FONT>
+					<h2 class='mainTitle'>
+					<div class='main'>Free-sentation</div><span >produce, present in freedom</span></d>
 					</h2>
 				</div>
 			</div>
@@ -140,22 +137,16 @@ body {
 				</div>
 				<div class="ss-right">
 					<h3>
-						<a
-							style="color: #FACC2E; height: 50px; font-family: 'Comic Sans MS';">Web-Controller</a>
-						<a style="font-family: '휴먼엽서체'"> 프레젠테이션을 자유롭게!<br> 핸드폰
-							App Controller 지원
-						</a>
+						<a class='smallTitle'>Web-Controller</a>
+						<a class='content'> 프레젠테이션을 자유롭게! 핸드폰 App Controller 지원</a>
 					</h3>
 				</div>
 			</div>
 			<div class="ss-row ss-large">
 				<div class="ss-left">
 					<h3>
-						<a
-							style="color: #FACC2E; height: 50px; font-family: 'Comic Sans MS';">Web-Editor</a>
-						<a style="font-family: '휴먼엽서체'"> 프로그램 설치에서 자유롭게! <br> 웹에서
-							편집, 제작하는 프레젠테이션
-						</a>
+						<a class='smallTitle'>Web-Editor</a>
+						<a class='contentV'> 프로그램 설치에서 자유롭게! 웹에서 제작하는 프레젠테이션</a>
 					</h3>
 				</div>
 				<div class="ss-right">
@@ -172,22 +163,16 @@ body {
 				</div>
 				<div class="ss-right">
 					<h3>
-						<a
-							style="color: #FACC2E; height: 50px; font-family: 'Comic Sans MS';">Web-Viewer</a>
-						<a style="font-family: '휴먼엽서체'"> USB없이 자유롭게! <br> 이메일
-							로그인만으로 프레젠테이션
-						</a>
+						<a class='smallTitle'>Web-Viewer</a>
+						<a class='content'>USB없이 자유롭게! 이메일 로그인만으로 프레젠테이션</a>
 					</h3>
 				</div>
 			</div>
 			<div class="ss-row ss-medium">
 				<div class="ss-left">
 					<h3>
-						<a
-							style="color: #FACC2E; height: 50px; font-family: 'Comic Sans MS';">Presentation-Share</a>
-						<a style="font-family: '휴먼엽서체'">다양한 디자인과 정보의 <br> 프레젠테이션
-							공유 지원
-						</a>
+						<a class='smallTitle'>Presentation-Share</a>
+						<a class='content one'>다양한 디자인과 정보의 프레젠테이션 공유 지원</a>
 					</h3>
 				</div>
 				<div class="ss-right">
@@ -204,9 +189,8 @@ body {
 				</div>
 				<div class="ss-right">
 					<h3>
-						<a
-							style="color: #FACC2E; height: 50px; font-family: 'Comic Sans MS';">
-							I don't know</a> <a style="font-family: '휴먼엽서체'">짱짱 프렌테이션 </a>
+						<a class='smallTitle'>I don't know</a> 
+						<a class='content one'>짱짱 프렌테이션 </a>
 					</h3>
 				</div>
 			</div>
