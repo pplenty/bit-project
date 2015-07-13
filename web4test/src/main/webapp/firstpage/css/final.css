@@ -1,0 +1,68 @@
+.ss-right.loginBtn{
+      position: relative;
+      right : 0%;
+      top : 10px;
+	  width : 100px;
+	  height : 50px;
+	  padding : 0px;
+}
+
+.ss-right.loginBtn .naverBtn{
+	display: inline-block; 
+	width: 10px; 
+	height: 10px; 
+	padding: 0px;
+}
+
+.ss-right.loginBtn .naverBtn img{
+    width: 10px; 
+    height: 10px;
+	}
+	
+.ss-right.loginBtn .facebookBtn{
+	 display: inline-block; 
+	 width: 10px; 
+	 height: 10px; 
+	 padding: 0px;
+	 margin : 20px;
+	 cursor : pointer
+}	
+	
+	.ss-right.loginBtn .facebookBtn img{
+	/* width : 100;
+	height :100; */
+   /*  float: center;  */
+    width: 30px; 
+    height: 30px;
+	
+	}
+	
+.ss-right.loginBtn .customGPlusSignIn.googleBtn{
+	display: inline-block; 
+	width: 10px; 
+	height: 10px; 
+	padding: 0px;
+	cursor : pointer
+}
+
+.ss-right.loginBtn .customGPlusSignIn.googleBtn img{
+     width: 30px; 
+     height: 30px;
+}
+
+.ss-right.loginBtn .customGPlusSignIn.googleBtn span.icon{
+	display: none; 
+	width: 10px; 
+	height: 10px; 
+	padding: 0px;
+}
+	
+.ss-right.loginBtn .customGPlusSignIn.googleBtn span.buttonText{
+     cursor: pointer; 
+     display: none; 
+     width: 10px; 
+     height: 10px; 
+     padding: 0px;
+	}
+	
+	

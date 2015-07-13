@@ -108,7 +108,7 @@ function disconnectUser() {
 function googleCheckLogin(obj) {
 	console.log('호출됨');
 	//var url = 'http://192.168.103.87:9999/web4test/checkLogin.do';
-	var url = 'http://127.0.0.1:9999/web4test/checkLogin.do';
+	var url = 'http://localhost:9999/web4test/checkLogin.do';
 	email = obj['email'];
 	name = obj['name'];
 
@@ -125,7 +125,7 @@ function googleCheckLogin(obj) {
 		},
 		success: function(data) {
 			console.log(data);
-			location.href='../mypage/mypage.html';
+			location.href='../editMypage/mypage.html';
 		},
 		error: function(e) {
 			console.log(e);

@@ -9,22 +9,27 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="css/login/demo.css" />
 <link rel="stylesheet" type="text/css" href="css/login/style.css" />
-<link href='http://fonts.googleapis.com/css?family=Kelly+Slab'
-	rel='stylesheet' type='text/css' />
-<link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Kelly+Slab'rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/login/login-demo.css" />
 <link rel="stylesheet" type="text/css" href="css/login/login.css" />
 <link rel="stylesheet" type="text/css" href="css/login/button.css" />
-<link rel="stylesheet" type="text/css"
-	href="css/login/login-animate-custom.css" />
+<link rel="stylesheet" type="text/css" href="css/login/login-animate-custom.css" />
 
-<!--[if lt IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/login/styleIE.css" />
-    <![endif]-->
 <script type="text/javascript" src="js/login/modernizr.custom.11333.js"></script>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+ <!-- topMenu css 및 js 파일 -->
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="TooltipMenu/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="TooltipMenu/css/component.css" />
+    <script src="TooltipMenu/js/modernizr.custom.js"></script>  
+    
+ <!--  최종 정리 css 파일-->
+<link rel="stylesheet" type="text/css" href="css/final.css" />
+    
+    
 <style>
 body {
 	background: url(./images/login/background.jpg) no-repeat center center
@@ -37,6 +42,76 @@ body {
 </style>
 </head>
 <body>
+
+    
+<div class="topMenu">
+    <div class="containerHead">
+            <ul id="cbp-tm-menu" class="cbp-tm-menu">
+              <!--   <li>
+                    <a href="#">Home</a>
+                </li> -->
+                <li>
+                    <a href="#">Do Free-sentaiton</a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" class="cbp-tm-icon-users">Play Presentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Connect Controller</a></li>
+                    <!--     <li><a href="#" class="cbp-tm-icon-location">Plum salsify</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">Bok choy celtuce</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">Onion endive</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Bitterleaf</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                    <ul class="cbp-tm-submenu">
+<!--                         <li><a href="#" class="cbp-tm-icon-archive">Tutorial</a></li>
+ -->                        <li><a href="#" class="cbp-tm-icon-contract">F&Q</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">about freesentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">about appleNet</a></li>
+                        <!-- <li><a href="#" class="cbp-tm-icon-earth">Garlic mint</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Zucchini garnish</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li>
+                 <a href="#">로그인</a>
+                    <ul class="cbp-tm-submenu">
+                        <li>
+                        <div class="naverBtn">
+                             <a href="http://192.168.103.78:9999/web4test/naverLogin.do"
+                                onclick="window.open(this.href,'_blank','width=800,height=600, scrollbars=yes');return false;">
+                                    <img src="./images/login/naver.png" ></a>
+                        </div>
+                        </a></li>
+                        <li><a href="#" class="cbp-tm-icon-mail">Raisin kakadu</a></li>
+                    </ul> 
+                <div class="ss-right loginBtn">
+                        
+
+                        <div class="facebookBtn" onclick="FBLogin();">                          
+                        <a><img src="./images/login/facebook.png" ></a>
+                        </div>
+
+                        <div id="customBtn" class="customGPlusSignIn googleBtn">
+                        <a> <img src="./images/login/google.png"></a> 
+                        <span class="icon" ></span>
+                        <span class="buttonText"></span>
+                        </div>
+                </div>
+             <!--    <div class='loginSuccess'>
+                    <a href="#">정준호님 환영합니다</a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" class="cbp-tm-icon-cog">로그아웃</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mail">Raisin kakadu</a></li>
+                    </ul> 
+                 </div>로그인 완료시 보여줄 div -->
+                </li>
+            </ul>
+      </div><!--container -->
+</div><!--TopMenu 끝-->
+<!-- ------------------------상위 메뉴 바------------------------------------- -->           
+
 	<div class="container">
 		<div id="ss-links" class="ss-links">
 			<a href="#ss-container">TOP</a> <a href="#first"><i
@@ -55,42 +130,6 @@ body {
 						<FONT face="Arial Black"> <br><br>Free-sentation<br> <span
 							style='font-size: 70%;'>produce, present in freedom</span></FONT>
 					</h2>
-				</div>
-				<div class="ss-right">
-					<div style="padding-left: 70%;">
-						<div class="naverBtn"
-							style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
-							<span> <a
-								href="http://192.168.103.78:9999/web4test/naverLogin.do"
-								onclick="window.open(this.href,'_blank','width=800,height=600, scrollbars=yes');return false;">
-									<img src="./images/login/naver.png" width="100" height="100"
-									style="float: center; width: 30px; height: 30px;">
-							</a>
-							</span>
-						</div>
-
-						<div class="facebookBtn" onclick="FBLogin();"
-							style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
-							<span style="cursor: pointer"> <a> <img
-									src="./images/login/facebook.png" width="100" height="100"
-									style="float: center; width: 30px; height: 30px;">
-							</a>
-							</span>
-						</div>
-
-						<div id="customBtn" class="customGPlusSignIn googleBtn"
-							style="display: inline; width: 100px; height: 100px; padding: 7.5px;">
-							<span style="cursor: pointer"> <a> <img
-									src="./images/login/google.png" width="100" height="100"
-									style="float: center; width: 30px; height: 30px;">
-							</a> <span class="icon"
-								style="display: inline; width: 100px; height: 100px; padding: 7.5px;"></span>
-								<span class="buttonText"
-								style="cursor: pointer; display: inline; width: 100px; height: 100px; padding: 7.5px;"></span></span>
-						</div>
-
-
-					</div>
 				</div>
 			</div>
 			<div class="ss-row ss-medium">
@@ -214,6 +253,11 @@ body {
 			});
 		}
 	</script>
+	   <!--  TopMenu js -->
+     <script src="TooltipMenu/js/cbpTooltipMenu.min.js"></script>
+        <script>
+            var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+        </script> 
 
 </body>
 </html>
