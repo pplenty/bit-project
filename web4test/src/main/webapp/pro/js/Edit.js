@@ -1357,4 +1357,20 @@ $(function() {
 				sectionDel();
 			});
 	// 섹션 삭제 끝
+
+	
+	// 세션 배경 색 설정
+	$(".section-color").on('click', function() {
+		var initBackColor = rgb2hex($('.present').css('background-color'));
+		console.log(initBackColor)
+		$(".section-color").val(initBackColor);
+	})
+
+
+
+	$(".section-color").on('change', function() {
+		$(".present").css('background-color', $(this).val());
+	});
+
+
 });
