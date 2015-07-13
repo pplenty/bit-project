@@ -1,0 +1,179 @@
+/* Individual tab styles */
+
+
+
+
+/*****************************/
+/* Bar */
+/*****************************/
+
+.tabs-style-bar nav {
+	background: rgba(40,44,42,0.05);
+	
+}
+
+.tabs-style-bar nav ul {
+	border: 4px solid transparent;
+}
+
+.tabs-style-bar nav ul li a {
+	margin: 0 2px;
+	background-color: #f7f7f7;
+	color: #74777b;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.tabs-style-bar nav ul li a:hover,
+.tabs-style-bar nav ul li a:focus {
+	color: #2CC185;
+}
+
+.tabs-style-bar nav ul li a span {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+	font-size: 0.6em;
+}
+
+.tabs-style-bar nav ul li.tab-current a {
+	background: #2CC185;
+	color: #fff;
+}
+
+/*****************************/
+/* Icon box */
+/*****************************/
+
+.tabs-style-iconbox nav {
+	background: rgba(255,255,255,0.4);
+}
+
+.tabs-style-iconbox nav ul li a {
+	overflow: visible;
+	padding: 2em 0;
+	line-height: 1;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+}
+
+.tabs-style-iconbox nav ul li a span {
+	font-weight: 700;
+	font-size: 0.7em;	
+}
+
+.tabs-style-iconbox nav ul li.tab-current {
+	z-index: 100;
+}
+
+.tabs-style-iconbox nav ul li.tab-current a {
+	background: #fff;
+	box-shadow: -1px 0 0 #fff;
+}
+
+.tabs-style-iconbox nav ul li.tab-current a::after {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -10px;
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	border-width: 10px;
+	border-top-color: #fff;
+	content: '';
+	pointer-events: none;
+}
+
+.tabs-style-iconbox nav ul li:first-child::before,
+.tabs-style-iconbox nav ul li::after {
+	position: absolute;
+	top: 20%;
+	right: 0;
+	z-index: -1;
+	width: 1px;
+	height: 60%;
+	background: rgba(0,0,0,0.07);
+	content: '';
+}
+
+.tabs-style-iconbox nav ul li:first-child::before {
+	right: auto;
+	left: 0;
+}
+
+.tabs-style-iconbox .icon::before {
+	display: block;
+	margin: 0 0 0.25em 0;
+}
+
+
+/*****************************/
+/* Trapezoid, based on http://lea.verou.me/2013/10/slanted-tabs-with-css-3d-transforms/ */
+/*****************************/ 
+
+.tabs-style-tzoid {
+	max-width: 90%;
+}
+
+.tabs-style-tzoid nav {	
+	padding: 0 1em;
+}
+
+.tabs-style-tzoid nav ul li {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.tabs-style-tzoid nav ul li a {
+	padding: 0 1.5em 0 0.3em;
+	color: #ffffff;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+}
+
+@media screen and (max-width: 54em) {
+	.tabs-style-tzoid nav ul li a {
+		padding: 0 0.5em 0 0.3em;
+	}
+}
+
+.tabs-style-tzoid nav ul li a:hover,
+.tabs-style-tzoid nav ul li a:focus {
+	color: #ffffff; /*  호버와 포커스 맞을 때 글자 색깔*/
+}
+
+.tabs-style-tzoid nav ul li.tab-current a,
+.tabs-style-tzoid nav ul li.tab-current a:hover {
+	color: #494949; /* 선택된 현재의 탭 글자 및 아이콘 색깔 */
+}
+
+.tabs-style-tzoid nav ul li a span {
+	font-weight: 500;
+	font-size: 0.75em;
+}
+
+.tabs-style-tzoid nav ul li a::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	outline: 1px solid transparent;
+	border-radius: 10px 10px 0 0;
+	background: #47424A; /* 선택 안되어 있을 때 탭 바탕 색깔 */
+	box-shadow: inset 0 -3px 3px rgba(0,0,0,0.05);
+	content: '';
+	-webkit-transform: perspective(5px) rotateX(0.93deg) translateZ(-1px);
+	transform: perspective(5px) rotateX(0.93deg) translateZ(-1px);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.tabs-style-tzoid nav ul li.tab-current a::after,
+.tabs-style-tzoid .content-wrap {
+	background: #fff;
+	box-shadow: none;
+}

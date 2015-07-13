@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>my page</title>
+		<!-- content css 및 js 파일 -->
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/tabs.css" />
+		<link rel="stylesheet" type="text/css" href="css/tabstyles.css" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	
+	<script src=js/jquery-1.11.2.js></script>
+	<script src="js/mypageControll.js"></script>	
+	
+    <script src="js/modernizr.custom.js"></script>
+    <!-- topMenu css 및 js 파일 -->
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="TooltipMenu/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="TooltipMenu/css/component.css" />
+    <script src="TooltipMenu/js/modernizr.custom.js"></script>  
+	<link rel="stylesheet" type="text/css" href="css/mypage-list.css" />
+	<!--  버튼 부분-->
+    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+	</head>
+	<body>
+<div class="topMenu">
+    <div class="containerHead">
+            <ul id="cbp-tm-menu" class="cbp-tm-menu">
+              <!--   <li>
+                    <a href="#">Home</a>
+                </li> -->
+                <li>
+                    <a href="#"> Free-sentaiton</a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" class="cbp-tm-icon-users">Play Presentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Connect Controller</a></li>
+                    <!--     <li><a href="#" class="cbp-tm-icon-location">Plum salsify</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">Bok choy celtuce</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">Onion endive</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Bitterleaf</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                    <ul class="cbp-tm-submenu">
+<!--                         <li><a href="#" class="cbp-tm-icon-archive">Tutorial</a></li>
+ -->                        <li><a href="#" class="cbp-tm-icon-contract">F&Q</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">about freesentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">about appleNet</a></li>
+                        <!-- <li><a href="#" class="cbp-tm-icon-earth">Garlic mint</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Zucchini garnish</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">정준호님 환영합니다</a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" class="cbp-tm-icon-cog">로그아웃</a></li>
+                        <!-- <li><a href="#" class="cbp-tm-icon-mail">Raisin kakadu</a></li> -->
+                        <!-- <li><a href="#" class="cbp-tm-icon-contract">Plum salsify</a></li>
+                        <li><a href="#" class="cbp-tm-icon-pencil">Bok choy celtuce</a></li>
+                        <li><a href="#" class="cbp-tm-icon-article">Onion endive</a></li>
+                        <li><a href="#" class="cbp-tm-icon-clock">Bitterleaf</a></li> -->
+                    </ul> 
+                </li>
+            </ul>
+      </div><!--container -->
+</div><!--TopMenu 끝-->
+<!-- ------------------------상위 메뉴 바 끝------------------------------------- -->	
+		
+		<div class="container" >
+			<header class="codrops-header" style='display: inline-block; position : relative'>
+				<span>My canvas</span>
+				<p class="support">Your browser does not support <strong>flexbox</strong>! <br />Please view this demo with a <strong>modern browser</strong>.</p>
+			</header>	
+			    <div class="addBtn bg-1">
+               <button class="button button--winona button--border-thin button--round-m" data-text="Create New"><span>New Canvas</span></button>               
+                </div>
+			
+				<div class="tabs tabs-style-tzoid">
+					<nav style="padding-left: 0px;">
+						<ul>
+							<li><a href="#section-tzoid-1" class="icon icon-home"><span>My-presentation</span></a></li>
+							<li><a href="#section-tzoid-2"><i class="fa fa-star"></i><span>Share</span></a></li>
+<!-- 							<li><a href="#section-tzoid-3" class="icon icon-upload"><span>Share</span></a></li>
+ -->						</ul>
+					</nav>
+                    <div class="content-wrap">
+<section id='section-tzoid-1'>
+	 <div class='section one inner one'>
+                     <div class='inner-title'><i class="fa fa-skyatlas"></i>  The latest Canvas</div>
+                     <div class="inside-list">
+                               <ul class= "inside-list latest">
+                                   <!--  <li>
+                                     <div class='oneCanvas'> 프레젠테이션 한개 밖에를 li와 ul로 싸기 // 클래스를 하나 더 추가
+                                         <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div> 인블록라인으로 선언해서 왼쪽 썸네일 배치 및 이미지 담기
+                                         <div class='canvasIn canvasInfo'>
+                                             <div class='canvasIn Title'></div>상단 제목
+                                             <div class='canvasIn Tool'>
+                                                     <div class='canvasIn create_date'><span>Date : </span><span class='cre_date'></span></div>
+                                                     <div class='canvasIn useTool'>
+                                                              <span class='useTool-publicYn'><i class="public fa fa-lock"></i><i class="private fa fa-unlock"></i></span>
+                                                              <span class='useTool-edit'><i class="fa fa-pencil-square-o"></i></span>
+                                                              <span class='useTool-player'><i class="fa fa-play-circle-o"></i></span>
+                                                     </div>아이콘 툴 모음
+                                             </div>하단 묶음 Tool끝
+                                         </div>canvasInfo 끝
+                                      </div>li 에 들어갈 canvas-1 끝
+                                 </li> -->
+                               </ul>
+                            </div><!--inside-list div 끝 -->
+                    </div><!-- section one innerOne 끝 태그 -->
+                            
+                            <div class='divider'></div><!--  나누는 선 -->
+                            
+                    <div class='section one inner two'>
+                            <div class='inner-title' id='test'><i class="fa fa-skyatlas"></i> My whole Canvas   
+                               <span class="input-group">
+                                      <input type="text" class="input-group search" placeholder=" Search for...         " > 
+                                      <a href='action'><button> <i class="fa fa-search" style="width:25px;height:25px; color: black"></i></button></a>
+                                </span>
+                             </div><!-- 이너 타이틀 -->
+                             <div class="inside-list">
+                               <ul class='inside-list whole'>
+                                <!--  <li>
+                                     <div class='oneCanvas'> 프레젠테이션 한개 밖에를 li와 ul로 싸기 // 클래스를 하나 더 추가
+                                         <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div> 인블록라인으로 선언해서 왼쪽 썸네일 배치 및 이미지 담기
+                                         <div class='canvasIn canvasInfo'>
+                                             <div class='canvasIn Title'> 제목입니다요</div>상단 제목
+                                             <div class='canvasIn Tool'>
+                                                     <div class='canvasIn create_date'><span>Date : </span><span class='cre_date'></span></div>
+                                                     <div class='canvasIn useTool'>
+                                                              <span class='useTool-publicYn'><i class="public fa fa-lock"></i><i class="private fa fa-unlock"></i></span>
+                                                              <span class='useTool-edit'><i class="fa fa-pencil-square-o"></i></span>
+                                                              <span class='useTool-player'><i class="fa fa-play-circle-o"></i></span>
+                                                     </div>아이콘 툴 모음
+                                             </div>하단 묶음 Tool끝
+                                         </div>canvasInfo 끝
+                                      </div>li 에 들어갈 canvas-1 끝
+                                 </li>  -->
+                                </ul>
+                            </div><!--inside-list div 끝 -->  
+                    </div><!-- section one inner two 끝 태그 -->
+   </section>
+				
+
+	<section id="section-tzoid-2">
+	    <div class='section two inner one'>
+                <div class='inner-title'><i class="fa fa-skyatlas"></i> Favorite Share Canvas</div>                            
+                     <div class="inside-list">
+                             <div class="inside-list">
+                               <ul class= "inside-list Favoriteshare">
+                                    <li>
+                                     <div class='oneCanvas'> 
+                                         <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div> 
+                                         <div class='canvasIn canvasInfo'>
+                                             <div class='canvasIn Title'></div>
+                                             <div class='canvasIn Tool'>
+                                                     <div class='canvas-1 canvasIn shareInfo'><span class='shareInfo-value'>Author : </span><span class='shareInfo-author' >WooInkyu</span></div>
+                                                     <div class='canvasIn useTool'>
+                                                              <span class='useTool-player'><i class="fa fa-play-circle-o"></i></span>
+                                                     </div>
+                                             </div>
+                                         </div>
+                                      </div>
+                                 </li>
+                               </ul>
+                            </div>
+                            </div><!--inside-list div 끝 -->
+            </div><!-- section one innerOne 끝 태그 -->
+                                        <div class='divider'></div><!--  나누는 선 -->
+                 <div class='section two inner two'>
+                            <div class='inner-title' id='test'><i class="fa fa-skyatlas"></i> Share Canvas  </div>  
+                             <div class="inside-list">
+                               <ul class= "inside-list share">
+                                    <li>
+                                     <div class='oneCanvas'> 
+                                         <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div> 
+                                         <div class='canvasIn canvasInfo'>
+                                             <div class='canvasIn Title'></div>
+                                             <div class='canvasIn Tool'>
+                                                     <div class='canvas-1 canvasIn shareInfo'><span class='shareInfo-value'>Author : </span><span class='shareInfo-author' >WooInkyu</span></div>
+                                                     <div class='canvasIn useTool'>
+                                                              <span class='useTool-player'><i class="fa fa-play-circle-o"></i></span>
+                                                     </div>
+                                             </div>
+                                         </div>
+                                      </div>
+                                 </li>
+                               </ul>
+                            </div>
+                    </div><!-- section one innerOne 끝 태그 -->
+  </section><!-- 2번 섹션 -->
+ <!--  <section id="section-tzoid-3">
+            <div class='section three inner one'>
+                   <div class='inner-title' id='test'><i class="fa fa-skyatlas"></i> Share Canvas  </div>  
+                            <div class="inside-list">
+                               <ul class= "inside-list share">
+                                    <li>
+                                     <div class='oneCanvas'> 프레젠테이션 한개 밖에를 li와 ul로 싸기 // 클래스를 하나 더 추가
+                                         <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div> 인블록라인으로 선언해서 왼쪽 썸네일 배치 및 이미지 담기
+                                         <div class='canvasIn canvasInfo'>
+                                             <div class='canvasIn Title'></div>상단 제목
+                                             <div class='canvasIn Tool'>
+                                                     <div class='canvas-1 canvasIn shareInfo'><span class='shareInfo-value'>Author : </span><span class='shareInfo-author' >WooInkyu</span></div>
+                                                     <div class='canvasIn useTool'>
+                                                              <span class='useTool-player'><i class="fa fa-play-circle-o"></i></span>
+                                                     </div>아이콘 툴 모음
+                                             </div>하단 묶음 Tool끝
+                                         </div>canvasInfo 끝
+                                      </div>li 에 들어갈 canvas-1 끝
+                                 </li>
+                               </ul>
+                            </div>inside-list div 끝
+                    </div>section one innerOne 끝 태그               
+    </section>3번 섹션 -->
+</div><!-- /content -->
+</div><!-- /tabs -->
+</div><!-- /container -->
+		
+		
+		<!-- content js  -->
+		<script src="js/cbpFWTabs.js"></script>
+		<script>
+			(function() {
+				[].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+					new CBPFWTabs( el );
+				});
+
+			})();
+		</script>
+		<!--  TopMenu js -->
+		<script src="TooltipMenu/js/cbpTooltipMenu.min.js"></script>
+        <script>
+            var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+           
+        </script>
+       
+	</body>
+</html>
