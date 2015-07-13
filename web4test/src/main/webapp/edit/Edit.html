@@ -167,6 +167,7 @@
 				</button>
 				<button class="button style" data-tooltip="Style"
 					data-tooltip-alignment="r">
+					<input class="section-color" type="color">
 					<span class="icon i-brush"><i class="fa fa-paint-brush "></i></span><span
 						class="close icon i-x"></span>
 				</button>
@@ -1011,6 +1012,64 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					<!-- multi -->
+					<div class="multi-list">
+						<div class="toolbar-option toolbar-color"
+							data-option-type="multi-color">
+							<h4 class="toolbar-option-label">COLOR</h4>
+							<div class="toolbar-color-trigger">
+								<input class="multi-colorinput" type="color">
+								<div class="toolbar-color-reset icon i-undo"
+									data-tooltip="Use default color" data-tooltip-delay="500"></div>
+							</div>
+						</div>
+
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+
+						<div class="toolbar-option toolbar-range"
+							data-option-type="opacity">
+							<h4 class="toolbar-option-label">OPACITY</h4>
+							<div class="range">
+								<input class="multi opacity size-box" type=number value=1.00>
+								<input class="multi opacity size-scroll" type=range min="0"
+									max="1.00" step="0.1">
+							</div>
+						</div>
+
+						<div class="toolbar-option toolbar-divider"
+							data-option-type="divider"></div>
+
+
+						
+
+
+
+						<div class="toolbar-option toolbar-multi"
+							data-option-type="block-actions" data-number-of-items="3">
+							<h4 class="toolbar-option-label">Actions</h4>
+							<div class="toolbar-multi-inner">
+								<div class="toolbar-multi-item" data-value="html"
+									data-tooltip="Edit HTML">
+									<i class="fa fa-edit fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="duplicate"
+									data-tooltip="Duplicate">
+									<i class="fa fa-clipboard fa-2x"></i>
+								</div>
+								<div class="toolbar-multi-item" data-value="delete"
+									data-tooltip="Delete">
+									<i class="fa fa-trash fa-2x"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
 				</div>
 			</div>
 		</div>
