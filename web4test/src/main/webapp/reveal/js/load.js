@@ -17,10 +17,10 @@
 			dataHTML = $.parseHTML(result);
 //			console.log($(dataHTML));
 			$('.slides').append(dataHTML);
-			$('.slides').append(page2);
-			$('.slides').append(page3);
-			$('.slides').append(page4);
-			$('.slides').append(page5);
+//			$('.slides').append(page2);
+//			$('.slides').append(page3);
+//			$('.slides').append(page4);
+//			$('.slides').append(page5);
 			
 			$('.backgrounds').css('background-color', 
 					$('.slides').find('section').attr('data-background-color'));

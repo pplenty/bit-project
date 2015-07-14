@@ -17,3 +17,13 @@
   outline: 0;
   word-wrap: break-word;
 }
+
+section {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+  height: 100%;
+  width: 100%;
+  font-weight: inherit;
+  padding: 0;
+}

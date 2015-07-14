@@ -39,7 +39,7 @@ $_old(document).ready(function() {
 	
 	$('button.undo').click(function(event) {
 		//'channelmode'
-		window.open('../reveal/index.html', 'scrollbars');
+		window.open('../reveal/index.html#/', 'scrollbars');
 	});
 	
 	
