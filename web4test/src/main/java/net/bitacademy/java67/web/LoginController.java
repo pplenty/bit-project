@@ -1,11 +1,9 @@
 package net.bitacademy.java67.web;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,13 +51,6 @@ public class LoginController {
     System.out.println(email + name);
     session.setAttribute("email", email);
     session.setAttribute("name", name);
-    
-    HashMap<String, Object> paramMap = new HashMap<String, Object>();
-    paramMap.put("email", email);
-    UserVo user = new UserVo();
-    user = userDao.selectOne(paramMap);
-    
-    session.setAttribute("userNo", user.getUserNo());
 
 //    Cookie emailCookie = new Cookie("email", email);
 //    emailCookie.setMaxAge(60 * 60 * 24 * 30); // 30일간 쿠키 유지할 것!
@@ -76,6 +67,13 @@ public class LoginController {
       userDao.insert(sqlParams);
       response.getWriter().print(JSONResult);
     }
+
+    HashMap<String, Object> paramMap = new HashMap<String, Object>();
+    paramMap.put("email", email);
+    UserVo user = new UserVo();
+    user = userDao.selectOne(paramMap);
+    
+    session.setAttribute("userNo", user.getUserNo());
     
 
 //    return "redirect:/mypage/mypage.html";
@@ -88,7 +86,7 @@ public class LoginController {
     System.out.println(session.getAttribute("email"));
     String email = (String) session.getAttribute("email");
     String name  = (String) session.getAttribute("name");
-    String userNo  = (String) session.getAttribute("userNo");
+    int userNo  = (int) session.getAttribute("userNo");
     
 
     HashMap<String, Object> sqlParams = new HashMap<String, Object>();
