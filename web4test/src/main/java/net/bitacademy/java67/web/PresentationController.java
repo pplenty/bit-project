@@ -124,6 +124,8 @@ public class PresentationController {
       HttpServletResponse response, HttpSession session) {
     PresentationVo presentationVo = new PresentationVo();
     presentationVo.setUserNo((int) session.getAttribute("userNo"));
+    System.out.println(request.getParameter("preNo"));
+    presentationVo.setPreNo(Integer.parseInt(request.getParameter("preNo")));
     tryPhantom(presentationVo);
     // return "screenshot";
     return null;
@@ -168,7 +170,9 @@ public class PresentationController {
         .getScreenshotAs(OutputType.FILE);
     System.out.println("File:" + srcFile);
     try {
-      presentationVo.setFileName(preImgPath + "_pic.png");
+      presentationVo.setFileName(
+          preImgPath + presentationVo.getUserNo() + "_" +
+          presentationVo.getPreNo() + "_pic.png");
       FileUtils.copyFile(srcFile, new File(presentationVo.getFileName()));
     } catch (IOException e) {
       e.printStackTrace();
