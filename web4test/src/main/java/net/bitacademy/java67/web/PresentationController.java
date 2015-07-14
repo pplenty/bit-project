@@ -32,36 +32,42 @@ public class PresentationController {
                                                             throws IOException {
     System.out.println("presentation.do 진입");
     String htmlSource = request.getParameter("content");
-    
+
     String email = (String)session.getAttribute("email");
     String name = (String)session.getAttribute("name");
-    HashMap<String, Object> paramMap = new HashMap<String, Object>();
-    paramMap.put("email", email);
-    UserVo user = new UserVo();
-    user = userDao.selectOne(paramMap);
-    System.out.println(user.getUserNo() + user.getEmail());
     
-    // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
-    // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
-    HashMap<String, Object> sqlParams = new HashMap<String, Object>();
-    sqlParams.put("content", htmlSource);
-    
-    PresentationVo presentVo = new PresentationVo();
-    presentVo.setContent(htmlSource);
-    presentVo.setUserNo(user.getUserNo());
-    presentVo.setAuthor(name);
-//    presentDao.insert(presentVo);
-    presentDao.update(presentVo);
+    // 세션에 로그인 정보가 없을 시 예외처리
+    if (email != null) {
+      HashMap<String, Object> paramMap = new HashMap<String, Object>();
+      paramMap.put("email", email);
+      UserVo user = new UserVo();
+      user = userDao.selectOne(paramMap);
+      System.out.println(user.getUserNo() + user.getEmail());
+
+      // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
+      // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
+      HashMap<String, Object> sqlParams = new HashMap<String, Object>();
+      sqlParams.put("content", htmlSource);
+
+      PresentationVo presentVo = new PresentationVo();
+      presentVo.setContent(htmlSource);
+      presentVo.setUserNo(user.getUserNo());
+      presentVo.setAuthor(name);
+      //    presentDao.insert(presentVo);
+      presentDao.update(presentVo);
+
+      Writer out = response.getWriter();
+      out.write("success");
+    }
     
     Writer out = response.getWriter();
-    out.write("success");
+    out.write("not login");
     
   }
   
   @RequestMapping(value = "/presentationLoad", method = RequestMethod.GET)
   public void loadP(HttpServletRequest request, HttpServletResponse response,
-      HttpSession session) 
-                                                          throws IOException {
+      HttpSession session) throws IOException {
     System.out.println("prezent 진입");
     
 
@@ -81,5 +87,5 @@ public class PresentationController {
     out.write(presentVo.getContent());
     
   }
-  
+
 }
