@@ -12,6 +12,23 @@
 // Text	I바
 // Wait	모래시계
 
+function screenshot(preNo) {
+	$.ajax({
+		url: '/web4test/screenshot.do',
+		method: 'GET',
+		dataType: 'json',
+		data: {
+			preNo: preNo
+		},
+		success: function(result) {
+			console.log('result: ' + result);
+		},
+		error: function(e) {
+			console.error('screenshot ajax 에러: ' + e);
+		}
+	});
+}
+
 $_old(document).ready(function() {
 	var presentSection = $_old('section.present');
 	//var presentSection = $_old('.sl-block-gird');
@@ -20,16 +37,19 @@ $_old(document).ready(function() {
 
 	$('button.button.save').click(function(event) {
 		console.log('save');
+		var preNo;
 		$.ajax({
 			url: '/web4test/presentationSave.do',
 			method: 'POST',
-			dataType: 'text',
+			dataType: 'json',
 			data: {
 //				content: JSON.stringify($('section').html())
 				content: $('.slides').html()
 			},
 			success: function(result) {
-				console.log('result: ' + result);
+				console.log(result.latestPreNo);
+				preNo = result.latestPreNo;
+				screenshot(preNo);
 			},
 			error: function(e) {
 				console.error('ajax 에러: ' + e);
