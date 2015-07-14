@@ -140,9 +140,9 @@ h2.ss-subtitle:after{
 	height: 0px;
 	border-bottom: 5px dotted #ddd;
 	border-bottom: 5px dotted black;
-	-webkit-box-shadow: 0px 1px 1px #fff;
-	-moz-box-shadow: 0px 1px 1px #fff;
-	box-shadow: 0px 1px 1px #fff;
+	-webkit-box-shadow: 0px 1px 1px black;
+	-moz-box-shadow: 0px 1px 1px black;
+	box-shadow: 0px 1px 1px black;
 	position: absolute;
 	top: 50%;
 	content: '';

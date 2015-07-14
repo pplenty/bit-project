@@ -49,7 +49,7 @@
 
 .no-touch .cbp-tm-menu > li > a:hover,
 .no-touch .cbp-tm-menu > li > a:active {
-	color: #02639d;
+	color: blue;
 }
 
 /* sumbenu with transitions */
