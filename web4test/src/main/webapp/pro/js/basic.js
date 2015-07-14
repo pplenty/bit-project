@@ -21,7 +21,7 @@ function screenshot(preNo) {
 			preNo: preNo
 		},
 		success: function(result) {
-			console.log('result: ' + result);
+			console.log('good');
 		},
 		error: function(e) {
 			console.error('screenshot ajax 에러: ' + e);
@@ -47,8 +47,8 @@ $_old(document).ready(function() {
 				content: $('.slides').html()
 			},
 			success: function(result) {
-				console.log(result.latestPreNo);
-				preNo = result.latestPreNo;
+				console.log(result.latestPreNo + 1);
+				preNo = result.latestPreNo + 1;
 				screenshot(preNo);
 			},
 			error: function(e) {
