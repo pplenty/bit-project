@@ -68,8 +68,9 @@ public class PresentationController {
 //      presentDao.update(presentVo);
 
       JSONResult.put("result", "success");
+    } else {
+      JSONResult.put("result", "not login");
     }
-    JSONResult.put("result", "not login");
 
     // JSON RETURN!!
     response.getWriter().print(JSONResult);
