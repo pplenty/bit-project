@@ -14,15 +14,22 @@ public class PresentationVo implements Serializable {
   protected String  isPublic;
   protected String  content;
   protected String  likes;
-  protected String fileName;
+  protected String  preImg;
   
   @Override
   public String toString() {
     return "PresentationVo [preNo=" + preNo + ", userNo=" + userNo + ", title="
         + title + ", author=" + author + ", createDate=" + createDate
         + ", isPublic=" + isPublic + ", content=" + content + ", likes="
-        + likes + "]";
+        + likes + ", preImg=" + preImg + "]";
   }
+  public String getPreImg() {
+    return preImg;
+  }
+  public void setPreImg(String preImg) {
+    this.preImg = preImg;
+  }
+
   public int getPreNo() {
     return preNo;
   }
@@ -71,11 +78,6 @@ public class PresentationVo implements Serializable {
   public void setLikes(String likes) {
     this.likes = likes;
   }
-  public String getFileName() {
-    return fileName;
-  }
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
+
   
 }
