@@ -81,6 +81,7 @@ body {
 }
 
 .side-center{
+	display :  -webkit-inline-box;
 	left : 25%;
 	top : -10%; /* center 이미지 높이 조정 */
 	z-index : 300;
@@ -140,48 +141,85 @@ body {
 .intro-content h1 > span.creatMs {
     position: relative;
     margin-top: 3.5em;
-    padding: 0.8em;
+    padding: 0.5em;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8em;
     
 }
+
+/* 왼쪽 사이드 타이틀 아래 선 */
 .intro-content h1 > span:nth-child(2):before {
 	position: absolute;
 	top: 0;
 	left: 25%;
 	width: 50%;
 	height: 2px;
-	background: #fff;
+	background: black;
 	content: '';
 }
+
 .intro-content h1 > span.createMs {
     position: absolute;
-    top: 90% ;/* new canvas 글자 위치 조정 */
-    left: 25%;
+    top: 100% ;/* new canvas 글자 위치 조정 */
+    left: 24%;
     width: 50%;
     height: 2px;
-    background: #fff;
     font-size : 1em;
     content: '';
 }
 
+.intro-content h1 > span.createMs .one{
+    color : #007EBF;
+}
+.intro-content h1 > span.createMs .two{
+    color : white;
+    
+}
+
+.intro-content h1 > span.createMs:before{
+	position: absolute;
+    top: 0;
+    left: 20%;
+    width: 65%;
+    height: 2px;
+    background: black;
+    content: '';
+}
+/* 
+.intro-content h1 > span.createMs a.two:before{
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 30%;
+    height: 2px;
+    background: red;
+    content: '';
+}
+ */
+
 .side-right .intro-content h1 > span:nth-child(2):before {
-	background: #47a3da;
+	position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: black;
+    content: '';
 }
 
 .back {
 	position: fixed;
-	top: 2.6em;
+	top : 200px;
 	z-index: 500;
 	display: block;
 	visibility: hidden;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	color: #47a3da;
+	color: #fd4444;
 	text-align: center;
-	font-size: 22px;
+	font-size: 60px;
 	line-height: 44px;
 	opacity: 0;
 	pointer-events: none;
@@ -195,14 +233,29 @@ body {
 	left: 12.5%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
+	top : 200px;
 }
 
 .back-right {
+	position: fixed;
+    top : 200px;
+    z-index: 500;
+    display: block;
+    visibility: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fd4444;
+    text-align: center;
+    font-size: 60px;
+    line-height: 44px;
+    opacity: 0;
+    pointer-events: none;
 	right: 12.5%;
 	-webkit-transform: translateX(50%);
 	transform: translateX(50%);
-	color: #fff;
-}
+/* 	color: #fff;
+ */}
 
 .open-right .back-left,
 .open-left .back-right {
@@ -214,7 +267,7 @@ body {
 }
 
 .back:hover {
-	color: #ddd;
+	color: #007EBF;
 }
 
 /* Pages */

@@ -42,20 +42,13 @@
 
 		leftSide.querySelector( 'div.intro-content' ).addEventListener( eventtype, function( ev ) {
 			reset();
-			$('.side.side-center').css('display', 'none');
-//			$('.side.side-center').fadeOut();
-
 			classie.add( splitlayout, 'open-left' );
 		} );
 
 		rightSide.querySelector( 'div.intro-content' ).addEventListener( eventtype, function( ev ) {
 			reset();
-			$('.side.side-center').css('display', 'none');
-//			$('.side.side-center').fadeOut();
-
 			classie.add( splitlayout, 'open-right' );
 		} );
-
 
 		// back to intro
 		// after transition ends:
@@ -67,18 +60,14 @@
 			backToIntro = function( ev ) {
 				ev.preventDefault();
 				ev.stopPropagation();
-				console.log(ev.target);
-				console.log("backToIntro")
 				var dir = classie.has( ev.target, 'back-right' ) ? 'left' : 'right',
 					page = dir === 'right' ? pageRight : pageLeft;
-
 				classie.remove( splitlayout, 'open-' + dir );
 				classie.add( splitlayout, 'close-' + dir );
 				page.addEventListener( transEndEventName, onEndTransFn );
-				$('.side.side-center').fadeIn();
 			};
 
-		splitlayout.querySelector( 'a.back-left').addEventListener( eventtype, backToIntro );
+		splitlayout.querySelector( 'a.back-left' ).addEventListener( eventtype, backToIntro );
 		splitlayout.querySelector( 'a.back-right' ).addEventListener( eventtype, backToIntro );
 	}
 
@@ -86,7 +75,6 @@
 		classie.remove( splitlayout, 'close-right' );
 		classie.remove( splitlayout, 'close-left' );
 		classie.remove( splitlayout, 'reset-layout' );
-		
 	}
 
 	init();

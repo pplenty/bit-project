@@ -52,7 +52,7 @@ body {
 
 .no-touch .cbp-tm-menu > li > a:hover,
 .no-touch .cbp-tm-menu > li > a:active {
-	color: #47424A;
+	color: blue ;
 }
 
 /* sumbenu with transitions */
@@ -155,7 +155,7 @@ the right position for the arrow
 	display: block;
 	font-size: 1.2em;
 	position: relative;
-	color: #47424A;
+	color: #47a3da;
 	border: 4px solid #fff;
 	-webkit-transition: all 0.2s;
 	-moz-transition: all 0.2s;
@@ -165,7 +165,7 @@ the right position for the arrow
 .no-touch .cbp-tm-submenu > li > a:hover,
 .no-touch .cbp-tm-submenu > li > a:active {
 	color: #fff;
-	background: #47424A;
+	background: #47a3da;
 }
 
 /* the icons (main level menu icon and sublevel icons) */

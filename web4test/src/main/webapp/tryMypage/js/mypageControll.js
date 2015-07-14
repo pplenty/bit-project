@@ -1,17 +1,46 @@
 $(function(){
 	console.log("요청 로드 시작")
-	var ip = '127.0.0.1:9999/web4test'
+	var ip = 'localhost:9999/web4test'
+	var email;
+	var userNo;
+	var name;
+	var result;
 	
-	$.ajax('http://' + ip + '/mypageLoad.do', {
+	$.ajax('http://' + ip + '/getUser.do', {
+		method : 'POST',
+		dataType : 'json',
+		success : function(result){
+		    email = result.email;
+			userNo = result.userNo;
+			name = result.name;
+			console.log(name)
+			$('.topMenu ul.cbp-tm-menu li.loginUserName a.userName').html("["+ name +"]" +'님 Mypage');
+			console.log("LoginControllerd의 getUser.do 실행 완료");
+			pageLoad(ip, userNo, email); // 아래쪽에 페이지 로드 함수 호출
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + 
+				  '잠시 후 다시 시도하세요.\n' +
+				  '계속 창이 뜬다면, 관리자에 문의하세요.(사내번호:1112)');
+			console.log(" LoginController의 getUser ajax 요청 오류")
+		}
+	});
+
+	
+	
+});
+
+function pageLoad(ip, userNo, email){
+	$.ajax('http://'+ ip +'/mypageLoad.do', {
 		method: 'POST',
 		dataType: 'json',
 		data: {
-//			email: 'rabbit622hyein@gmail.com'// 이메일 정보 로그인 페이지에서 빼오기
-			email : 'usikzzang7@gmail.com'
+			email: email,// 이메일 정보 로그인 페이지에서 빼오기
+			userNo : userNo
 		},
 		success: function(result) {
+			console.log(userNo)
 			console.log("받아오기")
-			console.log(result.empty);
 			var s1i1 = "최근 작업 내용이 없습니다."
 			var s1i2 = "저장한 내용이 없습니다."
 			var s2i1 = "즐겨찾기 등록 내용이 없습니다."
@@ -65,11 +94,10 @@ $(function(){
 		}
 	});
 	
-});
+}
 
 function drawInnerMyList(sectionNo, data){
-	  $("<li>").html("<div class='oneCanvas'>"+
-             +" <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+	  $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title'>"+ data.title+" </div>"
                + "<div class='canvasIn Tool'>"
@@ -78,14 +106,13 @@ function drawInnerMyList(sectionNo, data){
                                   + "<span class='useTool-publicYn'><i class='public fa fa-lock'></i></span>"
                                   + "<span class='useTool-edit'><i class='fa fa-pencil-square-o'></i></span>"
                                   + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
-                        + "</div> </div></div></div></li>").appendTo(sectionNo);
+                        + "</div></div></div></div>").appendTo(sectionNo);
 	
 }
 
 function drawWholeList(sectionNo, data){
 	for(var i in data){		
-		 $("<li>").html("<div class='oneCanvas'>"+
-                +" <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+		 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
                 + "<div class='canvasIn canvasInfo'>"
                   + "<div class='canvasIn Title'>"+data[i].title+" </div>"
                   + "<div class='canvasIn Tool'>"
@@ -100,8 +127,7 @@ function drawWholeList(sectionNo, data){
 
 function drawShareList(sectionNo, data){
 	for(var i in data){	
-	 $("<li>").html("<div class='oneCanvas'>"+
-             +" <div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title'>"+data[i].title+" </div>"
                + "<div class='canvasIn Tool'>"
