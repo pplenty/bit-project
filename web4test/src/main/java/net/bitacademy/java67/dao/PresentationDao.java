@@ -10,6 +10,7 @@ public interface PresentationDao {
   List<PresentationVo> selectList(HashMap<String, Object> sqlParams);
   PresentationVo selectOne(int no);
   void update(PresentationVo presentVo);
+  void captureUpdate(PresentationVo presentVo);
 }
 
 
