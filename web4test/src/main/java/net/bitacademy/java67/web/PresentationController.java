@@ -69,7 +69,7 @@ public class PresentationController {
 
       JSONResult.put("result", "success");
     } else {
-      JSONResult.put("result", "not login");
+      JSONResult.put("result", "ERROR: not login");
     }
 
     // JSON RETURN!!
