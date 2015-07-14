@@ -1,8 +1,12 @@
 package net.bitacademy.java67.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +18,20 @@ import net.bitacademy.java67.dao.UserDao;
 import net.bitacademy.java67.domain.PresentationVo;
 import net.bitacademy.java67.domain.UserVo;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -101,4 +116,69 @@ public class PresentationController {
     
   }
 
+  protected final static Log logger = LogFactory
+      .getLog(PresentationController.class);
+
+  @RequestMapping(value = "/screenshot", method = RequestMethod.GET)
+  public String showSupplementsPage(ModelMap model, HttpServletRequest request,
+      HttpServletResponse response, HttpSession session) {
+    PresentationVo presentationVo = new PresentationVo();
+    presentationVo.setUserNo((int) session.getAttribute("userNo"));
+    tryPhantom(presentationVo);
+    // return "screenshot";
+    return null;
+  }
+
+  private URI uri;
+  private static PhantomJSDriverService service;
+  private WebDriver webDriver;
+  protected static DesiredCapabilities dCaps;
+
+  public PresentationVo tryPhantom(PresentationVo presentationVo) {
+    
+    final String preImgPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/preimg/";
+    
+    service = new PhantomJSDriverService.Builder()
+        .usingPhantomJSExecutable(
+            new File("/usr/local/Cellar/phantomjs/2.0.0/bin/phantomjs"))
+        .usingAnyFreePort().build();
+    try {
+      service.start();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    try {
+      uri = new URI("http://localhost:9999/");
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+    dCaps = new DesiredCapabilities();
+    dCaps.setJavascriptEnabled(true);
+    dCaps.setCapability("takesScreenshot", true);
+
+    webDriver = new RemoteWebDriver(service.getUrl(), dCaps);
+    webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    long iStart = System.currentTimeMillis();
+    webDriver.get("http://localhost:9999/web4test/reveal/index.html#/");
+
+    webDriver = new Augmenter().augment(webDriver);
+    File srcFile = ((TakesScreenshot) webDriver)
+        .getScreenshotAs(OutputType.FILE);
+    System.out.println("File:" + srcFile);
+    try {
+      presentationVo.setFileName(preImgPath + "_pic.png");
+      FileUtils.copyFile(srcFile, new File(presentationVo.getFileName()));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    System.out.println("Single Page Time:"
+        + (System.currentTimeMillis() - iStart));
+
+    webDriver.quit();
+    service.stop();
+    
+    return presentationVo;
+  }
 }
