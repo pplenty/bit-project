@@ -58,6 +58,7 @@ public class PresentationController {
 
     String email = (String)session.getAttribute("email");
     String name = (String)session.getAttribute("name");
+    int userNo;
     
     // 세션에 로그인 정보가 없을 시 예외처리
     if (email != null) {
@@ -65,10 +66,11 @@ public class PresentationController {
       paramMap.put("email", email);
       UserVo user = new UserVo();
       user = userDao.selectOne(paramMap);
-      System.out.println(user.getUserNo() + " - " + user.getEmail());
+      userNo = user.getUserNo();// 이메일로 DB에서 userNo 꺼내옴
+      System.out.println(userNo + " - " + user.getEmail());
       
       JSONResult.put("latestPreNo",
-          mypageDao.selectLatest(user.getUserNo()).getPreNo());
+          mypageDao.selectLatest(userNo).getPreNo());
       
       // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
       // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
@@ -77,9 +79,11 @@ public class PresentationController {
 
       PresentationVo presentVo = new PresentationVo();
       presentVo.setContent(htmlSource);
-      presentVo.setUserNo(user.getUserNo());
+      presentVo.setUserNo(userNo);
       presentVo.setAuthor(name);
-          presentDao.insert(presentVo);
+      
+      
+      presentDao.insert(presentVo);
 //      presentDao.update(presentVo);
 
       JSONResult.put("result", "success");
@@ -122,11 +126,11 @@ public class PresentationController {
   @RequestMapping(value = "/screenshot", method = RequestMethod.GET)
   public String showSupplementsPage(ModelMap model, HttpServletRequest request,
       HttpServletResponse response, HttpSession session) {
-    PresentationVo presentationVo = new PresentationVo();
-    presentationVo.setUserNo((int) session.getAttribute("userNo"));
+    PresentationVo presentVo = new PresentationVo();
+    presentVo.setUserNo((int) session.getAttribute("userNo"));
     System.out.println(request.getParameter("preNo"));
-    presentationVo.setPreNo(Integer.parseInt(request.getParameter("preNo")));
-    tryPhantom(presentationVo);
+    presentVo.setPreNo(Integer.parseInt(request.getParameter("preNo")));
+    tryPhantom(presentVo);
     // return "screenshot";
     return null;
   }
@@ -136,7 +140,7 @@ public class PresentationController {
   private WebDriver webDriver;
   protected static DesiredCapabilities dCaps;
 
-  public PresentationVo tryPhantom(PresentationVo presentationVo) {
+  public PresentationVo tryPhantom(PresentationVo presentVo) {
     
     final String preImgPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/preimg/";
     
@@ -170,19 +174,21 @@ public class PresentationController {
         .getScreenshotAs(OutputType.FILE);
     System.out.println("File:" + srcFile);
     try {
-      presentationVo.setFileName(
-          preImgPath + presentationVo.getUserNo() + "_" +
-          presentationVo.getPreNo() + "_pic.png");
-      FileUtils.copyFile(srcFile, new File(presentationVo.getFileName()));
+      presentVo.setFileName(
+          preImgPath + presentVo.getUserNo() + "_" +
+          presentVo.getPreNo() + "_pic.png");
+      FileUtils.copyFile(srcFile, new File(presentVo.getFileName()));
     } catch (IOException e) {
       e.printStackTrace();
     }
     System.out.println("Single Page Time:"
         + (System.currentTimeMillis() - iStart));
-
+    
+    presentDao.captureUpdate(presentVo);
+    
     webDriver.quit();
     service.stop();
     
-    return presentationVo;
+    return presentVo;
   }
 }
