@@ -26,6 +26,9 @@ $(function(){
 		}
 	});
 
+	$('.intro-content.newCanvas').click(function() {
+		location.href = '../pro/Edit.html';
+	});
 	
 	
 });
