@@ -14,6 +14,8 @@ public class PresentationVo implements Serializable {
   protected String  isPublic;
   protected String  content;
   protected String  likes;
+  protected String fileName;
+  
   @Override
   public String toString() {
     return "PresentationVo [preNo=" + preNo + ", userNo=" + userNo + ", title="
@@ -68,6 +70,12 @@ public class PresentationVo implements Serializable {
   }
   public void setLikes(String likes) {
     this.likes = likes;
+  }
+  public String getFileName() {
+    return fileName;
+  }
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
   }
   
 }
