@@ -22,50 +22,50 @@
 ul {
 	list-style : none;	
 }
+
 .oneCanvas{
-/* 	border : 1px solid black;
- */	margin : 5px;
-	padding : 5px;
-	width : 100%;
+ 	border : 1px solid black;	
+    margin : 10px;
+ 	padding : 1%;
+ 	width : 100%;
 	height : 180px;
-	color : #47424A;
-	background-color: #F1F1E7;
-	  font-family: 'Nanum Pen Script';
-	
-/* 	font-family: 'Jeju Gothic', sans-serif;
- */ 
-/*  font-family: 'Jeju Hallasan', cursive;
- */
-/*     font-family : 'Hanna', sans-serif; */
- /* 	background-color : #F5F3AC;
- */	
+	color : #0B0f01;
+	border-radius : 5px;
+	border-width : 1px;
+	border-color : black;
+	background-color: #FFFFD8;  
+    background-opactiy : 0.5;
+	font-family: 'Nanum Pen Script';
 }
 
 .canvasIn.preThumbnail{
-/* 	border : 1px solid yellow;
- */	margin : 5px;
-	width : 30%;
+ 	margin : auto;
+ 	magin-left : 10%;
+	width : 35%;
 	position : relative;
  	float : left;
  	height : 160px <!--임시 값-->
 }   
 .canvasIn.preThumbnail img{
+	border : 3px solid black;
     height : 160px;
     width : 100%;	
     padding : 0;
 }
-.canvasIn.canvasInfo {	
+.canvasIn.canvasInfo {
+/*  	border : 1px solid red;
+ */	position : relative;
 	float : left;
-/* 	border : 1px solid blue;
- */	margin : 5px 5px 5px 15px;
-	width : 65%;
+ 	margin-left : 5%;
+ 	padding : 1%;
+	width : 60%;
 	height : 160px;
 }
 .canvasIn.Title{
-  width : 95%;
-    height : 90px;
+    width : 95%;
+    height : 50%;
     position : relative;
-    margin : 5px auto;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */  
+    margin :  auto;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */  
     padding : 0px;
     font-size : 50px;
     text-align : center ;
@@ -73,51 +73,205 @@ ul {
     line-height : 80px;  /* 조금 위험한 설정이라는데 그냥 할란다 텍스트 가운데 정렬 */  
 }
 
-
-
-.canvasIn.Tool{
-/* 	border : 1px solid green;
- */    width : 95%;
-    height : 55px;
-    position : relative;
-    margin : 5px auto;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */ 
+.canvasIn.Title:after{
+	position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 90%;
+    height: 2px;
+    background: black;
+    content: '';
 }
 
-.canvasIn.Tool .create_date{
- 	position : relative;
-	display : inline-block;
-	margin : 5px 15px 5px 15px;
-	height : 45px;
-	width : 65%;
-	line-height : 45px;
+.canvasIn.Tool{
+/*  	border : 1px solid green;
+ */    position : relative;
+    width : 90%;
+    height : 30%;
+    margin-top : 3%;  /* 위 아래는 5px씩 주고 왼/오른쪽은 가운데 정렬 */ 
+}
 
+
+.canvasIn.Tool .create_date{
+/* 	border : 1px solid black;
+ */ position : relative;
+ 	float : left;
+	display : inline-block;
+	margin-left : 2%;
+	height : 100%;
+	width : 55%;
+}
+
+.canvasIn.Tool .create_date span.column.date{
+/*  	border : 1px solid red;
+ */ 	position : relative;
+	float : left;
+	margin : 0;
+	padding : 0;
+	height : 100%;
+	width : 25%;
+	font-size : 35px;
+}
+.canvasIn.Tool .create_date span.cre_date{
+/* 	border : 1px solid blue;
+ */	position : relative;
+	float : left;
+	margin : 0;
+	margin-left : 5%;
+	padding : 0;
+	height : 100%;
+	width : 60%;
+	text-align : left; 
+	font-size : 35px;
+}
+
+.canvasIn.Tool .useTool{
+/*     border : 1px solid red;
+ */    position : relative;
+    display : inline-block;
+    float : left;
+    left : 10%;
+    top : -5%;
+    height : 100%;
+    width : 30%;
+    margin : 0 ;
+    padding : 0;
+}
+
+.canvasIn.Tool .useTool span{
+/* 	border : 1px solid blue;
+ */	position : relative;
+	margin : 10%;
+	margin-right : 0%;
+	padding :0;
+	width : 25%;
+	height : 100%;
+	text-align : right;
+	font-size : 40px;
+	color : black;
+	font-weight : bold;
+    
+	}
+	
+.canvasIn.Tool .useTool span.useTool-player{
+    top : -5%;
+}
+
+.canvasIn.share.Tool{
+/* 	border : 1px solid black;
+ */	width : 100%;
 }
 
 .canvasIn.Tool .shareInfo{
-    position : relative;
-    display : inline-block;
-    margin : 5px 15px 5px 15px;
-    height : 45px;
-    width : 65%;
-    line-height : 45px;
-
+/* 	border : 1px solid yellow;
+ */    position : relative;
+    float : left;
+    width : 100%;
+    height : 100%;
 }
-.canvasIn.Tool .useTool{
-/*  	border : 1px solid red;
- */ 	position : relative;
-    display : inline-block;
-    height : 45px;
-    width : 23%;
+
+.canvasIn.Tool .shareInfo .authorInfo{
+/*     border : 1px solid black;
+ */    position : relative;
+    float : left;
+    width : 45%;
+    height : 100%;
+    
+}
+
+.canvasIn.Tool .shareInfo .column.author{
+/* 	border : 1px solid red;
+ */	position : relative;
+	float : left;
+	height : 100%;
+	width : 43%;
+	color : black;
+    font-size : 30px;
+	
+}
+
+.canvasIn.Tool .shareInfo .cre_author{
+/*     border : 1px solid black;
+ */    position : relative;
     float : right;
-    margin : 5px ;
-    padding : 0px 5px 0px 8px;
+    height : 100%;
+    width : 50%;
+    margin-left : 0;
+    color : black;
+    font-size : 30px;
+    left :0;
+    
 }
 
-.canvasIn.Tool span{
-	margin : 10px 5px 10px 10px;
-	font-size : 30px;
-	line-height : 45px;
-	width : 30px;
+.canvasIn.share.Tool .shareInfo .canvasIn.create_date{
+/*     border : 1px solid green;
+ */    position : relative;
+    float : left;
+    height : 100%;
+    width : 35%;
+    margin-left : 1%;
+    color : black;
+    
+}
+.canvasIn.share.Tool .shareInfo .column.date{
+/*     border : 1px solid red;
+ */    position : relative;
+    float : left;
+    height : 100%;
+    width : 35%;
+    color : black;
+    font-size : 30px;
+    padding : 0;
+    margin : 0;
+}
+
+.canvasIn.share.Tool .shareInfo .cre_date{
+/*     border : 1px solid red;
+ */    position : relative;
+    float : left;
+    height : 100%;
+    width : 55%;
+    color : black;
+    font-size : 30px;
+    text-align : center;
+    
+    padding : 0;
+    margin : 0;
+}
+
+.canvasIn.share.Tool .shareInfo .useTool{
+/*     border : 1px solid yellow;
+ */    position : relative;
+    float : left;
+    height : 100%;
+    width : 15%;
+    color : black;
+    padding : 0%;
+    margin : 0;
+    left :0;
+}
+.canvasIn.share.Tool .shareInfo .useTool span{
+/*     border : 1px solid red;
+ */    position : relative;
+    height : 100%;
+    color : black;
+    font-size : 35px;
+    margin-right : 5%;
+    margin : 0;
+    top :0;
+}
+
+.canvasIn.share.Tool .shareInfo .useTool span.useTool-player{
+	margin-left : 10%;
+	}
+
+.canvasIn.share.Tool .shareInfo .useTool span.favoriteYn{
+    color : #ffff00;
+    font-weight: bold;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+ /*    text-shadow: 0 0 2px #000000;
+    -moz-text-shadow: 0 0 1px #000000;
+    -webkit-text-shadow: 0 0 1px #000000; */
 }
 
 .canvasIn.useTool span i.private{
