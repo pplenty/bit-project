@@ -29,7 +29,7 @@ $(function(){
 	$('.intro-content.newCanvas').click(function() {
 		location.href = '../pro/Edit.html';
 	});
-	
+
 	
 });
 
@@ -104,7 +104,7 @@ function drawInnerMyList(sectionNo, data){
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title'>"+ data.title+" </div>"
                + "<div class='canvasIn Tool'>"
-                        +"<div class='canvasIn create_date'><span>Date : </span><span class='cre_date'>"+data.createDate+"</span></div>"
+                        +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data.createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
                                   + "<span class='useTool-publicYn'><i class='public fa fa-lock'></i></span>"
                                   + "<span class='useTool-edit'><i class='fa fa-pencil-square-o'></i></span>"
@@ -119,7 +119,7 @@ function drawWholeList(sectionNo, data){
                 + "<div class='canvasIn canvasInfo'>"
                   + "<div class='canvasIn Title'>"+data[i].title+" </div>"
                   + "<div class='canvasIn Tool'>"
-                           +"<div class='canvasIn create_date'><span>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
+                           +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                            + "<div class='canvasIn useTool'>"
                                      + "<span class='useTool-publicYn'><i class='public fa fa-lock'></i></span>"
                                      + "<span class='useTool-edit'><i class='fa fa-pencil-square-o'></i></span>"
@@ -133,9 +133,11 @@ function drawShareList(sectionNo, data){
 	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title'>"+data[i].title+" </div>"
-               + "<div class='canvasIn Tool'>"
-                        +"<div class='canvas-1 canvasIn shareInfo'><span class='shareInfo-value'>Author : </span><span class='shareInfo-author' >"+data[i].author +"</span></div>"
+               + "<div class='canvasIn share Tool'>"
+                        + "<div class='canvas-1 shareInfo'><div class='canvasIn authorInfo'><span class='column author'>Author : </span><span class='cre_author' >"+data[i].author +"</span></div>"
+                        + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
+                        + "<span class='favoriteYn'><i class='fa fa-star'></i></i></span>"
                         + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
                         + "</div> </div></div></div></li>").appendTo(sectionNo);
 	}
