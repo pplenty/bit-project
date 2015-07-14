@@ -7,6 +7,7 @@
   <resultMap type="PresentationVo" id="PresentationVoMap">
     <id       column="pre_no"       property="preNo" />
     <result   column="user_no"      property="userNo" />
+    <result   column="pre_img"      property="preImg" />
     <result   column="title"        property="title" />
     <result   column="author"       property="author" />
     <result   column="create_date"  property="createDate" />
@@ -37,6 +38,12 @@
         content=#{content}
       WHERE pre_no=1
 	  </update>
+	  
+	  <update id="captureUpdate" parameterType="PresentationVo">
+      UPDATE presentation SET 
+        pre_img=#{preImg}
+      WHERE user_no=#{userNo} AND pre_no=#{preNo}
+    </update>
 </mapper>
 
 
