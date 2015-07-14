@@ -174,10 +174,10 @@ public class PresentationController {
         .getScreenshotAs(OutputType.FILE);
     System.out.println("File:" + srcFile);
     try {
-      presentVo.setFileName(
+      presentVo.setPreImg(
           preImgPath + presentVo.getUserNo() + "_" +
           presentVo.getPreNo() + "_pic.png");
-      FileUtils.copyFile(srcFile, new File(presentVo.getFileName()));
+      FileUtils.copyFile(srcFile, new File(presentVo.getPreImg()));
     } catch (IOException e) {
       e.printStackTrace();
     }
