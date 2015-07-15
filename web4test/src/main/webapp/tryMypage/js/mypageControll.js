@@ -316,17 +316,17 @@ function decidePublic(yN){
 }
 
 
-//function decideFavorite(yN){
-//	var fResult;
-//	if ( yN == 'y'){
-//		// 공개일 때
-//		pResult =  "<i class='public fa fa-star'></i>"
-//			console.log("공개")
-//	} else if(yN =='n') {
-//		pResult = "<i class='public fa fa-lock'></i>"
-//	}
-//	return pResult;
-//}
+function decideFavorite(likeperson){
+	var fResult;
+	if ( likeperson == userNo){
+		// 공개일 때
+		fResult =  "<i class='public fa fa-star'></i>"
+			console.log("공개")
+	} else if(likeperson != userNo) {
+		fResult = "<i class='public fa fa-star-o'></i>"
+	}
+	return fResult;
+}
 
 function drawInnerMyList(sectionNo, data){
 	  $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
@@ -382,7 +382,7 @@ function drawShareList(sectionNo, data){
                         + "<div class='canvas-1 shareInfo'><div class='canvasIn authorInfo'><span class='column author'>Author : </span><span class='cre_author' >"+data[i].author +"</span></div>"
                         + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
-                        + "<span class='favoriteYn'><i class='fa fa-star-o'></i></span>"
+                        + "<span class='favoriteYn'>"+ decideFavorite(data[i].likePerson) +"</span>"
                         + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
                         + "</div> </div></div></div></li>").appendTo(sectionNo);
 	}
