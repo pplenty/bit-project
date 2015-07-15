@@ -1,15 +1,15 @@
 var ip = 'localhost:9999/web4test'
+var userNo; 
+var email;
+var sectionOneinnerOne;
+var sectionOneinnerTwo;
+var sectionTwoinnerOne;
+var sectionTwoinnerTwo;							
 	
 	
 $(function(){
+	
 	console.log("요청 로드 시작")
-	var email;
-	var userNo;
-	var name;
-	var result;
-	
-
-	
 	$.ajax('http://' + ip + '/getUser.do', {
 		method : 'POST',
 		dataType : 'json',
@@ -80,7 +80,6 @@ $(function(){
 			var titleDiv = $(event.currentTarget).parent().parent().siblings(".Title");
 			var toSetPreNo = $(titleDiv).attr('preno');
 			console.log('NO: '+toSetPreNo);
-			 console.log(toSetPreNo);
 		
 			$.ajax({
 				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
@@ -102,9 +101,8 @@ $(function(){
 // 공개 여부 전환 버튼
 		$(document).on('click', '.useTool .useTool-publicYn', function(){
 			var pubSet = $(this).children('i');
-			console.log(pubSet);
-			var titleDiv = $(this).parents().find(".Title");
-			var tofavSetPreNo = $(titleDiv).attr('preno');
+			var titleDiv = $(this).parent().parent().siblings(".Title");
+			var topubSetPreNo = $(titleDiv).attr('preno');
 			
 			if (pubSet.hasClass('fa-lock')){
 				console.log("지금 비공개모드");
@@ -123,7 +121,6 @@ $(function(){
 					console.log(pubSet);
 					var nonpublicOk = confirm("Canvas를 비공개모드로 변경하시겠습니까?");
 					if(nonpublicOk){
-						console.log("에이젝스 실행 - publickChange(topubSetPreNo, 'n')");
 						publicChange(topubSetPreNo, 'n')
 						$(this).html('');
 						$(this).html('<i class="fa fa-lock"></i>');
@@ -136,15 +133,12 @@ $(function(){
 		// 즐겨찾기 추가하는 이벤트
 		$(document).on('click', '.useTool .favoriteYn', function(){
 			var favSet = $(this).children('i');
-			console.log(favSet);
-			var titleDiv = $(this).parents().find(".Title");
+			var titleDiv = $(this).parent().parent().parent().siblings(".Title");
 			var tofavSetPreNo = $(titleDiv).attr('preno');
 			
-			if (favSet.hasClass('nonf')){
-				console.log("지금 안즐겨찾기 모드")
+			if (favSet.hasClass('fa-star-o')){
 				var favOk = confirm("Canvas를 즐겨찾기로 등록하시겠습니까?")
 				if(favOk){
-					console.log("에이젝스 실행- favoriteChange(tofavSetPreNo, 'y')");
 					favoriteChange(tofavSetPreNo, 'y')
 					$(this).html('');
 					$(this).html('<i class="favo fa fa-star"></i>');
@@ -152,12 +146,10 @@ $(function(){
 					console.log("실행 취소");
 				}//답변 체크 끝 괄호
 			}// 비공개일 때 공개로 전환할 경우 확인	
-			else if(favSet.hasClass('favo')){
-					console.log("지금 즐겨찾음 모드")
+			else if(favSet.hasClass('fa-star')){
 					console.log(favSet);
 					var nonfavlicOk = confirm("Canvas를 즐겨찾기에서 삭제하시겠습니까?");
 					if(nonfavlicOk){
-						console.log("에이젝스 실행 - favoriteChange(tofavSetPreNo, 'n')");
 						favoriteChange(tofavSetPreNo, 'n')
 						$(this).html('');
 						$(this).html('<i class="nonf fa fa-star-o"></i>');
@@ -171,16 +163,17 @@ $(function(){
 });/// 로딩 실행
 	
 	
-function publicChange(preNo, yN){
+function publicChange(preNo, isPublic){
 	$.ajax('http://' + ip + '/publicChange.do', {
 		method : 'Post',
 		dataType : 'json',
 		data : {
 			preNo : preNo,
-			publicYn  : yN
+			isPublic  : isPublic
 		},
 		success : function(result){
 			alert("변경되었습니다!");
+			refresh();		
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			alert('작업을 완료할 수 없습니다.\n' + 
@@ -190,16 +183,18 @@ function publicChange(preNo, yN){
 	})	
 }
 
-function favoriteChange(preNo, yN){
+function favoriteChange(tofavSetPreNo, yN){
 	$.ajax('http://' + ip + '/favoriteChange.do', {
 		method : 'Post',
 		dataType : 'json',
 		data : {
-			preNo : preNo,
+			preNo : tofavSetPreNo,
 			favorite  : yN
 		},
 		success : function(result){
+			refresh();
 			alert("변경되었습니다!");
+			
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			alert('작업을 완료할 수 없습니다.\n' + 
@@ -209,8 +204,17 @@ function favoriteChange(preNo, yN){
 	})	
 }
 
+function refresh(){
+	 $(".section.one.inner.one div.inside-list ul.inside-list.latest li").remove();
+	 $(".section.one.inner.two div.inside-list ul.inside-list.whole li").remove();
+	 $(".section.two.inner.one div.inside-list ul.inside-list.Favoriteshare li").remove();
+	 $(".section.two.inner.two div.inside-list ul.inside-list.share li").remove();	
+		pageLoad(ip, userNo, email);
 
+}
 	
+
+
 function editTitle(newTitle, preNo){
 	$.ajax('http://'+ ip +'/editTitle.do', {
 		method :'POST',
@@ -220,7 +224,9 @@ function editTitle(newTitle, preNo){
 			preNo : preNo
 		},
 		success : function(result){
-			console.log("제목 변경 완료!");			
+			refresh();
+			console.log("제목 변경 완료!");	
+					
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			alert('작업을 완료할 수 없습니다.\n' + 
@@ -250,6 +256,7 @@ function pageLoad(ip, userNo, email){
 			var sectionTwoinnerOne = $(".section.two.inner.one div.inside-list ul.inside-list.Favoriteshare");
 			var sectionTwoinnerTwo = $(".section.two.inner.two div.inside-list ul.inside-list.share");									
 				
+			
 			if (result.myEmpty == 'yes'){
 				// 저장된 데이터가 없음을 표시
 				emptyCase(sectionOneinnerOne, s1i1);
@@ -274,7 +281,7 @@ function pageLoad(ip, userNo, email){
 
 				} else {// 즐겨찾기한 내용이 있을 경우
 			    var favoriteList = result.favoritList; // favoriteList : 즐겨찾기한 내용을 셀렉해와 저장한 내용
-			    drawShareList(sectionTwoinnerOne, favoriteList);
+			    drawFavoriteList(sectionTwoinnerOne, favoriteList);
 				}
 			
 			// 전체 공개 공유 슬라이드 나열
@@ -296,6 +303,31 @@ function pageLoad(ip, userNo, email){
 	
 }
 
+function decidePublic(yN){
+	var pResult;
+	if ( yN == 'y'){
+		// 공개일 때
+		pResult =  "<i class='public fa fa-unlock'></i>"
+			console.log("공개")
+	} else if(yN =='n') {
+		pResult = "<i class='public fa fa-lock'></i>"
+	}
+	return pResult;
+}
+
+
+//function decideFavorite(yN){
+//	var fResult;
+//	if ( yN == 'y'){
+//		// 공개일 때
+//		pResult =  "<i class='public fa fa-star'></i>"
+//			console.log("공개")
+//	} else if(yN =='n') {
+//		pResult = "<i class='public fa fa-lock'></i>"
+//	}
+//	return pResult;
+//}
+
 function drawInnerMyList(sectionNo, data){
 	  $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
@@ -303,7 +335,7 @@ function drawInnerMyList(sectionNo, data){
                + "<div class='canvasIn Tool'>"
                         +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data.createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
-                                  + "<span class='useTool-publicYn'><i class='public fa fa-unlock'></i></span>"
+                                  + "<span class='useTool-publicYn'>"+ decidePublic(data.isPublic)+"</span>"
                                   + "<span class='useTool-edit'><i class='fa fa-pencil-square-o'></i></span>"
                                   + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
                         + "</div></div></div></div>").appendTo(sectionNo);
@@ -318,11 +350,27 @@ function drawWholeList(sectionNo, data){
                   + "<div class='canvasIn Tool'>"
                            +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                            + "<div class='canvasIn useTool'>"
-                                     + "<span class='useTool-publicYn Yes'><i class='fa fa-unlock'></i></span>"
+                           		     + "<span class='useTool-publicYn'>"+ decidePublic(data[i].isPublic)+"</span>"
                                      + "<span class='useTool-edit'><i class='fa fa-pencil-square-o'></i></span>"
                                      + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
                            + "</div> </div></div></div></li>").appendTo(sectionNo);
 	}
+}
+
+function drawFavoriteList(sectionNo, data){
+	for(var i in data){	
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+             + "<div class='canvasIn canvasInfo'>"
+               + "<div class='canvasIn Title' preNo='"+ data[i].preNo +"' creNo='"+ data[i].userNo +"'>"+data[i].title+" </div>"
+               + "<div class='canvasIn share Tool'>"
+                        + "<div class='canvas-1 shareInfo'><div class='canvasIn authorInfo'><span class='column author'>Author : </span><span class='cre_author' >"+data[i].author +"</span></div>"
+                        + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
+                        + "<div class='canvasIn useTool'>"
+                        + "<span class='favoriteYn'><i class='fa fa-star'></i></span>"
+                        + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
+                        + "</div> </div></div></div></li>").appendTo(sectionNo);
+	}
+
 }
 
 function drawShareList(sectionNo, data){
