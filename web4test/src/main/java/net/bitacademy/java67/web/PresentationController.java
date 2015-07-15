@@ -85,7 +85,7 @@ public class PresentationController {
       response.setContentType("text/javascript;charset=UTF-8");
       response.getWriter().print(JSONResult);
     } else {
-      System.out.println("로딩 실패");
+      System.out.println("new Deck");
       JSONResult.put("result", "error");
       
       response.setContentType("text/javascript;charset=UTF-8");
@@ -120,7 +120,7 @@ public class PresentationController {
       System.out.println(userNo + " - " + user.getEmail());
       
       
-      // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
+      // 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
       // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
       HashMap<String, Object> sqlParams = new HashMap<String, Object>();
       sqlParams.put("content", htmlSource);
@@ -141,6 +141,9 @@ public class PresentationController {
         JSONResult.put("latestPreNo",latestPreNo);
         JSONResult.put("result", "save success: insert");
         System.out.println("do insert preNo: " + latestPreNo);
+
+        session.setAttribute("currentPreNo", latestPreNo);
+        
         
       } else {
         presentVo.setPreNo(currentPreNo);
@@ -186,6 +189,8 @@ public class PresentationController {
 
       // JSON RETURN!!
     } else {
+      int userNo = (int) session.getAttribute("userNo");
+      currentPreNo = mypageDao.selectLatest(userNo).getPreNo();
       System.out.println("currentPreNo == 0");
     }
     

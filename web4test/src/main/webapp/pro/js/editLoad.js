@@ -17,19 +17,6 @@ $(document).ready(function(){
 				$('.slides').append(dataHTML);
 			}
 			
-			
-
-//			$.getScript('lib/js/head.min.js', function() {
-//				console.log('head.min.js');
-//				
-//				$.getScript('js/reveal.js', function() {
-//					console.log('reveal.js');
-//					
-//					$.getScript('js/revealInit.js', function() {
-//						console.log('revealInit.js');
-//					})
-//				})
-//			})
 
 		},
 		error: function(e) {
