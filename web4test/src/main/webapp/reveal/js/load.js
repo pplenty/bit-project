@@ -25,7 +25,7 @@ $(document).ready(function(){
 //			$('.backgrounds').css('background-color', 
 //					$('.slides').find('section').attr('data-background-color'));
 			
-			
+			$('section').removeAttr('style');
 			
 
 			$.getScript('lib/js/head.min.js', function() {
