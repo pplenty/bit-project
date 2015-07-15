@@ -168,7 +168,7 @@ public class PresentationController {
       Writer out = response.getWriter();
       out.write(presentVo.getContent());
       
-    } else System.out.println("new Deck 생성");
+    } else System.out.println("currentPreNo == 0");
     
     
     
