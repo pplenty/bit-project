@@ -15,6 +15,18 @@
     <result   column="likes"        property="likes" />
   </resultMap>
   
+  <resultMap type="java.util.HashMap" id="shareListMap">
+    <id       column="pre_no"       property="preNo" />
+    <result   column="user_no"      property="userNo" />
+    <result   column="title"        property="title" />
+    <result   column="author"       property="author" />
+    <result   column="create_date"  property="createDate" />
+    <result   column="public"       property="isPublic" />
+    <result   column="likeperson"        property="likePerson" />
+   <result   column="likepre_no"        property="likePre_no" />   
+  </resultMap>
+ 
+  
  
   <!-- 이메일 가지고 user_no 받아올 때 사용 이거는 따로 빼는게 나으려나 싶음 -->
    <select id="selectUser" parameterType="String" resultType="int">
@@ -35,26 +47,21 @@
       FROM presentation
       where user_no=#{userNo} 
   </select>
+  
   <!-- 즐겨찾기 등록해둔 목록 불러오기 -->
     <select id="selectFavorite" parameterType="int" resultMap="PresentationVoMap">
       SELECT presentation.user_no, presentation.pre_no, presentation.title, presentation.author, presentation.create_date, presentation.content
       FROM presentation JOIN favorite 
       ON presentation.pre_no=favorite.pre_no
-      Where favorite.user_no=#{userNo}
-     
+      Where favorite.user_no=#{userNo}   
   </select>
+  
   <!--공개 설정한 목록 불러오기-->
-  <select id="selectShareList" parameterType="map" resultMap="PresentationVoMap">
-     <!--  SELECT presentation.pre_no, presentation.user_no, presentation.title, presentation.author, presentation.create_date, presentation.public, favorite.user_no
-       from presentation join favorite
-       on presentation.pre_no = favorite.pre_no
-       where public=#{publicYn};  -->
-       
-      <!--  select presentation.pre_no, presentation.user_no, presentation.author, favorite.user_no, favorite.pre_no from presentation
-       left outer join favorite
-       on favorite.pre_no = presentation.pre_no
-       where presentation.public=#{publicYn} -->
-       select pre_no, user_no, title, author, create_date from presentation where public=#{publicYn}
+  <select id="selectShareList" parameterType="map" resultMap="shareListMap">
+    SELECT presentation.pre_no, presentation.user_no, presentation.title, presentation.author, 
+    presentation.create_date, presentation.public, favorite.user_no as likeperson, favorite.pre_no likepre_no 
+    FROM presentation  LEFT OUTER JOIN favorite 
+    ON favorite.pre_no = presentation.pre_no WHERE presentation.public=#{publicYn};
   </select>
   
     
