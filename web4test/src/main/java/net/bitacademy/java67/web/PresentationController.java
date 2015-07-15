@@ -59,6 +59,8 @@ public class PresentationController {
   public void initP(HttpServletRequest request, HttpServletResponse response,
       HttpSession session) throws IOException {
     System.out.println("prezent init LOAD");
+    
+    JSONObject JSONResult = new JSONObject();
 
     int currentPreNo = 0;
     if (session.getAttribute("currentPreNo") != null) {
@@ -73,9 +75,22 @@ public class PresentationController {
       System.out.println(currentPreNo + "번: 로딩성공" + session.getAttribute("name"));
       
       //ajax return data
-      Writer out = response.getWriter();
-      out.write(presentVo.getContent());
-    } else System.out.println("로딩 실패");
+//      Writer out = response.getWriter();
+//      out.write(presentVo.getContent());
+      
+
+      JSONResult.put("result", "success");
+      JSONResult.put("content", presentVo.getContent());
+      // JSON RETURN!!
+      response.setContentType("text/javascript;charset=UTF-8");
+      response.getWriter().print(JSONResult);
+    } else {
+      System.out.println("로딩 실패");
+      JSONResult.put("result", "error");
+      
+      response.setContentType("text/javascript;charset=UTF-8");
+      response.getWriter().print(JSONResult);
+    }
     
     
     
@@ -165,10 +180,14 @@ public class PresentationController {
       System.out.println("로딩성공");
       System.out.println(session.getAttribute("name"));
       //ajax return data
+      response.setContentType("text/javascript;charset=UTF-8");
       Writer out = response.getWriter();
       out.write(presentVo.getContent());
-      
-    } else System.out.println("currentPreNo == 0");
+
+      // JSON RETURN!!
+    } else {
+      System.out.println("currentPreNo == 0");
+    }
     
     
     

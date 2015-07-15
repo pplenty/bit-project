@@ -12,9 +12,9 @@ $(document).ready(function(){
 //		data: {
 //			content: JSON.stringify($('section').html())
 //		},
-		success: function(result) {
+		success: function(data) {
 //			console.log('result: ' + result);
-			dataHTML = $.parseHTML(result);
+			dataHTML = $.parseHTML(data);
 //			console.log($(dataHTML));
 			$('.slides').append(dataHTML);
 //			$('.slides').append(page2);
@@ -25,9 +25,6 @@ $(document).ready(function(){
 //			$('.backgrounds').css('background-color', 
 //					$('.slides').find('section').attr('data-background-color'));
 			
-			
-
-			$('section').removeAttr('style');
 			
 			
 

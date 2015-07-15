@@ -5,14 +5,17 @@ $(document).ready(function(){
 	$.ajax({
 		url: '/web4test/presentationInitLoad.do',
 		method: 'GET',
-		dataType: 'text',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType: 'json',
 //		data: {
 //			content: JSON.stringify($('section').html())
 //		},
-		success: function(result) {
-//			console.log('result: ' + result);
-			dataHTML = $.parseHTML(result);
-			$('.slides').append(dataHTML);
+		success: function(data) {
+			if (data.result = 'success') {
+				console.log('result: ' + data);
+				dataHTML = $.parseHTML(data.content);
+				$('.slides').append(dataHTML);
+			}
 			
 			
 
