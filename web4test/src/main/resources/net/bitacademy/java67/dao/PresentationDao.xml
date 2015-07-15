@@ -19,7 +19,7 @@
   <insert id="insert" parameterType="PresentationVo"
         keyColumn="pre_no" keyProperty="preNo" useGeneratedKeys="true">
       INSERT INTO presentation (user_no, title, author, create_date, public, content) 
-      VALUES (1, 'title', 'koh', now(), 'y', #{content})
+      VALUES (#{userNo}, '제목 없음', #{author}, now(), 'y', #{content})
   </insert>
   
   <select id="selectList" parameterType="map" resultMap="PresentationVoMap">
@@ -33,17 +33,19 @@
       WHERE pre_no=#{no}
   </select>
   
-    <update id="update" parameterType="PresentationVo">
-      UPDATE presentation SET 
-        content=#{content}
-      WHERE pre_no=1
-	  </update>
+  <update id="update" parameterType="PresentationVo">
+    UPDATE presentation SET 
+      content=#{content}
+    WHERE pre_no=1
+  </update>	  
+
 	  
-	  <update id="captureUpdate" parameterType="PresentationVo">
+	<update id="captureUpdate" parameterType="PresentationVo">
       UPDATE presentation SET 
         pre_img=#{preImg}
       WHERE user_no=#{userNo} AND pre_no=#{preNo}
-    </update>
+  </update>
+
 </mapper>
 
 
