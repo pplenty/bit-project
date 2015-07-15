@@ -136,6 +136,7 @@ $_old(document).ready(function() {
 
 			ev.stopPropagation();
 			$_old(dd.proxy).remove();
+			$_old('.sl-block-selection.editing-ui').remove();
 		}
 	});
 
@@ -427,72 +428,72 @@ $_old(document).ready(function() {
 
 
 	// 바탕(.canvas) 이벤트 등록 drag selection
-	$_old('.sl-block-grid').on('mousedown', function(event) {
-		console.log('canvas.mousedown');
-		$_old('.sl-block-content.isFocus').removeClass('isFocus');
-		deletEditForm($_old('.sl-block-content'));
-
-		var startX = event.pageX - 70;
-		var startY = event.pageY;
-
-
-		$_old('<div>')
-		.addClass('sl-block-selection')
-		.addClass('editing-ui')
-		.css({
-			'position': 'absolute',
-			'border' : 'rgb(1, 199, 234) solid 2px',
-			'background-color': 'rgb(1, 150, 200)',
-			'left': startX + 'px',
-			'top': startY + 'px',
-			'opacity': '0.25',
-//			'height': '200px',
-//			'width': '200px',
-			'z-index': block_zIndex++
-			})
-		.appendTo(presentSection);
-
-//		event.stopPropagation();
-		$_old(document).on('mousemove', function(event) {
-			var width = event.pageX - startX - 70;
-			var height = event.pageY - startY;
-
-			if(width < 0) {
-				$_old('.sl-block-selection.editing-ui').css({
-					'left' : event.pageX - 70 + 'px',
-					'width':  -1 * width + 'px'
-				});
-			}
-			if(height < 0) {
-				$_old('.sl-block-selection.editing-ui').css({
-					'top' : event.pageY + 'px',
-					'height': -1 * height + 'px',
-				});
-			}
-			if (width >= 0 && height >= 0) {
-				$_old('.sl-block-selection.editing-ui').css({
-					'height': height + 'px',
-					'width': width + 'px'
-				});
-			}
-
-
-
-		});
-
-
-		$_old(this).on('mouseup', function(event) {
-//			console.log($_old('.sl-block-selection.editing-ui').css('left'));
-//			event.stopPropagation();
-		    document.body.style.cursor = "auto";
-		    $_old('.sl-block-selection.editing-ui').remove();
-//		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
-
-			$_old(document).off('mousemove');
-			$_old(this).off('mouseup');
-
-		});
-	});
+//	$_old('.sl-block-grid').on('mousedown', function(event) {
+//		console.log('canvas.mousedown');
+//		$_old('.sl-block-content.isFocus').removeClass('isFocus');
+//		deletEditForm($_old('.sl-block-content'));
+//
+//		var startX = event.pageX - 70;
+//		var startY = event.pageY;
+//
+//
+//		$_old('<div>')
+//		.addClass('sl-block-selection')
+//		.addClass('editing-ui')
+//		.css({
+//			'position': 'absolute',
+//			'border' : 'rgb(1, 199, 234) solid 2px',
+//			'background-color': 'rgb(1, 150, 200)',
+//			'left': startX + 'px',
+//			'top': startY + 'px',
+//			'opacity': '0.25',
+////			'height': '200px',
+////			'width': '200px',
+//			'z-index': block_zIndex++
+//			})
+//		.appendTo(presentSection);
+//
+////		event.stopPropagation();
+//		$_old(document).on('mousemove', function(event) {
+//			var width = event.pageX - startX - 70;
+//			var height = event.pageY - startY;
+//
+//			if(width < 0) {
+//				$_old('.sl-block-selection.editing-ui').css({
+//					'left' : event.pageX - 70 + 'px',
+//					'width':  -1 * width + 'px'
+//				});
+//			}
+//			if(height < 0) {
+//				$_old('.sl-block-selection.editing-ui').css({
+//					'top' : event.pageY + 'px',
+//					'height': -1 * height + 'px',
+//				});
+//			}
+//			if (width >= 0 && height >= 0) {
+//				$_old('.sl-block-selection.editing-ui').css({
+//					'height': height + 'px',
+//					'width': width + 'px'
+//				});
+//			}
+//
+//
+//
+//		});
+//
+//
+//		$_old(this).on('mouseup', function(event) {
+////			console.log($_old('.sl-block-selection.editing-ui').css('left'));
+////			event.stopPropagation();
+//		    document.body.style.cursor = "auto";
+//		    $_old('.sl-block-selection.editing-ui').remove();
+////		    console.log(this + ']des ->' + event.pageX+','+event.pageY);
+//
+//			$_old(document).off('mousemove');
+//			$_old(this).off('mouseup');
+//
+//		});
+//	});
 	
 });
 

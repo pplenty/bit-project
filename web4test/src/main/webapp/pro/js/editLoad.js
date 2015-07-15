@@ -17,6 +17,10 @@ $(document).ready(function(){
 				$('.slides').append(dataHTML);
 			}
 			
+			$.getScript('js/basic.js', function() {
+				console.log('js/basic.js');
+			});
+			
 
 		},
 		error: function(e) {
