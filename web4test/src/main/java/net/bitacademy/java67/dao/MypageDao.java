@@ -1,5 +1,6 @@
 package net.bitacademy.java67.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import net.bitacademy.java67.domain.PresentationVo;
@@ -11,6 +12,7 @@ public interface MypageDao {
   List<PresentationVo> selectList(int no);
   List<PresentationVo> selectFavorite(int no);
   List<PresentationVo> selectShareList(String pub);
+  void updateTitle(HashMap<String, Object> sqlParams);
 }
 
 
