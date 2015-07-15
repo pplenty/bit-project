@@ -1,6 +1,8 @@
+var ip = 'localhost:9999/web4test'
+	
+	
 $(function(){
 	console.log("요청 로드 시작")
-	var ip = 'localhost:9999/web4test'
 	var email;
 	var userNo;
 	var name;
@@ -26,12 +28,81 @@ $(function(){
 		}
 	});
 
+	$(document).on('dblclick', '.canvasIn.Title', function(){
+			$(this).addClass('edit');
+			var preNo = $(this).attr('preno');
+			$('.canvasIn.Title.edit').css('border', '5px dotted black');
+			$(this).attr('contenteditable','true').focus();
+			$(document).not($('.canvasIn.Title.edit')).on('click', function(){
+					var newTitle = $('.canvasIn.Title.edit').text();
+					$('.canvasIn.Title.edit').css('border', '')
+					$('.canvasIn.Title.edit').attr('contenteditable', 'false');
+					$('.canvasIn.Title.edit').removeClass('edit');
+				
+					editTitle(newTitle, preNo);
+			});			
+		});
+	
 	$('.intro-content.newCanvas').click(function() {
-		location.href = '../pro/Edit.html';
+		$.ajax({
+			url: 'localhost:9999/web4test/setCurrentPreNo.do',
+			method : "post",
+			data: {'currentPreNo' : 0 },
+			success : function(){
+				console.log('newCanvas setCurrentPreno 성공')
+				location.href = '../pro/Edit.html';
+			}, 
+			error : function(){
+				console.log("에러")
+			}
+		});
 	});
+		
+		
+		$(document).on('click', '.useTool-edit', function() {
+			var titleDiv = $(this).parents().find(".Title");
+			 var toSetPreNo = $(titleDiv).attr('preno');
+		
+			$.ajax({
+				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
+				method : "post",
+				data: {'currentPreNo' : toSetPreNo },
+				success : function(){
+					console.log('newCanvas setCurrentPreno 성공')
+					location.href = '../pro/Edit.html';
+				}, 
+				error : function(){
+					console.log("에러")
+				}
+			});
+		
+		});
+		
+		
+		
+	});
+	
+	
 
 	
-});
+function editTitle(newTitle, preNo){
+	$.ajax('http://'+ ip +'/editTitle.do', {
+		method :'POST',
+		dataType : 'json',
+		data : {
+			newTitle : newTitle,
+			preNo : preNo
+		},
+		success : function(result){
+			console.log("제목 변경 완료!");
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + 
+				  '잠시 후 다시 시도하세요.\n' +
+				  '계속 창이 뜬다면, 관리자에 문의하세요.(사내번호:1112)');
+		}
+	});
+}
 
 function pageLoad(ip, userNo, email){
 	$.ajax('http://'+ ip +'/mypageLoad.do', {
@@ -42,7 +113,7 @@ function pageLoad(ip, userNo, email){
 			userNo : userNo
 		},
 		success: function(result) {
-			console.log(userNo)
+			console.log(userNo);
 			console.log("받아오기")
 			var s1i1 = "최근 작업 내용이 없습니다."
 			var s1i2 = "저장한 내용이 없습니다."
@@ -102,7 +173,7 @@ function pageLoad(ip, userNo, email){
 function drawInnerMyList(sectionNo, data){
 	  $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
-               + "<div class='canvasIn Title'>"+ data.title+" </div>"
+               + "<div class='canvasIn Title' preNo='"+ data.preNo +"'>"+ data.title+" </div>"
                + "<div class='canvasIn Tool'>"
                         +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data.createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
@@ -117,7 +188,7 @@ function drawWholeList(sectionNo, data){
 	for(var i in data){		
 		 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
                 + "<div class='canvasIn canvasInfo'>"
-                  + "<div class='canvasIn Title'>"+data[i].title+" </div>"
+                  + "<div class='canvasIn Title' preNo='"+ data[i].preNo + "'>"+data[i].title+" </div>"
                   + "<div class='canvasIn Tool'>"
                            +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                            + "<div class='canvasIn useTool'>"
@@ -132,7 +203,7 @@ function drawShareList(sectionNo, data){
 	for(var i in data){	
 	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
              + "<div class='canvasIn canvasInfo'>"
-               + "<div class='canvasIn Title'>"+data[i].title+" </div>"
+               + "<div class='canvasIn Title' preNo='"+ data[i].preNo +"' creNo='"+ data[i].userNo +"'>"+data[i].title+" </div>"
                + "<div class='canvasIn share Tool'>"
                         + "<div class='canvas-1 shareInfo'><div class='canvasIn authorInfo'><span class='column author'>Author : </span><span class='cre_author' >"+data[i].author +"</span></div>"
                         + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
