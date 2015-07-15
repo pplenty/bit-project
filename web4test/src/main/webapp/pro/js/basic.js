@@ -49,7 +49,7 @@ $_old(document).ready(function() {
 			success: function(result) {
 				console.log(result.latestPreNo + 1);
 				preNo = result.latestPreNo + 1;
-				screenshot(preNo);
+//				screenshot(preNo);
 			},
 			error: function(e) {
 				console.error('ajax 에러: ' + e);
