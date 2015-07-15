@@ -37,7 +37,7 @@
   </select>
   <!-- 즐겨찾기 등록해둔 목록 불러오기 -->
     <select id="selectFavorite" parameterType="int" resultMap="PresentationVoMap">
-      SELECT presentation.pre_no, presentation.title, presentation.author, presentation.create_date, presentation.content
+      SELECT presentation.user_no, presentation.pre_no, presentation.title, presentation.author, presentation.create_date, presentation.content
       FROM presentation JOIN favorite 
       ON presentation.pre_no=favorite.pre_no
       Where favorite.user_no=#{userNo}
@@ -51,12 +51,11 @@
   </select>
   
     
-<!--   Mypage에서 수정할 경우  사용: 공개여부라든지 뭐 기타 등등 
-<update id="update" parameterType="PresentationVo">
+<update id="updateTitle" parameterType="map">
       UPDATE presentation SET 
-        content=#{content}
-      WHERE pre_no=6
-  </update> --> 
+        title=#{title}
+      WHERE pre_no=#{preNo}
+</update>
  
 </mapper>
 
