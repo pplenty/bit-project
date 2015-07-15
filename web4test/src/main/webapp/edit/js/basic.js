@@ -12,6 +12,23 @@
 // Text	I바
 // Wait	모래시계
 
+function screenshot(preNo) {
+	$.ajax({
+		url: '/web4test/screenshot.do',
+		method: 'GET',
+		dataType: 'json',
+		data: {
+			preNo: preNo
+		},
+		success: function(result) {
+			console.log('good');
+		},
+		error: function(e) {
+			console.error('screenshot ajax 에러: ' + e);
+		}
+	});
+}
+
 $_old(document).ready(function() {
 	var presentSection = $_old('section.present');
 	//var presentSection = $_old('.sl-block-gird');
@@ -20,16 +37,19 @@ $_old(document).ready(function() {
 
 	$('button.button.save').click(function(event) {
 		console.log('save');
+		var preNo;
 		$.ajax({
 			url: '/web4test/presentationSave.do',
 			method: 'POST',
-			dataType: 'text',
+			dataType: 'json',
 			data: {
 //				content: JSON.stringify($('section').html())
 				content: $('.slides').html()
 			},
 			success: function(result) {
-				console.log('result: ' + result);
+				console.log(result.latestPreNo + 1);
+				preNo = result.latestPreNo + 1;
+//				screenshot(preNo);
 			},
 			error: function(e) {
 				console.error('ajax 에러: ' + e);
@@ -39,7 +59,7 @@ $_old(document).ready(function() {
 	
 	$('button.undo').click(function(event) {
 		//'channelmode'
-		window.open('../reveal/index.html', 'scrollbars');
+		window.open('../reveal/index.html#/', 'scrollbars');
 	});
 	
 	
@@ -346,8 +366,13 @@ $_old(document).ready(function() {
 			$_old(this).attr('selectedDrop', true);
 
 			if ($_old(this).attr('selectedDropStart') == "true") {
-				selectContentsList.push($_old(this).attr('data-block-blockid'));
+				selectContentsList.push($_old(this).attr('data-block-id'));
 				selectCountFlag = selectContentsList.length - 1;
+				// 셀렉된 리스트 로그
+				if(selectContentsList.length > 1) {
+					console.log(selectContentsList);
+					
+				}
 				addEditForm($_old(this));
 				$_old(this).addClass('isFocus');
 				$_old(this).addClass('dropEndCall');

@@ -35,7 +35,7 @@ $(document).ready(function() {
 		blockContentTag.append(svgTag);
 		blockTag.append(blockContentTag);
 		//blockTag.append(svgTag);
-		presentSection.append(blockTag);
+		$('section.present').append(blockTag);
 
 	 //$(".toolbar-list").css('visibility', 'hidden');
 	 //$(".text-list").css('visibility', 'visible');
