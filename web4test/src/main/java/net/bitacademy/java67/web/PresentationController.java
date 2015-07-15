@@ -45,6 +45,38 @@ public class PresentationController {
   
   @Autowired
   MypageDao mypageDao;
+
+  @RequestMapping(value = "/setCurrentPreNo")
+  public void setSession(HttpServletRequest request, HttpServletResponse response,
+      HttpSession session) throws IOException {
+
+    int currentPreNo = Integer.parseInt(request.getParameter("currentPreNo"));
+    session.setAttribute("currentPreNo", currentPreNo);
+    
+  }
+  
+  @RequestMapping(value = "/presentationInitLoad", method = RequestMethod.GET)
+  public void initP(HttpServletRequest request, HttpServletResponse response,
+      HttpSession session) throws IOException {
+    System.out.println("prezent init");
+    
+
+    PresentationVo presentVo;
+    int no = 1;
+    presentVo = presentDao.selectOne(no);
+    if(presentVo != null) {
+      System.out.println("로딩성공");
+      System.out.println(session.getAttribute("name"));
+//      System.out.println(presentVo.getContent());
+    }
+    else System.out.println("null");
+    
+    
+    //ajax return data
+    Writer out = response.getWriter();
+    out.write(presentVo.getContent());
+    
+  }
   
   
 
@@ -69,8 +101,8 @@ public class PresentationController {
       userNo = user.getUserNo();// 이메일로 DB에서 userNo 꺼내옴
       System.out.println(userNo + " - " + user.getEmail());
       
-      JSONResult.put("latestPreNo",
-          mypageDao.selectLatest(userNo).getPreNo());
+      int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
+      JSONResult.put("latestPreNo",latestPreNo);
       
       // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
       // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
@@ -84,9 +116,10 @@ public class PresentationController {
       
       
       presentDao.insert(presentVo);
+      System.out.println("인설트한 preNo: " + latestPreNo);
 //      presentDao.update(presentVo);
 
-      JSONResult.put("result", "success");
+      JSONResult.put("result", "save success");
     } else {
       JSONResult.put("result", "ERROR: not login");
     }
