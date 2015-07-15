@@ -58,23 +58,26 @@ public class PresentationController {
   @RequestMapping(value = "/presentationInitLoad", method = RequestMethod.GET)
   public void initP(HttpServletRequest request, HttpServletResponse response,
       HttpSession session) throws IOException {
-    System.out.println("prezent init");
-    
+    System.out.println("prezent init LOAD");
+
+    int currentPreNo = 0;
+    if (session.getAttribute("currentPreNo") != null) {
+      currentPreNo = (int) session.getAttribute("currentPreNo");
+    }
 
     PresentationVo presentVo;
-    int no = 1;
+    int no = currentPreNo;
     presentVo = presentDao.selectOne(no);
+    
     if(presentVo != null) {
-      System.out.println("로딩성공");
-      System.out.println(session.getAttribute("name"));
-//      System.out.println(presentVo.getContent());
-    }
-    else System.out.println("null");
+      System.out.println(currentPreNo + "번: 로딩성공" + session.getAttribute("name"));
+      
+      //ajax return data
+      Writer out = response.getWriter();
+      out.write(presentVo.getContent());
+    } else System.out.println("로딩 실패");
     
     
-    //ajax return data
-    Writer out = response.getWriter();
-    out.write(presentVo.getContent());
     
   }
   
@@ -101,8 +104,6 @@ public class PresentationController {
       userNo = user.getUserNo();// 이메일로 DB에서 userNo 꺼내옴
       System.out.println(userNo + " - " + user.getEmail());
       
-      int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
-      JSONResult.put("latestPreNo",latestPreNo);
       
       // BoardDao 인터페이스의 selectList()는 한 개의 파라미터를 요구한다.
       // 따라서 SQL 파라미터 값을 맵 객체에 담아서 넘겨야 한다.
@@ -110,16 +111,32 @@ public class PresentationController {
       sqlParams.put("content", htmlSource);
 
       PresentationVo presentVo = new PresentationVo();
+      int currentPreNo = 0;
+      if (session.getAttribute("currentPreNo") != null) {
+        currentPreNo = (int) session.getAttribute("currentPreNo");
+      }
+      
       presentVo.setContent(htmlSource);
-      presentVo.setUserNo(userNo);
-      presentVo.setAuthor(name);
-      
-      
-      presentDao.insert(presentVo);
-      System.out.println("인설트한 preNo: " + latestPreNo);
-//      presentDao.update(presentVo);
+      if (currentPreNo == 0) {
+        presentVo.setUserNo(userNo);
+        presentVo.setAuthor(name);
 
-      JSONResult.put("result", "save success");
+        presentDao.insert(presentVo);
+        int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
+        JSONResult.put("latestPreNo",latestPreNo);
+        JSONResult.put("result", "save success: insert");
+        System.out.println("do insert preNo: " + latestPreNo);
+        
+      } else {
+        presentVo.setPreNo(currentPreNo);
+        
+        presentDao.update(presentVo);
+        JSONResult.put("result", "save success: update");
+        System.out.println("do update: " + currentPreNo);
+      }
+      
+      
+
     } else {
       JSONResult.put("result", "ERROR: not login");
     }
@@ -133,23 +150,27 @@ public class PresentationController {
   @RequestMapping(value = "/presentationLoad", method = RequestMethod.GET)
   public void loadP(HttpServletRequest request, HttpServletResponse response,
       HttpSession session) throws IOException {
-    System.out.println("prezent 진입");
-    
+    System.out.println("prezent load 진입");
+
+    int currentPreNo = 0;
+    if (session.getAttribute("currentPreNo") != null) {
+      currentPreNo = (int) session.getAttribute("currentPreNo");
+    }
 
     PresentationVo presentVo;
-    int no = 1;
+    int no = currentPreNo;
     presentVo = presentDao.selectOne(no);
-    if(presentVo != null) {
+    
+    if(currentPreNo != 0) {
       System.out.println("로딩성공");
       System.out.println(session.getAttribute("name"));
-//      System.out.println(presentVo.getContent());
-    }
-    else System.out.println("null");
+      //ajax return data
+      Writer out = response.getWriter();
+      out.write(presentVo.getContent());
+      
+    } else System.out.println("new Deck 생성");
     
     
-    //ajax return data
-    Writer out = response.getWriter();
-    out.write(presentVo.getContent());
     
   }
 
@@ -173,7 +194,7 @@ public class PresentationController {
   private WebDriver webDriver;
   protected static DesiredCapabilities dCaps;
 
-  public PresentationVo tryPhantom(PresentationVo presentVo) {
+  public void tryPhantom(PresentationVo presentVo) {
     
     final String preImgPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/preimg/";
     
@@ -222,6 +243,5 @@ public class PresentationController {
     webDriver.quit();
     service.stop();
     
-    return presentVo;
   }
 }

@@ -34,9 +34,9 @@
   </select>
   
   <update id="update" parameterType="PresentationVo">
-    UPDATE presentation SET 
-      content=#{content}
-    WHERE pre_no=1
+    UPDATE presentation SET
+      content=#{content}, create_date=now()
+    WHERE pre_no=#{preNo}
   </update>	  
 
 	  

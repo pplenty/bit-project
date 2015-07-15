@@ -45,7 +45,7 @@ $(function(){
 	
 	$('.intro-content.newCanvas').click(function() {
 		$.ajax({
-			url: 'localhost:9999/web4test/setCurrentPreNo.do',
+			url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
 			method : "post",
 			data: {'currentPreNo' : 0 },
 			success : function(){
@@ -59,20 +59,21 @@ $(function(){
 	});
 		
 		
-		$(document).on('click', '.useTool-edit', function() {
-			var titleDiv = $(this).parents().find(".Title");
-			 var toSetPreNo = $(titleDiv).attr('preno');
+		$(document).on('click', '.useTool-edit', function(event) {
+			var titleDiv = $(event.currentTarget).parent().parent().siblings(".Title");
+			var toSetPreNo = $(titleDiv).attr('preno');
+			console.log('NO: '+toSetPreNo);
 		
 			$.ajax({
 				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
 				method : "post",
 				data: {'currentPreNo' : toSetPreNo },
 				success : function(){
-					console.log('newCanvas setCurrentPreno 성공')
+					console.log('newCanvas setCurrentPreno 성공');
 					location.href = '../pro/Edit.html';
 				}, 
 				error : function(){
-					console.log("에러")
+					console.log("에러");
 				}
 			});
 		
