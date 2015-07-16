@@ -149,6 +149,7 @@ public class PresentationController {
         presentVo.setPreNo(currentPreNo);
         
         presentDao.update(presentVo);
+        JSONResult.put("latestPreNo", currentPreNo);
         JSONResult.put("result", "save success: update");
         System.out.println("do update: " + currentPreNo);
       }
