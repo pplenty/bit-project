@@ -69,15 +69,16 @@ $(document).ready(function(){
               'email': email
             });
          // 서버측에서 socket.send(msg); 한것을 받아 살행
-            socket.on('message', function (msg) {
+            socket.on('message', function (command) {
             	if(!isConnect) {
-                	console.log(msg);
-                	authNo = msg;
+                	console.log(command);
+                	authNo = command;
                 	isConnect = true;
+                	alert('인증번호: ' + authNo);
             	} else {
-    		        console.log(data.command);
-    		        if(data.command == 'right') Reveal.rigt();
-    		        if(data.command == 'left') Reveal.left();
+    		        console.log(command);
+    		        if(command == 'right') Reveal.right();
+    		        if(command == 'left') Reveal.left();
             	}
             });
             
