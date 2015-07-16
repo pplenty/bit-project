@@ -137,8 +137,8 @@ public class PresentationController {
         presentVo.setAuthor(name);
         
         // 이 변수는 iframe(미리보기용)에 보낼 변수로 저장해둔 것
+        System.out.println("방금 저장한 슬라이드번호 " + presentVo.getPreNo());
         test_userNo = (int) session.getAttribute("userNo");
-        
         presentDao.insert(presentVo);
         int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
         JSONResult.put("latestPreNo",latestPreNo);
@@ -242,14 +242,20 @@ public class PresentationController {
       .getLog(PresentationController.class);
 
   @RequestMapping(value = "/screenshot", method = RequestMethod.GET)
-  public String showSupplementsPage(ModelMap model, HttpServletRequest request,
-      HttpServletResponse response, HttpSession session) {
+  public Object showSupplementsPage(ModelMap model, HttpServletRequest request,
+      HttpServletResponse response, HttpSession session) throws IOException {
     PresentationVo presentVo = new PresentationVo();
     presentVo.setUserNo((int) session.getAttribute("userNo"));
     System.out.println(request.getParameter("preNo"));
-    presentVo.setPreNo(Integer.parseInt(request.getParameter("preNo")));
+    presentVo.setPreNo(Integer.parseInt(request.getParameter("preNo"))-1);
+    System.out.println("번호가 있나" + presentVo.getUserNo());
     String previewUrl = request.getParameter("preUrl");
     tryPhantom(presentVo, previewUrl);
+    
+    // 성공 실패 값 리턴하는 부분
+//    JSONObject JSONResult = new JSONObject();
+//    JSONResult.put("status", "success");
+//   
     return null;
   }
 
@@ -290,6 +296,7 @@ public class PresentationController {
     File srcFile = ((TakesScreenshot) webDriver)
         .getScreenshotAs(OutputType.FILE);
     System.out.println("File:" + srcFile);
+    
     try {
       presentVo.setPreImg(preImgPath + presentVo.getUserNo() + "_" + presentVo.getPreNo() + "_pic.png");
       FileUtils.copyFile(srcFile, new File(presentVo.getPreImg()));
@@ -299,6 +306,7 @@ public class PresentationController {
     System.out.println("Single Page Time:"
         + (System.currentTimeMillis() - iStart));
     
+    System.out.println("캡쳐 저장 내용 "+ presentVo.toString());
     presentDao.captureUpdate(presentVo);
     
     webDriver.quit();
