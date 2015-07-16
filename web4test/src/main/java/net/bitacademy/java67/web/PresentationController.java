@@ -138,7 +138,6 @@ public class PresentationController {
         
         // 이 변수는 iframe(미리보기용)에 보낼 변수로 저장해둔 것
         test_userNo = (int) session.getAttribute("userNo");
-        test_preNo = (int) session.getAttribute("currentPreNo");
         
         presentDao.insert(presentVo);
         int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
@@ -147,6 +146,8 @@ public class PresentationController {
         System.out.println("do insert preNo: " + latestPreNo);
         session.setAttribute("currentPreNo", latestPreNo);
         
+        // 이 변수는 iframe(미리보기용)에 보낼 변수로 저장해둔 것 //위치 변경 금지!
+        test_preNo = (int) session.getAttribute("currentPreNo");
       } else {
         presentVo.setPreNo(currentPreNo);
         
@@ -192,9 +193,11 @@ public class PresentationController {
 
       // JSON RETURN!!
     } else {
-      int userNo = (int) session.getAttribute("userNo");  //int userNo = test_userNo;
-      currentPreNo = mypageDao.selectLatest(userNo).getPreNo();  //currentPreNo = test_preNo;
-      System.out.println("currentPreNo == 0");
+//      int userNo = (int) session.getAttribute("userNo"); 
+//      currentPreNo = mypageDao.selectLatest(userNo).getPreNo();  
+          int userNo = test_userNo;
+          currentPreNo = test_preNo;      
+      System.out.println("썸네일 만들 때만 호출되어야 함 test_이하 출력" );
     }
     
     
@@ -206,16 +209,17 @@ public class PresentationController {
       HttpSession session) throws IOException {
     System.out.println("prezent load 진입");
 
-    int currentPreNo = 0;
-    if (session.getAttribute("currentPreNo") != null) {
-      currentPreNo = (int) session.getAttribute("currentPreNo");
-    }
+    int currentPreNo = test_preNo;
+   
+    
     System.out.println("미리보기 만들기할 때 쓰는 preNo번호" + test_preNo);
     PresentationVo presentVo;
     int no = currentPreNo;
     presentVo = presentDao.selectOne(no);
+    System.out.println(presentVo.toString());
     
     if(currentPreNo != 0) {
+      System.out.println("이부분이 나와야 사진 촬영 준비 완료");
       System.out.println(session.getAttribute("name"));
 
       //ajax return data
@@ -226,7 +230,7 @@ public class PresentationController {
       System.out.println("프리뷰 화면 로딩성공");
       // JSON RETURN!!
     } else {
-      //int userNo = test_userNo;
+      int userNo = test_userNo;
       //System.out.println("test 값 " + test_userNo);
       currentPreNo = test_preNo;
       System.out.println("currentPreNo == 0");
