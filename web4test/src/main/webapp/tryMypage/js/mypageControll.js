@@ -328,10 +328,17 @@ function decideFavorite(likeperson){
 	return fResult;
 }
 
+function imgTitle(pathName){
+    var nameArray = pathName.split("/");
+    var imgPath = nameArray[11] + '/' + nameArray[12] +'/'+ nameArray[13]+'/'+  nameArray[14];
+    console.log(imgPath);
+    return imgPath;
+}
+
 function drawInnerMyList(sectionNo, data){
-	  $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+	  $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src=../"+ imgTitle(data.preImg) +"></div>"
              + "<div class='canvasIn canvasInfo'>"
-               + "<div class='canvasIn Title' preNo='"+ data.preNo +"'>"+ data.title+" </div>"
+               + "<div class='canvasIn Title' preNo='"+ data.preNo +"'>"+ data.title +" </div>"
                + "<div class='canvasIn Tool'>"
                         +"<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data.createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
@@ -344,7 +351,7 @@ function drawInnerMyList(sectionNo, data){
 
 function drawWholeList(sectionNo, data){
 	for(var i in data){		
-		 $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+		 $("<li>").html("<div class='oneCanvas myList'><div class='canvasIn preThumbnail'><img src=../"+ imgTitle(data[i].preImg) +"></div>"
                 + "<div class='canvasIn canvasInfo'>"
                   + "<div class='canvasIn Title' preNo='"+ data[i].preNo + "'>"+data[i].title+" </div>"
                   + "<div class='canvasIn Tool'>"
@@ -359,7 +366,7 @@ function drawWholeList(sectionNo, data){
 
 function drawFavoriteList(sectionNo, data){
 	for(var i in data){	
-	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src=../"+ imgTitle(data[i].preImg) +"></div>"
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title' preNo='"+ data[i].preNo +"' creNo='"+ data[i].userNo +"'>"+data[i].title+" </div>"
                + "<div class='canvasIn share Tool'>"
@@ -375,7 +382,7 @@ function drawFavoriteList(sectionNo, data){
 
 function drawShareList(sectionNo, data){
 	for(var i in data){	
-	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src='img/2014050814508068683_1.jpg'></div>"
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn preThumbnail'><img src=../"+ imgTitle(data[i].preImg) +"></div>"
              + "<div class='canvasIn canvasInfo'>"
                + "<div class='canvasIn Title' preNo='"+ data[i].preNo +"' creNo='"+ data[i].userNo +"'>"+data[i].title+" </div>"
                + "<div class='canvasIn share Tool'>"
