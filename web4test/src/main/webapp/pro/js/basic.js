@@ -12,19 +12,42 @@
 // Text	I바
 // Wait	모래시계
 
-function screenshot(preNo) {
+function preViewIframe(preNo, userNo){
+	$('<iframe>').attr({
+		'id' : 'preview',
+		'src' : 'http://localhost:9999/web4test/reveal/preview.html#/'
+	}).css({
+		'width' : '500px',
+		'height' : '500px',
+		'visibility' : 'hidden'
+	}).appendTo('.slides');
+	
+	var result = confirm("저장하시겠습니까?")
+	if ( result){
+		screenshot($('#preview').attr('src'), preNo);
+	} else {
+		console.log("실행 취소")
+	}
+}
+
+function screenshot(preUrl, preNo) {
+	console.log("스크린샷 찍기 시작")
 	$.ajax({
 		url: '/web4test/screenshot.do',
 		method: 'GET',
 		dataType: 'json',
 		data: {
-			preNo: preNo
+			preUrl: preUrl,
+			preNo : preNo
 		},
 		success: function(result) {
 			console.log('good');
+			$("#preview").remove();
 		},
 		error: function(e) {
 			console.error('screenshot ajax 에러: ' + e);
+			$("#preview").remove();
+
 		}
 	});
 }
@@ -48,8 +71,9 @@ $_old(document).ready(function() {
 			},
 			success: function(result) {
 				console.log(result.latestPreNo + 1);
+				user = result.userNo;
 				preNo = result.latestPreNo + 1;
-//				screenshot(preNo);
+				preViewIframe(preNo, user);
 			},
 			error: function(e) {
 				console.error('ajax 에러: ' + e);
