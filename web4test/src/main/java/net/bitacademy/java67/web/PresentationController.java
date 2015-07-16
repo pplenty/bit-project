@@ -45,14 +45,15 @@ public class PresentationController {
   
   @Autowired
   MypageDao mypageDao;
+  
+  static int test_userNo;
+  static int test_preNo;
 
   @RequestMapping(value = "/setCurrentPreNo")
   public void setSession(HttpServletRequest request, HttpServletResponse response,
       HttpSession session) throws IOException {
-
     int currentPreNo = Integer.parseInt(request.getParameter("currentPreNo"));
     session.setAttribute("currentPreNo", currentPreNo);
-    
   }
   
   @RequestMapping(value = "/presentationInitLoad", method = RequestMethod.GET)
@@ -130,20 +131,21 @@ public class PresentationController {
       if (session.getAttribute("currentPreNo") != null) {
         currentPreNo = (int) session.getAttribute("currentPreNo");
       }
-      
       presentVo.setContent(htmlSource);
       if (currentPreNo == 0) {
         presentVo.setUserNo(userNo);
         presentVo.setAuthor(name);
-
+        
+        // 이 변수는 iframe(미리보기용)에 보낼 변수로 저장해둔 것
+        test_userNo = (int) session.getAttribute("userNo");
+        test_preNo = (int) session.getAttribute("currentPreNo");
+        
         presentDao.insert(presentVo);
         int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
         JSONResult.put("latestPreNo",latestPreNo);
         JSONResult.put("result", "save success: insert");
         System.out.println("do insert preNo: " + latestPreNo);
-
         session.setAttribute("currentPreNo", latestPreNo);
-        
         
       } else {
         presentVo.setPreNo(currentPreNo);
@@ -171,7 +173,7 @@ public class PresentationController {
       HttpSession session) throws IOException {
     System.out.println("prezent load 진입");
 
-    int currentPreNo = 0;
+    int currentPreNo = 0;   //test_preNo;
     if (session.getAttribute("currentPreNo") != null) {
       currentPreNo = (int) session.getAttribute("currentPreNo");
     }
@@ -190,14 +192,47 @@ public class PresentationController {
 
       // JSON RETURN!!
     } else {
-      int userNo = (int) session.getAttribute("userNo");
-      currentPreNo = mypageDao.selectLatest(userNo).getPreNo();
+      int userNo = (int) session.getAttribute("userNo");  //int userNo = test_userNo;
+      currentPreNo = mypageDao.selectLatest(userNo).getPreNo();  //currentPreNo = test_preNo;
       System.out.println("currentPreNo == 0");
     }
     
     
     
   }
+  
+  @RequestMapping(value = "/previewLoad", method = RequestMethod.GET)
+  public void previewLoad(HttpServletRequest request, HttpServletResponse response,
+      HttpSession session) throws IOException {
+    System.out.println("prezent load 진입");
+
+    int currentPreNo = 0;
+    if (session.getAttribute("currentPreNo") != null) {
+      currentPreNo = (int) session.getAttribute("currentPreNo");
+    }
+    System.out.println("미리보기 만들기할 때 쓰는 preNo번호" + test_preNo);
+    PresentationVo presentVo;
+    int no = currentPreNo;
+    presentVo = presentDao.selectOne(no);
+    
+    if(currentPreNo != 0) {
+      System.out.println(session.getAttribute("name"));
+
+      //ajax return data
+      response.setContentType("text/javascript;charset=UTF-8");
+      Writer out = response.getWriter();
+      out.write(presentVo.getContent());
+
+      System.out.println("프리뷰 화면 로딩성공");
+      // JSON RETURN!!
+    } else {
+      //int userNo = test_userNo;
+      //System.out.println("test 값 " + test_userNo);
+      currentPreNo = test_preNo;
+      System.out.println("currentPreNo == 0");
+    }   
+  }
+  
 
   protected final static Log logger = LogFactory
       .getLog(PresentationController.class);
@@ -209,8 +244,8 @@ public class PresentationController {
     presentVo.setUserNo((int) session.getAttribute("userNo"));
     System.out.println(request.getParameter("preNo"));
     presentVo.setPreNo(Integer.parseInt(request.getParameter("preNo")));
-    tryPhantom(presentVo);
-    // return "screenshot";
+    String previewUrl = request.getParameter("preUrl");
+    tryPhantom(presentVo, previewUrl);
     return null;
   }
 
@@ -219,9 +254,9 @@ public class PresentationController {
   private WebDriver webDriver;
   protected static DesiredCapabilities dCaps;
 
-  public void tryPhantom(PresentationVo presentVo) {
+  public void tryPhantom(PresentationVo presentVo, String previewUrl) {
     
-    final String preImgPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/preimg/";
+    final String preImgPath = "/Users/hyein/bit/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/preimg/";
     
     service = new PhantomJSDriverService.Builder()
         .usingPhantomJSExecutable(
@@ -243,19 +278,16 @@ public class PresentationController {
     dCaps.setCapability("takesScreenshot", true);
 
     webDriver = new RemoteWebDriver(service.getUrl(), dCaps);
-    webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    webDriver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
 
     long iStart = System.currentTimeMillis();
-    webDriver.get("http://localhost:9999/web4test/reveal/index.html#/");
-
+    webDriver.get(previewUrl);
     webDriver = new Augmenter().augment(webDriver);
     File srcFile = ((TakesScreenshot) webDriver)
         .getScreenshotAs(OutputType.FILE);
     System.out.println("File:" + srcFile);
     try {
-      presentVo.setPreImg(
-          preImgPath + presentVo.getUserNo() + "_" +
-          presentVo.getPreNo() + "_pic.png");
+      presentVo.setPreImg(preImgPath + presentVo.getUserNo() + "_" + presentVo.getPreNo() + "_pic.png");
       FileUtils.copyFile(srcFile, new File(presentVo.getPreImg()));
     } catch (IOException e) {
       e.printStackTrace();
