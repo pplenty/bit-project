@@ -48,25 +48,46 @@ $(document).ready(function(){
 			console.error('ajax 에러: ' + e);
 		}
 	});
-	
 
-/*    var socket = io.connect('121.166.177.31:3000');
-    socket.on('toclient',function(data){
-        console.log(data.msg);
-//        $('.slides').append(data.msg+'<BR>');
-        if(data.msg == 'right') Reveal.rigt();
-        if(data.msg == 'left') Reveal.left();
-    });*/
+	
+	// 리모트 컨트롤을 위한 웹소켓 서버 연결.
+	var email;
+	var authNo;
+    var socket;
+    var isConnect = false;
+	$.ajax({
+		url: '/web4test/getUser.do',
+		method: 'GET',
+		dataType: 'JSON',
+		success: function(userInfo) {
+			email = userInfo.email;
+
+            socket = io.connect('http://121.166.177.31:3000', {'forceNew': true});
+            // 접속과 동시에 user email 서버로 전송
+            socket.emit('login',{
+              'sender': 'web',
+              'email': email
+            });
+         // 서버측에서 socket.send(msg); 한것을 받아 살행
+            socket.on('message', function (msg) {
+            	if(!isConnect) {
+                	console.log(msg);
+                	authNo = msg;
+                	isConnect = true;
+            	} else {
+    		        console.log(data.command);
+    		        if(data.command == 'right') Reveal.rigt();
+    		        if(data.command == 'left') Reveal.left();
+            	}
+            });
+            
+		},
+		error: function(e) {
+			console.log('서버와 통신불가');
+		}
+	});
 	
 	
-	
-//	$('.slides').html(data);
-//	$('.slides').append(data2);
     
 });
 
-//function bb(string){ 
-//	var newString = string.replace("\\"","\"");
-//	return newString;
-//} 
-	
