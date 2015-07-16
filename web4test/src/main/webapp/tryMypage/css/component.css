@@ -1,3 +1,21 @@
+
+ @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+ @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+ 
+ @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+ 
+ @font-face {
+  font-family: 'Nanum Pen Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.ttf) format('truetype');
+}
+
 html, body{
     position: relative;
     width: 100%;
@@ -122,7 +140,8 @@ body {
 .intro-content h1 > span {
 	display: block;
 	white-space: nowrap;
-}
+/* 	font-family : 'Nanum Pen Script';
+ */}
 
 .intro-content h1 > span:first-child {
 	font-weight: 300;
@@ -278,7 +297,10 @@ body {
 	min-height: 100%;
 	width: 75%;
 	height: auto;
-	font-size: 1.4em;
+	font-family : 'Nanum Pen Script';
+	font-weight : bold;
+/* 	text-align : left;
+ */	font-size: 2.4em;
 	-webkit-backface-visibility: hidden;
 }
 
