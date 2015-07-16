@@ -1369,7 +1369,7 @@ $(function() {
 
 
 	$(".section-color").on('change', function() {
-		$(".present").css('background-color', $(this).val());
+		$(".present").css('background-color', $(this).val()).attr('data-background-color', $(this).val());
 	});
 
 
