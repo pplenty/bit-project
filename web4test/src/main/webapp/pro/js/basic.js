@@ -19,11 +19,12 @@ function preViewIframe(preNo, userNo){
 	}).css({
 		'width' : '500px',
 		'height' : '500px',
-		'visibility' : 'hidden'
+//		'visibility' : 'hidden'
 	}).appendTo('.slides');
 	
+//	setTimeOut('var result = confirm("저장하시겠습니까?")', 1000);
 	var result = confirm("저장하시겠습니까?")
-	if ( result){
+	if (result){
 		screenshot($('#preview').attr('src'), preNo);
 	} else {
 		console.log("실행 취소")
