@@ -80,6 +80,16 @@ public class LoginController {
 //    return "redirect:/mypage/mypage.html";
   }
 
+  @RequestMapping(value = "/firstpageGetUser", method = RequestMethod.GET)
+  public HashMap<String, Object> getFirstPageUserInfo(HttpSession session, HttpServletRequest request,
+      HttpServletResponse response) {
+    String name = (String) session.getAttribute("name");
+    HashMap<String, Object> sqlParams = new HashMap<String, Object>();
+    sqlParams.put("name", name);
+    return sqlParams;
+  }
+  
+  
   @RequestMapping("/getUser")
   public HashMap<String, Object> getUserInfo(
       HttpSession session, HttpServletRequest request, 
