@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<link rel="stylesheet"  href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/main-ui.css">
+
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/socket.io-1.3.5.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+
+<script src="js/serverConnect.js"></script>
+<script src="js/accelator.js"></script>
+<script src="js/main-ui.js"></script>
+
+<title>4pple RC</title>
+</style>
+</head>
+<body>
+
+<!-- 인증번호 -->
+<div class = 'id'>
+  <h1 class='h'> 인증번호 </h1> 
+  <div class = 'secondline'>
+  <input class='authNo' type="number">
+  <button class='conBtn'> 인증 </button> 
+  <button class='disBtn'> 끊기 </button> 
+  </div>
+</div>
+<!-- 인증번호 -->
+
+
+<!-- 핸드 모션 -->
+<div>
+<img class = 'hand' src='img/hand.png'> 
+</div>
+<!-- 핸드 모션 끝 -->
+
+<!-- 턴 -->
+<!-- <div>
+<img class = 'turnOff' src='img/turnOff.png'> 
+</div> -->
+<!-- 턴 끝 -->
+
+<!-- 셋팅 -->
+<div>
+<img class = 'set' src='img/set.png'> 
+</div>
+<!-- 셋팅 끝 -->
+
+<!-- 셋팅 메모 -->
+<div class = 'setMemo'>
+<img class = 'setMemoime' src='img/setMemo.png'> 
+<div class = 'text'>
+<h1>슬라이드 모드</h1>
+<br>
+<h1>모션 강도</h1>
+<input class = 'input' type = 'range' max='20' min='1' step='1'>
+</div>
+</div>
+<!-- 셋팅 메모 끝 -->
+
+<!-- 	<div class="app">
+		<h1>RCTest</h1>
+		<div id="deviceready" class="blink">
+			<p class="event listening">Connecting to Device</p>
+			<p class="event received">Device is Ready</p>
+			<button id="startBtn" onclick="startAccel();">start</button>
+			<button id="endBtn" onclick="endAccel();">e n d</button>
+			<br>
+			<button id="resetBtn" onclick="resetMax();">reset</button>
+			<br>
+			<div id="accelX"></div>
+			<div id="accelY"></div>
+			<div id="accelZ"></div>
+			<div id="mX"></div>
+			<div id="mY"></div>
+			<div id="mZ"></div>
+			<br>
+			<div id="status"></div>
+			
+			<div>
+				인증번호: <input type="number" id="authNo" style="font-size: xx-large;width: 80px;"/>
+				<button id="connectBtn">연결</button>
+				<button id="disconnectBtn">끊기</button><br>
+				Message <input type="text" id="msgbox" /> <br> <span id="msgs"></span>
+			</div>
+
+		</div>
+	</div> -->
+</body>
+</html>
