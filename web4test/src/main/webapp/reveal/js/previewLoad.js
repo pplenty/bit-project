@@ -49,45 +49,45 @@ $(document).ready(function(){
 		}
 	});
 
-	
-	// 리모트 컨트롤을 위한 웹소켓 서버 연결.
-	var email;
-	var authNo;
-    var socket;
-    var isConnect = false;
-	$.ajax({
-		url: '/web4test/getUser.do',
-		method: 'GET',
-		dataType: 'JSON',
-		success: function(userInfo) {
-			email = userInfo.email;
-
-            socket = io.connect('http://121.166.177.31:3000', {'forceNew': true});
-            // 접속과 동시에 user email 서버로 전송
-            socket.emit('login',{
-              'sender': 'web',
-              'email': email
-            });
-         // 서버측에서 socket.send(msg); 한것을 받아 살행
-            socket.on('message', function (command) {
-            	if(!isConnect) {
-                	console.log(command);
-                	authNo = command;
-                	isConnect = true;
-//                	alert('인증번호: ' + authNo);
-            	} else {
-    		        console.log(command);
-    		        if(command == 'next') Reveal.right();
-    		        if(command == 'back') Reveal.left();
-            	}
-            });
-            
-		},
-		error: function(e) {
-			console.log('서버와 통신불가');
-		}
-	});
-	
+//	
+//	// 리모트 컨트롤을 위한 웹소켓 서버 연결.
+//	var email;
+//	var authNo;
+//    var socket;
+//    var isConnect = false;
+//	$.ajax({
+//		url: '/web4test/getUser.do',
+//		method: 'GET',
+//		dataType: 'JSON',
+//		success: function(userInfo) {
+//			email = userInfo.email;
+//
+//            socket = io.connect('http://121.166.177.31:3000', {'forceNew': true});
+//            // 접속과 동시에 user email 서버로 전송
+//            socket.emit('login',{
+//              'sender': 'web',
+//              'email': email
+//            });
+//         // 서버측에서 socket.send(msg); 한것을 받아 살행
+//            socket.on('message', function (command) {
+//            	if(!isConnect) {
+//                	console.log(command);
+//                	authNo = command;
+//                	isConnect = true;
+////                	alert('인증번호: ' + authNo);
+//            	} else {
+//    		        console.log(command);
+//    		        if(command == 'next') Reveal.right();
+//    		        if(command == 'back') Reveal.left();
+//            	}
+//            });
+//            
+//		},
+//		error: function(e) {
+//			console.log('서버와 통신불가');
+//		}
+//	});
+//	
 	
     
 });
