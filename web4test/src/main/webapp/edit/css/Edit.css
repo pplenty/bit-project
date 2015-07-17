@@ -279,7 +279,6 @@ div.canvas {
 	width: 50px;
 	heigh: 50px;
 	visibility: hidden;
-	display : none;
 	position: absolute;
 	z-index: 100;
 	cursor: pointer;

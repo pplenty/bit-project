@@ -694,10 +694,31 @@ $(function() {
 	$('.slid-plus-hor').click(
 			function() {
 				countX = countX + 1;
-				var hereX = parseInt($('.present').attr('x'));
-				var hereY = parseInt($('.present').attr('y'));
-				var nextX = parseInt(hereX) + 1;
-				y = 0;
+
+				var presentX = $(".present .present").attr('x');
+				var presentY = $(".present .present").attr('y');
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = $('.present .present').attr('maxy');
+				if (presentX === undefined) {
+					var presentX = parseInt($(".present").attr('x'));
+					var presentY = parseInt($(".present").attr('y'));
+					var nextX = presentX + 1
+					var nextY = presentY + 1
+					var berforeX = presentX - 1
+					var berforeY = presentY - 1
+					var maxY = parseInt($('.present').attr('maxy'));
+				} else {
+					presentX = parseInt($(".present .present").attr('x'))
+					presentY = parseInt($(".present .present").attr('y'))
+					nextX = presentX + 1
+					nextY = presentY + 1
+					berforeX = presentX - 1
+					berforeY = presentY - 1
+					maxY = $('.present .present').attr('maxy');
+				}
 				if (nextX == countX) {
 					$("section").removeClass("present").removeClass("future")
 							.addClass("past")
@@ -748,7 +769,7 @@ $(function() {
 					}
 
 					else {
-						var selector = 'section.future[x=' + hereX
+						var selector = 'section.future[x=' + presentX
 								+ '].future[y=' + 0 + ']';
 
 						$(selector).addClass('past').removeClass("future")
@@ -799,84 +820,110 @@ $(function() {
 
 	$('.slid-plus-ver').click(
 			function() {
-				var hereX = parseInt($('.present').attr('x'));
-				var hereY = parseInt($('.present').attr('y'));
-				var nextY = hereY + 1;
-				var hereMax = parseInt($('.present').attr('maxy'));
-				if (hereMax == 1) {
-					if (hereY != 0) {
-						$(".present").removeClass("present").addClass("past")
-								.attr('maxy', 0)
+				var hereX1 = parseInt($('.present').attr('x'));
+				var hereY1 = parseInt($('.present').attr('y'));
+				var nextY1 = hereY1 + 1;
+				var hereMax1 = parseInt($('.present').attr('maxy'));
+
+				// 첫번째 아무것도 없을때 시작
+				if (hereMax1 == 1) {
+					if (hereY1 == 0) {
+						$('.slides .present').wrap(
+								'<section class="stack present" />');
+						$(".present .present").removeClass("present").addClass(
+								"past").attr('maxy', 0)
 						$('.past').css({
 							'transform' : 'translate(0, -150%)',
 							'display' : 'none',
 							'visible' : 'hidden'
 						})
-					} else {
-						$(".present").removeClass("present").addClass("future")
-								.attr('maxy', 0).css({
-									'transform' : 'translate(0, -150%)',
-									'display' : 'none',
-									'visible' : 'hidden'
-								})
+
+						$("<section>").addClass('present').appendTo(
+								$('.stack.present')).css('display', 'block')
+								.attr({
+									// 'hidden'
+									'aria-hidden' : 'true'
+								}).attr('x', hereX1).attr('y', nextY1).attr(
+										'maxy', 1);
 					}
-
-					$("<section>").addClass('present')
-							.appendTo($('div.slides')).css('display', 'block')
-							.attr({
-								// 'hidden'
-								'aria-hidden' : 'true'
-							}).attr('x', hereX).attr('y', nextY)
-							.attr('maxy', 1);
-				} else {
-					for (;; ++hereY) {
-						var selector = $('section.past[y=' + hereY
-								+ '].past[x=' + hereX + ']');
-						var max = parseInt(selector.attr('maxy'));
-						var y = parseInt(selector.attr('y'));
-						if (max == 1) {
-							var endY = y
-							break;
-						}
-					}
-					for (endY; endY > nextY - 1; endY--) {
-						var selector = $('section.past[y=' + endY + '].past[x='
-								+ hereX + ']');
-						var nowY = endY + 1;
-						$(selector).attr('y', nowY);
-					}
-
-					var lastY = parseInt($('.present').attr('y'));
-					var toLastY = lastY + 1;
-					if (lastY != 0) {
-
-						$(".present").removeClass("present").addClass("past")
-								.attr('maxy', 0)
-						$('.past').css({
-							'transform' : 'translate(0, -150%)',
-							'display' : 'none',
-							'visible' : 'hidden'
-						})
-					} else {
-
-						$(".present").removeClass("present").addClass("future")
-								.attr('maxy', 0).css({
-									'transform' : 'translate(0, -150%)',
-									'display' : 'none',
-									'visible' : 'hidden'
-								})
-					}
-
-					$("<section>").addClass('present')
-							.appendTo($('div.slides')).css('display', 'block')
-							.attr({
-								// 'hidden'
-								'aria-hidden' : 'true'
-							}).attr('x', hereX).attr('y', toLastY).attr('maxy',
-									0);
-
 				}
+				// 첫번째 아무것도 없을때 끝
+				else {
+					var hereX = parseInt($('.stack .present').attr('x'));
+					var hereY = parseInt($('.stack .present').attr('y'));
+					var nextY = hereY + 1;
+					var hereMax = parseInt($('.stack .present').attr('maxy'));
+					// 맨끝에서 생성할 시작
+					if (hereMax == 1) {
+						if (hereY != 0) {
 
+							$(".present .present").removeClass("present")
+									.addClass("past").attr('maxy', 0).css({
+										'transform' : 'translate(0, -150%)',
+										'display' : 'none',
+										'visible' : 'hidden'
+									})
+
+							$("<section>").addClass('present').appendTo(
+									$('.stack.present'))
+									.css('display', 'block').attr({
+										// 'hidden'
+										'aria-hidden' : 'true'
+									}).attr('x', hereX).attr('y', nextY).attr(
+											'maxy', 1);
+						}
+
+					}
+					// 맨끝에서 생성할 끝
+					else {
+						for (;; ++hereY) {
+							var selector = $('section.future[y=' + hereY
+									+ '].future[x=' + hereX + ']');
+							var max = parseInt(selector.attr('maxy'));
+							var y = parseInt(selector.attr('y'));
+							if (max == 1) {
+								var endY = y
+								break;
+							}
+						}
+						for (endY; endY > nextY - 1; endY--) {
+							var selector = $('section.future[y=' + endY
+									+ '].future[x=' + hereX + ']');
+							var nowY = endY + 1;
+							$(selector).attr('y', nowY);
+						}
+
+						var lastY = parseInt($('.present .present').attr('y'));
+						var toLastY = lastY + 1;
+						if (lastY != 0) {
+
+							$(".present .present").removeClass("present")
+									.addClass("past").attr('maxy', 0)
+							$('.past').css({
+								'transform' : 'translate(0, -150%)',
+								'display' : 'none',
+								'visible' : 'hidden'
+							})
+						} else {
+
+							$(".present .present").removeClass("present")
+									.addClass("future").attr('maxy', 0).css({
+										'transform' : 'translate(0, -150%)',
+										'display' : 'none',
+										'visible' : 'hidden'
+									})
+						}
+
+						$("<section>").addClass('present').appendTo(
+								$('section.stack')).css('display', 'block')
+								.attr({
+									// 'hidden'
+									'aria-hidden' : 'true'
+								}).attr('x', hereX).attr('y', toLastY).attr(
+										'maxy', 0);
+
+					}
+				}
 				presf();
 				presb();
 				prest();
@@ -890,14 +937,31 @@ $(function() {
 	// 버튼 유무 설정
 	// f버튼
 	function presf() {
-		var presentX = parseInt($(".present").attr('x'));
-		var presentY = parseInt($(".present").attr('y'));
+		var presentX = $(".present .present").attr('x');
+		var presentY = $(".present .present").attr('y');
 		var nextX = presentX + 1
 		var nextY = presentY + 1
 		var berforeX = presentX - 1
 		var berforeY = presentY - 1
-		var maxY = parseInt($('.present').attr('maxy'));
-		if (presentX != countX) {
+		var maxY = $('.present .present').attr('maxy');
+		if (presentX === undefined) {
+			var presentX = parseInt($(".present").attr('x'));
+			var presentY = parseInt($(".present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present').attr('maxy'));
+		} else {
+			presentX = parseInt($(".present .present").attr('x'))
+			presentY = parseInt($(".present .present").attr('y'))
+			nextX = presentX + 1
+			nextY = presentY + 1
+			berforeX = presentX - 1
+			berforeY = presentY - 1
+			maxY = $('.present .present').attr('maxy');
+		}
+		if (presentX < countX) {
 			$(".pres-f").css({
 				'visibility' : "visible",
 				'color' : 'black'
@@ -910,14 +974,40 @@ $(function() {
 	}
 	// b버튼
 	function presb() {
-		var presentX = parseInt($(".present").attr('x'));
-		var presentY = parseInt($(".present").attr('y'));
+		var presentX = $(".present .present").attr('x');
+		var presentY = $(".present .present").attr('y');
 		var nextX = presentX + 1
 		var nextY = presentY + 1
 		var berforeX = presentX - 1
 		var berforeY = presentY - 1
-		var maxY = parseInt($('.present').attr('maxy'));
-		if (presentX != 0) {
+		var maxY = $('.present .present').attr('maxy');
+		if (presentX === undefined) {
+			var presentX = parseInt($(".present").attr('x'));
+			var presentY = parseInt($(".present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present').attr('maxy'));
+		} else {
+			presentX = parseInt($(".present .present").attr('x'))
+			presentY = parseInt($(".present .present").attr('y'))
+			nextX = presentX + 1
+			nextY = presentY + 1
+			berforeX = presentX - 1
+			berforeY = presentY - 1
+			maxY = $('.present .present').attr('maxy');
+		}
+		if (isNaN(presentX)) {
+			var presentX = parseInt($(".present .present").attr('x'));
+			var presentY = parseInt($(".present .present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present .present').attr('maxy'));
+		}
+		if (presentX > 0) {
 			$(".pres-b").css({
 				'visibility' : "visible",
 				'color' : 'black'
@@ -931,13 +1021,30 @@ $(function() {
 
 	// t버튼
 	function prest() {
-		var presentX = parseInt($(".present").attr('x'));
-		var presentY = parseInt($(".present").attr('y'));
+		var presentX = $(".present .present").attr('x');
+		var presentY = $(".present .present").attr('y');
 		var nextX = presentX + 1
 		var nextY = presentY + 1
 		var berforeX = presentX - 1
 		var berforeY = presentY - 1
-		var maxY = parseInt($('.present').attr('maxy'));
+		var maxY = $('.present .present').attr('maxy');
+		if (presentX === undefined) {
+			var presentX = parseInt($(".present").attr('x'));
+			var presentY = parseInt($(".present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present').attr('maxy'));
+		} else {
+			presentX = parseInt($(".present .present").attr('x'))
+			presentY = parseInt($(".present .present").attr('y'))
+			nextX = presentX + 1
+			nextY = presentY + 1
+			berforeX = presentX - 1
+			berforeY = presentY - 1
+			maxY = $('.present .present').attr('maxy');
+		}
 		if (presentY != 0) {
 			$(".pres-t").css({
 				'visibility' : "visible",
@@ -952,13 +1059,30 @@ $(function() {
 
 	// bb버튼
 	function presbb() {
-		var presentX = parseInt($(".present").attr('x'));
-		var presentY = parseInt($(".present").attr('y'));
+		var presentX = $(".present .present").attr('x');
+		var presentY = $(".present .present").attr('y');
 		var nextX = presentX + 1
 		var nextY = presentY + 1
 		var berforeX = presentX - 1
 		var berforeY = presentY - 1
-		var maxY = parseInt($('.present').attr('maxy'));
+		var maxY = $('.present .present').attr('maxy');
+		if (presentX === undefined) {
+			var presentX = parseInt($(".present").attr('x'));
+			var presentY = parseInt($(".present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present').attr('maxy'));
+		} else {
+			presentX = parseInt($(".present .present").attr('x'))
+			presentY = parseInt($(".present .present").attr('y'))
+			nextX = presentX + 1
+			nextY = presentY + 1
+			berforeX = presentX - 1
+			berforeY = presentY - 1
+			maxY = $('.present .present').attr('maxy');
+		}
 		if (maxY != 1) {
 			$(".pres-bb").css({
 				'visibility' : "visible",
@@ -972,66 +1096,90 @@ $(function() {
 	}
 
 	// 앞
-	$(".pres-f").hover(function() {
-		var presentX = parseInt($(".present").attr("x"))
-		if (presentX != countX) {
-			$(".pres-f").css('color', 'blue');
-		}
-	}, function() {
-		presf();
-		presb();
-		prest();
-		presbb();
-		sectionDel();
-	});
 
 	$('.pres-f').click(
 			function() {
-				var presentX = parseInt($(".present").attr('x'));
-				var presentY = parseInt($(".present").attr('y'));
+				var presentX = $(".present .present").attr('x');
+				var presentY = $(".present .present").attr('y');
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = $('.present .present').attr('maxy');
+				if (presentX === undefined) {
+					var presentX = parseInt($(".present").attr('x'));
+					var presentY = parseInt($(".present").attr('y'));
+					var nextX = presentX + 1
+					var nextY = presentY + 1
+					var berforeX = presentX - 1
+					var berforeY = presentY - 1
+					var maxY = parseInt($('.present').attr('maxy'));
 
-				if (presentX != countX) {
-					var nextX = parseInt($('.present').attr('x')) + 1;
-					$('.present').addClass('past').removeClass('present').css({
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + presentY + ']';
+
+					$(selector).addClass('past').removeClass('present').css({
 						'visibility' : "hidden",
 						'display' : 'none',
 						'transform' : 'translate(-150%, 0)'
 					})
-					$('.present').addClass('past').removeClass('present').css({
+					var selector = 'section.future[x=' + nextX + '].future[y='
+							+ 0 + ']';
+				} else {
+					presentX = parseInt($(".present .present").attr('x'))
+					presentY = parseInt($(".present .present").attr('y'))
+					nextX = presentX + 1
+					nextY = presentY + 1
+					berforeX = presentX - 1
+					berforeY = presentY - 1
+					maxY = $('.present .present').attr('maxy');
+
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + presentY + ']';
+					$(selector).parents('.stack').addClass('past').removeClass(
+							'present').css({
 						'visibility' : "hidden",
 						'display' : 'none',
 						'transform' : 'translate(-150%, 0)'
 					})
-					if (presentY == 0) {
-
-						var selector = 'section.future[x=' + nextX
-								+ '].future[y=' + 0 + ']';
-						$(selector).addClass('present').removeClass('future')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								})
-					} else {
-
-						var selector = 'section.future[x=' + nextX
-								+ '].future[y=' + 0 + ']';
-						$(selector).addClass('present').removeClass('future')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								})
-						var beforeSelector = 'section.future[x=' + presentX
-								+ '].future[y=' + 0 + ']';
-						$(beforeSelector).addClass('past')
-								.removeClass('future').css({
-									'visibility' : "hidden",
-									'display' : 'none',
-									'transform' : 'translate(-150%, 0)'
-								})
-					}
+					$('.past.stack .future').addClass('past').removeClass(
+							'future').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(-150%, 0)'
+					})
+					$('.past.stack .present').addClass('past').removeClass(
+							'present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(-150%, 0)'
+					})
 				}
+
+				var selector = 'section.future[x=' + nextX + '].future[y=' + 0
+						+ ']';
+				$(selector).addClass('present').removeClass('future').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
+				})
+				var selector = 'section.past[x=' + nextX + '].past[y=' + 0
+						+ ']';
+
+				$(selector).parents('.stack').addClass('present').removeClass(
+						'future').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
+				})
+				$('.present .past').addClass('future').removeClass('past')
+				var selector = 'section.future[x=' + nextX + '].future[y=' + 0
+						+ ']';
+				$(selector).addClass('present').removeClass('future').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
+				})
 				presf();
 				presb();
 				prest();
@@ -1040,69 +1188,118 @@ $(function() {
 			})
 	// 뒤로
 
-	$(".pres-b").hover(function() {
-		if ($("present").attr("x") > 0) {
-			$(".pres-b").css('color', 'blue');
-		}
-	}, function() {
-		presf();
-		presb();
-		prest();
-		presbb();
-		sectionDel();
-	});
-	$('.pres-b').click(function() {
+	$('.pres-b').click(
+			function() {
+				var presentX = $(".present .present").attr('x');
+				var presentY = $(".present .present").attr('y');
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = $('.present .present').attr('maxy');
+				if (presentX === undefined) {
+					var presentX = parseInt($(".present").attr('x'));
+					var presentY = parseInt($(".present").attr('y'));
+					var nextX = presentX + 1
+					var nextY = presentY + 1
+					var berforeX = presentX - 1
+					var berforeY = presentY - 1
+					var maxY = parseInt($('.present').attr('maxy'));
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + presentY + ']';
+					$(selector).addClass('future').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(150%, 0)'
+					})
 
-		if ($('.present').attr('x') > 0) {
-			var nextX = parseInt($('.present').attr('x')) - 1;
-			var hereY = parseInt($('.present').attr('y'))
-			if (hereY == 0) {
-				$('.present').addClass('future').removeClass('present').css({
-					'visibility' : "hidden",
-					'display' : 'none',
-					'transform' : 'translate(150%, 0)'
+				} else {
+					presentX = parseInt($(".present .present").attr('x'))
+					presentY = parseInt($(".present .present").attr('y'))
+					nextX = presentX + 1
+					nextY = presentY + 1
+					berforeX = presentX - 1
+					berforeY = presentY - 1
+					maxY = $('.present .present').attr('maxy');
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + presentY + ']';
+					$(selector).parents('.stack').addClass('future')
+							.removeClass('present').css({
+								'visibility' : "hidden",
+								'display' : 'none',
+								'transform' : 'translate(150%, 0)'
+							})
+					$(selector).addClass('past').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(150%, 0)'
+					})
+				}
+
+				var selector = 'section.past[x=' + berforeX + '].past[y=' + 0
+						+ ']';
+				$(selector).parents('.stack').addClass('present').removeClass(
+						'past').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
 				})
-			} else {
-				$('.present').addClass('past').removeClass('present').css({
-					'visibility' : "hidden",
-					'display' : 'none',
-					'transform' : 'translate(150%, 0)'
+				$('.present .past').addClass('future').removeClass('past')
+				var selector = 'section.future[x=' + berforeX + '].future[y='
+						+ 0 + ']';
+				$(selector).addClass('present').removeClass('future').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
 				})
-			}
-			var selector = 'section.past[x=' + nextX + '].past[y=' + 0 + ']';
-			$(selector).addClass('present').removeClass('past').css({
-				'visibility' : "visible",
-				'display' : 'block',
-				'transform' : 'translate(0, 0)'
+				var selector = 'section.past[x=' + berforeX + '].past[y=' + 0
+						+ ']';
+				$(selector).addClass('present').removeClass('past').css({
+					'visibility' : "visible",
+					'display' : 'block',
+					'transform' : 'translate(0, 0)'
+				})
+				presf();
+				presb();
+				prest();
+				presbb();
+				sectionDel();
 			})
-		}
-		presf();
-		presb();
-		prest();
-		presbb();
-		sectionDel();
-	})
 
 	// 위로
-	$(".pres-t").hover(function() {
-		if ($("present").attr("y") > 0) {
-			$(".pres-t").css('color', 'blue');
-		}
-	}, function() {
-		presf();
-		presb();
-		prest();
-		presbb();
-		sectionDel();
-	});
+
 	$('.pres-t').click(
 			function() {
-				var nowY = parseInt($('.present').attr('y'))
+				var presentX = $(".present .present").attr('x');
+				var presentY = $(".present .present").attr('y');
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = $('.present .present').attr('maxy');
+				if (presentX === undefined) {
+					var presentX = parseInt($(".present").attr('x'));
+					var presentY = parseInt($(".present").attr('y'));
+					var nextX = presentX + 1
+					var nextY = presentY + 1
+					var berforeX = presentX - 1
+					var berforeY = presentY - 1
+					var maxY = parseInt($('.present').attr('maxy'));
+				} else {
+					presentX = parseInt($(".present .present").attr('x'))
+					presentY = parseInt($(".present .present").attr('y'))
+					nextX = presentX + 1
+					nextY = presentY + 1
+					berforeX = presentX - 1
+					berforeY = presentY - 1
+					maxY = $('.present .present').attr('maxy');
+				}
 
-				if (nowY > 1) {
-					var hereY = parseInt($('.present').attr('y')) - 1;
-					var hereX = parseInt($('.present').attr('x'));
-					$('.present').addClass('past').removeClass('present').css({
+				if (presentY > 1) {
+					var hereY = parseInt($('.present .present').attr('y')) - 1;
+					var hereX = parseInt($('.present .present').attr('x'));
+					$('.present .present').addClass('future').removeClass(
+							'present').css({
 						'visibility' : "hidden",
 						'display' : 'none',
 						'transform' : 'translate(0, -150%)'
@@ -1116,15 +1313,16 @@ $(function() {
 					})
 				} else {
 
-					var hereX = parseInt($('.present').attr('x'));
-					$('.present').addClass('past').removeClass('present').css({
+					var hereX = parseInt($('.present .present').attr('x'));
+					$('.present .present').addClass('future').removeClass(
+							'present').css({
 						'visibility' : "hidden",
 						'display' : 'none',
 						'transform' : 'translate(0, -150%)'
 					})
-					var selector = 'section.future[x=' + hereX + '].future[y='
-							+ 0 + ']';
-					$(selector).addClass('present').removeClass('future').css({
+					var selector = 'section.past[x=' + hereX + '].past[y=' + 0
+							+ ']';
+					$(selector).addClass('present').removeClass('past').css({
 						'visibility' : "visible",
 						'display' : 'block',
 						'transform' : 'translate(0, 0)'
@@ -1138,55 +1336,30 @@ $(function() {
 			})
 
 	// 아래$
-	$(".pres-bb").hover(function() {
-		if ($("present").attr("maxy") != 1) {
-			$(".pres-bb").css('color', 'blue');
-		}
-	}, function() {
-		presf();
-		presb();
-		prest();
-		presbb();
-		sectionDel();
-	});
+
 	$('.pres-bb').click(
 			function() {
-				var goY = parseInt($('.present').attr('maxy'))
-				var nowY = parseInt($('.present').attr('y'))
-				var hereY = parseInt($('.present').attr('y')) + 1;
-				var hereX = parseInt($('.present').attr('x'))
-				if (goY != 1) {
-					if (nowY != 0) {
-						$('.present').addClass('past').removeClass('present')
-								.css({
-									'visibility' : "hidden",
-									'display' : 'none',
-									'transform' : 'translate(0, -150%)'
-								})
-						var selector = 'section.past[x=' + hereX + '].past[y='
-								+ hereY + ']';
-						$(selector).addClass('present').removeClass('past')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								})
-					} else {
-						$('.present').addClass('future').removeClass('present')
-								.css({
-									'visibility' : "hidden",
-									'display' : 'none',
-									'transform' : 'translate(0, -150%)'
-								})
-						var selector = 'section.past[x=' + hereX + '].past[y='
-								+ hereY + ']';
-						$(selector).addClass('present').removeClass('past')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								})
-					}
+				var presentX = parseInt($(".present .present").attr('x'))
+				var presentY = parseInt($(".present .present").attr('y'))
+				var nextX = presentX + 1
+				var nextY = presentY + 1
+				var berforeX = presentX - 1
+				var berforeY = presentY - 1
+				var maxY = $('.present .present').attr('maxy');
+				if (maxY != 1) {
+					$('.present .present').addClass('past').removeClass(
+							'present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(0, -150%)'
+					})
+					var selector = 'section.future[x=' + presentX
+							+ '].future[y=' + nextY + ']';
+					$(selector).addClass('present').removeClass('future').css({
+						'visibility' : "visible",
+						'display' : 'block',
+						'transform' : 'translate(0, 0)'
+					})
 
 					presf();
 					presb();
@@ -1205,151 +1378,227 @@ $(function() {
 
 	// 섹션 삭제 유무
 	function sectionDel() {
-		var presentX = parseInt($(".present").attr('x'));
-		var presentY = parseInt($(".present").attr('y'));
-		$(".section-delete").css({
-			'visibility' : "visible",
-			'display' : 'block'
-		})
-		if (presentX == 0) {
-
-			if (presentY == 0) {
-				$(".section-delete").css({
-					'visibility' : "hidden",
-					'display' : 'none'
-				})
-
-			}
+		var presentX = $(".present .present").attr('x');
+		var presentY = $(".present .present").attr('y');
+		var nextX = presentX + 1
+		var nextY = presentY + 1
+		var berforeX = presentX - 1
+		var berforeY = presentY - 1
+		var maxY = $('.present .present').attr('maxy');
+		if (presentX === undefined) {
+			var presentX = parseInt($(".present").attr('x'));
+			var presentY = parseInt($(".present").attr('y'));
+			var nextX = presentX + 1
+			var nextY = presentY + 1
+			var berforeX = presentX - 1
+			var berforeY = presentY - 1
+			var maxY = parseInt($('.present').attr('maxy'));
+		} else {
+			presentX = parseInt($(".present .present").attr('x'))
+			presentY = parseInt($(".present .present").attr('y'))
+			nextX = presentX + 1
+			nextY = presentY + 1
+			berforeX = presentX - 1
+			berforeY = presentY - 1
+			maxY = $('.present .present').attr('maxy');
 		}
+
+		if (presentX > 0 || presentY > 0 || maxY != 1) {
+			$(".section-delete").css({
+				'visibility' : "visible",
+				'color' : '#bbb6b8'
+			});
+		} else {
+			$(".section-delete").css({
+				'visibility' : "hidden",
+				'color' : '#bbb6b8'
+			});
+		}
+
 	}
 	;
 	// 섹션 삭제
 
 	$('.section-delete').click(
 			function() {
-
-				var presentX = parseInt($(".present").attr('x'));
-				var presentY = parseInt($(".present").attr('y'));
+				var presentX = $(".present .present").attr('x');
+				var presentY = $(".present .present").attr('y');
 				var nextX = presentX + 1
 				var nextY = presentY + 1
 				var berforeX = presentX - 1
 				var berforeY = presentY - 1
-				var maxY = parseInt($('.present').attr('maxy'));
-
-				if (maxY == 1) {
-					if (presentY == 0) {
-						$(".present").remove();
-
-						var selector = $('section.past[y=' + 0 + '].past[x='
-								+ berforeX + ']');
-
-						$(selector).addClass('present').removeClass('past')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								});
-
-						var nexX = nextX;
-						for (nexX; nexX < countX + 1; nexX++) {
-							// nexX 다음칸부터 이숫자 까지
-							// countX 끝
-							var nowX = nexX - 1
-							var selector = $('section.future[y=' + 0
-									+ '].future[x=' + nexX + ']');
-							$(selector).attr('x', nowX)
-
-							selector = $('section.past[y= 1].past[x=' + nexX
-									+ ']');
-
-							hereY = parseInt($(selector).attr('y'));
-							// 이제 x내에서 와이값 찾기
-							// 작업중
-							if (hereY > 0) {
-								for (;; hereY++) {
-
-									var selector = $('section.past[y=' + hereY
-											+ '].past[x=' + nexX + ']');
-									$(selector).attr('x', nowX)
-									var max = parseInt(selector.attr('maxy'));
-									var y = parseInt(selector.attr('y'));
-									if (max == 1) {
-										var endY = y
-										break;
-									}
-								}
-							}
-							// 와이 맥심값 찾기 끝
-							var zoroY = 0;
-							for (zoroY; zoroY + 1 < endY; ++zoroY) {
-								var selector = $('section.past[y=' + zoroY
-										+ '].past[x=' + nexX + ']');
-								$(selector).attr('y', zoroY);
-							}// x값 ㅇㅣ후값 변경
-						}
-						countX = countX - 1;
-
-					} else if (presentY == 1) {
-						$(".present").remove();
-
-						var selector = $('section.future[y=' + 0
-								+ '].future[x=' + presentX + ']');
-
-						$(selector).addClass('present').removeClass('future')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								}).attr('maxy', 1);
-
-					} else {
-						$(".present").remove();
-						var selector = $('section.past[y=' + berforeY
-								+ '].past[x=' + presentX + ']');
-
-						$(selector).addClass('present').removeClass('past')
-								.css({
-									'visibility' : "visible",
-									'display' : 'block',
-									'transform' : 'translate(0, 0)'
-								}).attr('maxy', 1);
-					}
-
-				}// 밑바닥에 삭제 할때 끝
-
-				// 중간쯤에서 삭제 했을때
-				else {
-					hereY = parseInt($(".present").attr('y'));
+				var maxY = $('.present .present').attr('maxy');
+				if (presentX === undefined) {
+					var presentX = parseInt($(".present").attr('x'));
+					var presentY = parseInt($(".present").attr('y'));
+					var nextX = presentX + 1
+					var nextY = presentY + 1
+					var berforeX = presentX - 1
+					var berforeY = presentY - 1
+					var maxY = parseInt($('.present').attr('maxy'));
 					$(".present").remove();
+					// 전꺼 프리젠트로 만들기
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + presentY + ']';
+					$(selector).addClass('future').removeClass('present').css({
+						'visibility' : "hidden",
+						'display' : 'none',
+						'transform' : 'translate(150%, 0)'
+					})
 
-					for (;; ++hereY) {
-						var selector = $('section.past[y=' + hereY
-								+ '].past[x=' + presentX + ']');
-						var max = parseInt(selector.attr('maxy'));
-						var y = parseInt(selector.attr('y'));
-						if (max == 1) {
-							var endY = y
-							break;
-						}
-					}
-					nexY = presentY;
-					for (nexY; nexY < endY; ++nexY) {
-						var selectY = nexY + 1;
-						var selector = $('section.past[y=' + selectY
-								+ '].past[x=' + presentX + ']');
-						$(selector).attr('y', nexY);
-					}
-
-					var selector = $('section.past[y=' + presentY + '].past[x='
-							+ presentX + ']');
+					var selector = 'section.past[x=' + berforeX + '].past[y='
+							+ 0 + ']';
+					$(selector).parents('.stack').addClass('present')
+							.removeClass('past').css({
+								'visibility' : "visible",
+								'display' : 'block',
+								'transform' : 'translate(0, 0)'
+							})
+					$('.present .past').addClass('future').removeClass('past')
+					var selector = 'section.future[x=' + berforeX
+							+ '].future[y=' + 0 + ']';
+					$(selector).addClass('present').removeClass('future').css({
+						'visibility' : "visible",
+						'display' : 'block',
+						'transform' : 'translate(0, 0)'
+					})
+					var selector = 'section.past[x=' + berforeX + '].past[y='
+							+ 0 + ']';
 					$(selector).addClass('present').removeClass('past').css({
 						'visibility' : "visible",
 						'display' : 'block',
 						'transform' : 'translate(0, 0)'
 					})
+					// 전꺼 프리젠트로 만들기 끝
+					// 후에 있는거 정리
+					for (nextX; nextX <= countX; nextX++) {
+						nowX = nextX - 1
+						var selector = 'section.past[x=' + nextX + ']';
+						$(selector).attr('x', nowX)
+
+						var selector = 'section.future[x=' + nextX + ']';
+						$(selector).attr('x', nowX)
+					}
+
+					countX--
+				} else {
+					presentX = parseInt($(".present .present").attr('x'));
+					presentY = parseInt($(".present .present").attr('y'));
+					nextX = presentX + 1
+					nextY = presentY + 1
+					berforeX = presentX - 1
+					berforeY = presentY - 1
+					maxY = $('.present .present').attr('maxy');
+					// 맨밑에 꺼 삭제 할때
+					if (presentY == 0) {
+						for (;; ++presentY) {
+							presentY++
+							console.log(presentX, typeof (presentX), presentY,
+									typeof (presentY))
+							var selector = 'section.future[x=' + presentX
+									+ '].future[y=' + presentY + ']';
+							var nowY = presentY - 1;
+							var max = parseInt(selector.attr('maxy'));
+							$(selector).attr('y', nowY);
+console.log(selector.attr('maxy'))
+							if (max == 1) {
+								break;
+							}
+
+							if (presentY == 30) {
+								console.log('끝')
+								break;
+							}
+						}
+					}
 
 				}
 
+				// // 작업중
+				// if (hereY > 0) {
+				// for (;; hereY++) {
+				//
+				// var selector = $('section.past[y=' + hereY
+				// + '].past[x=' + nexX + ']');
+				// $(selector).attr('x', nowX)
+				// var max = parseInt(selector.attr('maxy'));
+				// var y = parseInt(selector.attr('y'));
+				// if (max == 1) {
+				// var endY = y
+				// break;
+				// }
+				// }
+				// }
+				// // 와이 맥심값 찾기 끝
+				// var zoroY = 0;
+				// for (zoroY; zoroY + 1 < endY; ++zoroY) {
+				// var selector = $('section.past[y=' + zoroY
+				// + '].past[x=' + nexX + ']');
+				// $(selector).attr('y', zoroY);
+				// }// x값 ㅇㅣ후값 변경
+				// }
+				// countX = countX - 1;
+				//
+				// } else if (presentY == 1) {
+				// $(".present").remove();
+				//
+				// var selector = $('section.future[y=' + 0
+				// + '].future[x=' + presentX + ']');
+				//
+				// $(selector).addClass('present').removeClass('future')
+				// .css({
+				// 'visibility' : "visible",
+				// 'display' : 'block',
+				// 'transform' : 'translate(0, 0)'
+				// }).attr('maxy', 1);
+				//
+				// } else {
+				// $(".present").remove();
+				// var selector = $('section.past[y=' + berforeY
+				// + '].past[x=' + presentX + ']');
+				//
+				// $(selector).addClass('present').removeClass('past')
+				// .css({
+				// 'visibility' : "visible",
+				// 'display' : 'block',
+				// 'transform' : 'translate(0, 0)'
+				// }).attr('maxy', 1);
+				// }
+				//
+				// }// 밑바닥에 삭제 할때 끝
+				//
+				// // 중간쯤에서 삭제 했을때
+				// else {
+				// hereY = parseInt($(".present").attr('y'));
+				// $(".present").remove();
+				//
+				// for (;; ++hereY) {
+				// var selector = $('section.past[y=' + hereY
+				// + '].past[x=' + presentX + ']');
+				// var max = parseInt(selector.attr('maxy'));
+				// var y = parseInt(selector.attr('y'));
+				// if (max == 1) {
+				// var endY = y
+				// break;
+				// }
+				// }
+				// nexY = presentY;
+				// for (nexY; nexY < endY; ++nexY) {
+				// var selectY = nexY + 1;
+				// var selector = $('section.past[y=' + selectY
+				// + '].past[x=' + presentX + ']');
+				// $(selector).attr('y', nexY);
+				// }
+				//
+				// var selector = $('section.past[y=' + presentY + '].past[x='
+				// + presentX + ']');
+				// $(selector).addClass('present').removeClass('past').css({
+				// 'visibility' : "visible",
+				// 'display' : 'block',
+				// 'transform' : 'translate(0, 0)'
+				// })
+				//
+				// }
 				presf();
 				presb();
 				prest();
@@ -1358,19 +1607,34 @@ $(function() {
 			});
 	// 섹션 삭제 끝
 
-	
 	// 세션 배경 색 설정
-	$(".section-color").on('click', function() {
-		var initBackColor = rgb2hex($('.present').css('background-color'));
-		console.log(initBackColor)
-		$(".section-color").val(initBackColor);
-	})
+	$(".section-color").on(
+			'click',
+			function() {
+				var presentX = $(".present .present").attr('x');
+				if (presentX === undefined) {
+					var initBackColor = rgb2hex($('.present').css(
+							'background-color'));
+					$(".section-color").val(initBackColor);
+				} else {
+					var initBackColor = rgb2hex($('.present .present').css(
+							'background-color'));
+					$(".section-color").val(initBackColor);
+				}
+			})
 
-
-
-	$(".section-color").on('change', function() {
-		$(".present").css('background-color', $(this).val());
-	});
-
+	$(".section-color").on(
+			'change',
+			function() {
+				var presentX = $(".present .present").attr('x');
+				if (presentX === undefined) {
+					$(".present").css('background-color', $(this).val()).attr(
+							'data-background-color', $(this).val());
+				} else {
+					$(".present .present").css('background-color',
+							$(this).val()).attr('data-background-color',
+							$(this).val());
+				}
+			});
 
 });
