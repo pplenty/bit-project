@@ -77,7 +77,7 @@ public class FileController {
         System.out.println("컨텐트타입 : " + mpf.getContentType());
 
         fileVo.setUserNo((int) session.getAttribute("userNo")); 
-        fileVo.setPreNo(1);// preNo 임의로 때려넣음 
+        fileVo.setPreNo((int) session.getAttribute("preNo"));
         
         try {
           fileVo.setBytes(mpf.getBytes());
@@ -138,7 +138,7 @@ public class FileController {
     List<FileVo> resultVo;
     FileVo fileVo = new FileVo();
     fileVo.setUserNo((int) session.getAttribute("userNo"));
-    fileVo.setPreNo(1); //임의로 떄려박음
+    fileVo.setPreNo((int) session.getAttribute("preNo"));
     
     resultVo = fileService.getList(fileVo);
     
