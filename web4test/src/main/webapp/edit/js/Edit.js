@@ -1491,114 +1491,89 @@ $(function() {
 					maxY = $('.present .present').attr('maxy');
 					// 맨밑에 꺼 삭제 할때
 					if (presentY == 0) {
-						for (;; ++presentY) {
-							presentY++
-							console.log(presentX, typeof (presentX), presentY,
-									typeof (presentY))
+						var nextY = presentY;
+						for (;; ++nextY) {
 							var selector = 'section.future[x=' + presentX
-									+ '].future[y=' + presentY + ']';
-							var nowY = presentY - 1;
-							var max = parseInt(selector.attr('maxy'));
-							$(selector).attr('y', nowY);
-console.log(selector.attr('maxy'))
+									+ '].future[y=' + nextY + ']';
+							var nowY = nextY - 1;
+							var max = parseInt($(selector).attr('maxy'));
+							$(selector).attr('y', nowY)
 							if (max == 1) {
 								break;
 							}
+						}
 
-							if (presentY == 30) {
-								console.log('끝')
+						$(".present .present").remove();
+
+						var selector = 'section.future[x=' + presentX
+								+ '].future[y=' + presentY + ']';
+						$(selector).addClass('present').removeClass('future')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+					} else if(maxY ==1){
+						var nextY = presentY;
+						for (;; ++nextY) {
+							var selector = 'section.future[x=' + presentX
+									+ '].future[y=' + nextY + ']';
+							var nowY = nextY - 1;
+							var max = parseInt($(selector).attr('maxy'));
+							$(selector).attr('y', nowY)
+							if (max == 1) {
+								break;
+							}
+							if (nextY == 10){
 								break;
 							}
 						}
+						$(".present .present").remove();
+
+						var selector = 'section.past[x=' + presentX
+								+ '].past[y=' + berforeY + ']';
+						$(selector).addClass('present').removeClass('past').attr('maxy', 1)
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
 					}
+					else{
+						var nextY = presentY;
+						for (;; ++nextY) {
+							var selector = 'section.future[x=' + presentX
+									+ '].future[y=' + nextY + ']';
+							var nowY = nextY - 1;
+							var max = parseInt($(selector).attr('maxy'));
+							$(selector).attr('y', nowY)
+							if (max == 1) {
+								break;
+							}
+							if (nextY == 10){
+								break;
+							}
+						}
+						$(".present .present").remove();
 
+						var selector = 'section.past[x=' + presentX
+								+ '].past[y=' + berforeY + ']';
+						$(selector).addClass('present').removeClass('past')
+								.css({
+									'visibility' : "visible",
+									'display' : 'block',
+									'transform' : 'translate(0, 0)'
+								})
+					}
+					
+
+					var selector = 'section.present[x=' + presentX
+							+ '].present[y=' + 0 + ']';
+					var solo = parseInt($(selector).attr('maxy'));
+					if (solo == 1) {
+						$(selector).unwrap();
+					}	
 				}
-
-				// // 작업중
-				// if (hereY > 0) {
-				// for (;; hereY++) {
-				//
-				// var selector = $('section.past[y=' + hereY
-				// + '].past[x=' + nexX + ']');
-				// $(selector).attr('x', nowX)
-				// var max = parseInt(selector.attr('maxy'));
-				// var y = parseInt(selector.attr('y'));
-				// if (max == 1) {
-				// var endY = y
-				// break;
-				// }
-				// }
-				// }
-				// // 와이 맥심값 찾기 끝
-				// var zoroY = 0;
-				// for (zoroY; zoroY + 1 < endY; ++zoroY) {
-				// var selector = $('section.past[y=' + zoroY
-				// + '].past[x=' + nexX + ']');
-				// $(selector).attr('y', zoroY);
-				// }// x값 ㅇㅣ후값 변경
-				// }
-				// countX = countX - 1;
-				//
-				// } else if (presentY == 1) {
-				// $(".present").remove();
-				//
-				// var selector = $('section.future[y=' + 0
-				// + '].future[x=' + presentX + ']');
-				//
-				// $(selector).addClass('present').removeClass('future')
-				// .css({
-				// 'visibility' : "visible",
-				// 'display' : 'block',
-				// 'transform' : 'translate(0, 0)'
-				// }).attr('maxy', 1);
-				//
-				// } else {
-				// $(".present").remove();
-				// var selector = $('section.past[y=' + berforeY
-				// + '].past[x=' + presentX + ']');
-				//
-				// $(selector).addClass('present').removeClass('past')
-				// .css({
-				// 'visibility' : "visible",
-				// 'display' : 'block',
-				// 'transform' : 'translate(0, 0)'
-				// }).attr('maxy', 1);
-				// }
-				//
-				// }// 밑바닥에 삭제 할때 끝
-				//
-				// // 중간쯤에서 삭제 했을때
-				// else {
-				// hereY = parseInt($(".present").attr('y'));
-				// $(".present").remove();
-				//
-				// for (;; ++hereY) {
-				// var selector = $('section.past[y=' + hereY
-				// + '].past[x=' + presentX + ']');
-				// var max = parseInt(selector.attr('maxy'));
-				// var y = parseInt(selector.attr('y'));
-				// if (max == 1) {
-				// var endY = y
-				// break;
-				// }
-				// }
-				// nexY = presentY;
-				// for (nexY; nexY < endY; ++nexY) {
-				// var selectY = nexY + 1;
-				// var selector = $('section.past[y=' + selectY
-				// + '].past[x=' + presentX + ']');
-				// $(selector).attr('y', nexY);
-				// }
-				//
-				// var selector = $('section.past[y=' + presentY + '].past[x='
-				// + presentX + ']');
-				// $(selector).addClass('present').removeClass('past').css({
-				// 'visibility' : "visible",
-				// 'display' : 'block',
-				// 'transform' : 'translate(0, 0)'
-				// })
-				//
-				// }
 				presf();
 				presb();
 				prest();
