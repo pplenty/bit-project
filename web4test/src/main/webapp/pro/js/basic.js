@@ -87,14 +87,33 @@ $_old(document).ready(function() {
 	});
 	
 	
-	//contents delete
+	//contents 
 	$('.toolbar-multi-item[data-value=delete]').click(function(){
 		$('.isFocus').detach();
 	});
 	
+//////////////////////// 삭제 키이벤트	
+window.history.forward();
 	
-	
-	
+	$(document).keydown(function(e){   
+		if(e.keyCode === 8){  
+         if($('.sl-block.isFocus[data-block-type="text"]').length == 0){  // 텍스트창이 없을 때
+        	console.log("텍스트창 유무 확인 : " + $('.sl-block.isFocus[data-block-type="text"]').length);
+        	console.log("텍스트창 아님");
+        	$(".sl-block.isFocus").detach(); // 텍스트 박스가 아니니까 삭제
+    		return false;		
+         } else {
+        	console.log("야호")
+         	console.log("텍스트창 유무 확인 : " + $('.sl-block.isFocus[data-block-type="text"]').length); // 텍스트창 존재!
+        	if($(".sl-block.isFocus[data-block-type='text']").text().length == 0){
+					$(".sl-block.isFocus[data-block-type='text']").detach();
+					return false;
+				}
+            }// 텍스트 박스일 경우
+         }// 백스페이스일 때
+    });
+///////////// 마이페이지로 돌아가는 버튼 클릭 이벤트
+
 	
 	 // drag select(바탕 드래그)
 	var presentCanvas = 'section.present';// 이벤트 등록 대상(바탕)
