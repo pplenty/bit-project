@@ -148,6 +148,7 @@ public class PresentationController {
         
         // 이 변수는 iframe(미리보기용)에 보낼 변수로 저장해둔 것 //위치 변경 금지!
         test_preNo = (int) session.getAttribute("currentPreNo");
+        
       } else {
         presentVo.setPreNo(currentPreNo);
         
@@ -155,6 +156,9 @@ public class PresentationController {
         JSONResult.put("latestPreNo", currentPreNo);
         JSONResult.put("result", "save success: update");
         System.out.println("do update: " + currentPreNo);
+        test_userNo = (int) session.getAttribute("userNo");
+        test_preNo = (int) session.getAttribute("currentPreNo");
+
       }
       
       
@@ -288,7 +292,7 @@ public class PresentationController {
     dCaps.setCapability("takesScreenshot", true);
 
     webDriver = new RemoteWebDriver(service.getUrl(), dCaps);
-    webDriver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+    webDriver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
 
     long iStart = System.currentTimeMillis();
     webDriver.get(previewUrl);
