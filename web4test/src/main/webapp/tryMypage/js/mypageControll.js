@@ -1,4 +1,4 @@
-var ip = 'localhost:9999/web4test'
+var ip = 'localhost:9999/web4test';
 var userNo; 
 var email;
 var sectionOneinnerOne;
@@ -246,7 +246,7 @@ function pageLoad(ip, userNo, email){
 		},
 		success: function(result) {
 			console.log(userNo);
-			console.log("받아오기")
+			console.log("받아오기");
 			var s1i1 = "최근 작업 내용이 없습니다."
 			var s1i2 = "저장한 내용이 없습니다."
 			var s2i1 = "즐겨찾기 등록 내용이 없습니다."
