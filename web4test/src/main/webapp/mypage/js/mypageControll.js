@@ -67,14 +67,14 @@ $(function(){
 			data: {'currentPreNo' : 0 },
 			success : function(){
 				console.log('newCanvas setCurrentPreno 성공')
-				location.href = '../pro/Edit.html';
+				window.open('../pro/Edit.html');
 			}, 
 			error : function(){
 				console.log("에러")
 			}
 		});
 	});// 새로운 캔버스 만들기 버튼
-		
+	
 		
 		$(document).on('click', '.useTool-edit', function(event) {
 			var titleDiv = $(event.currentTarget).parent().parent().siblings(".Title");
@@ -95,6 +95,48 @@ $(function(){
 			});
 		
 		});// 있는 내용 수정하기 버튼
+		
+
+		$(document).on('click', '.useTool-player', function(event) {
+			var titleDiv = $(event.currentTarget).parent().parent().siblings(".Title");
+			var toSetPreNo = $(titleDiv).attr('preno');
+			console.log('NO: '+toSetPreNo);
+		
+			$.ajax({
+				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
+				method : "post",
+				data: {'currentPreNo' : toSetPreNo },
+				success : function(){
+					console.log('newCanvas setCurrentPreno 성공');
+					window.open('../reveal/index.html#');
+				}, 
+				error : function(){
+					console.log("에러");
+				}
+			});
+		
+		});// 내 프레젠테이션 재생 버튼
+		
+		$(document).on('click', '.shareTool-player', function(event) {
+			var titleDiv = $(event.currentTarget).parent().parent().parent().siblings(".Title");
+			var toSetPreNo = $(titleDiv).attr('preno');
+			console.log('NO: '+toSetPreNo);
+		
+			$.ajax({
+				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
+				method : "post",
+				data: {'currentPreNo' : toSetPreNo },
+				success : function(){
+					console.log('newCanvas setCurrentPreno 성공');
+					window.open('../reveal/index.html#');
+				}, 
+				error : function(){
+					console.log("에러");
+				}
+			});
+		
+		});// 내 프레젠테이션 재생 버튼
+		
 		
 		
 		
@@ -184,7 +226,7 @@ function publicChange(preNo, isPublic){
 }
 
 function favoriteChange(tofavSetPreNo, yN){
-	$.ajax('http://' + ip + '/favoriteChange.do', {
+	$.ajax('http:/p/' + ip + '/favoriteChange.do', {
 		method : 'Post',
 		dataType : 'json',
 		data : {
@@ -374,7 +416,7 @@ function drawFavoriteList(sectionNo, data){
                         + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
                         + "<span class='favoriteYn'><i class='fa fa-star'></i></span>"
-                        + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
+                        + "<span class='shareTool-player'><i class='fa fa-play-circle-o'></i></span>"
                         + "</div> </div></div></div></li>").appendTo(sectionNo);
 	}
 
@@ -390,15 +432,14 @@ function drawShareList(sectionNo, data){
                         + "<div class='canvasIn create_date'><span class='column date'>Date : </span><span class='cre_date'>"+data[i].createDate+"</span></div>"
                         + "<div class='canvasIn useTool'>"
                         + "<span class='favoriteYn'>"+ decideFavorite(data[i].likePerson) +"</span>"
-                        + "<span class='useTool-player'><i class='fa fa-play-circle-o'></i></span>"
+                        + "<span class='shareTool-player'><i class='fa fa-play-circle-o'></i></span>"
                         + "</div> </div></div></div></li>").appendTo(sectionNo);
 	}
 
 }
 function emptyCase(sectionNo, message){
-	 $("<li>").html("<div class='oneCanvas'> "+
-             + "<div class='canvasIn canvasInfo'>"
-             + "<div class='canvasIn message'>"+ message +"</div>").appendTo(sectionNo);
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn canvasInfo'>"
+             + "<div class='canvasIn message'>"+ message +"</div></div>").appendTo(sectionNo);
 	
 }
 
