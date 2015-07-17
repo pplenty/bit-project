@@ -226,7 +226,7 @@ function publicChange(preNo, isPublic){
 }
 
 function favoriteChange(tofavSetPreNo, yN){
-	$.ajax('http:/p/' + ip + '/favoriteChange.do', {
+	$.ajax('http://' + ip + '/favoriteChange.do', {
 		method : 'Post',
 		dataType : 'json',
 		data : {
@@ -234,8 +234,8 @@ function favoriteChange(tofavSetPreNo, yN){
 			favorite  : yN
 		},
 		success : function(result){
-			refresh();
 			alert("변경되었습니다!");
+			refresh();
 			
 		},
 		error: function(xhr, textStatus, errorThrown) {
