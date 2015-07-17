@@ -9,7 +9,17 @@ $(function(){
     // - 투명도 변수
 	var opSizeInput;
 
-
+//	$('.preview-controls .sidebar .nav-item button.button.profile').on('click', function(){
+//		alert("digh")
+////		var result = comfirm("저장하시겠습니까?");
+////		if (result){
+////			$("'button.button.save'").click();
+////		} else {			
+////			location.ref = '../tryMypage/mypage.html';
+////		}
+//	});
+	
+	
 	    //text
 	$( ".toolbar-text" ).on('click',
 	   function() {
@@ -33,7 +43,7 @@ $(function(){
 						'border' : '0px solid #ffffff',
 						//'font-size' : '50px'
 					}).appendTo(presentSection);
-					
+				
 			var blockContent = 
 				$("<div>")
 				.addClass("sl-block-content")
