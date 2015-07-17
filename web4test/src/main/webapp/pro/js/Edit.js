@@ -58,6 +58,11 @@ $(document).not($(".font.size-box")).click(function() {
 
 //	
 $(function() {
+	presf();
+	presb();
+	prest();
+	presbb();
+	sectionDel();
 
 	$(".wrapper").hover(function() {
 		$("div.nav-item").css('visibility', 'visible');
