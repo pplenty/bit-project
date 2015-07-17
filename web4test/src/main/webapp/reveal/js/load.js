@@ -77,8 +77,8 @@ $(document).ready(function(){
                 	alert('인증번호: ' + authNo);
             	} else {
     		        console.log(command);
-    		        if(command == 'right') Reveal.right();
-    		        if(command == 'left') Reveal.left();
+    		        if(command == 'next') Reveal.right();
+    		        if(command == 'back') Reveal.left();
             	}
             });
             
