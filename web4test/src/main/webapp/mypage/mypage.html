@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Free-zentation ::: My page </title>
+		<!--아이콘-->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		
+		<!-- container splitout css -->
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+       <!-- custom css 이혜인 -->
+        <link rel="stylesheet" type="text/css" href="css/mypage-list.css" />	
+ 		 
+ 		<!-- topMenu splitout js 이게 맨 위에 있어야 함-->
+         <script src="TooltipMenu/js/modernizr.custom.js"></script>  
+		 <!-- container splitout js -->
+ 		<script src="js/modernizr.custom.js"></script>
+ 		<!-- 마이페이지 컨트롤러 연결 js-->
+ 		<script src='js/jquery-1.11.2.js'></script>
+ 		<script src="js/mypageControll.js"></script>
+ 		
+		<!-- topMenu -->
+		<link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="TooltipMenu/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="TooltipMenu/css/component.css" />
+	</head>
+	<body>
+<div class="topMenu">
+    <div class="containerHead">
+            <ul id="cbp-tm-menu" class="cbp-tm-menu">
+              <!--   <li><a href="#">Home</a></li> -->
+                <li>
+                    <a href="#"> Free-sentaiton</a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" class="cbp-tm-icon-users">Play Presentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Connect Controller</a></li>
+                    <!--     <li><a href="#" class="cbp-tm-icon-location">Plum salsify</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">Bok choy celtuce</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">Onion endive</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Bitterleaf</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About Us</a>
+                    <ul class="cbp-tm-submenu">
+<!--                         <li><a href="#" class="cbp-tm-icon-archive">Tutorial</a></li>
+ -->                        <li><a href="#" class="cbp-tm-icon-contract">F&Q</a></li>
+                        <li><a href="#" class="cbp-tm-icon-earth">about freesentation</a></li>
+                        <li><a href="#" class="cbp-tm-icon-users">about appleNet</a></li>
+                        <!-- <li><a href="#" class="cbp-tm-icon-earth">Garlic mint</a></li>
+                        <li><a href="#" class="cbp-tm-icon-location">Zucchini garnish</a></li>
+                        <li><a href="#" class="cbp-tm-icon-mobile">Sea lettuce</a></li> -->
+                    </ul>
+                </li>
+                <li class='loginUserName'>
+                    <a class='userName' href="#"></a>
+                    <ul class="cbp-tm-submenu">
+                        <li><a href="#" id="logoutBtn" class="cbp-tm-icon-cog">로그아웃</a></li>
+                    </ul> 
+                </li>
+            </ul>
+      </div><!--container -->
+</div><!--TopMenu 끝-->
+		<div class="container">
+			<div id="splitlayout" class="splitlayout">
+				<div class="intro">
+					<div class="side side-left">
+						<div class="intro-content">
+							<div class="profile"><img src="img/profile1.jpg" alt="profile1"></div>
+							<h1><span>My Canvas </span><span>Doing My Presentation</span></h1>
+						</div>
+						<div class="overlay"></div>
+					</div>
+					<div class ="side side-center">
+					   <div class="intro-content newCanvas">
+					       <div class="profile"><img src="img/creat.jpg" alt="profile3"></div>
+					       <h1><span class='createMs'><span class='one'>new C</span><span class='two'>anvas</span></span></h1>
+					   </div><!-- 센터 intro-content-->
+					</div><!--센터 side div 끝  -->
+					<div class="side side-right">
+						<div class="intro-content">
+							<div class="profile"><img src="img/profile2.jpg" alt="profile2"></div>
+							<h1><span>Share Canvas </span><span>Share Canvas</span></h1>
+						</div>
+						<div class="overlay"></div>
+					</div>
+				</div><!-- /intro -->
+				<div class="page page-right">
+					<div class="page-inner">
+						<section>
+                            <h2>My Faovorite Canvas</h2>
+                              <div class='section two inner one'>
+	                              <div class="inside-list">
+	                                   <ul class= "inside-list Favoriteshare">
+	                                   </ul>
+	                               </div><!--inside-list-->
+                               </div><!--section1inner1 끝  -->                          
+                        </section>
+                        <section>
+                            <h2>Share Presentation</h2>
+                              <div class='section two inner two'>
+                              <div class="inside-list">
+                                   <ul class= "inside-list share">
+                                   </ul>
+                               </div><!--inside-list-->
+                               </div><!--section1inner1 끝  -->                          
+                        </section>
+					</div><!-- /page-inner -->
+				</div><!-- /page-right -->
+				<div class="page page-left">
+					<div class="page-inner">
+						<section>
+							<h2>My Latest Presentation</h2>
+							  <div class='section one inner one'>
+							  <div class="inside-list">
+	                               <ul class= "inside-list latest">
+	                               </ul>
+                               </div><!--inside-list-->
+                               </div><!--section1inner1 끝  -->							
+						</section>
+						<section>
+                            <h2>My Whole Presentation</h2>
+                              <div class='section one inner two'>
+                              <div class="inside-list">
+                                   <ul class= "inside-list whole">
+                                   </ul>
+                               </div><!--inside-list-->
+                               </div><!--section1inner1 끝  -->                          
+                        </section>
+					</div><!-- /page-inner -->
+				</div><!-- /page-left -->
+				<a href="#" class="back back-right" title="back to intro">&rarr;</a>
+				<a href="#" class="back back-left" title="back to intro">&larr;</a>
+			</div><!-- /splitlayout -->
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/cbpSplitLayout.js"></script>
+		<!--  TopMenu js -->
+      <script src="TooltipMenu/js/cbpTooltipMenu.min.js"></script>
+         <script>
+            var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+        </script> 
+        
+        <script>
+        var ip = 'localhost:9999/web4test';
+        var email;
+        var name;
+        var id_token;
+        var access_token;
+        var expires_in;
+        
+        function disconnectUser() {
+        	  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
+        	  access_token;
+
+        	  // 비동기 GET 요청을 수행합니다.
+        	  $.ajax({
+        	    type: 'GET',
+        	    url: revokeUrl,
+        	    async: false,
+        	    contentType: "application/json",
+        	    dataType: 'jsonp',
+        	    success: function(nullResponse) {
+        	      // 사용자가 연결 해제되었으므로 작업을 수행합니다.
+        	      // 응답은 항상 정의되지 않음입니다.
+        	      console.log('logout');
+        	    },
+        	    error: function(e) {
+        	      // 오류 처리
+        	      console.log(e);
+        	      // 실패한 경우 사용자가 수동으로 연결 해제하게 할 수 있습니다.
+        	      //https://plus.google.com/apps
+        	    }
+        	  });
+        	}
+        $('#logoutBtn').click(function(){
+        	$.ajax('http://' + ip + '/logout.do', {
+                method : 'GET',
+                dataType : 'json',
+                success : function(result){
+                	setTimeout("location.href='http://" + ip + "/firstpage/firstpage.html'",500);
+                  disconnectUser();
+                  setTimeout("location.href='http://" + ip + "/firstpage/firstpage.html'",500);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                  alert('작업을 완료할 수 없습니다.\n' + 
+                      '잠시 후 다시 시도하세요.\n' +
+                      '계속 창이 뜬다면, 관리자에 문의하세요.(사내번호:1112)');
+                }
+              });
+        });
+        
+        </script>
+		
+	</body>
+</html>
