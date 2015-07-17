@@ -1,3 +1,4 @@
+var ip = 'localhost:9999/web4test';
 var email;
 var name;
 var id_token;
@@ -104,6 +105,27 @@ function disconnectUser() {
 // 버튼 클릭으로 연결 해제를 실행할 수 있습니다.
 //$('#revokeButton').click(disconnectUser);
 
+function firstpageGetUser() {
+	$.ajax('http://' + ip + '/firstpageGetUser.do', {
+		method : 'GET',
+		dataType : 'json',
+		success : function(result){
+			
+			name = result.name;
+			
+			alert(result.name);
+			 
+			$('.ss-right.loginBtn.loginUserName').html("<a class='userName' href='#'>["+ name +"]" + "님 환영합니다." + "</a><ul class='cbp-tm-submenu'><li><a href='#' class='cbp-tm-icon-cog'>로그아웃</a></li></ul>");
+		},
+		error: function(xhr, textStatus, errorThrown) {
+			alert('작업을 완료할 수 없습니다.\n' + 
+				  '잠시 후 다시 시도하세요.\n' +
+				  '계속 창이 뜬다면, 관리자에 문의하세요.(사내번호:1112)');
+			console.log(" LoginController의 getUser ajax 요청 오류");
+		}
+	});
+}
+
 
 function googleCheckLogin(obj) {
 	console.log('호출됨1');
@@ -126,6 +148,7 @@ function googleCheckLogin(obj) {
 		success: function(data) {
 			console.log(data);
 //			location.href='../tryMypage/mypage.html';
+			firstpageGetUser();
 		},
 		error: function(e) {
 			console.log(e);
