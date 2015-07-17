@@ -96,6 +96,26 @@ $(function(){
 		
 		});// 있는 내용 수정하기 버튼
 		
+		$(document).on('click', '.useTool-player', function(event) {
+			var titleDiv = $(event.currentTarget).parent().parent().siblings(".Title");
+			var toSetPreNo = $(titleDiv).attr('preno');
+			console.log('NO: '+toSetPreNo);
+		
+			$.ajax({
+				url: 'http://localhost:9999/web4test/setCurrentPreNo.do',
+				method : "post",
+				data: {'currentPreNo' : toSetPreNo },
+				success : function(){
+					console.log('newCanvas setCurrentPreno 성공');
+					location.href = '../reveal/index.html#/';
+				}, 
+				error : function(){
+					console.log("에러");
+				}
+			});
+		
+		});// 있는 내용 수정하기 버튼
+		
 		
 		
 // 공개 여부 전환 버튼
@@ -396,9 +416,7 @@ function drawShareList(sectionNo, data){
 
 }
 function emptyCase(sectionNo, message){
-	 $("<li>").html("<div class='oneCanvas'> "+
-             + "<div class='canvasIn canvasInfo'>"
-             + "<div class='canvasIn message'>"+ message +"</div>").appendTo(sectionNo);
+	 $("<li>").html("<div class='oneCanvas'><div class='canvasIn canvasInfo message'> \> "+ message +"</div></div>").appendTo(sectionNo);
 	
 }
 
