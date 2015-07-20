@@ -808,7 +808,7 @@ $(function() {
 					}
 				}
 				
-
+///////////////////////*****************************************////////////////
 				var presentSection = $_old('section.present');
 				//var presentSection = $_old('.sl-block-gird');
 				var blockId = 100000;
@@ -1167,7 +1167,7 @@ $(function() {
 					ev.stopPropagation();
 				});
 				$_old.drop({ multi: true });// multi select
-
+///////////////////////*****************************************////////////////
 				presf();
 				presb();
 				prest();
@@ -1290,6 +1290,7 @@ $(function() {
 
 					}
 				}
+///////////////////////*****************************************////////////////
 				var presentSection = $_old('section.present');
 				//var presentSection = $_old('.sl-block-gird');
 				var blockId = 100000;
@@ -1648,6 +1649,8 @@ $(function() {
 					ev.stopPropagation();
 				});
 				$_old.drop({ multi: true });// multi select
+				
+///////////////////////*****************************************////////////////
 				presf();
 				presb();
 				prest();
@@ -2327,7 +2330,7 @@ $(function() {
 			function() {
 				var presentX = $(".present .present").attr('x');
 				if (presentX === undefined) {
-					$(".present").css('background-color', $(this).val()).attr(
+					$(".sl-block-grid").css('background-color', $(this).val()).attr(
 							'data-background-color', $(this).val());
 				} else {
 					$(".present .present").css('background-color',
