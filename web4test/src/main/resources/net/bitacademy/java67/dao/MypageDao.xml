@@ -90,6 +90,13 @@
 </delete>
 
 
+<!-- 프레젠테이션 삭제 부분 -->
+<delete id="deletePresent" parameterType="map">
+      delete from presentation
+      where user_no=#{userNo} and pre_no=#{preNo}
+</delete>
+
+
 </mapper>
 
 
