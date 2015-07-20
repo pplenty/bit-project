@@ -1,6 +1,8 @@
 var ip = 'localhost:9999/web4test';
 var email;
 var name;
+var userNo;
+var preNo;
 var id_token;
 var access_token;
 var expires_in;
@@ -33,6 +35,7 @@ function signinCallback(authResult) {
 
 		access_token = authResult['access_token'];
 		$.session.set('access_token', access_token);
+		
 		
 		getEmail();      
 		// 이메일 주소 가져오기 요청을 실행합니다.
@@ -116,6 +119,8 @@ function firstpageGetUser() {
 		success : function(result){
 			
 			name = result.name;
+			userNo = result.userNo;
+			$.session.set('userNo', result.userNo);
 			
 			$('.logoutList').html("<a class='userName' href='#'>["+ name +"]" + "님 환영합니다." + "</a><ul class='cbp-tm-submenu'><li><a href='#' id='logoutBtn' class='cbp-tm-icon-cog'>로그아웃</a></li></ul>");
 		},
