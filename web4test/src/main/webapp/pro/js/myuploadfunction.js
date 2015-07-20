@@ -24,8 +24,8 @@ $(function () {
 	      method: 'GET',
 	      dataType: 'json',
 	      data: {
-	        userNo: 1,
-	        preNo: 1
+	        userNo: $.session.get('userNo'),
+	        preNo: $.session.get('preNo')
 	      },
 	      success: function(result) {
 	    	  console.log("refreshAjax()" + result.data);
