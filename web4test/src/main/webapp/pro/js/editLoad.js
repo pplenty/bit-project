@@ -20,6 +20,8 @@ $(document).ready(function(){
 				$('.slides').find('.initial').detach();
 				dataHTML = $.parseHTML(data.content);
 				$('.slides').append(dataHTML);
+				$.session.set('preNo', currentPreNo);
+				$.session.set('userNo', userNo);
 				
 			}
 			
