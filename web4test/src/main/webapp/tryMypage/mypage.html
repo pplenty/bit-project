@@ -27,6 +27,7 @@
 		<link rel="shortcut icon" href="../favicon.ico">
         <link rel="stylesheet" type="text/css" href="TooltipMenu/css/default.css" />
         <link rel="stylesheet" type="text/css" href="TooltipMenu/css/component.css" />
+    
 	</head>
 	<body>
 <div class="topMenu">
@@ -60,7 +61,7 @@
                 <li class='loginUserName'>
                     <a class='userName' href="#"></a>
                     <ul class="cbp-tm-submenu">
-                        <li><a href="#" class="cbp-tm-icon-cog">로그아웃</a></li>
+                        <li><a href="#" id="logoutBtn" class="cbp-tm-icon-cog">로그아웃</a></li>
                     </ul> 
                 </li>
             </ul>
@@ -145,6 +146,40 @@
          <script>
             var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
         </script> 
-		
+ <script type="text/javascript" src="js/jquery.cookie.js"></script>    
+<script type="text/javascript" src="js/jquery.session.js"></script> 
+<script type="text/javascript">
+console.log($.session.get('access_token'));
+var access_token = $.session.get('access_token');
+function disconnectUser() {
+	  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
+	  access_token;
+
+	  // 비동기 GET 요청을 수행합니다.
+	  $.ajax({
+	    type: 'GET',
+	    url: revokeUrl,
+	    async: false,
+	    contentType: "application/json",
+	    dataType: 'jsonp',
+	    success: function(nullResponse) {
+	      // 사용자가 연결 해제되었으므로 작업을 수행합니다.
+	      // 응답은 항상 정의되지 않음입니다.
+	      console.log('logout');
+	      location.href='http://' + ip + '/firstpage/firstpage.html';
+	    },
+	    error: function(e) {
+	      // 오류 처리
+	      console.log(e);
+	      // 실패한 경우 사용자가 수동으로 연결 해제하게 할 수 있습니다.
+	      //https://plus.google.com/apps
+	    }
+	  });
+	}
+	
+	$('#logoutBtn').click(function() {
+		disconnectUser();
+	});
+</script>
 	</body>
 </html>
