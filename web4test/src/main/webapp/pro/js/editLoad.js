@@ -1,3 +1,7 @@
+//$(window).load(function(){
+//	console.log('loaind..');
+//	$('#loadingLogo').css('display', 'none');
+//})
 $(document).ready(function(){
 	var dataHTML;
 	
@@ -16,8 +20,6 @@ $(document).ready(function(){
 				$('.slides').find('.initial').detach();
 				dataHTML = $.parseHTML(data.content);
 				$('.slides').append(dataHTML);
-				$.session.set('preNo', currentPreNo);
-				$.session.set('userNo', userNo);
 				
 			}
 			
@@ -26,6 +28,8 @@ $(document).ready(function(){
 				
 				$.getScript('js/Edit.js', function() {
 					console.log('js/Edit.js load');
+					console.log('loaind..');
+					$('#loadingLogo').css('display', 'none');
 				});
 			});
 			
