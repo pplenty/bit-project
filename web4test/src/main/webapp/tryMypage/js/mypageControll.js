@@ -1,4 +1,4 @@
-var ip = 'localhost:9999/web4test';
+var ip = 'localhost:9999/web4test'
 var userNo; 
 var email;
 var sectionOneinnerOne;
