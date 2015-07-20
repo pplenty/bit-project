@@ -17,6 +17,7 @@ public interface MypageDao {
   void updatePublic(HashMap<String, Object> sqlParams);
   void insertFavorite(HashMap<String, Object> sqlParams);
   void deleteFavorite(HashMap<String, Object> sqlParams);
+  void deletePresent(HashMap<String, Object> sqlParams);
 
 }
 

@@ -141,6 +141,23 @@ public class MypageController {
   }
 
   
+  @RequestMapping(value="/deletePresentation", method=RequestMethod.POST)
+  public Object deletePresentation(HttpServletRequest request, HttpServletResponse response){
+  
+    int preNo = Integer.parseInt(request.getParameter("preNo"));
+    System.out.println("삭제할 프레젠테이션 번호 " + preNo);
+ 
+    HashMap<String,Object> sqlParams = new HashMap<String,Object>();//요청할 때 쓸 정보 공간
+    sqlParams.put("preNo", preNo);
+    sqlParams.put("userNo", userNo);
+    
+    mypageDao.deletePresent(sqlParams);
+    
+    HashMap<String, Object> responseData = new HashMap<String, Object>(); // 클라이언트에 보낼 데이터 저장공간
+    responseData.put("status", "success");
+    
+    return responseData;
+  }
   
   
   
