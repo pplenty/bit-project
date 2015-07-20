@@ -52,7 +52,7 @@ function screenshot(preUrl, preNo) {
 		}
 	});
 }
-
+//function init
 $_old(document).ready(function() {
 	var presentSection = $_old('section.present');
 	//var presentSection = $_old('.sl-block-gird');

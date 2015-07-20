@@ -1,4 +1,7 @@
-
+//$(window).load(function(){
+//	console.log('loaind..');
+//	$('#loadingLogo').css('display', 'none');
+//})
 $(document).ready(function(){
 	var dataHTML;
 	
@@ -25,6 +28,8 @@ $(document).ready(function(){
 				
 				$.getScript('js/Edit.js', function() {
 					console.log('js/Edit.js load');
+					console.log('loaind..');
+					$('#loadingLogo').css('display', 'none');
 				});
 			});
 			
