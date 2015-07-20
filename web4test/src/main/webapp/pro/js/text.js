@@ -1,6 +1,5 @@
 $(function(){
 	
-	var presentSection = $('section.present');
 	var blockId = 100000;
 	var block_zIndex = 10;
 	
@@ -19,6 +18,7 @@ $(function(){
 ////		}
 //	});
 	
+	var presentSection = $('section.present');
 	
 	    //text
 	$( ".toolbar-text" ).on('click',
@@ -42,7 +42,7 @@ $(function(){
 						'background-color' : '#ffffff',
 						'border' : '0px solid #ffffff',
 						//'font-size' : '50px'
-					}).appendTo(presentSection);
+					}).appendTo( $('section.present'));
 				
 			var blockContent = 
 				$("<div>")
