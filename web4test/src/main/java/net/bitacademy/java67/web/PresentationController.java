@@ -142,6 +142,7 @@ public class PresentationController {
         presentDao.insert(presentVo);
         int latestPreNo = mypageDao.selectLatest(userNo).getPreNo();
         JSONResult.put("latestPreNo",latestPreNo);
+        JSONResult.put("userNo", session.getAttribute("userNo"));
         JSONResult.put("result", "save success: insert");
         System.out.println("do insert preNo: " + latestPreNo);
         session.setAttribute("currentPreNo", latestPreNo);

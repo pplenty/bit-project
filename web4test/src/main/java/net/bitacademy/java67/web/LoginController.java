@@ -84,8 +84,10 @@ public class LoginController {
   public HashMap<String, Object> getFirstPageUserInfo(HttpSession session, HttpServletRequest request,
       HttpServletResponse response) {
     String name = (String) session.getAttribute("name");
+    int userNo = (int) session.getAttribute("userNo");
     HashMap<String, Object> sqlParams = new HashMap<String, Object>();
     sqlParams.put("name", name);
+    sqlParams.put("userNo", userNo);
     return sqlParams;
   }
   

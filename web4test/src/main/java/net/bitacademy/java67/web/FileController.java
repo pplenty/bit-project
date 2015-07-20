@@ -46,10 +46,10 @@ public class FileController {
     Iterator<String> itr = request.getFileNames();
     MultipartFile mpf = null;
     String filePath = null;
-    final String uploadPath = "C:/BigLab/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/images/";
-    final String thumbnailPath = "C:/BigLab/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/test2/upload2/thumbnail/";
-    final String imgDbPath = "http://localhost:9999/web4test/test2/upload2/images/";
-    final String thumbDbPath = "http://localhost:9999/web4test/test2/upload2/thumbnail/";
+    final String uploadPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/upload/images/";
+    final String thumbnailPath = "/Users/ShyJuno/BIT/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web4test/upload/thumbnail/";
+    final String imgDbPath = "http://localhost:9999/web4test/upload/images/";
+    final String thumbDbPath = "http://localhost:9999/web4test/upload/thumbnail/";
     
     // 2. get each file
     while (itr.hasNext()) {
@@ -77,7 +77,7 @@ public class FileController {
         System.out.println("컨텐트타입 : " + mpf.getContentType());
 
         fileVo.setUserNo((int) session.getAttribute("userNo")); 
-        fileVo.setPreNo((int) session.getAttribute("preNo"));
+        fileVo.setPreNo((int) session.getAttribute("currentPreNo"));
         
         try {
           fileVo.setBytes(mpf.getBytes());
@@ -138,7 +138,7 @@ public class FileController {
     List<FileVo> resultVo;
     FileVo fileVo = new FileVo();
     fileVo.setUserNo((int) session.getAttribute("userNo"));
-    fileVo.setPreNo((int) session.getAttribute("preNo"));
+    fileVo.setPreNo((int) session.getAttribute("currentPreNo"));
     
     resultVo = fileService.getList(fileVo);
     
