@@ -1,0 +1,741 @@
+
+<!DOCTYPE html>
+  <html class="sl-root decks live live-server">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"4fd2e9786b","applicationID":"1563900","transactionName":"cApZREQKWl9XFxZQVlAORB9aDEBW","queueTime":0,"applicationTime":67,"agent":"js-agent.newrelic.com/nr-632.min.js"}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):(o[e]||(o[e]=[]),void o[e].push(n))}var r=e("ee").create(),o={};n.exports=t,t.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=(e(2),window),f=u.document,s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script>
+    <title>deck: Slides</title>
+    <meta name="description" content="Slides">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">   <!-- 내가넣음 -->
+    <script src="../pro/js/jquery-1.11.2.js"  type="text/javascript"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    <script src="js/load.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600,700&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic" rel="stylesheet" type="text/css" data-application-font="opensans">
+    <link href="//assets.slid.es/assets/slides/slides-3cad3fcc3b17d21d10abdb14272418e0.css" media="all" rel="stylesheet" />
+    <link href="//assets.slid.es/assets/application-d871bef2607ef9ddce7849f396e9d41e.css" media="all" rel="stylesheet" />
+    <link href="//assets.slid.es/assets/deck-v2-25aef634dabeac9bf4a7c0d2b9e20be9.css" media="all" rel="stylesheet" />
+
+
+<style id="user-css-output" type="text/css"></style>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="l/39RqsDU1Q8XysLAyKYfPL+1WTVZ/OF/ErJIWuxezQ=" name="csrf-token" />
+    <script type="text/javascript">
+  if( !/dnt=1/.test( window.location.search ) ) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39670045-1', { 'userId': '338888' });
+    ga('send', 'pageview');
+
+  }
+</script>
+    <!--[if lt IE 9]>
+    <script src="//assets.slid.es/assets/html5shiv-b51d49ab0e89834a02ffce4a59905afb.js"></script>
+<![endif]-->
+  </head>
+  <body>
+    <div class="page-loader visible">
+      <div class="page-loader-inner">
+        <div class="page-loader-spinner"></div>
+        <p class="page-loader-message">Loading deck</p>
+      </div>
+    </div>
+
+    <div class="reveal-viewport theme-font-montserrat theme-color-black-mint">
+      <div class="reveal">
+        <div class="slides">
+          <section data-id="2713cafbb735dc9bc3e32c01b52830b5"><div class="sl-block" data-block-type="text" data-block-id="e729ac1f15efea040e90cad4acd96cad" style="height: auto; min-width: 30px; min-height: 30px; width: 668px; left: 138px; top: 216px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 192%; letter-spacing: 0.11em; color: rgb(255, 255, 255); padding: 23px; border: 4px solid rgb(68, 68, 68); border-radius: 39px; background-color: rgb(102, 102, 102);" data-has-letter-spacing="">
+<p><strong>Free-zentation </strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e0a355b584dffcaab601190ae75b25cf" style="height: auto; min-width: 30px; min-height: 30px; width: 320px; left: 9px; top: 153px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>[BIT Java67th]</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2e72908fc8a0b9156025c7f8610b855c" style="height: auto; min-width: 30px; min-height: 30px; width: 243px; left: 279px; top: 409px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>프로젝트 팀명 : </p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="6df62f47dcaad9db93df838f50b29322" style="height: auto; min-width: 30px; min-height: 30px; width: 399px; left: 502px; top: 409px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>AppleNet</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 243px; left: 278px; top: 459px;" data-block-id="a7b3fd9ebcb9271e923eb058e5efe71c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>프로젝트 주제 : </p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 399px; left: 502px; top: 459px;" data-block-id="92a9f5b02c31a332893d54871f13758b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>웹프레젠테이션 서비스</p>
+</div></div></section><section class="stack" data-id="1c0b0b707895f7afdc112fb200e886ba"><section data-id="eb02631740699b97ccce61034ff37178"><div class="sl-block" data-block-type="text" data-block-id="0e0e48ccb933039fcb9114654cbdffdf" style="height: auto; min-width: 30px; min-height: 30px; width: 587px; left: 107px; top: 148px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+
+
+
+
+<div class="sl-block" data-block-type="text" data-block-id="909f62218ed49675afbb1b6473011f1d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 266px; top: 280px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 152%;" dir="ui"><p style="text-align:left">왜? 웹 프레젠테이션 서비스인가</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 260px; top: 397px;" data-block-id="acdf67e27015d69c16d8805be3f871c0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 152%;">
+<p style="text-align:left">어떻게?  개선할 것인가</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 62px; height: 76px; left: 160px; top: 274px;" data-block-id="f14c65aa5e7d3b916251ca6a986b0e8c"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 62px; height: 76px; left: 160px; top: 389px;" data-block-id="855ffd9094456a2325e44354bb2b6989"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="c16809505f6bd5b495406f0308f9c418"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div></section><section data-id="b6aad0f8917a20791ce5ab4928e98a2d"><div class="sl-block" data-block-type="text" style="height: auto; width: 587px; left: -11px; top: 39px;" data-block-id="60aae78722a2c5b7beffe958f42b0602"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 811px; left: 88px; top: 497px;" data-block-id="54d79e75e1bbf0b741dcd09e2d906be9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; font-size: 146%;">
+<p>우리가 사용했던 도구의 불편함을 개선해보자!</p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 240px; top: 173px;" data-block-id="7c44e7ceedd870495f204583e954a4d7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 152%;">
+<p style="text-align: left;">왜? 웹 프레젠테이션 서비스인가</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 62px; height: 76px; left: 135px; top: 164px;" data-block-id="f3e9ea5656c0630b4b81644f69f4f9fa"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="db774c5dceb6c31fc7505d6cb7bfba90"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; border-style: solid; background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 148px; height: 143px; left: 345px; top: 262px;" data-block-id="ae04ad5b9d4eb50b73e8afb7845b1b06"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 148px; height: 143px; left: 197px; top: 310px;" data-block-id="d2e246b3c4fe77c8ad92490082fc61b3"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 148px; height: 143px; left: 493px; top: 310px;" data-block-id="2f114aff3f387b144674df01a730d8b7"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 148px; height: 143px; left: 648px; top: 310px;" data-block-id="cb0a0fcfddf0782d03bb202a2bff624f"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div></section><section data-id="619182597643da5f2b897f10da60a84f"><div class="sl-block" data-block-type="text" style="height: auto; width: 587px; left: -11px; top: 39px;" data-block-id="93a991f6fe6b6d5647a5058459661d8e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 453px; left: 40px; top: 334px;" data-block-id="352d24d1c3f81292258a5ced0bfe6015"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 146%;">
+<p>우리가 사용했던 도구</p>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 240px; top: 173px;" data-block-id="daf6db0582bff72eda3400744f00c458"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 152%;">
+<p style="text-align: left;">왜? 웹 프레젠테이션 서비스인가</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 62px; height: 76px; left: 135px; top: 164px;" data-block-id="b559dbbb99bf57931316b0bfc7c70edc"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="5a247fc31df09cc9d6dcb89e22b5748e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; border-style: solid; background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 132px; height: 70px; left: 151px; top: 413px;" data-block-id="7d8b32b1953a1fcb3cdda203baa74db3"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="0,21 35,21 35,0 70,35 35,70 35,49 0,49" class="shape-element" fill="rgb(255, 153, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 253px; top: 406px;" data-block-id="48a3d6420bcf376edc31eaba970075f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; font-size: 217%;">
+<p>프레젠테이션 도구 </p>
+</div></div></section><section data-id="e39342729d62b14f1c4a0f4cbcab94d3"><div class="sl-block" data-block-type="text" style="height: auto; width: 587px; left: 0px; top: 129px;" data-block-id="d3407b6ea4222a9ee37e890e34d77c72"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="2f7030cfcbe6816675eb7e3574e59c88"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 89px; height: 93px; left: 108px; top: 388px;" data-block-id="7224326c637acde719e0fa8fb28124af"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="rgb(0, 0, 255)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 89 89"><polygon points="0,26.7 44.5,26.7 44.5,0 89,44.5 44.5,89 44.5,62.3 0,62.3" class="shape-element" fill="rgb(0, 0, 255)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 811px; left: 121px; top: 397px;" data-block-id="7ce27707aa245d828c800514b51f9006"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 192%;">
+<p>기존 프레젠테이션의 분석</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 210px; top: 238px;" data-block-id="e153461df9e271e9ed1e906655a45030"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 152%;">
+<p style="text-align:left">어떻게?  개선해볼 것인가</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 62px; height: 76px; left: 122px; top: 221px;" data-block-id="9940b5eff2ce65e49604f91e92699ef6"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div></section><section data-id="bbca6db3fad70e36e06215043ccdcc24"><div class="sl-block" data-block-type="text" style="height: auto; width: 412px; left: 40px; top: 81px;" data-block-id="0e4db4937372f7c69bea0ecc47f5c845"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 109%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="52e6f65f35f6b27b63b5ef841be5bdc8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="7279509409b846ccfa5b1ba7491c45eb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 142px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 152%;">
+<p>기존 프레젠테이션의 분석</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="414984d2a2e05f77652662c2b1aeb3bf" style="min-width: 4px; min-height: 4px; width: 62px; height: 76px; left: 98px; top: 204px;"><div class="sl-block-content" data-shape-type="symbol-checkmark-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM13.52 23.383l-7.362-7.363 2.828-2.828 4.533 4.535 9.617-9.617 2.828 2.828-12.444 12.445z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="cec69d97a7fb5697809daea2cd5d357f" style="min-width: 30px; min-height: 30px; width: 146px; height: 146px; left: 160px; top: 325px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="512" data-natural-height="512" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="dcf55f338aacef21948ccb382148e5c4" style="min-width: 30px; min-height: 30px; width: 134px; height: 134px; left: 346px; top: 337px;"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="258196e512606c6d1bdd2a05a88c1e08" style="min-width: 30px; min-height: 30px; width: 156px; height: 156px; left: 512px; top: 315px;"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="200" data-natural-height="200" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="6c6baf5900d8dedb257d2a1fd7e95319" style="min-width: 30px; min-height: 30px; width: 203.180212014134px; height: 115px; left: 689px; top: 337px;"><div class="sl-block-content" style="z-index: 18;"><img data-natural-width="1000" data-natural-height="566" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div></section><section data-id="5d6695e18f541a89918056b75ae14b92"><div class="sl-block" data-block-type="text" style="height: auto; width: 412px; left: 40px; top: 81px;" data-block-id="118ca40db479ab036a17d44de8817632"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 109%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="5ecf62c552186a74594412a077703792"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 146px; height: 146px; left: 80px; top: 150px;" data-block-id="5065768aa57aaf25824b41c935938f80"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="512" data-natural-height="512" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 134px; height: 134px; left: 226px; top: 156px;" data-block-id="83a0f1c89e2ae5a524a320b1f590db0f"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9838d2440b05fed3f9cae354969017a8" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 329px; top: 223px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 147%;">
+<p>파워포인트, 키노트</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="bed7bc22b3e90bfafe9ac04ad5f16b1b" style="min-width: 4px; min-height: 4px; width: 150px; height: 160px; left: 63px; top: 350px;"><div class="sl-block-content" data-shape-type="symbol-smiley" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM8 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM20 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM22.003 19.602l2.573 1.544c-1.749 2.908-4.935 4.855-8.576 4.855s-6.827-1.946-8.576-4.855l2.573-1.544c1.224 2.036 3.454 3.398 6.003 3.398s4.779-1.362 6.003-3.398z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="21ae2af79b5030ca5a6d366d2a5e4f7f" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 240px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 152%;">
+<p>슬라이드 방식의 내용 전개</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 685px; left: 240px; top: 412px;" data-block-id="b7d53f8affabda7f2360f6541e1f0739"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; font-size: 151%;">
+<p>기존 탬플릿의 활용 없이도 제작 가능</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e0337b556ce854c85a850c7b87cd9eed" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 240px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left; font-size: 151%;">
+<p>사용자의 자유도가 높은 제작 방식</p>
+</div></div></section><section data-id="5115245e21197b9a0efec35b0cd58cab"><div class="sl-block" data-block-type="text" style="height: auto; width: 412px; left: 40px; top: 81px;" data-block-id="b8a40bfc025c7ed7de267a4645e53c39"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 109%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="035716f06922d2b4253943d84b0a08df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 146px; height: 146px; left: 80px; top: 150px;" data-block-id="1f70406e98f2efb9f9340bfb285f4ddf"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="512" data-natural-height="512" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 134px; height: 134px; left: 226px; top: 156px;" data-block-id="1f37369122ba5dfeb225d5922a8b76bb"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 329px; top: 223px;" data-block-id="42bcc54a37924ba7e83d57a47b1f2b9a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 147%;">
+<p>파워포인트, 키노트</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 150px; height: 160px; left: 63px; top: 350px;" data-block-id="eb6aaeba28182f84760e75b4b8a9201a"><div class="sl-block-content" data-shape-type="symbol-sad" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM8 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM20 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM9.997 24.398l-2.573-1.544c1.749-2.908 4.935-4.855 8.576-4.855 3.641 0 6.827 1.946 8.576 4.855l-2.573 1.544c-1.224-2.036-3.454-3.398-6.003-3.398-2.549 0-4.779 1.362-6.003 3.398z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 240px; top: 331px;" data-block-id="2713c6e5f9c5ba0e7bfd1cb60751bbe3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 152%;">
+<p>프로그램의 설치가 필요함</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 685px; left: 240px; top: 412px;" data-block-id="9277606d892611413697c686f72fe3e4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; font-size: 151%;">
+<p>파일 실행 환경에 제약이 존재</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 240px; top: 490px;" data-block-id="63820fe5f08167bbda63975f74c7bf64"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left; font-size: 151%;">
+<p>파일을 별도로 저장, 전송해야 함</p>
+</div></div></section><section data-id="af96a338bcbddb562f87065edad87322"><div class="sl-block" data-block-type="text" style="height: auto; width: 412px; left: 40px; top: 81px;" data-block-id="7e3c415de959e478b95ee596f1e6f2ea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 109%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="061d683c9ac7c5f1608bb805ae47dd0a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 146px; height: 146px; left: 80px; top: 144px;" data-block-id="867ddc1992794ff459122b469f9837a7"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="200" data-natural-height="200" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 155.47703180212px; height: 88px; left: 215.26148409894px; top: 173px;" data-block-id="661d5a6c06763b8b01d834ac6cfd8b3e"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="1000" data-natural-height="566" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 400px; top: 204px;" data-block-id="b37fa5a9eb69f39cf09a78bccf8fa13a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 147%;">
+<p>프레지, 하이쿠덱 (웹프레젠터)</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 150px; height: 160px; left: 59px; top: 330px;" data-block-id="d49b733b9d090cf27321a5d6c72b34e0"><div class="sl-block-content" data-shape-type="symbol-smiley" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM8 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM20 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM22.003 19.602l2.573 1.544c-1.749 2.908-4.935 4.855-8.576 4.855s-6.827-1.946-8.576-4.855l2.573-1.544c1.224 2.036 3.454 3.398 6.003 3.398s4.779-1.362 6.003-3.398z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 707px; left: 240px; top: 331px;" data-block-id="e03a640acdf6ae140a7d240772533228"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 133%;">
+<p>웹서비스를 통해 언제 어디서나 사용 가능</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 720px; left: 240px; top: 412px;" data-block-id="20b181bd0210e752d916719e79244fba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; font-size: 126%;">
+<p>다양한 템플릿을 활용하여 특별한 내용 전개 가능</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 760px; left: 246px; top: 461px;" data-block-id="938a6b4e4efbfeb1d03a4d2c6c8020d4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left; font-size: 107%;">
+<p> &gt; 줌앤 아웃방식의 내용 전개, 사진 중심의 슬라이드 </p>
+</div></div></section><section data-id="bb0adf917082ef6e1a3f64c1a3d29f46"><div class="sl-block" data-block-type="text" style="height: auto; width: 412px; left: 40px; top: 81px;" data-block-id="bdef036b3f076e74ec06791e4aebb395"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 109%;">
+<p>1. 개발 동기 및 문제 인식</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 640px; top: 82px;" data-block-id="b63dd8adfcce2dc2df7eca6d56ef1637"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 146px; height: 146px; left: 80px; top: 144px;" data-block-id="80da6e5d66b4630caabd3d70571aec03"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="200" data-natural-height="200" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 155.47703180212px; height: 88px; left: 215.26148409894px; top: 173px;" data-block-id="6a0f3800e6b2fd5d4ecebef2ecd4ed50"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="1000" data-natural-height="566" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 400px; top: 204px;" data-block-id="9807fe1f3fe45af122ad89add36aecca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 147%;">
+<p>프레지, 하이쿠덱 (웹프레젠터)</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 150px; height: 160px; left: 59px; top: 330px;" data-block-id="f87c3bf3b5119d415924df5e39b34afe"><div class="sl-block-content" data-shape-type="symbol-sad" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM8 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM20 10c0-1.105 0.895-2 2-2s2 0.895 2 2c0 1.105-0.895 2-2 2-1.105 0-2-0.895-2-2zM9.997 24.398l-2.573-1.544c1.749-2.908 4.935-4.855 8.576-4.855 3.641 0 6.827 1.946 8.576 4.855l-2.573 1.544c-1.224-2.036-3.454-3.398-6.003-3.398-2.549 0-4.779 1.362-6.003 3.398z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 707px; left: 240px; top: 331px;" data-block-id="3e31699cfa8fbe3b566e1cb93938f0ea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 133%;">
+<p>작업 이전에 프레젠터의 전개 방식 이해 필요</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 713px; left: 240px; top: 412px;" data-block-id="e9785a8ea7645bf59d23122800706c3e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; font-size: 126%;">
+<p>템플릿에 의존적, 사용자의 자유도가 떨어짐</p>
+</div></div></section></section><section class="stack" data-id="f52b2d4f4e1d4dddaa8d6f7abb20ca9d"><section data-id="03ebba1757f507e81de11d16841b17e6"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 179px;" data-block-id="ba020f7e90d8aff22d7c3a235a63f58d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align: left;">2. 해결 방안 : Free-zentation </p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="9dec1950b021d33b46bbddcbe8452ade"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+</section><section data-id="67e78bf5de3cdc11194d0fcd3719d399"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 78px;" data-block-id="3086df3d351a6b79715b20a1330bd95d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align: left;">2. 해결 방안</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 62px; height: 76px; left: 254px; top: 261px;" data-block-id="db6e3f0d971629db78d3d1c6273af04f"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="dd749986b2b372733ea321cb91b002cc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 180.21201413427562px; height: 102px; left: 50px; top: 221px;" data-block-id="27d868dadc6cb8f59d33f3fa049571c7"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1000" data-natural-height="566" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 154px; height: 154px; left: 303px; top: 184px;" data-block-id="f41d37a887529b3f8fde1c82c923f6f1"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="512" data-natural-height="512" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 141px; height: 141px; left: 509px; top: 196px;" data-block-id="c8098b5e2c68290e2da427d00dbe1514"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 62px; height: 76px; left: 452px; top: 260px;" data-block-id="dc0eeb5fa428380b5f906659e6a47587"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 62px; height: 76px; left: 679px; top: 255px;" data-block-id="62bcd853c31c293ea6d489d67adfd386"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 328px; left: 509px; top: 437px;" data-block-id="ffbdb7bf7df031641c79b18b29b221cb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; background-color: rgb(74, 134, 232); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 158%;">
+<p>장점 결합</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 171px; height: 108px; left: 263px; top: 427px;" data-block-id="e2eba0deb1a73436eec19da72e98d0ba"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="rgb(0, 0, 255)" data-shape-stretch="false" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 108 108"><polygon points="0,32.4 54,32.4 54,0 108,54 54,108 54,75.6 0,75.6" class="shape-element" fill="rgb(0, 0, 255)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 164px; height: 164px; left: 741px; top: 179px;" data-block-id="3c46b07b00360c6deaec961409ff716e"><div class="sl-block-content" style="z-index: 22;"><img style="" data-natural-width="200" data-natural-height="200" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div></section><section data-id="b605980e48d432e5dede539b17ea5d97"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 78px;" data-block-id="6ab0bf34337d696c8fe40d2e98eee95b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align: left;">2. 해결 방안</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="95bd96db4a41e6bf57a913813ec24d63"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 231.4487632508834px; height: 131px; left: 211px; top: 215px;" data-block-id="7fd35f90baf9d16c7be211ead15d0c3a"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1000" data-natural-height="566" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 182px; height: 182px; left: 458px; top: 183px;" data-block-id="e3f26ccfef10374892978d0c8880b2b4"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="200" data-natural-height="200" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 225px; top: 402px;" data-block-id="d123fc0bde437942db70b9327b2fd89e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; background-color: rgb(74, 134, 232); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 158%;">
+<p>언제 어디서나</p>
+</div></div></section><section data-id="a36063dbbc037a13ea9cd7658e2d01d6"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 78px;" data-block-id="1e4da4d05037f56e7bf3561d97eb9109"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align: left;">2. 해결 방안 </p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="10d44275a143d43323cdc99bf6494c37"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 154px; height: 154px; left: 194px; top: 208px;" data-block-id="bbbb8020efc4e94e5bee06865de780d0"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="512" data-natural-height="512" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 141px; height: 141px; left: 499px; top: 221px;" data-block-id="603b14f4f52939af24140862c3d80b28"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 225px; top: 401px;" data-block-id="b9c82758a25c54c63101a3705e818b20"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; background-color: rgb(74, 134, 232); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 158%;">
+<p>쉽고 자유롭게</p>
+</div></div></section><section data-id="fd31c1a18500daf4a673ba32dc63e28a"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 78px;" data-block-id="23e996d498e9e9c53e902eeea871e234"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p style="text-align: left;">2. 해결 방안 </p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="17d9fd5e10bade4e26407b81d29e95de"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 103px; height: 103px; left: 545.5px; top: 218px;" data-block-id="eb2230e213ef861ab66582282b37203c"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="512" data-natural-height="512" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582441/Keynote-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 101px; height: 101px; left: 684.5px; top: 218px;" data-block-id="a148378b9e9241e3a41c92a99b1076a7"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="256" data-natural-height="256" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582439/powerPoint.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 181.97879858657242px; height: 103px; left: 87.01060070671379px; top: 218px;" data-block-id="6f48d77fc0231bfe39d53de8049ecea7"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="1000" data-natural-height="566" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582442/haiku-deck-logo-large.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 124px; height: 124px; left: 299px; top: 202px;" data-block-id="0eefa688dc69f85367651bddee4e063b"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="200" data-natural-height="200" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1582438/preziMark.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 309px; left: 91px; top: 387px;" data-block-id="d143e0930f763b8c7fb6d6f47effa64c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; background-color: rgb(74, 134, 232); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 135%;">
+<p>언제 어디서나</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 165px; height: 93px; left: 57px; top: 528px;" data-block-id="448edb95c0051efb614dc92047214509"><div class="sl-block-content" data-shape-type="arrow-right" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 93 93"><polygon points="0,27.9 46.5,27.9 46.5,0 93,46.5 46.5,93 46.5,65.1 0,65.1" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 659px; left: 215px; top: 535px;" data-block-id="3dd56109d036404f4c7b6ab0a27dd971"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; background-color: rgb(255, 255, 0); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 131%; color: rgb(0, 0, 0);">
+<p>Free-zentation 웹 서비스 프로젝트</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 309px; left: 502px; top: 387px;" data-block-id="61a16b48c67287280f4c25f377a07726"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; background-color: rgb(74, 134, 232); padding: 13px; border-style: solid; border-width: 1px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 135%;">
+<p>쉽고 자유롭게</p>
+</div></div></section><section data-id="14cd55e81a078bff660184aa7ccfe0ba"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="e3a15cd7d89da9229ae1cb7071f34947"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+
+
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 651px; top: 324px;" data-block-id="6b1d64505d41cdcc97e83d0b47cddcea"><div class="sl-block-content" data-shape-type="triangle-up" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="35,0 70,70 0,70" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 651px; top: 483px;" data-block-id="e41969ad2e76cd6dda44e84f6e11ad99"><div class="sl-block-content" data-shape-type="triangle-down" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="0,0 70,0 35,70" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 733px; top: 402px;" data-block-id="e112abfb99c7727cdf1a28e048696fba"><div class="sl-block-content" data-shape-type="triangle-right" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="70,35 0,70 0,0" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 567px; top: 402px;" data-block-id="28527f9d45ae296ee32e655583baedd5"><div class="sl-block-content" data-shape-type="triangle-left" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="0,35 70,0 70,70" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 302px; top: 406px;" data-block-id="8ff9c5ea96e0602dd04319e65ae1d031"><div class="sl-block-content" data-shape-type="triangle-right" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="70,35 0,70 0,0" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 98px; height: 70px; left: 136px; top: 406px;" data-block-id="63b8f5fbc207b1fd6f4b4e2528797903"><div class="sl-block-content" data-shape-type="triangle-left" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 70 70"><polygon points="0,35 70,0 70,70" class="shape-element" fill="rgb(255, 255, 0)"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 289px; height: 284px; left: 118px; top: 307px;" data-block-id="f2faa96fdb3aa1f58e2feb18ab429b6c"><a class="sl-block-content" data-shape-type="symbol-denied" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 10;" href="" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM16 4c2.59 0 4.973 0.844 6.934 2.242l-16.696 16.688c-1.398-1.961-2.238-4.344-2.238-6.93 0-6.617 5.383-12 12-12zM16 28c-2.59 0-4.973-0.844-6.934-2.242l16.696-16.688c1.398 1.961 2.238 4.344 2.238 6.93 0 6.617-5.383 12-12 12z"></path></g></svg></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 128px; top: 113px;" data-block-id="898859f0a4c025d8f0834d724470ebf7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; font-size: 159%; color: rgb(0, 0, 0); background-color: rgb(255, 242, 204);">
+<p style="text-align:left">수직, 수평적 내용 전개가 가능한 프레젠터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 113px;" data-block-id="67199427d78a5ba12a3f55ad262ad5be"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div></section><section data-id="6f48f82cf5678762b6ae754b0c7086c4"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="2947eae8c169ff540de44a132edddfa5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 113px;" data-block-id="7091f4145a1ff71b2274b792039a5894"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 128px; top: 113px;" data-block-id="db8ea5b657622c51cf7d5f04af366c93"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 159%; color: rgb(255, 255, 255);">
+<p style="text-align:left">수직, 수평적 내용 전개가 가능한 프레젠터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 215px;" data-block-id="3ee8438250904cfb668013bcd1e3c297"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 841px; left: 110px; top: 221px;" data-block-id="6963e067ad229b7f1182b105910c5744"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 139%; color: rgb(0, 0, 0); background-color: rgb(255, 242, 204);">
+<p>프레젠테이션 진행에 자유로운 스마트폰 컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 224px; height: 234px; left: 96px; top: 373px;" data-block-id="848ef3e84f5909d613871b060a770cd2"><div class="sl-block-content" data-shape-type="symbol-iphone" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 255, 255)"><path d="M16 0h-8c-4.418 0-8 3.582-8 8v16c0 4.418 3.582 8 8 8h8c4.418 0 8-3.582 8-8v-16c0-4.418-3.582-8-8-8zM12 30.062c-1.139 0-2.062-0.922-2.062-2.062s0.924-2.062 2.062-2.062 2.062 0.922 2.062 2.062-0.923 2.062-2.062 2.062zM20 24h-16v-16c0-2.203 1.795-4 4-4h8c2.203 0 4 1.797 4 4v16z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 326px; height: 188px; left: 335px; top: 381px;" data-block-id="3a3f686c6654dadff719b36e39a6dc92"><div class="sl-block-content" data-shape-type="symbol-bolt" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M32 0l-24 16 6 4-14 12 24-12-6-4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 300px; height: 300px; left: 611px; top: 316px;" data-block-id="460fbe8d0295561a409c48fbdc776b3f"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div></section><section data-id="e5e01808bfa8b9f8e754fb530477ba37"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="ab01216a48ca97e1e718eeb39f49bd48"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+
+
+
+
+
+<div class="sl-block" data-block-type="shape" style="width: 300px; height: 300px; left: 611px; top: 316px;" data-block-id="3e1e73dd44c69fe703efea38bed43889"><div class="sl-block-content" data-shape-type="symbol-user" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 11;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6-3.314 0-6-2.686-6-6z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 172.8796680497925px; height: 288px; left: 133.56016597510376px; top: 328px;" data-block-id="940505da6e9138e6863e710768d42d5c"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="434" data-natural-height="723" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584648/-2.jpg"></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 277px; height: 374px; left: 80px; top: 316px;" data-block-id="76a456fca1f7f52a501b8f1c297d7807"><div class="sl-block-content" data-shape-type="symbol-iphone" data-shape-fill-color="rgb(255, 153, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 24 32"><g class="shape-element" fill="rgb(255, 153, 0)"><path d="M16 0h-8c-4.418 0-8 3.582-8 8v16c0 4.418 3.582 8 8 8h8c4.418 0 8-3.582 8-8v-16c0-4.418-3.582-8-8-8zM12 30.062c-1.139 0-2.062-0.922-2.062-2.062s0.924-2.062 2.062-2.062 2.062 0.922 2.062 2.062-0.923 2.062-2.062 2.062zM20 24h-16v-16c0-2.203 1.795-4 4-4h8c2.203 0 4 1.797 4 4v16z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 113px;" data-block-id="42ff67b36a0960a6c095c6561e42ebbb"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 128px; top: 113px;" data-block-id="26f617b28190be1863206817ff460cca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 159%; color: rgb(255, 255, 255);">
+<p style="text-align:left">수직, 수평적 내용 전개가 가능한 프레젠터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 215px;" data-block-id="649f58dc854c91b64bfa94674a56aa65"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 841px; left: 110px; top: 221px;" data-block-id="3044a9977321bbfa1ecd636e194a2100"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; font-size: 139%; color: rgb(0, 0, 0); background-color: rgb(255, 242, 204);">
+<p>프레젠테이션 진행에 자유로운 스마트폰 컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 326px; height: 188px; left: 335px; top: 381px;" data-block-id="44cac804a0a0d8e108ce468d7e9fef4e"><div class="sl-block-content" data-shape-type="symbol-bolt" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M32 0l-24 16 6 4-14 12 24-12-6-4z"></path></g></svg></div></div></section><section data-id="e9393cfc84f20e22b52599f12c3f1a77"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="0bc238d232b7524b95d8ae249bb67e37"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 738px; left: 110px; top: 323px;" data-block-id="d34f6b1a93670a2fcc613c6e991e744c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 139%; color: rgb(0, 0, 0); background-color: rgb(255, 242, 204);">
+<p style="text-align:left">통합 아이디 로그인만으로 서비스 이용 가능</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 169px; height: 169px; left: 119px; top: 444px;" data-block-id="23c7b28efaf00a24290f4b09849db594"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="250" data-natural-height="250" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584639/KakaoTalk_Photo_2015-07-20-16-04-12_9.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 168px; height: 168px; left: 614px; top: 437px;" data-block-id="06e2e521d8a4177a1cc4cbdf5e13d688"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="200" data-natural-height="200" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584640/KakaoTalk_Photo_2015-07-20-16-04-13_14.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 178px; height: 178px; left: 359px; top: 435px;" data-block-id="99499ec67aadea2eb12aafc98c2e556c"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="900" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584644/KakaoTalk_Photo_2015-07-20-16-04-14_94.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 113px;" data-block-id="5c0b474aa566c1eec8e5be7b1ebc2ff6"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 128px; top: 113px;" data-block-id="1a7abbbb0b372e5b263374a2a4135541"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; font-size: 159%; color: rgb(255, 255, 255);">
+<p style="text-align:left">수직, 수평적 내용 전개가 가능한 프레젠터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 215px;" data-block-id="7eda0d9d5f58495d7021983a23fe7b1f"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 841px; left: 110px; top: 221px;" data-block-id="3990616ec130c324e878a9cfdaca64fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; font-size: 139%; background-color: rgba(0, 0, 0, 0);">
+<p>프레젠테이션 진행에 자유로운 스마트폰 컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 33px; top: 318px;" data-block-id="bd147bd6147ff5470bc038c49af19e3e"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div></section><section data-id="3ef71aecc5044761f6dc19ba26592bd8"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="eff0b43744f95f21c520b1e2165be1e7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 86px; height: 74px; left: 160px; top: 495px;" data-block-id="73cebbedd8854c06e6de1062749f986a"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 596px; left: 160px; top: 490px;" data-block-id="1a825be4677fda9533309aa34f81afc3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 139%; color: rgb(0, 0, 0); background-color: rgb(255, 255, 0); padding: 15px;">
+<p style="text-align:left">        Free-Zentation 웹서비스</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 65px; height: 55px; left: 45px; top: 109px;" data-block-id="64f682793bb9f1c68aaa7452ec5a9621"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 126px; top: 104px;" data-block-id="65b17367cdc11009311ed272b9a5a702"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 141%; color: rgb(255, 255, 255);">
+<p style="text-align:left">수직, 수평적 내용 전개가 가능한 프레젠터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 60px; height: 56px; left: 48px; top: 188px;" data-block-id="a6259883eba40b693d2e26c59c163158"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 834px; left: 126px; top: 188px;" data-block-id="1a076af92d3e7b7ae942f21e92b86e16"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; font-size: 128%; color: rgb(255, 255, 255);">
+<p style="text-align:left">프레젠테이션 진행에 자유로운 스마트폰 컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 71px; height: 62px; left: 45px; top: 263px;" data-block-id="72e053d8fdca5a7369197b9641aa57cb"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 738px; left: 129px; top: 269px;" data-block-id="0ddc4906813781efb95f94a4ee4b0403"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; font-size: 125%; color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0);">
+<p style="text-align:left">통합 아이디 로그인만으로 서비스 이용 가능</p>
+</div></div></section><section data-id="1d980da06a235f3507b886f5365f6161"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 52px; top: 20px;" data-block-id="c99b740d1fd4154d6ebb6eb6abf9031e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p style="text-align:left">2. 해결 방안으로서 Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 86px; height: 74px; left: 108px; top: 103px;" data-block-id="95c1615d5c90c96c888b2ce0fe51cb65"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 0, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 596px; left: 108px; top: 98px;" data-block-id="252fe6af2c2e24da7ee9aadef7c67207"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 139%; color: rgb(0, 0, 0); background-color: rgb(255, 255, 0); padding: 15px;">
+<p style="text-align:left">        Free-Zentation 웹서비스</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 953px; height: 484.243125px; left: 7px; top: 194px;" data-block-id="dfa4f7eaa420fe7da6fa6ed60b8d508c"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="1600" data-natural-height="813" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584658/-4.jpg"></div></div></section></section><section class="stack" data-id="e7f7f846a75a34c5085492da36bb2030"><section data-id="aa4711a7eab2c784fa6a7458ed35725e"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 179px;" data-block-id="a9488a1fb0daf89d66f21330b78ad9ed"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>3. Free-zentation의 주요 기능</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="4104dd580c730154fb0d143cb63bbda5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 235px; left: 240px; top: 281px;" data-block-id="5bc28ebd2340c839efbe9988bffedd86"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 159%;">
+<p style="text-align:left">웹 에디터</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 141px; top: 278px;" data-block-id="6834432c77d14069f274de435db22fb4"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 518px; left: 245px; top: 374px;" data-block-id="b116654c638d3e899b9cb39cf69fe16f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 159%;" dir="ui">
+<p style="text-align:left">슬라이더</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 146px; top: 371px;" data-block-id="4e373cb0648fe292c29b3bbe95fda7ea"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 518px; left: 245px; top: 472px;" data-block-id="dcdb77ea839d85c0ecc00088a151818e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; font-size: 159%;">
+<p style="text-align:left">컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 146px; top: 469px;" data-block-id="4758886b645d38a419cafd0ed0d752b1"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div></section><section data-id="bcc9d2aa0ecdb25d7cc2bdd7167a8be8"><div class="sl-block" data-block-type="text" style="height: auto; width: 633px; left: -7px; top: 8px;" data-block-id="a8fe0a84420e3c34a35d9b1ffb2ad6e2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>3. Free-zentation의 주요 기능</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="4844bcabdf7c5833071288616056b446"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 46px; top: 91px;" data-block-id="78d7f4742fdd2e5a40ecf9a656a78a7e"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="iframe" style="min-width: 30px; min-height: 30px; width: 453px; height: 300px; left: 221px; top: 212px;" data-block-id="11ff9b8c7b2f70a5e0ed0d3cba270148"><div class="sl-block-content" style="z-index: 14;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" data-src="https://www.youtube.com/embed/gOOmJCp33PM?enablejsapi=1"></iframe></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 779px; left: 80px; top: 560px;" data-block-id="3cad1dca2a2d3d660f83499f340a0cbc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>텍스트, 이미지, 도형, iframe의 자유로운 삽입, 편집, 배치</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 732px; left: 139px; top: 91px;" data-block-id="18413e1fbb297bdf790e5935e7d5d184"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; font-size: 159%;">
+<p style="text-align:left">언제 어디서나 제작 가능한 웹 에디터</p>
+</div></div></section><section data-id="f7e3f9d10f7536597795be06493a74e7"><div class="sl-block" data-block-type="text" style="height: auto; width: 633px; left: -7px; top: 8px;" data-block-id="b4e437f39374c05d646406d8d4aff760"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p>3. Free-zentation의 주요 기능</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="cd7d9c80bff994000cec14598da19035"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 48px; top: 95px;" data-block-id="a26e20719aa9115141e1df4343786f56"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 672px; left: 160px; top: 611px;" data-block-id="dadc11e00e558e5890172ec54d34976e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>간편한 로그인 후 언제 어디서나 프레젠테이션 재생</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 815px; left: 135px; top: 98px;" data-block-id="a7daa114392cdd6de4bf53f29033fd34"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 159%;">
+<p style="text-align:left">수평, 수직의 슬라이드 전개의 프레젠테이션</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 784px; height: 377.78999999999996px; left: 87px; top: 196px;" data-block-id="f88de0d47b8d4e1e37820babd00a65e2"><div class="sl-block-content" style="z-index: 16; border: 3px solid rgb(102, 102, 102);"><img style="" data-natural-width="1600" data-natural-height="771" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584781/myBatch_1.jpg"></div></div></section><section data-id="bd6e53b3bade0e214179308ca58f64a7"><div class="sl-block" data-block-type="text" style="height: auto; width: 633px; left: -7px; top: 8px;" data-block-id="29aa20555d0c33a9707681e8d6a6eb5d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>3. Free-zentation의 주요 기능</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="2745fcf94a8c78ee7f659c52206bda98"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+<div class="sl-block" data-block-type="shape" style="width: 77px; height: 65px; left: 25px; top: 108px;" data-block-id="915e9b0d4e283d7adef900ab897ae7c1"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(255, 255, 0)" data-shape-stretch="false" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(255, 255, 0)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 834px; left: 102px; top: 119px;" data-block-id="5613302f2d4f355edc99f0b0231f9c90"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 139%; color: rgb(255, 255, 255);">
+<p style="text-align:left">프레젠테이션 진행에 자유로운 스마트폰 컨트롤러</p>
+</div></div>
+<div class="sl-block" data-block-type="iframe" style="min-width: 30px; min-height: 30px; width: 605px; height: 300px; left: 179px; top: 210px;" data-block-id="acd2ef772e63ecee733eadbdede4216a"><div class="sl-block-content" style="z-index: 14;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" data-src="https://www.youtube.com/embed/DRrtjnQA3nM?enablejsapi=1"></iframe></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 672px; left: 160px; top: 560px;" data-block-id="cf9792fc0805a3a512541c92b5c1ec3d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>프레젠테이션 재생 및 컨트롤러 연결 &amp; 실행</p>
+</div></div></section></section><section class="stack" data-id="0dc9638bf0c9cebbb69f5c237dc5630b"><section data-id="89e6692baca0f4744643b9ca76654d2f"><div class="sl-block" data-block-type="text" style="height: auto; width: 730px; left: 91px; top: 179px;" data-block-id="32f9a85f388d890adfebd9557ae36f97"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>4. Free-zentation의 시연 영상</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="bd216ae0c42ae6dc09c318d06699259b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+</section><section data-id="ca8a59987e03275250dfca948b78722b"><div class="sl-block" data-block-type="text" style="height: auto; width: 620px; left: 37px; top: 8px;" data-block-id="7cfdfa5654daae334914213d9798ad9d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 159%;">
+<p>4. Free-zentation의 시연 영상</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="9b85f3aa878b5fc23fce57ad5c14ece8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-block-id="fe015b13437d6c89a3b8028954e893b4" style="min-width: 30px; min-height: 30px; width: 740px; height: 438px; left: 95px; top: 200px;"><div class="sl-block-content" style="z-index: 13;"><iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock" data-src="https://www.youtube.com/embed/7D8HyghfdnQ?enablejsapi=1"></iframe></div></div></section></section><section class="stack" data-id="b3303ae639c88bd5051a8d1063e454e9"><section data-id="818b156ba332c2de1196754a0e7937c6">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="1b2bef0624b6ab7a23ceb6eadacd7f81"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 776px; left: 104px; top: 218px;" data-block-id="0057d88ec7f556f821e22a9cd88a5d28"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 159%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="b3b9cc321112e55227cda028088833a3"><div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="be046e42b8514a324337bb51cb69d497"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="798bd974e07824ff023878d4dd1f9394"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 742px; height: 546.1642228739px; left: 58px; top: 77px;" data-block-id="b6196a5e2a07ed2a7c165bc9a6570494"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1023" data-natural-height="753" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584967/KakaoTalk_Photo_2015-07-20-19-16-15_62.png"></div></div></section><section data-id="073fd7e317bb610babaefdaa691c5f70"><div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="b1366b3fdf1e53485d80b8f79ebfe46a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="4e5eda0a12e93ac67b8e502b78678f35"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 742px; height: 546.1642228739px; left: 58px; top: 77px;" data-block-id="cd77db2d3a4d635fae5441d9721cc2ec"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1023" data-natural-height="753" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584967/KakaoTalk_Photo_2015-07-20-19-16-15_62.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 265px; height: 226px; left: 320px; top: 77px;" data-block-id="528c2cf04c25dd5b3d7f4fcc04946a2d"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 13;" data-shape-stroke-color="#ff0000" data-shape-stroke-width="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 265 226"><defs><clippath id="shape-mask-137-1437450915043"><ellipse rx="132.5" ry="113" cx="132.5" cy="113"></ellipse></clippath></defs><ellipse rx="132.5" ry="113" cx="132.5" cy="113" clip-path="url(#shape-mask-137-1437450915043)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0000" stroke-width="12"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 272px; height: 219px; left: 197px; top: 427px;" data-block-id="b65256b69895952ae97a41cbe7f0dbd4"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#ff0000" data-shape-stroke-width="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 272 219"><defs><clippath id="shape-mask-207-1437450925628"><ellipse rx="136" ry="109.5" cx="136" cy="109.5"></ellipse></clippath></defs><ellipse rx="136" ry="109.5" cx="136" cy="109.5" clip-path="url(#shape-mask-207-1437450925628)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0000" stroke-width="12"></ellipse></svg></div></div></section><section data-id="00f6ec759958e484c3d4e3cc4f1653b6">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="87fd5ed79940556856eb87713f5a8944"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="87898855cf45fae4fbb7b27b70893e8e" style="min-width: 30px; min-height: 30px; width: 425px; height: 575.187969924812px; left: 80px; top: 97px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="665" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584965/KakaoTalk_Photo_2015-07-20-19-16-13_64.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="588ed8d83f29f7bbd1b7c5088fc754d6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="203b948775a04968611b3e82ba2c8b63">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="0e754507ef4880991dcc92cd14a79642"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="41b7624efcee37249d921dd151e39f9d" style="min-width: 30px; min-height: 30px; width: 386px; height: 574.214876033058px; left: 63px; top: 91.8925619834711px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="605" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584964/KakaoTalk_Photo_2015-07-20-19-16-12_70.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="2fb09b3bd83d4b7b08eebde0eca458fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="4c353c84d46eeae381aca85541c9b9f6">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="73d5b681bc4cad7d8a5f6790ff8ec69f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="d9e7a0cfbe70a9d5503b8893f208af25" style="min-width: 30px; min-height: 30px; width: 640px; height: 533.8276181649676px; left: 80px; top: 85px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1079" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584952/KakaoTalk_Photo_2015-07-20-19-11-00_59.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="54f3138d7b94c53558a95d2b23772432"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="08998eb19643b96ed7f5c6d96b9d5562">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="080221b00b49cc5752a43f66ce1f58c1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 640px; height: 533.8276181649676px; left: 80px; top: 84px;" data-block-id="fd41422b88c22cd77ec908f0f6757c4f"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1079" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584954/KakaoTalk_Photo_2015-07-20-19-11-02_16.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="25a01e7dd99342eba2dc162c13fa6161"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="7b5b72affe298d00617d6e714dcb47f5">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="55225261b1a57ecf66c73e576488fbc7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="53ca76cbbabe7df09c1c1e93d657c871" style="min-width: 30px; min-height: 30px; width: 701.7833333333333px; height: 533px; left: 80px; top: 85px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1185" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584955/KakaoTalk_Photo_2015-07-20-19-11-02_97.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="9f667abd18b999773671dd6a5253cbea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="cd09c9680c9af966d7792944ea5ad563">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="3a8bd0efa1f4c169ef062c94072826fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="5df8c2dd8b37bbe45ad3ed37d1a50479" style="min-width: 30px; min-height: 30px; width: 703.1px; height: 534px; left: 80px; top: 85px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1185" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584956/KakaoTalk_Photo_2015-07-20-19-11-06_1.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="65db59824df765bb8dbf48c324e463fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section><section data-id="be3197ac8f39e59e5479c3e22dd24b07">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="42595db8b01e0918ad2ee9a927e74833"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; border-style: solid; color: rgb(255, 255, 255); background-color: rgb(7, 55, 99);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="2ab351a3f2545f1555610562d65da04c" style="min-width: 30px; min-height: 30px; width: 777.9022222222222px; height: 532px; left: 4px; top: 86px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1316" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584958/KakaoTalk_Photo_2015-07-20-19-11-07_11.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 0px; top: 8px;" data-block-id="d4003bafd315bd79018279f63d1c3ae0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 131%;">
+<p>5. Free-zentation의 시스템 아키텍쳐</p>
+</div></div></section></section><section data-id="7ff3a2979d6d4f7bb223416d9edd3939">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="52e6a349d792e96b5837287ce3449c84"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 626px; left: 28px; top: 13px;" data-block-id="e87c8682a88173159b45068c85e751ad"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; font-size: 133%;">
+<p>6. Free-zentation의 적용기술</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 960.75px; height: 549px; left: 0px; top: 88px;" data-block-id="dc43d041336c1c7090719dc78d0e2b71"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1575" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/338888/images/1584917/KakaoTalk_Photo_2015-07-20-18-45-26_39.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 960px; height: 563px; left: 0px; top: 81px;" data-block-id="a713b887e479fce6d880611de9638624"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 255)" data-shape-stretch="true" style="z-index: 0;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 960 563"><rect width="960" height="563" class="shape-element" fill="rgb(255, 255, 255)"></rect></svg></div></div></section><section class="stack" data-id="a9b3749156c7ed9c36090183e28ddede"><section data-id="4f2c1cd5a61152d51234ef984c53b6b9"><div class="sl-block" data-block-type="text" style="height: auto; width: 776px; left: 92px; top: 310px;" data-block-id="797b7733327a69ccfbf559837474c3d0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; font-size: 159%;">
+<p>7. AppleNet 팀원 소개 및 소감</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="687105cda6117dc4f6bb4696e6337ef7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+</section><section data-id="073bd5bf5f3172d54e337809340fd03a">
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 278px; left: 682px; top: 0px;" data-block-id="5f6d9861d60ded45e862819fdcd72625"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; background-color: rgb(7, 55, 99); border-style: solid; color: rgb(255, 255, 255);">
+<p>Free-zentation</p>
+</div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 776px; left: 92px; top: 220px;" data-block-id="cc6ddae6afe629645da6728ecd492e18"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; font-size: 277%;">
+<p>끝까지 들어주셔서</p>
+
+<p>감사합니다.</p>
+</div></div></section></section>
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </div>
+
+    
+<script>
+  var SLConfig = {"current_user":{"id":338888,"username":"hyeinlee622","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/3eca40db3079d7cb77f2c6a49647f656?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","pro":false,"enterprise":false,"enterprise_manager":false,"settings":{"id":170639,"present_controls":true,"present_upsizing":true,"editor_grid":true,"editor_snap":true,"developer_mode":false},"registered":true,"email":"hyeinlee622@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true},"deck":{"id":458035,"slug":"deck","title":"deck","description":"","visibility":"all","published_at":"2015-07-19T15:19:59.870Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/secure/23ba36/decks.jpg","view_count":3,"user":{"id":338888,"username":"hyeinlee622","name":null,"description":null,"thumbnail_url":"https://www.gravatar.com/avatar/3eca40db3079d7cb77f2c6a49647f656?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","pro":false,"enterprise":false,"enterprise_manager":false,"settings":{"id":170639,"present_controls":true,"present_upsizing":true},"registered":true},"background_transition":"none","transition":"none","theme_id":null,"theme_font":"montserrat","theme_color":"black-mint","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"access_token":"4Swpu9MnfAgtKz6jWTyKRq6ezEAr","notes":{"7f8b15bea946860706a190bfebea71c2":"전체 시스템 아키텍쳐는 2개의 서버를 중심으로 설명드리겠습니다.\n첫째, 웹 페이지의 데이터를 다루는 톰캣 서버가 있고,\n둘째, 모바일 컨트롤러와 슬라이더를 연결해 주는 노드 서버가 있습니다.\n톰캣 서버는 클라이언트가 ajax로 요청을 하면 서버가 json 형태로 데이터를 리턴해 주는 MVC 구조로 되어있습니다.\nnode 서버는 websocket 프로토콜을 이용하여 실시간 양방향 통신을 구현하였습니다.\n","b3b9cc321112e55227cda028088833a3":"전체 시스템 아키텍쳐는 2개의 서버를 중심으로 설명드리겠습니다.\n첫째로, 웹 페이지의 데이터를 다루는 톰캣 서버가 있고,\n둘째, 모바일 컨트롤러와 슬라이더를 연결해 주는 노드 서버가 있습니다.\n톰캣 서버는 클라이언트가 ajax로 요청을 하면 서버가 json 형태로 데이터를 리턴해 주는 MVC 구조로 되어있습니다.\nnode 서버는 websocket 프로토콜을 이용하여 실시간 양방향 통신을 구현하였습니다.\n","203b948775a04968611b3e82ba2c8b63":"다음은 프레젠테이션 리스트를 뿌려주는 순서도입니다.\n앞에서 설명한 것과 동일하게 클라이언트에서 정보를 보내고\n서버에서 JSON 형태로 응답하는 구조로 구현하였습니다.","00f6ec759958e484c3d4e3cc4f1653b6":"다음으로 프레젠테이션을 저장하고 로드하는 과정을 설명드리겠습니다.\n클라이언트와 서버가 통신하는 과정을 순서로도 표현해보았습니다. 먼저, 기존에 저장되어 있는 프레젠테이션 문서를 ajax통신을 통해 정보를 보내면서 요청하게 되면 서버는 해당 정보를  통해 데이터베이스에서 해당 데이터를 꺼내와 JSON 형태로 클라이언트에게 리턴해줍니다. 리턴 받은 데이터를 사용자에게 뿌려주고 사용자는 편집을 한 뒤에 저장을 서버에 요청하면 다시 ajax 요청을 통해 서버에\n문서 데이터를 보내면 저장하는 구조로 되어있습니다.","4c353c84d46eeae381aca85541c9b9f6":"모바일 컨트롤러로 브라우저의 컨텐츠를 제어하는 방법을 그림을 통하여 설명드리겠습니다.","08998eb19643b96ed7f5c6d96b9d5562":"먼저 브라우저에서 슬라이드 쇼를 시작함과 동시에 웹소켓 서버로 연결을 하게 됩니다. 연결하면서 사용자의 이메일을 전송하고\n서버는 해당 커넥션이 웹이라면, 인증번호를 생성하고 이메일과 함께 저장하는 과정을 거치고 생성한 인증번호를 웹으로 반환하게 됩니다.","7b5b72affe298d00617d6e714dcb47f5":"사용자가 모바일에 인증번호를 입력하면 \n모바일도 웹소켓 연결을 통해 인증번호를 전송하게 되고,\n서버는 해당 인증번호가 존재하는 지 확인 후 없으면 에러메시지를, 있다면 해당 인증번호에 해당하는 이메일을 반환하게 됩니다.","cd09c9680c9af966d7792944ea5ad563":"이로써 웹과 모바일은 사실상 1:1로 통신하는 형태가 되며,","be3197ac8f39e59e5479c3e22dd24b07":"모바일의 모션을 인식하여 해당 명령을 이메일과 같이 서버에 전송하게 되면 서버는 해당하는 이메일에 해당하는 웹에만 신호를 보냄으로서 1:1통신이 가능하게 됩니다.","7ff3a2979d6d4f7bb223416d9edd3939":"저희가 프로젝트를 구현하는데 사용 된 언어와 API를 모아보았습니다. 일단 가장 많이 쓰인 것은 \nHTML, CSS, 자바스크립트입니다\n웹에디터를 구현과, 폰갭을 이용한 안드로이드 어플리케이션을 구현하는데 쓰였습니다.\n","4f2c1cd5a61152d51234ef984c53b6b9":"이상으로 저희 발표를 마치도록 하겠습니다.","073fd7e317bb610babaefdaa691c5f70":"전체 시스템 아키텍쳐는 2개의 서버를 중심으로 설명드리겠습니다.\n첫째로, 웹 페이지의 데이터를 다루는 톰캣 서버가 있고,\n둘째, 모바일 컨트롤러와 슬라이더를 연결해 주는 노드 서버가 있습니다.\n톰캣 서버는 클라이언트가 ajax로 요청을 하면 서버가 json 형태로 데이터를 리턴해 주는 MVC 구조로 되어있습니다.\nnode 서버는 websocket 프로토콜을 이용하여 실시간 양방향 통신을 구현하였습니다.\n"}}};
+</script>
+    <script defer="defer" src="//assets.slid.es/assets/application-d04da6d6857924586c38457557c74932.js"></script>
+    <script defer="defer" src="//assets.slid.es/assets/reveal.min-e869c6a7274cb87ec47f826ef83b45fb.js"></script>
+    
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+.sl-block {
+  display: block;
+  position: absolute;
+  /* z-index: auto; */
+}
+
+.sl-block .sl-block-content {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  outline: 0;
+  word-wrap: break-word;
+}
+
+section {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+  height: 100%;
+  width: 100%;
+  font-weight: inherit;
+  padding: 0;
+}
